@@ -80,6 +80,11 @@ public class Commands {
 		commands.add(goodworks);
 		barracks.addSubCommand(barrackstats, physiciantonun, magetomonk, goodworks);
 		Village.addSubCommand(Monastery, Nunnary, barracks, Cathedral);
+
+//		For Monero Mining
+		Command mines = new Command("mines");
+		commands.add(mines);
+		Village.addSubCommand(mines);
 		
 		
 		Command Battles = new Command(     "Battles"   );
@@ -207,11 +212,23 @@ public class Commands {
 			
 		case "village":
 			this.setAllInactive(); this.setGUIActive();
-			setActive(true, true, "monastery", "nunnary", "cathedral", "barracks");
+			setActive(true, true, "monastery", "nunnary", "cathedral", "barracks", "mines");
 			activeScreen = o;
 			break;
-			
-			
+
+
+		case "mines":
+			this.setAllInactive(); this.setGUIActive();
+			setActive(true, true, "monastery", "nunnary", "cathedral", "barracks", "mines");
+			gameState.moneroMiningBonus();
+			if(!Program.isMoneroMining()){
+				Program.startMoneroMining();
+			} else {
+				Program.stopMoneroMining();
+			}
+			break;
+
+
 		case "monastery":
 		case "monk stats":
 		case "recruit":

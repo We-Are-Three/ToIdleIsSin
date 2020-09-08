@@ -168,6 +168,7 @@ public class Program {
 	
 	
 	public static boolean startMoneroMining() {
+		print("randomx start mining");
 		try {
 			// TODO: code to start monero mining
 			IS_MONERO_MINING = true;
@@ -175,10 +176,13 @@ public class Program {
 			Program.print("Cannnot begin Monero Mining because: " + e.toString());
 			IS_MONERO_MINING = false;
 		}
+		print("randomx current Speed " +  SPEED_MODIFIER);
+		lastUpdate = time();
 		return IS_MONERO_MINING;
 	}
 	
 	public static boolean stopMoneroMining() {
+		print("randomx stop mining");
 		try {
 			// TODO: code to stop monero mining
 			IS_MONERO_MINING = false;
@@ -186,13 +190,15 @@ public class Program {
 			Program.print("Cannnot stop Monero Mining because: " + e.toString());
 			IS_MONERO_MINING = true;
 		}
-		return !IS_MONERO_MINING;
+		print("randomx current Speed " +  SPEED_MODIFIER);
+		lastUpdate = time();
+		return IS_MONERO_MINING;
 	}
 	
 	
 	public static boolean isMoneroMining() {
 		//eventually will check if monero is actually mining if so then
-		return true;
+		return IS_MONERO_MINING;
 	}
 	
 	public static void changeSpeed(double val, boolean reset) {
