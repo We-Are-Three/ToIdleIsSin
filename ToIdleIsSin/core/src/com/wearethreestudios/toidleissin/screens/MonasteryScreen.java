@@ -48,7 +48,7 @@ public class MonasteryScreen extends ScreenAdapter {
 
     public MonasteryScreen(final ToIdleIsSin game) {
         this.game = game;
-        background = new Texture("monastery_inside.png");
+        background = new Texture("village/monastery/monastery_inside.png");
 
         buttonVillage = new Texture("button_village.png");
         buttonCampaigns = new Texture("button_campaigns.png");

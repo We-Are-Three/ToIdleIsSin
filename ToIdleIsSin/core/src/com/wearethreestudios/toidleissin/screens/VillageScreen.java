@@ -40,12 +40,12 @@ public class VillageScreen extends ScreenAdapter {
 
     public VillageScreen(ToIdleIsSin game) {
         this.game = game;
-        background = new Texture("village.png");
-        monastery = new Texture("monastery.png");
-        nunnary = new Texture("nunnary.png");
-        barracks = new Texture("barracks.png");
-        cathedral = new Texture("cathedral.png");
-        mines = new Texture("mines.png");
+        background = new Texture("village/village.png");
+        monastery = new Texture("village/monastery.png");
+        nunnary = new Texture("village/nunnary.png");
+        barracks = new Texture("village/barracks.png");
+        cathedral = new Texture("village/cathedral.png");
+        mines = new Texture("village/mines.png");
 
         buttonVillage = new Texture("button_village.png");
         buttonCampaigns = new Texture("button_campaigns.png");
@@ -76,20 +76,20 @@ public class VillageScreen extends ScreenAdapter {
         buttonStoryBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.05), buttonStory.getWidth(), buttonStory.getHeight());
 
         // Buildings
-        game.batch.draw(monastery, (int)(ToIdleIsSin.WIDTH*0.045), (int)(ToIdleIsSin.HEIGHT*0.685), (int)(monastery.getWidth()*0.075), (int)(monastery.getHeight()*0.075));
-        monasteryBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.045), (int)(ToIdleIsSin.HEIGHT*0.685), (int)(monastery.getWidth()*0.075), (int)(monastery.getHeight()*0.075));
+        game.batch.draw(monastery, (int)(ToIdleIsSin.WIDTH*0.045), (int)(ToIdleIsSin.HEIGHT*0.685), monastery.getWidth(), monastery.getHeight());
+        monasteryBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.045), (int)(ToIdleIsSin.HEIGHT*0.685), monastery.getWidth(), monastery.getHeight());
 
-        game.batch.draw(nunnary, (int)(ToIdleIsSin.WIDTH*0.667), (int)(ToIdleIsSin.HEIGHT*0.487), (int)(nunnary.getWidth()*0.065), (int)(nunnary.getHeight()*0.065));
-        nunnaryBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.667), (int)(ToIdleIsSin.HEIGHT*0.487), (int)(nunnary.getWidth()*0.065), (int)(nunnary.getHeight()*0.065));
+        game.batch.draw(nunnary, (int)(ToIdleIsSin.WIDTH*0.667), (int)(ToIdleIsSin.HEIGHT*0.49), nunnary.getWidth(), nunnary.getHeight());
+        nunnaryBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.667), (int)(ToIdleIsSin.HEIGHT*0.49), nunnary.getWidth(), nunnary.getHeight());
 
-        game.batch.draw(barracks, (int)(ToIdleIsSin.WIDTH*0.1), (int)(ToIdleIsSin.HEIGHT*0.44), (int)(barracks.getWidth()*0.077), (int)(barracks.getHeight()*0.077));
-        barracksBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.1), (int)(ToIdleIsSin.HEIGHT*0.44), (int)(barracks.getWidth()*0.077), (int)(barracks.getHeight()*0.077));
+        game.batch.draw(barracks, (int)(ToIdleIsSin.WIDTH*0.1), (int)(ToIdleIsSin.HEIGHT*0.44), barracks.getWidth(), barracks.getHeight());
+        barracksBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.1), (int)(ToIdleIsSin.HEIGHT*0.44), barracks.getWidth(), barracks.getHeight());
 
-        game.batch.draw(cathedral, (int)(ToIdleIsSin.WIDTH*0.339), (int)(ToIdleIsSin.HEIGHT*0.562), (int)(cathedral.getWidth()*0.077), (int)(cathedral.getHeight()*0.077));
-        cathedralBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.339), (int)(ToIdleIsSin.HEIGHT*0.562), (int)(cathedral.getWidth()*0.077), (int)(cathedral.getHeight()*0.077));
+        game.batch.draw(cathedral, (int)(ToIdleIsSin.WIDTH*0.339), (int)(ToIdleIsSin.HEIGHT*0.585), cathedral.getWidth(), cathedral.getHeight());
+        cathedralBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.339), (int)(ToIdleIsSin.HEIGHT*0.585), cathedral.getWidth(), cathedral.getHeight());
 
-        game.batch.draw(mines, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.8), (int)(mines.getWidth()), (int)(mines.getHeight()));
-        minesBounds = new Rectangle(  (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.8), (int)(mines.getWidth()), (int)(mines.getHeight()) );
+        game.batch.draw(mines, (int)(ToIdleIsSin.WIDTH*0.63), (int)(ToIdleIsSin.HEIGHT*0.67), mines.getWidth(), mines.getHeight());
+        minesBounds = new Rectangle(  (int)(ToIdleIsSin.WIDTH*0.63), (int)(ToIdleIsSin.HEIGHT*0.67), mines.getWidth(), mines.getHeight() );
         game.batch.end();
     }
 
@@ -101,6 +101,7 @@ public class VillageScreen extends ScreenAdapter {
     @Override
     public void show() {
         Gdx.input.setInputProcessor(new InputAdapter(){
+
             @Override
             public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                 gamePort.unproject(touch.set(screenX, screenY, 0));

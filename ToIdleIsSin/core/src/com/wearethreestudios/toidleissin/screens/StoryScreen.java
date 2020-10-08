@@ -7,11 +7,14 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.wearethreestudios.toidleissin.ToIdleIsSin;
+import com.wearethreestudios.toidleissin.uihelpers.ImageBlob;
 
 public class StoryScreen extends ScreenAdapter {
     ToIdleIsSin game;
@@ -28,9 +31,25 @@ public class StoryScreen extends ScreenAdapter {
 
     private Texture background;
 
+    private Texture door;
+    private Texture doorNormal;
+    private Texture doorClick;
+    private Rectangle doorBounds;
+
+    private ImageBlob walkingMan;
+
     public StoryScreen(ToIdleIsSin game) {
+
+        walkingMan = new ImageBlob();
+        walkingMan.addState("sprite-animation4.png", 5, 6, 0.025f, 1, 1);
+        walkingMan.addState("sprite-animation4.png", 5, 6, 0.025f);
+
         this.game = game;
-        background = new Texture("cottage.png");
+        background = new Texture("story/cottage.png");
+
+        doorNormal = new Texture("story/door.png");
+        doorClick = new Texture("story/door-click.png");
+        door = doorNormal;
 
         buttonVillage = new Texture("button_village.png");
         buttonCampaigns = new Texture("button_campaigns.png");
@@ -59,8 +78,15 @@ public class StoryScreen extends ScreenAdapter {
 
         game.batch.draw(buttonStory, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.05), buttonStory.getWidth(), buttonStory.getHeight());
         buttonStoryBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.05), buttonStory.getWidth(), buttonStory.getHeight());
+        
+        // Levels
+        game.batch.draw(door, (int)(ToIdleIsSin.WIDTH*0.74), (int)(ToIdleIsSin.HEIGHT*0.49), door.getWidth(), door.getHeight());
+        doorBounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.74), (int)(ToIdleIsSin.HEIGHT*0.49), door.getWidth(), door.getHeight() );
+
+        game.batch.draw(walkingMan.getTextureRegion(), 50, 50);
 
         game.batch.end();
+        walkingMan.returnToState(0);
     }
 
     @Override
@@ -72,8 +98,20 @@ public class StoryScreen extends ScreenAdapter {
     public void show() {
         Gdx.input.setInputProcessor(new InputAdapter(){
             @Override
+            public boolean mouseMoved(int screenX, int screenY) {
+                gamePort.unproject(touch.set(screenX, screenY, 0));
+                if(doorBounds.contains(touch.x, touch.y)){
+                    door = doorClick;
+                } else if(!doorBounds.contains(touch.x, touch.y)){
+                    door = doorNormal;
+                }
+                return super.mouseMoved(screenX, screenY);
+            }
+
+            @Override
             public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                 gamePort.unproject(touch.set(screenX, screenY, 0));
+                walkingMan.switchState(1);
                 if(buttonVillageBounds.contains(touch.x, touch.y)){
                     game.setScreen(new VillageScreen(game));
                     ToIdleIsSin.program.run("village");
@@ -121,5 +159,9 @@ public class StoryScreen extends ScreenAdapter {
         buttonVillage.dispose();
         buttonCampaigns.dispose();
         buttonStory.dispose();
+        doorNormal.dispose();
+        doorClick.dispose();
+        door.dispose();
+        walkingMan.dispose();
     }
 }

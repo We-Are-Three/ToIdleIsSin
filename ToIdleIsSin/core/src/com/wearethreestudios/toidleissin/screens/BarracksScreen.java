@@ -31,7 +31,7 @@ public class BarracksScreen extends ScreenAdapter {
 
     public BarracksScreen(ToIdleIsSin game) {
         this.game = game;
-        background = new Texture("barracks_inside.png");
+        background = new Texture("village/barracks/barracks_inside.png");
 
         buttonVillage = new Texture("button_village.png");
         buttonCampaigns = new Texture("button_campaigns.png");

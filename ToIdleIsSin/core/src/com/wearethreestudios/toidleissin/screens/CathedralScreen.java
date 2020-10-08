@@ -29,9 +29,32 @@ public class CathedralScreen extends ScreenAdapter {
 
     private Texture background;
 
+    private Texture charity;
+    private Rectangle charityBounds;
+    private Texture chastity;
+    private Rectangle chastityBounds;
+    private Texture diligence;
+    private Rectangle diligenceBounds;
+    private Texture humility;
+    private Rectangle humilityBounds;
+    private Texture kindness;
+    private Rectangle kindnessBounds;
+    private Texture patience;
+    private Rectangle patienceBounds;
+    private Texture temperance;
+    private Rectangle temperanceBounds;
+
     public CathedralScreen(ToIdleIsSin game) {
         this.game = game;
-        background = new Texture("cathedral_inside_broken.png");
+        background = new Texture("village/cathedral/cathedral_inside.png");
+
+        charity = new Texture("village/cathedral/charity.png");
+        chastity = new Texture("village/cathedral/chastity.png");
+        diligence = new Texture("village/cathedral/diligence.png");
+        humility = new Texture("village/cathedral/humility.png");
+        kindness = new Texture("village/cathedral/kindness.png");
+        patience = new Texture("village/cathedral/patience.png");
+        temperance = new Texture("village/cathedral/temperance.png");
 
         buttonVillage = new Texture("button_village.png");
         buttonCampaigns = new Texture("button_campaigns.png");
@@ -60,6 +83,29 @@ public class CathedralScreen extends ScreenAdapter {
 
         game.batch.draw(buttonStory, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.05), buttonStory.getWidth(), buttonStory.getHeight());
         buttonStoryBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.05), buttonStory.getWidth(), buttonStory.getHeight());
+
+        // Buildings
+        game.batch.draw(charity, (int)(ToIdleIsSin.WIDTH*0.255), (int)(ToIdleIsSin.HEIGHT*0.294), charity.getWidth(), charity.getHeight());
+        charityBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.255), (int)(ToIdleIsSin.HEIGHT*0.294), charity.getWidth(), charity.getHeight());
+        
+        game.batch.draw(chastity, (int)(ToIdleIsSin.WIDTH*0.255), (int)(ToIdleIsSin.HEIGHT*0.128), chastity.getWidth(), chastity.getHeight());
+        chastityBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.255), (int)(ToIdleIsSin.HEIGHT*0.128), chastity.getWidth(), chastity.getHeight());
+
+        game.batch.draw(diligence, (int)(ToIdleIsSin.WIDTH*0.54), (int)(ToIdleIsSin.HEIGHT*0.294), diligence.getWidth(), diligence.getHeight());
+        diligenceBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.54), (int)(ToIdleIsSin.HEIGHT*0.294), diligence.getWidth(), diligence.getHeight());
+
+        game.batch.draw(humility, (int)(ToIdleIsSin.WIDTH*0.105), (int)(ToIdleIsSin.HEIGHT*0.212), humility.getWidth(), humility.getHeight());
+        humilityBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.105), (int)(ToIdleIsSin.HEIGHT*0.212), humility.getWidth(), humility.getHeight());
+
+        game.batch.draw(kindness, (int)(ToIdleIsSin.WIDTH*0.395), (int)(ToIdleIsSin.HEIGHT*0.212), kindness.getWidth(), kindness.getHeight());
+        kindnessBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.395), (int)(ToIdleIsSin.HEIGHT*0.212), kindness.getWidth(), kindness.getHeight());
+
+        game.batch.draw(patience, (int)(ToIdleIsSin.WIDTH*0.68), (int)(ToIdleIsSin.HEIGHT*0.212), patience.getWidth(), patience.getHeight());
+        patienceBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.68), (int)(ToIdleIsSin.HEIGHT*0.212), patience.getWidth(), patience.getHeight());
+
+        game.batch.draw(temperance, (int)(ToIdleIsSin.WIDTH*0.54), (int)(ToIdleIsSin.HEIGHT*0.128), temperance.getWidth(), temperance.getHeight());
+        temperanceBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.54), (int)(ToIdleIsSin.HEIGHT*0.128), temperance.getWidth(), temperance.getHeight());
+        
         game.batch.end();
     }
 
@@ -120,5 +166,12 @@ public class CathedralScreen extends ScreenAdapter {
         buttonVillage.dispose();
         buttonCampaigns.dispose();
         buttonStory.dispose();
+        charity.dispose();
+        chastity.dispose();
+        diligence.dispose();
+        humility.dispose();
+        kindness.dispose();
+        patience.dispose();
+        temperance.dispose();
     }
 }

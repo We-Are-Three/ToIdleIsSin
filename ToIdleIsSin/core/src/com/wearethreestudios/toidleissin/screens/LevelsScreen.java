@@ -28,9 +28,32 @@ public class LevelsScreen extends ScreenAdapter {
 
     private Texture background;
 
+    private Texture l1;
+    private Rectangle l1Bounds;
+    private Texture l2;
+    private Rectangle l2Bounds;
+    private Texture l3;
+    private Rectangle l3Bounds;
+    private Texture l4;
+    private Rectangle l4Bounds;
+    private Texture l5;
+    private Rectangle l5Bounds;
+    private Texture l6;
+    private Rectangle l6Bounds;
+    private Texture l7;
+    private Rectangle l7Bounds;
+
     public LevelsScreen(ToIdleIsSin game) {
         this.game = game;
-        background = new Texture("levels.png");
+        background = new Texture("campaign/levels.png");
+        
+        l1 = new Texture("campaign/lvl1.png");
+        l2 = new Texture("campaign/lvl2.png");
+        l3 = new Texture("campaign/lvl3.png");
+        l4 = new Texture("campaign/lvl4.png");
+        l5 = new Texture("campaign/lvl5.png");
+        l6 = new Texture("campaign/lvl6.png");
+        l7 = new Texture("campaign/lvl7.png");
 
         buttonVillage = new Texture("button_village.png");
         buttonCampaigns = new Texture("button_campaigns.png");
@@ -52,13 +75,35 @@ public class LevelsScreen extends ScreenAdapter {
 
         // GUI
         game.batch.draw(buttonVillage, (int)(ToIdleIsSin.WIDTH*0.1), (int)(ToIdleIsSin.HEIGHT*0.05), buttonVillage.getWidth(), buttonVillage.getHeight());
-        buttonVillageBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.1), (int)(ToIdleIsSin.HEIGHT*0.05), buttonVillage.getWidth(), buttonVillage.getHeight());
+        buttonVillageBounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.1), (int)(ToIdleIsSin.HEIGHT*0.05), buttonVillage.getWidth(), buttonVillage.getHeight() );
 
         game.batch.draw(buttonCampaigns, (int)(ToIdleIsSin.WIDTH*0.4), (int)(ToIdleIsSin.HEIGHT*0.05), buttonCampaigns.getWidth(), buttonCampaigns.getHeight());
-        buttonCampaignsBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.4), (int)(ToIdleIsSin.HEIGHT*0.05), buttonCampaigns.getWidth(), buttonCampaigns.getHeight());
+        buttonCampaignsBounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.4), (int)(ToIdleIsSin.HEIGHT*0.05), buttonCampaigns.getWidth(), buttonCampaigns.getHeight() );
 
         game.batch.draw(buttonStory, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.05), buttonStory.getWidth(), buttonStory.getHeight());
-        buttonStoryBounds = new Rectangle((int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.05), buttonStory.getWidth(), buttonStory.getHeight());
+        buttonStoryBounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.05), buttonStory.getWidth(), buttonStory.getHeight() );
+
+        // Levels
+        game.batch.draw(l1, (int)(ToIdleIsSin.WIDTH*0.106), (int)(ToIdleIsSin.HEIGHT*0.372), l1.getWidth(), l1.getHeight());
+        l1Bounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.106), (int)(ToIdleIsSin.HEIGHT*0.372), l1.getWidth(), l1.getHeight() );
+
+        game.batch.draw(l2, (int)(ToIdleIsSin.WIDTH*0.26), (int)(ToIdleIsSin.HEIGHT*0.405), l2.getWidth(), l2.getHeight());
+        l2Bounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.26), (int)(ToIdleIsSin.HEIGHT*0.405), l2.getWidth(), l2.getHeight() );
+
+        game.batch.draw(l3, (int)(ToIdleIsSin.WIDTH*0.51), (int)(ToIdleIsSin.HEIGHT*0.466), l3.getWidth(), l3.getHeight());
+        l3Bounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.51), (int)(ToIdleIsSin.HEIGHT*0.466), l3.getWidth(), l3.getHeight() );
+
+        game.batch.draw(l4, (int)(ToIdleIsSin.WIDTH*0.655), (int)(ToIdleIsSin.HEIGHT*0.538), l4.getWidth(), l4.getHeight());
+        l4Bounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.655), (int)(ToIdleIsSin.HEIGHT*0.538), l4.getWidth(), l4.getHeight() );
+
+        game.batch.draw(l5, (int)(ToIdleIsSin.WIDTH*0.283), (int)(ToIdleIsSin.HEIGHT*0.562), l5.getWidth(), l5.getHeight());
+        l5Bounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.283), (int)(ToIdleIsSin.HEIGHT*0.562), l5.getWidth(), l5.getHeight() );
+
+        game.batch.draw(l6, (int)(ToIdleIsSin.WIDTH*0.245), (int)(ToIdleIsSin.HEIGHT*0.678), l6.getWidth(), l6.getHeight());
+        l6Bounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.245), (int)(ToIdleIsSin.HEIGHT*0.678), l6.getWidth(), l6.getHeight() );
+
+        game.batch.draw(l7, (int)(ToIdleIsSin.WIDTH*0.353), (int)(ToIdleIsSin.HEIGHT*0.788), l7.getWidth(), l7.getHeight());
+        l7Bounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.353), (int)(ToIdleIsSin.HEIGHT*0.788), l7.getWidth(), l7.getHeight() );
 
         game.batch.end();
     }
@@ -121,5 +166,12 @@ public class LevelsScreen extends ScreenAdapter {
         buttonVillage.dispose();
         buttonCampaigns.dispose();
         buttonStory.dispose();
+        l1.dispose();
+        l2.dispose();
+        l3.dispose();
+        l4.dispose();
+        l5.dispose();
+        l6.dispose();
+        l7.dispose();
     }
 }

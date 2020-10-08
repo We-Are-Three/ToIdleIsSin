@@ -1,23 +1,8 @@
 package com.wearethreestudios.toidleissin.program;
 
-//import android.content.SharedPreferences;
-//import android.util.Log;
-//import android.widget.TextView;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.google.gson.Gson;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.util.Scanner;
 
 public class Program {
 	private static final String TAG = "Program";
@@ -81,88 +66,25 @@ public class Program {
 		return true;
 //		return endGame;
 	}
-	
-	private static String filename = "C:/tmp/";
+
 	public static boolean saveGame() {
 		Gson gson = new Gson();
 		Database t = new Database(gameState);
 		String saveme = gson.toJson(t);
-
-		if(ANDROID_EDITION) {
-			//use logcat code
-//			print(saveme);
-//			SharedPreferences.Editor prefsEditor = mPrefs.edit();
-//			prefsEditor.putString("savegame", saveme);
-//			print("commit: " + prefsEditor.commit());
-//			print("does it contain: " + mPrefs.contains("savegame"));
-			Preferences prefs = Gdx.app.getPreferences("ToIdleIsSin.save");
-			prefs.putString("savegame", saveme);
-			prefs.flush();
-		}else {
-			
-			File f = new File("C:/tmp");
-			if(!f.mkdir()) {
-				print("failed making folder.");
-				return false;
-			}
-			try (Writer teamwriter = new BufferedWriter(new OutputStreamWriter(
-		              new FileOutputStream("C:/tmp/teams.txt"), "utf-8"))) {
-				
-				teamwriter.write(saveme);
-				teamwriter.close();
-				return true;
-			}
-			catch (Exception e) {
-				e.printStackTrace();
-				print("could not save file");
-				return false;
-			}
-		}
+		Preferences prefs = Gdx.app.getPreferences("ToIdleIsSin.save");
+		prefs.putString("savegame", saveme);
+		prefs.flush();
 		return false;
 	}
 	
 	public static boolean loadGame() {
-
-		if(ANDROID_EDITION) {
-			//use logcat code
 			Gson gson = new Gson();
 			Preferences prefs = Gdx.app.getPreferences("ToIdleIsSin.save");
 			String fileAsString = prefs.getString("savegame", "error");
-//			String fileAsString = mPrefs.getString("savegame", "");
-//			print(fileAsString);
 			Database buba = gson.fromJson(fileAsString, Database.class);
 			gameState = new GameState(buba);
 			gameState.start();
-
 			return true;
-
-		}else {
-			try {
-				InputStream is = new FileInputStream("C:/tmp/teams.txt");
-				BufferedReader buf = new BufferedReader(new InputStreamReader(is));
-				        
-				String line = buf.readLine();
-				StringBuilder sb = new StringBuilder();
-				        
-				while(line != null){
-				   sb.append(line).append("\n");
-				   line = buf.readLine();
-				}
-				        
-				String fileAsString = sb.toString();
-				System.out.println("Contents : " + fileAsString);
-				Gson gson = new Gson();
-				Database buba = gson.fromJson(fileAsString, Database.class);
-				gameState = new GameState(buba);
-				gameState.start();
-				
-				return true;
-			}catch(Exception e) {
-				e.printStackTrace();
-				print("could not load file");
-				return false;
-			}
-		}
 	}
 	
 	
@@ -210,7 +132,7 @@ public class Program {
 	}
 	
 	public static long time() {
-		return (long) (System.currentTimeMillis() * SPEED_MODIFIER);
+		return (long) (realTime() * SPEED_MODIFIER);
 	}
 	
 	public static long realTime() {

@@ -31,7 +31,7 @@ public class MinesScreen extends ScreenAdapter {
 
     public MinesScreen(ToIdleIsSin game) {
         this.game = game;
-        background = new Texture("mine_inside.png");
+        background = new Texture("village/mines/mine_inside.png");
 
         buttonVillage = new Texture("button_village.png");
         buttonCampaigns = new Texture("button_campaigns.png");

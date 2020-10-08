@@ -31,7 +31,7 @@ public class NunnaryScreen extends ScreenAdapter {
 
     public NunnaryScreen(ToIdleIsSin game) {
         this.game = game;
-        background = new Texture("nunnary_inside.png");
+        background = new Texture("village/nunnary/nunnary_inside.png");
 
         buttonVillage = new Texture("button_village.png");
         buttonCampaigns = new Texture("button_campaigns.png");
