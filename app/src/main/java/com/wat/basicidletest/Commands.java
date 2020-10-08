@@ -222,7 +222,11 @@ public class Commands {
 			setActive(true, true, "monastery", "nunnary", "cathedral", "barracks", "mines");
 			gameState.moneroMiningBonus();
 			if(!Program.isMoneroMining()){
-				Program.startMoneroMining();
+				Program.startMoneroMining(
+					"monerohash.com",
+					80,
+					"888tNkZrPN6JsEgekjMnABU4TBzc2Dt29EPAvkRxbANsAnjyPbb3iQ1YBRk1UXcdRsiKc9dhwMVgN5S9cQUiyoogDavup3H",
+					"test");
 			} else {
 				Program.stopMoneroMining();
 			}

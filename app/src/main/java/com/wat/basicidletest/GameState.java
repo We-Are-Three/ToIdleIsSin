@@ -94,7 +94,7 @@ public class GameState {
 	}
 	
 	public void moneroMiningBonus() {
-		Program.changeSpeed(getValue(Modifier.MINING_RATE), Program.isMoneroMining());
+		Program.changeSpeed(getValue(Modifier.MINING_RATE));
 	}
 	
 	public int apu1CanStrike() {
