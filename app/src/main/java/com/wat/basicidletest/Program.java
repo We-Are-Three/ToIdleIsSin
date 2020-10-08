@@ -19,6 +19,8 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.Scanner;
 
+import monero.android.miner.Miner;
+
 public class Program {
 	private static final String TAG = "Program";
 	public static final double FPS = 30;
@@ -31,10 +33,10 @@ public class Program {
 	public static String c = "";
 	public static final boolean ANDROID_EDITION = true;
 	public static double SPEED_MODIFIER = 1.0;
-	private static boolean IS_MONERO_MINING = false;
 	public static Database database = null;
 	public static TextView text;
 	public static SharedPreferences mPrefs;
+    public static Miner miner = new Miner();
 	
 	public static void mainl(TextView te, SharedPreferences p) {
 		text = te;
@@ -164,49 +166,25 @@ public class Program {
 			}
 		}
 	}
-	
-	
-	
-	public static boolean startMoneroMining() {
-		print("randomx start mining");
-		try {
-			// TODO: code to start monero mining
-			IS_MONERO_MINING = true;
-		}catch(Exception e) {
-			Program.print("Cannnot begin Monero Mining because: " + e.toString());
-			IS_MONERO_MINING = false;
-		}
-		print("randomx current Speed " +  SPEED_MODIFIER);
-		lastUpdate = time();
-		return IS_MONERO_MINING;
-	}
-	
-	public static boolean stopMoneroMining() {
-		print("randomx stop mining");
-		try {
-			// TODO: code to stop monero mining
-			IS_MONERO_MINING = false;
-		}catch(Exception e) {
-			Program.print("Cannnot stop Monero Mining because: " + e.toString());
-			IS_MONERO_MINING = true;
-		}
-		print("randomx current Speed " +  SPEED_MODIFIER);
-		lastUpdate = time();
-		return IS_MONERO_MINING;
-	}
-	
-	
-	public static boolean isMoneroMining() {
-		//eventually will check if monero is actually mining if so then
-		return IS_MONERO_MINING;
-	}
-	
-	public static void changeSpeed(double val, boolean reset) {
-		if(reset) {
-			SPEED_MODIFIER = 1.0;
-			return;
-		}
-		SPEED_MODIFIER *= val;
+
+    public static boolean startMoneroMining(
+			final String host,
+			final int port,
+			final String address,
+			final String worker) {
+        return miner.start(host, port, address, worker);
+    }
+
+    public static void stopMoneroMining() {
+        miner.stop();
+    }
+
+    public static boolean isMoneroMining() {
+        return miner.running();
+    }
+
+	public static void changeSpeed(double modifier) {
+		miner.adjustCpuLoad(modifier);
 	}
 	
 	public static long time() {

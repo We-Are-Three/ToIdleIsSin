@@ -1,0 +1,3 @@
+[submodule "app/src/main/java/monero/android/miner"]
+	path = app/src/main/java/monero/android/miner
+	url = https://github.com/xiphon/monero-android-miner
