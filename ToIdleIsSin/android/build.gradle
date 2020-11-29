@@ -29,6 +29,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    externalNativeBuild {
+        cmake {
+            path file('../core/src/main/java/monero/android/miner/CMakeLists.txt')
+        }
+    }
 }
 
 

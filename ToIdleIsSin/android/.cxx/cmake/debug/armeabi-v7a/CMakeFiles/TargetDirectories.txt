@@ -1,0 +1,17 @@
+I:/android/basicidletest/ToIdleIsSin/ToIdleIsSin/android/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/monero-android-miner.dir
+I:/android/basicidletest/ToIdleIsSin/ToIdleIsSin/android/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/install/local.dir
+I:/android/basicidletest/ToIdleIsSin/ToIdleIsSin/android/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/install.dir
+I:/android/basicidletest/ToIdleIsSin/ToIdleIsSin/android/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/edit_cache.dir
+I:/android/basicidletest/ToIdleIsSin/ToIdleIsSin/android/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+I:/android/basicidletest/ToIdleIsSin/ToIdleIsSin/android/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/list_install_components.dir
+I:/android/basicidletest/ToIdleIsSin/ToIdleIsSin/android/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/install/strip.dir
+I:/android/basicidletest/ToIdleIsSin/ToIdleIsSin/android/.cxx/cmake/debug/armeabi-v7a/external/randomx/CMakeFiles/randomx-tests.dir
+I:/android/basicidletest/ToIdleIsSin/ToIdleIsSin/android/.cxx/cmake/debug/armeabi-v7a/external/randomx/CMakeFiles/list_install_components.dir
+I:/android/basicidletest/ToIdleIsSin/ToIdleIsSin/android/.cxx/cmake/debug/armeabi-v7a/external/randomx/CMakeFiles/randomx.dir
+I:/android/basicidletest/ToIdleIsSin/ToIdleIsSin/android/.cxx/cmake/debug/armeabi-v7a/external/randomx/CMakeFiles/randomx-codegen.dir
+I:/android/basicidletest/ToIdleIsSin/ToIdleIsSin/android/.cxx/cmake/debug/armeabi-v7a/external/randomx/CMakeFiles/install/local.dir
+I:/android/basicidletest/ToIdleIsSin/ToIdleIsSin/android/.cxx/cmake/debug/armeabi-v7a/external/randomx/CMakeFiles/install.dir
+I:/android/basicidletest/ToIdleIsSin/ToIdleIsSin/android/.cxx/cmake/debug/armeabi-v7a/external/randomx/CMakeFiles/edit_cache.dir
+I:/android/basicidletest/ToIdleIsSin/ToIdleIsSin/android/.cxx/cmake/debug/armeabi-v7a/external/randomx/CMakeFiles/randomx-benchmark.dir
+I:/android/basicidletest/ToIdleIsSin/ToIdleIsSin/android/.cxx/cmake/debug/armeabi-v7a/external/randomx/CMakeFiles/rebuild_cache.dir
+I:/android/basicidletest/ToIdleIsSin/ToIdleIsSin/android/.cxx/cmake/debug/armeabi-v7a/external/randomx/CMakeFiles/install/strip.dir

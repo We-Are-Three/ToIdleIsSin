@@ -1,0 +1,1 @@
+convert -crop 18%x100% +repage lvl1-rocky_960.png scroll.png

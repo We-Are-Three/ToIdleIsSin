@@ -15,15 +15,14 @@ public class GameState {
 	protected Hashtable<String, Double> values;
 	private boolean canGo;
 	private double perkPoints;
-	protected  long lastUpdate;
+	protected  long lastUpdate = -1;
 	protected long totalDeserted;
 	public static final int APU1_BASE = 100;
 	public static final int APU2_BASE = 500;
 	private int APU_COOLDOWN = 60;//seconds
 	private long last_apu1_strike = 0;
 	private long last_apu2_strike = 0;
-	
-	@SuppressWarnings("unused")
+
 	public GameState(Database d) {
 		groups = new ArrayList<>();
 		virtues = new ArrayList<>();
@@ -35,20 +34,23 @@ public class GameState {
 		totalDeserted = 0;
 		perkPoints = 1;
 		//add the groups
-		groups.add(new Monks("monks", 400, 0.0001, 100, 0, 0, 0));
+		groups.add(new Monks("monks", 500, 0.0001, 500, 0, 0, 0));
 		groups.add(new Nuns("nuns", 500, 0.0001, 0, 0, 0, 0 ));
 		groups.add(new Knights("knights", 500, 0.00003, 0, 0));
 		groups.add(new Physicians("physicians", 500, 0, 0, 0, 0, (Nuns)getGroup("nuns")));
 		groups.add(new Mages("mages", 500, 0, 0, 0, 0, (Monks)getGroup("monks")));
 		
 		// add the virtues
-		virtues.add(new Virtue("chastity", 0, ""));
-		virtues.add(new Virtue("temperance", 0, ""));
+		// old: chastity, temperance, charity, diligence, kindness, patience, humility
+		// -------------------WARNING----------------------------
+		// do not reorder these next seven lines.
 		virtues.add(new Virtue("charity", 1, ""));
-		virtues.add(new Virtue("diligence", 0, ""));
-		virtues.add(new Virtue("patience", 0, ""));
 		virtues.add(new Virtue("kindness", 0, ""));
+		virtues.add(new Virtue("diligence", 0, ""));
 		virtues.add(new Virtue("humility", 0, ""));
+		virtues.add(new Virtue("chastity", 0, ""));
+		virtues.add(new Virtue("patience", 0, ""));
+		virtues.add(new Virtue("temperance", 0, ""));
 
 		//add the Perks
 		Perk.setUpPerks(perks);
@@ -94,12 +96,21 @@ public class GameState {
 	}
 	
 	public void moneroMiningBonus() {
+		if(Program.SPEED_MODIFIER > 1.0){
+			lastUpdate /= getValue(Modifier.MINING_RATE);
+			last_apu1_strike /= getValue(Modifier.MINING_RATE);
+			last_apu2_strike /= getValue(Modifier.MINING_RATE);
+		} else {
+			lastUpdate *= getValue(Modifier.MINING_RATE);
+			last_apu1_strike *= getValue(Modifier.MINING_RATE);
+			last_apu2_strike *= getValue(Modifier.MINING_RATE);
+		}
 		Program.changeSpeed(getValue(Modifier.MINING_RATE), Program.isMoneroMining());
 	}
 	
 	public int apu1CanStrike() {
 		int howManyStrikes = 0;
-		if( (Program.time() - this.last_apu1_strike)/1000 >= (APU_COOLDOWN + getValue(Modifier.APU_COOLDOWN)) ) {
+		if( canapu1() ) {
 			howManyStrikes++;
 			Random rand = new Random();
 			if(rand.nextInt(100) < getValue(Modifier.APU_DOUBLECLICK)*100) howManyStrikes++;
@@ -107,16 +118,24 @@ public class GameState {
 		}
 		return howManyStrikes;
 	}
+
+	public boolean canapu1(){
+		return (Program.time() - this.last_apu1_strike)/1000 >= (APU_COOLDOWN + getValue(Modifier.APU_COOLDOWN)) && getValue(Modifier.APU1) != 0;
+	}
 	
 	public int apu2CanStrike() {
 		int howManyStrikes = 0;
-		if( (Program.time() - this.last_apu2_strike)/1000 >= (APU_COOLDOWN + getValue(Modifier.APU_COOLDOWN)) ) {
+		if( canapu2() ) {
 			howManyStrikes++;
 			Random rand = new Random();
 			if(rand.nextInt(100) <= getValue(Modifier.APU_DOUBLECLICK)*100) howManyStrikes++;
 			last_apu2_strike = Program.time();
 		}
 		return howManyStrikes;
+	}
+
+	public boolean canapu2(){
+		return (Program.time() - this.last_apu2_strike)/1000 >= (APU_COOLDOWN + getValue(Modifier.APU_COOLDOWN)) && getValue(Modifier.APU2) != 0;
 	}
 	
 	public double getValue(String s) {
@@ -138,7 +157,9 @@ public class GameState {
 		long improvements = ((Monks)getGroup("monks")).getImprovements();
 		long farming = ((Nuns)getGroup("nuns")).getFarming();
 		long goodworks = ((Knights)getGroup("knights")).getGoodworks();
-		double DEFAULT_DESERTION = 1.0/(500 + (((improvements+1) * (farming+1) * (goodworks+1)) / (1 + improvements + farming + goodworks)) );
+
+//		double DEFAULT_DESERTION = 1.0/(500 + (((improvements+1) * (farming+1) * (goodworks+1)) / (1 + improvements + farming + goodworks)) );
+		double DEFAULT_DESERTION = 1.0/(500 + Math.cbrt(farming*improvements) * Math.sqrt(goodworks) );
 		long time = Program.time() - lastUpdate;
 		//groups updated
 		for(Groups g : groups) {
@@ -181,7 +202,9 @@ public class GameState {
 			g.start();
 		}
 		canGo = true;
-		lastUpdate = Program.time();
+		if(lastUpdate == -1){
+			lastUpdate = Program.time();
+		}
 	}
 	
 	public Groups getGroup(String name) {
@@ -290,6 +313,10 @@ public class GameState {
 	}
 
 	public long getLastUpdate() {
+		if(Program.SPEED_MODIFIER > 1.0){
+			Program.print("Helljeojj");
+			return Program.realTime();
+		}
 		return lastUpdate;
 	}
 
@@ -306,7 +333,7 @@ public class GameState {
 	}
 
 	public long getLast_apu1_strike() {
-		return last_apu1_strike;
+		return last_apu1_strike > Program.realTime() ? Program.realTime() : last_apu1_strike ;
 	}
 
 	public void setLast_apu1_strike(long last_apu1_strike) {
@@ -314,7 +341,7 @@ public class GameState {
 	}
 
 	public long getLast_apu2_strike() {
-		return last_apu2_strike;
+		return last_apu2_strike > Program.realTime() ? Program.realTime() : last_apu2_strike;
 	}
 
 	public void setLast_apu2_strike(long last_apu2_strike) {

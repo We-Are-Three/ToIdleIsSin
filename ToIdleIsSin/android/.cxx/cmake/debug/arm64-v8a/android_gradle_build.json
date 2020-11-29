@@ -1,0 +1,248 @@
+{
+  "stringTable": {
+    "0": "I:/android/basicidletest/ToIdleIsSin/ToIdleIsSin/android/.cxx/cmake/debug/arm64-v8a",
+    "1": "--target=aarch64-none-linux-android21 --gcc-toolchain=C:/Users/royne/AppData/Local/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/royne/AppData/Local/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64/sysroot -Dmonero_android_miner_EXPORTS -II:/android/basicidletest/ToIdleIsSin/ToIdleIsSin/core/src/main/java/monero/android/miner/external/randomx/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -O0 -fno-limit-debug-info -fPIC",
+    "2": "--target=aarch64-none-linux-android21 --gcc-toolchain=C:/Users/royne/AppData/Local/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/royne/AppData/Local/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DHAVE_HWCAP -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -march=armv8-a+crypto -O0 -fno-limit-debug-info -fPIE -std=gnu++11",
+    "3": "--target=aarch64-none-linux-android21 --gcc-toolchain=C:/Users/royne/AppData/Local/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/royne/AppData/Local/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DHAVE_HWCAP -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -march=armv8-a+crypto -O0 -fno-limit-debug-info -fPIC -std=gnu++11",
+    "4": "--target=aarch64-none-linux-android21 --gcc-toolchain=C:/Users/royne/AppData/Local/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/royne/AppData/Local/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DHAVE_HWCAP -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -march=armv8-a+crypto -O0 -fno-limit-debug-info -fPIC"
+  },
+  "buildFiles": [
+    "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\CMakeLists.txt",
+    "C:\\Users\\royne\\AppData\\Local\\Android\\Sdk\\ndk\\21.1.6352462\\build\\cmake\\android.toolchain.cmake",
+    "C:\\Users\\royne\\AppData\\Local\\Android\\Sdk\\ndk\\21.1.6352462\\build\\cmake\\platforms.cmake",
+    "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "C:\\Users\\royne\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\arm64-v8a\" clean"
+  ],
+  "buildTargetsCommand": "C:\\Users\\royne\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\arm64-v8a\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "monero-android-miner-Debug-arm64-v8a": {
+      "buildCommand": "C:\\Users\\royne\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\arm64-v8a\" monero-android-miner",
+      "buildType": "debug",
+      "toolchain": "2303812950",
+      "abi": "arm64-v8a",
+      "artifactName": "monero-android-miner",
+      "files": [
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\src\\monero-android-miner.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "headers": [],
+      "output": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\build\\intermediates\\cmake\\debug\\obj\\arm64-v8a\\libmonero-android-miner.so",
+      "runtimeFiles": []
+    },
+    "randomx-codegen-Debug-arm64-v8a": {
+      "buildCommand": "C:\\Users\\royne\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\arm64-v8a\" randomx-codegen",
+      "buildType": "debug",
+      "toolchain": "2303812950",
+      "abi": "arm64-v8a",
+      "artifactName": "randomx-codegen",
+      "files": [
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\tests\\code-generator.cpp",
+          "flagsOrdinal": 2,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "headers": [],
+      "output": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\arm64-v8a\\external\\randomx\\randomx-codegen",
+      "runtimeFiles": []
+    },
+    "randomx-Debug-arm64-v8a": {
+      "buildCommand": "C:\\Users\\royne\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\arm64-v8a\" randomx",
+      "buildType": "debug",
+      "toolchain": "2303812950",
+      "abi": "arm64-v8a",
+      "artifactName": "randomx",
+      "files": [
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\aes_hash.cpp",
+          "flagsOrdinal": 3,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\bytecode_machine.cpp",
+          "flagsOrdinal": 3,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\cpu.cpp",
+          "flagsOrdinal": 3,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\dataset.cpp",
+          "flagsOrdinal": 3,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\soft_aes.cpp",
+          "flagsOrdinal": 3,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\virtual_memory.cpp",
+          "flagsOrdinal": 3,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\vm_interpreted.cpp",
+          "flagsOrdinal": 3,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\allocator.cpp",
+          "flagsOrdinal": 3,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\assembly_generator_x86.cpp",
+          "flagsOrdinal": 3,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\instruction.cpp",
+          "flagsOrdinal": 3,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\randomx.cpp",
+          "flagsOrdinal": 3,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\superscalar.cpp",
+          "flagsOrdinal": 3,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\vm_compiled.cpp",
+          "flagsOrdinal": 3,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\vm_interpreted_light.cpp",
+          "flagsOrdinal": 3,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\blake2_generator.cpp",
+          "flagsOrdinal": 3,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\instructions_portable.cpp",
+          "flagsOrdinal": 3,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\virtual_machine.cpp",
+          "flagsOrdinal": 3,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\vm_compiled_light.cpp",
+          "flagsOrdinal": 3,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\jit_compiler_a64.cpp",
+          "flagsOrdinal": 3,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\argon2_ref.c",
+          "flagsOrdinal": 4,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\argon2_ssse3.c",
+          "flagsOrdinal": 4,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\argon2_avx2.c",
+          "flagsOrdinal": 4,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\argon2_core.c",
+          "flagsOrdinal": 4,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\reciprocal.c",
+          "flagsOrdinal": 4,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\blake2\\blake2b.c",
+          "flagsOrdinal": 4,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\jit_compiler_a64_static.S",
+          "flagsOrdinal": 4,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "headers": [],
+      "output": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\arm64-v8a\\external\\randomx\\librandomx.a"
+    },
+    "randomx-benchmark-Debug-arm64-v8a": {
+      "buildCommand": "C:\\Users\\royne\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\arm64-v8a\" randomx-benchmark",
+      "buildType": "debug",
+      "toolchain": "2303812950",
+      "abi": "arm64-v8a",
+      "artifactName": "randomx-benchmark",
+      "files": [
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\tests\\benchmark.cpp",
+          "flagsOrdinal": 2,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\tests\\affinity.cpp",
+          "flagsOrdinal": 2,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "headers": [],
+      "output": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\arm64-v8a\\external\\randomx\\randomx-benchmark",
+      "runtimeFiles": []
+    },
+    "randomx-tests-Debug-arm64-v8a": {
+      "buildCommand": "C:\\Users\\royne\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\arm64-v8a\" randomx-tests",
+      "buildType": "debug",
+      "toolchain": "2303812950",
+      "abi": "arm64-v8a",
+      "artifactName": "randomx-tests",
+      "files": [
+        {
+          "src": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\src\\tests\\tests.cpp",
+          "flagsOrdinal": 2,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "headers": [],
+      "output": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\arm64-v8a\\external\\randomx\\randomx-tests",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {
+    "2303812950": {
+      "cCompilerExecutable": "C:\\Users\\royne\\AppData\\Local\\Android\\Sdk\\ndk\\21.1.6352462\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+      "cppCompilerExecutable": "C:\\Users\\royne\\AppData\\Local\\Android\\Sdk\\ndk\\21.1.6352462\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [
+    "c",
+    "S"
+  ],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

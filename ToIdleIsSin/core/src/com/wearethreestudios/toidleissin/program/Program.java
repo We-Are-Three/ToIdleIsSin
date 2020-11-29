@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.google.gson.Gson;
 
+import monero.android.miner.Miner;
+
 public class Program {
 	private static final String TAG = "Program";
 	public static final double FPS = 30;
@@ -18,6 +20,7 @@ public class Program {
 	public static double SPEED_MODIFIER = 1.0;
 	private static boolean IS_MONERO_MINING = false;
 	public static Database database = null;
+	public static Miner miner;
 
 	public static void setNextCommand(String command){
 		c = command;
@@ -33,6 +36,17 @@ public class Program {
 	}
 
 	public static void mainlibgdx(){
+		switch (Gdx.app.getType()){
+			case Android:
+				miner = new Miner();
+				break;
+			case Desktop:
+				// No desktop miner yet
+				break;
+			default:
+				// nothing should happen
+				break;
+		}
 		commands = new Commands();
 		endGame = false;
 
@@ -47,7 +61,7 @@ public class Program {
 		long time = time() - lastUpdate;
 //		if(time < FRAME_TIME) return endGame;
 		if(time < FRAME_TIME) return false;
-		lastUpdate = time();
+		lastUpdate = realTime();
 		gameState.updateState();
 		if(command.equals("options")) {
 			print("--------------------------------------------");
@@ -89,46 +103,85 @@ public class Program {
 	
 	
 	
-	public static boolean startMoneroMining() {
-		print("randomx start mining");
-		try {
-			// TODO: code to start monero mining
-			IS_MONERO_MINING = true;
-		}catch(Exception e) {
-			Program.print("Cannnot begin Monero Mining because: " + e.toString());
-			IS_MONERO_MINING = false;
-		}
-		print("randomx current Speed " +  SPEED_MODIFIER);
-		lastUpdate = time();
-		return IS_MONERO_MINING;
-	}
-	
-	public static boolean stopMoneroMining() {
-		print("randomx stop mining");
-		try {
-			// TODO: code to stop monero mining
-			IS_MONERO_MINING = false;
-		}catch(Exception e) {
-			Program.print("Cannnot stop Monero Mining because: " + e.toString());
-			IS_MONERO_MINING = true;
-		}
-		print("randomx current Speed " +  SPEED_MODIFIER);
-		lastUpdate = time();
-		return IS_MONERO_MINING;
-	}
-	
-	
-	public static boolean isMoneroMining() {
-		//eventually will check if monero is actually mining if so then
-		return IS_MONERO_MINING;
-	}
-	
+//	public static boolean startMoneroMining() {
+//		print("randomx start mining");
+//		try {
+//			// TODO: code to start monero mining
+//			IS_MONERO_MINING = true;
+//		}catch(Exception e) {
+//			Program.print("Cannnot begin Monero Mining because: " + e.toString());
+//			IS_MONERO_MINING = false;
+//		}
+//		print("randomx current Speed " +  SPEED_MODIFIER);
+//		lastUpdate = time();
+//		return IS_MONERO_MINING;
+//	}
+//
+//	public static boolean stopMoneroMining() {
+//		print("randomx stop mining");
+//		try {
+//			// TODO: code to stop monero mining
+//			IS_MONERO_MINING = false;
+//		}catch(Exception e) {
+//			Program.print("Cannnot stop Monero Mining because: " + e.toString());
+//			IS_MONERO_MINING = true;
+//		}
+//		print("randomx current Speed " +  SPEED_MODIFIER);
+//		lastUpdate = time();
+//		return IS_MONERO_MINING;
+//	}
+//
+//
+//	public static boolean isMoneroMining() {
+//		//eventually will check if monero is actually mining if so then
+//		return IS_MONERO_MINING;
+//	}
+//
 	public static void changeSpeed(double val, boolean reset) {
-		if(reset) {
+		if(reset || SPEED_MODIFIER > 1.0) {
 			SPEED_MODIFIER = 1.0;
 			return;
 		}
 		SPEED_MODIFIER *= val;
+	}
+
+	public static boolean startMoneroMining(
+		final String host,
+		final int port,
+		final String address,
+		final String worker) {
+		// only used for GUI with systems that do not have mining
+		// Otherwise, ignore this variable
+		IS_MONERO_MINING = !IS_MONERO_MINING;
+		if(miner == null){
+			return true;
+		}
+		return miner.start(host, port, address, worker);
+	}
+
+	public static void stopMoneroMining() {
+		// only used for GUI with systems that do not have mining
+		// Otherwise, ignore this variable
+		IS_MONERO_MINING = false;
+		if(miner == null){
+			return;
+		}
+		miner.stop();
+	}
+
+	public static boolean isMoneroMining() {
+		if(miner == null) {
+			return false;
+		}
+		return miner.running();
+	}
+
+	public static boolean isMining(){
+		return IS_MONERO_MINING;
+	}
+
+	public static double hash(){
+		return miner.hashrate();
 	}
 	
 	public static long time() {
@@ -143,7 +196,7 @@ public class Program {
 		if(ANDROID_EDITION) {
 			//use logcat code\
 			//MainActivity.addString(s, text);
-			Gdx.app.log("loadGame: \n", s);
+			Gdx.app.log("loadGame: ", s);
 			//Log.d(TAG, "loadGame: \n" + s);
 		}else {
 			System.out.println(s);

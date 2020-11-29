@@ -1,0 +1,1959 @@
+
+atlassprites.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+alpha
+  rotate: false
+  xy: 1342, 1500
+  size: 10, 10
+  orig: 10, 10
+  offset: 0, 0
+  index: -1
+badlogic
+  rotate: false
+  xy: 1084, 1254
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+button_campaigns
+  rotate: false
+  xy: 2, 2
+  size: 200, 100
+  orig: 200, 100
+  offset: 0, 0
+  index: -1
+button_story
+  rotate: false
+  xy: 1598, 1924
+  size: 200, 100
+  orig: 200, 100
+  offset: 0, 0
+  index: -1
+button_village
+  rotate: false
+  xy: 1084, 1152
+  size: 200, 100
+  orig: 200, 100
+  offset: 0, 0
+  index: -1
+menu
+  rotate: false
+  xy: 2, 104
+  size: 1080, 1920
+  orig: 1080, 1920
+  offset: 0, 0
+  index: -1
+sprite-animation4
+  rotate: false
+  xy: 1084, 1512
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+
+atlassprites2.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/levels
+  rotate: false
+  xy: 2, 57
+  size: 1080, 1981
+  orig: 1080, 1981
+  offset: 0, 0
+  index: -1
+campaign/lvl2
+  rotate: false
+  xy: 1616, 1354
+  size: 320, 221
+  orig: 320, 221
+  offset: 0, 0
+  index: -1
+campaign/lvl2-bw
+  rotate: false
+  xy: 1616, 1131
+  size: 320, 221
+  orig: 320, 221
+  offset: 0, 0
+  index: -1
+campaign/lvl3
+  rotate: false
+  xy: 1084, 763
+  size: 423, 201
+  orig: 423, 201
+  offset: 0, 0
+  index: -1
+campaign/lvl3-bw
+  rotate: false
+  xy: 1499, 392
+  size: 423, 201
+  orig: 423, 201
+  offset: 0, 0
+  index: -1
+campaign/lvl3-click
+  rotate: false
+  xy: 1616, 1837
+  size: 423, 201
+  orig: 423, 201
+  offset: 0, 0
+  index: -1
+campaign/lvl4
+  rotate: false
+  xy: 1509, 595
+  size: 272, 369
+  orig: 272, 369
+  offset: 0, 0
+  index: -1
+campaign/lvl4-bw
+  rotate: false
+  xy: 1499, 21
+  size: 272, 369
+  orig: 272, 369
+  offset: 0, 0
+  index: -1
+campaign/lvl4-click
+  rotate: false
+  xy: 1773, 21
+  size: 272, 369
+  orig: 272, 369
+  offset: 0, 0
+  index: -1
+campaign/lvl5
+  rotate: false
+  xy: 1084, 1682
+  size: 530, 356
+  orig: 530, 356
+  offset: 0, 0
+  index: -1
+campaign/lvl5-bw
+  rotate: false
+  xy: 1084, 1324
+  size: 530, 356
+  orig: 530, 356
+  offset: 0, 0
+  index: -1
+campaign/lvl5-click
+  rotate: false
+  xy: 1084, 966
+  size: 530, 356
+  orig: 530, 356
+  offset: 0, 0
+  index: -1
+campaign/lvl6
+  rotate: false
+  xy: 1084, 2
+  size: 238, 239
+  orig: 238, 239
+  offset: 0, 0
+  index: -1
+campaign/lvl6-bw
+  rotate: false
+  xy: 1783, 890
+  size: 238, 239
+  orig: 238, 239
+  offset: 0, 0
+  index: -1
+campaign/lvl6-click
+  rotate: false
+  xy: 1783, 649
+  size: 238, 239
+  orig: 238, 239
+  offset: 0, 0
+  index: -1
+campaign/lvl7
+  rotate: false
+  xy: 1084, 503
+  size: 413, 258
+  orig: 413, 258
+  offset: 0, 0
+  index: -1
+campaign/lvl7-bw
+  rotate: false
+  xy: 1084, 243
+  size: 413, 258
+  orig: 413, 258
+  offset: 0, 0
+  index: -1
+campaign/lvl7-click
+  rotate: false
+  xy: 1616, 1577
+  size: 413, 258
+  orig: 413, 258
+  offset: 0, 0
+  index: -1
+
+atlassprites3.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/levels-dots
+  rotate: false
+  xy: 2, 2
+  size: 1080, 1981
+  orig: 1080, 1981
+  offset: 0, 0
+  index: -1
+campaign/lvl1
+  rotate: false
+  xy: 1084, 1627
+  size: 211, 133
+  orig: 211, 133
+  offset: 0, 0
+  index: -1
+campaign/lvl1-bw
+  rotate: false
+  xy: 1406, 1850
+  size: 211, 133
+  orig: 211, 133
+  offset: 0, 0
+  index: -1
+campaign/lvl1-click
+  rotate: false
+  xy: 1084, 1492
+  size: 211, 133
+  orig: 211, 133
+  offset: 0, 0
+  index: -1
+campaign/lvl2-click
+  rotate: false
+  xy: 1084, 1762
+  size: 320, 221
+  orig: 320, 221
+  offset: 0, 0
+  index: -1
+
+atlassprites4.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/level_bg
+  rotate: false
+  xy: 2, 2
+  size: 1080, 1920
+  orig: 1080, 1920
+  offset: 0, 0
+  index: -1
+
+atlassprites5.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/1/one/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/1/one/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites6.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/1/one/scroll-2
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/1/one/scroll-3
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites7.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/1/one/scroll-4
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/1/one/scroll-5
+  rotate: false
+  xy: 2, 2
+  size: 1048, 960
+  orig: 1048, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites8.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/1/three/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/1/three/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites9.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/1/three/scroll-2
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/1/three/scroll-3
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites10.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/1/three/scroll-4
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/1/three/scroll-5
+  rotate: false
+  xy: 2, 2
+  size: 1048, 960
+  orig: 1048, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites11.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/1/two/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/1/two/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites12.png
+size: 512,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/1/two/scroll-2
+  rotate: false
+  xy: 2, 2
+  size: 419, 960
+  orig: 419, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites13.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/2/one/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/2/one/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites14.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/2/one/scroll-2
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/2/one/scroll-3
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites15.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/2/one/scroll-4
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/2/one/scroll-5
+  rotate: false
+  xy: 2, 2
+  size: 1048, 960
+  orig: 1048, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites16.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/2/three/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/2/three/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites17.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/2/three/scroll-2
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/2/three/scroll-3
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites18.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/2/three/scroll-4
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/2/three/scroll-5
+  rotate: false
+  xy: 2, 2
+  size: 1048, 960
+  orig: 1048, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites19.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/2/two/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/2/two/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites20.png
+size: 512,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/2/two/scroll-2
+  rotate: false
+  xy: 2, 2
+  size: 418, 960
+  orig: 418, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites21.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/3/one/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/3/one/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites22.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/3/one/scroll-2
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/3/one/scroll-3
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites23.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/3/one/scroll-4
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/3/one/scroll-5
+  rotate: false
+  xy: 2, 2
+  size: 1048, 960
+  orig: 1048, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites24.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/3/three/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/3/three/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites25.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/3/three/scroll-2
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/3/three/scroll-3
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites26.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/3/three/scroll-4
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/3/three/scroll-5
+  rotate: false
+  xy: 2, 2
+  size: 1048, 960
+  orig: 1048, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites27.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/3/two/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/3/two/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites28.png
+size: 512,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/3/two/scroll-2
+  rotate: false
+  xy: 2, 2
+  size: 419, 960
+  orig: 419, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites29.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/4/one/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/4/one/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites30.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/4/one/scroll-2
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/4/one/scroll-3
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites31.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/4/one/scroll-4
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/4/one/scroll-5
+  rotate: false
+  xy: 2, 2
+  size: 1048, 960
+  orig: 1048, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites32.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/4/three/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/4/three/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites33.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/4/three/scroll-2
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/4/three/scroll-3
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites34.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/4/three/scroll-4
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/4/three/scroll-5
+  rotate: false
+  xy: 2, 2
+  size: 1048, 960
+  orig: 1048, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites35.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/4/two/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/4/two/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites36.png
+size: 2048,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/4/two/scroll-2
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites37.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/5/one/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/5/one/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites38.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/5/one/scroll-2
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/5/one/scroll-3
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites39.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/5/one/scroll-4
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/5/one/scroll-5
+  rotate: false
+  xy: 2, 2
+  size: 1048, 960
+  orig: 1048, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites40.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/5/three/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/5/three/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites41.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/5/three/scroll-2
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/5/three/scroll-3
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites42.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/5/three/scroll-4
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/5/three/scroll-5
+  rotate: false
+  xy: 2, 2
+  size: 1048, 960
+  orig: 1048, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites43.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/5/two/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/5/two/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites44.png
+size: 512,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/5/two/scroll-2
+  rotate: false
+  xy: 2, 2
+  size: 419, 960
+  orig: 419, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites45.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/6/one/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/6/one/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites46.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/6/one/scroll-2
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/6/one/scroll-3
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites47.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/6/one/scroll-4
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/6/one/scroll-5
+  rotate: false
+  xy: 2, 2
+  size: 1048, 960
+  orig: 1048, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites48.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/6/three/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/6/three/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites49.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/6/three/scroll-2
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/6/three/scroll-3
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites50.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/6/three/scroll-4
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/6/three/scroll-5
+  rotate: false
+  xy: 2, 2
+  size: 1048, 960
+  orig: 1048, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites51.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/6/two/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/6/two/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites52.png
+size: 512,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/6/two/scroll-2
+  rotate: false
+  xy: 2, 2
+  size: 419, 960
+  orig: 419, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites53.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/7/one/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/7/one/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites54.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/7/one/scroll-2
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/7/one/scroll-3
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites55.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/7/one/scroll-4
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/7/one/scroll-5
+  rotate: false
+  xy: 2, 2
+  size: 1048, 960
+  orig: 1048, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites56.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/7/three/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/7/three/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites57.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/7/three/scroll-2
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/7/three/scroll-3
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites58.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/7/three/scroll-4
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/7/three/scroll-5
+  rotate: false
+  xy: 2, 2
+  size: 1048, 960
+  orig: 1048, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites59.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/7/two/scroll-0
+  rotate: false
+  xy: 2, 964
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+campaign/7/two/scroll-1
+  rotate: false
+  xy: 2, 2
+  size: 1884, 960
+  orig: 1884, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites60.png
+size: 512,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+campaign/7/two/scroll-2
+  rotate: false
+  xy: 2, 2
+  size: 419, 960
+  orig: 419, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites61.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+sprites/charity
+  rotate: false
+  xy: 504, 228
+  size: 430, 430
+  orig: 430, 430
+  offset: 0, 0
+  index: -1
+sprites/chastity
+  rotate: false
+  xy: 2, 1006
+  size: 625, 625
+  orig: 625, 625
+  offset: 0, 0
+  index: -1
+sprites/dilligence
+  rotate: false
+  xy: 629, 660
+  size: 500, 469
+  orig: 500, 469
+  offset: 0, 0
+  index: -1
+sprites/humility
+  rotate: false
+  xy: 2, 504
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+sprites/kindness
+  rotate: false
+  xy: 629, 1131
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+sprites/patiencekid
+  rotate: false
+  xy: 2, 2
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+sprites/patienceman
+  rotate: false
+  xy: 1131, 1131
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+sprites/temperance
+  rotate: false
+  xy: 1131, 629
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+
+atlassprites62.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+story/cottage
+  rotate: false
+  xy: 2, 2
+  size: 1080, 1981
+  orig: 1080, 1981
+  offset: 0, 0
+  index: -1
+story/door
+  rotate: false
+  xy: 1084, 1083
+  size: 280, 900
+  orig: 280, 900
+  offset: 0, 0
+  index: -1
+story/door-bw
+  rotate: false
+  xy: 1084, 181
+  size: 280, 900
+  orig: 280, 900
+  offset: 0, 0
+  index: -1
+story/door-click
+  rotate: false
+  xy: 1366, 1083
+  size: 280, 900
+  orig: 280, 900
+  offset: 0, 0
+  index: -1
+
+atlassprites63.png
+size: 2048,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+ui/disabled
+  rotate: false
+  xy: 2, 106
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+ui/goodworks
+  rotate: false
+  xy: 2, 4
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui/icon
+  rotate: false
+  xy: 404, 106
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+ui/idle
+  rotate: false
+  xy: 1610, 306
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+ui/idle_bw
+  rotate: false
+  xy: 1812, 306
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+ui/idle_click
+  rotate: false
+  xy: 1610, 104
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+ui/idle_toggle
+  rotate: false
+  xy: 1812, 104
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+ui/improvements
+  rotate: false
+  xy: 104, 4
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui/left
+  rotate: false
+  xy: 206, 4
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui/left_bw
+  rotate: false
+  xy: 308, 4
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui/left_click
+  rotate: false
+  xy: 410, 4
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui/left_toggle
+  rotate: false
+  xy: 512, 4
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui/magetomonk
+  rotate: false
+  xy: 614, 4
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui/mines
+  rotate: false
+  xy: 716, 4
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui/physiciantonun
+  rotate: false
+  xy: 818, 4
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui/recruit
+  rotate: false
+  xy: 920, 4
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui/right
+  rotate: false
+  xy: 1022, 4
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui/right_bw
+  rotate: false
+  xy: 1124, 4
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui/right_click
+  rotate: false
+  xy: 1226, 4
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui/right_toggle
+  rotate: false
+  xy: 1328, 4
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui/select
+  rotate: false
+  xy: 806, 106
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+ui/setfarming
+  rotate: false
+  xy: 1430, 4
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui/setmining
+  rotate: false
+  xy: 1532, 2
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui/setnuntraining
+  rotate: false
+  xy: 1634, 2
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui/setpraying
+  rotate: false
+  xy: 1736, 2
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui/setstudying
+  rotate: false
+  xy: 1838, 2
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui/toggle
+  rotate: false
+  xy: 1208, 106
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+ui/trainmage
+  rotate: false
+  xy: 1940, 2
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+
+atlassprites64.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+village/barracks
+  rotate: false
+  xy: 1084, 1388
+  size: 507, 309
+  orig: 507, 309
+  offset: 0, 0
+  index: -1
+village/barracks_bw
+  rotate: false
+  xy: 1084, 1051
+  size: 506, 335
+  orig: 506, 335
+  offset: 0, 0
+  index: -1
+village/barracks_click
+  rotate: false
+  xy: 1084, 1699
+  size: 530, 335
+  orig: 530, 335
+  offset: 0, 0
+  index: -1
+village/cathedral_bw
+  rotate: false
+  xy: 1458, 450
+  size: 367, 413
+  orig: 367, 413
+  offset: 0, 0
+  index: -1
+village/cathedral_click
+  rotate: false
+  xy: 1593, 1264
+  size: 382, 406
+  orig: 382, 406
+  offset: 0, 0
+  index: -1
+village/mines
+  rotate: false
+  xy: 1721, 134
+  size: 269, 314
+  orig: 269, 314
+  offset: 0, 0
+  index: -1
+village/mines_click
+  rotate: false
+  xy: 1446, 8
+  size: 273, 330
+  orig: 273, 330
+  offset: 0, 0
+  index: -1
+village/monastery_bw
+  rotate: false
+  xy: 1084, 2
+  size: 360, 336
+  orig: 360, 336
+  offset: 0, 0
+  index: -1
+village/monastery_click
+  rotate: false
+  xy: 1084, 340
+  size: 362, 354
+  orig: 362, 354
+  offset: 0, 0
+  index: -1
+village/nunnary
+  rotate: false
+  xy: 1084, 696
+  size: 372, 353
+  orig: 372, 353
+  offset: 0, 0
+  index: -1
+village/nunnary_bw
+  rotate: false
+  xy: 1592, 865
+  size: 381, 397
+  orig: 381, 397
+  offset: 0, 0
+  index: -1
+village/nunnary_click
+  rotate: false
+  xy: 1616, 1672
+  size: 392, 362
+  orig: 392, 362
+  offset: 0, 0
+  index: -1
+village/village
+  rotate: false
+  xy: 2, 53
+  size: 1080, 1981
+  orig: 1080, 1981
+  offset: 0, 0
+  index: -1
+
+atlassprites65.png
+size: 1024,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+village/cathedral
+  rotate: false
+  xy: 2, 2
+  size: 351, 394
+  orig: 351, 394
+  offset: 0, 0
+  index: -1
+village/mines_bw
+  rotate: false
+  xy: 705, 93
+  size: 262, 303
+  orig: 262, 303
+  offset: 0, 0
+  index: -1
+village/monastery
+  rotate: false
+  xy: 355, 47
+  size: 348, 349
+  orig: 348, 349
+  offset: 0, 0
+  index: -1
+
+atlassprites66.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+village/barracks/barracks_inside
+  rotate: false
+  xy: 2, 2
+  size: 1080, 1980
+  orig: 1080, 1980
+  offset: 0, 0
+  index: -1
+
+atlassprites67.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+village/cathedral/cathedral_inside
+  rotate: false
+  xy: 2, 29
+  size: 1080, 1981
+  orig: 1080, 1981
+  offset: 0, 0
+  index: -1
+village/cathedral/charity
+  rotate: false
+  xy: 1084, 788
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+village/cathedral/charity_bw
+  rotate: false
+  xy: 1626, 1750
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+village/cathedral/charity_click
+  rotate: false
+  xy: 1084, 526
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+village/cathedral/chastity
+  rotate: false
+  xy: 1346, 788
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+village/cathedral/chastity_bw
+  rotate: false
+  xy: 1626, 1488
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+village/cathedral/chastity_click
+  rotate: false
+  xy: 1084, 264
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+village/cathedral/diligence
+  rotate: false
+  xy: 1346, 526
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+village/cathedral/diligence_bw
+  rotate: false
+  xy: 1626, 1226
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+village/cathedral/diligence_click
+  rotate: false
+  xy: 1346, 264
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+village/cathedral/humility
+  rotate: false
+  xy: 1084, 2
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+village/cathedral/humility_bw
+  rotate: false
+  xy: 1346, 2
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+village/cathedral/humility_click
+  rotate: false
+  xy: 1626, 964
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+village/cathedral/kindness
+  rotate: false
+  xy: 1608, 702
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+village/cathedral/kindness_bw
+  rotate: false
+  xy: 1608, 440
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+village/cathedral/kindness_click
+  rotate: false
+  xy: 1608, 178
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+village/cathedral/perk
+  rotate: false
+  xy: 1084, 1050
+  size: 540, 960
+  orig: 540, 960
+  offset: 0, 0
+  index: -1
+
+atlassprites68.png
+size: 2048,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+village/cathedral/patience
+  rotate: false
+  xy: 2, 2
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+village/cathedral/patience_bw
+  rotate: false
+  xy: 264, 2
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+village/cathedral/patience_click
+  rotate: false
+  xy: 526, 2
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+village/cathedral/temperance
+  rotate: false
+  xy: 788, 2
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+village/cathedral/temperance_bw
+  rotate: false
+  xy: 1050, 2
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+village/cathedral/temperance_click
+  rotate: false
+  xy: 1312, 2
+  size: 260, 260
+  orig: 260, 260
+  offset: 0, 0
+  index: -1
+
+atlassprites69.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+village/mines/mine_inside
+  rotate: false
+  xy: 2, 2
+  size: 1080, 1981
+  orig: 1080, 1981
+  offset: 0, 0
+  index: -1
+
+atlassprites70.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+village/monastery/monastery_inside
+  rotate: false
+  xy: 2, 2
+  size: 1080, 1981
+  orig: 1080, 1981
+  offset: 0, 0
+  index: -1
+
+atlassprites71.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+village/nunnary/nunnary_inside
+  rotate: false
+  xy: 2, 2
+  size: 1080, 1981
+  orig: 1080, 1981
+  offset: 0, 0
+  index: -1

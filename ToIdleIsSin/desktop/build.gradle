@@ -6,6 +6,17 @@ sourceSets.main.resources.srcDirs = ["../android/assets"]
 
 project.ext.mainClassName = "com.wearethreestudios.toidleissin.desktop.DesktopLauncher"
 project.ext.assetsDir = new File("../android/assets")
+//project.ext.texturePacker = ["campaign", "fonts", "story"]
+
+
+//task texturePacker {
+//    doLast {
+//        if (project.ext.has('texturePacker')) {
+//            logger.info "Calling TexturePacker: "+ texturePacker
+//            TexturePacker.process(texturePacker[0], texturePacker[1], texturePacker[2])
+//        }
+//    }
+//}
 
 task run(dependsOn: classes, type: JavaExec) {
     main = project.mainClassName

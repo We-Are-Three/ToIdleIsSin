@@ -3,30 +3,81 @@ package com.wearethreestudios.toidleissin.uihelpers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.wearethreestudios.toidleissin.ToIdleIsSin;
+import com.wearethreestudios.toidleissin.program.Program;
 
 import java.util.ArrayList;
 
-public class ImageBlob {
+//https://stackoverflow.com/questions/16059578/libgdx-is-there-an-actor-that-is-animated
+public class ImageBlob extends Image {
     private int currentState = 0;
     private ArrayList<Animation<TextureRegion>> states;
-    private ArrayList<Texture> textures;
+    private ArrayList<TextureRegion> textures;
+    private ArrayList<Animation<TextureRegion>> flips;
     private ArrayList<Float> stateTimes;
+    private ToIdleIsSin game;
+    private Rectangle hitbox;
+    private double percentOfHitbox;
+    private boolean flip;
 
-    public ImageBlob(){
+    public ImageBlob(ToIdleIsSin s, double percentOfHitbox){
+        super(s.atlas.findRegion("alpha"));
         states = new ArrayList<>();
         textures = new ArrayList<>();
+        flips = new ArrayList<>();
         stateTimes = new ArrayList<>();
+        game = s;
+        flip = false;
+        this.percentOfHitbox = percentOfHitbox;
     }
 
-    public void addState(String texture_name, int rows, int cols, float animation_time){
-        textures.add(new Texture(texture_name));
+    @Override
+    public void act(float delta)
+    {
+        ((TextureRegionDrawable)getDrawable()).setRegion(getTextureRegion());
+        setWidth(states.get(currentState).getKeyFrame(stateTimes.get(currentState)).getRegionWidth());
+        setHeight(states.get(currentState).getKeyFrame(stateTimes.get(currentState)).getRegionHeight());
+
+
+        int hitx = (int)( getX() + (getWidth()/2)*(1-percentOfHitbox));
+        int hity = (int)( getY() + (getHeight()/2)*(1-percentOfHitbox));
+        int hitWidth = (int)( getWidth() - (getWidth()/2)*(1-percentOfHitbox)*2);
+        int hitHeight = (int)( getHeight() - (getHeight()/2)*(1-percentOfHitbox)*2);
+        if(hitbox == null){
+            hitbox = new Rectangle(hitx, hity, hitWidth, hitHeight);
+        } else if(hitbox.x != hitx || hitbox.y != hity || hitbox.width != hitWidth || hitbox.height != hitHeight){
+            hitbox.setX(hitx).setY(hity).setWidth(hitWidth).setHeight(hitHeight);
+        }
+
+        super.act(delta);
+    }
+
+    @Override
+    public Actor hit(float x, float y, boolean touchable) {
+        if (touchable && this.getTouchable() != Touchable.enabled) return null;
+        if (!isVisible()) return null;
+        return (x >= (getWidth()/2)*(1-percentOfHitbox) &&
+                x < (this.getWidth() - (getWidth()/2)*(1-percentOfHitbox)*2) &&
+                y >= (getHeight()/2)*(1-percentOfHitbox) &&
+                y < (this.getHeight() - (getHeight()/2)*(1-percentOfHitbox)*2) )
+                ? this : null;
+    }
+
+    public ImageBlob addState(String texture_name, int rows, int cols, float animation_time){
+        textures.add(game.atlas.findRegion(texture_name));
         // Use the split utility method to create a 2D array of TextureRegions. This is
         // possible because this sprite sheet contains frames of equal size and they are
         // all aligned.
-        TextureRegion[][] tmp = TextureRegion.split(textures.get(textures.size()-1),
-                textures.get(textures.size()-1).getWidth() / cols,
-                textures.get(textures.size()-1).getHeight() / rows);
+        TextureRegion[][] tmp = textures.get(textures.size()-1).split(
+                textures.get(textures.size()-1).getRegionWidth() / cols,
+                textures.get(textures.size()-1).getRegionHeight() / rows);
 
         // Place the regions into a 1D array in the correct order, starting from the top
         // left, going across first. The Animation constructor requires a 1D array.
@@ -39,16 +90,40 @@ public class ImageBlob {
         }
         states.add(new Animation<>(animation_time, walkFrames));
         stateTimes.add(0f);
+
+
+        TextureRegion[][] flipregion = textures.get(textures.size()-1).split(
+                textures.get(textures.size()-1).getRegionWidth() / cols,
+                textures.get(textures.size()-1).getRegionHeight() / rows);
+        for(TextureRegion[] t : flipregion){
+            for(TextureRegion l : t){
+                l.flip(true, false);
+            }
+        }
+        // Place the regions into a 1D array in the correct order, starting from the top
+        // left, going across first. The Animation constructor requires a 1D array.
+        TextureRegion[] flipframes = new TextureRegion[cols * rows];
+        index = 0;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                flipframes[index++] = flipregion[i][j];
+            }
+        }
+        flips.add(new Animation<>(animation_time, flipframes));
+        stateTimes.add(0f);
+
+
+        return this;
     }
 
-    public void addState(String texture_name, int rows, int cols, float animation_time, int lowerbound, int upperbound){
-        textures.add(new Texture(texture_name));
+    public ImageBlob addState(String texture_name, int rows, int cols, float animation_time, int lowerbound, int upperbound){
+        textures.add(game.atlas.findRegion(texture_name));
         // Use the split utility method to create a 2D array of TextureRegions. This is
         // possible because this sprite sheet contains frames of equal size and they are
         // all aligned.
-        TextureRegion[][] tmp = TextureRegion.split(textures.get(textures.size()-1),
-                textures.get(textures.size()-1).getWidth() / cols,
-                textures.get(textures.size()-1).getHeight() / rows);
+        TextureRegion[][] tmp = textures.get(textures.size()-1).split(
+                textures.get(textures.size()-1).getRegionWidth() / cols,
+                textures.get(textures.size()-1).getRegionHeight() / rows);
 
         // Place the regions into a 1D array in the correct order, starting from the top
         // left, going across first. The Animation constructor requires a 1D array.
@@ -64,20 +139,89 @@ public class ImageBlob {
         }
         states.add(new Animation<>(animation_time, walkFrames));
         stateTimes.add(0f);
+
+
+        TextureRegion[][] flipregion = textures.get(textures.size()-1).split(
+                textures.get(textures.size()-1).getRegionWidth() / cols,
+                textures.get(textures.size()-1).getRegionHeight() / rows);
+        for(TextureRegion[] t : flipregion){
+            for(TextureRegion l : t){
+                l.flip(true, false);
+            }
+        }
+        // Place the regions into a 1D array in the correct order, starting from the top
+        // left, going across first. The Animation constructor requires a 1D array.
+        TextureRegion[] flipframes = new TextureRegion[upperbound - lowerbound + 1];
+        count = 0;
+        index = 0;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                count++;
+                if( count >= lowerbound && count <= upperbound)
+                    flipframes[index++] = flipregion[i][j];
+            }
+        }
+        flips.add(new Animation<>(animation_time, flipframes));
+        stateTimes.add(0f);
+        return this;
+    }
+
+    public void draw(int x, int y, int width, int height){
+        int hitx = (int)( x + (width/2)*(1-percentOfHitbox));
+        int hity = (int)( y + (height/2)*(1-percentOfHitbox));
+        int hitWidth = (int)( width - (width/2)*(1-percentOfHitbox)*2);
+        int hitHeight = (int)( height - (height/2)*(1-percentOfHitbox)*2);
+        if(hitbox == null){
+            hitbox = new Rectangle(hitx, hity, hitWidth, hitHeight);
+        } else if(hitbox.x != hitx || hitbox.y != hity || hitbox.width != hitWidth || hitbox.height != hitHeight){
+            hitbox.setX(hitx).setY(hity).setWidth(hitWidth).setHeight(hitHeight);
+        }
+//        Program.print("\n1: " + x + " " + y + " " + width  + " " + height +
+//                      "\n2: " + hitbox.x + " " + hitbox.y + " " + hitbox.width  + " " + hitbox.height);
+//        game.batch.draw(getTextureRegion(), flip ? x+width : x, y, flip ? -width : width, height);
+        game.batch.draw(getTextureRegion(),  x, y,  width, height);
+    }
+
+    public void draw(int x, int y, double widthPercentage, double heightPercentage){
+        int width = (int) (getTextureRegion().getRegionWidth()*widthPercentage);
+        int height = (int) (getTextureRegion().getRegionHeight()*heightPercentage);
+        int hitx = (int)( x + (width/2)*(1-percentOfHitbox));
+        int hity = (int)( y + (height/2)*(1-percentOfHitbox));
+        int hitWidth = (int)( width - (width/2)*(1-percentOfHitbox)*2);
+        int hitHeight = (int)( height - (height/2)*(1-percentOfHitbox)*2);
+        if(hitbox == null){
+            hitbox = new Rectangle(hitx, hity, hitWidth, hitHeight);
+        } else if(hitbox.x != hitx || hitbox.y != hity || hitbox.width != hitWidth || hitbox.height != hitHeight){
+            hitbox.setX(hitx).setY(hity).setWidth(hitWidth).setHeight(hitHeight);
+        }
+//        Program.print("\n1: " + x + " " + y + " " + width  + " " + height +
+//                      "\n2: " + hitbox.x + " " + hitbox.y + " " + hitbox.width  + " " + hitbox.height);
+        game.batch.draw(getTextureRegion(),  x, y,  width, height);
+    }
+
+    public void flip(){
+        flip = !flip;
+        Program.print("I have been called " + flip);
+    }
+
+    public boolean contains(float x, float y){
+        return hitbox.contains(x, y);
     }
 
     public TextureRegion getTextureRegion(){
         stateTimes.set(currentState, stateTimes.get(currentState) + Gdx.graphics.getDeltaTime());
-        return states.get(currentState).getKeyFrame(stateTimes.get(currentState));
+        return flip ? flips.get(currentState).getKeyFrame(stateTimes.get(currentState)) : states.get(currentState).getKeyFrame(stateTimes.get(currentState));
     }
 
     public void switchState(int state){
+        if(currentState == state) return;
         stateTimes.set(currentState, 0f);
         currentState = state;
         stateTimes.set(currentState, 0f);
     }
 
     public boolean returnToState(int state){
+        if (currentState == state) return true;
         if(states.get(currentState).isAnimationFinished(stateTimes.get(currentState))){
             switchState(state);
             return true;
@@ -86,8 +230,5 @@ public class ImageBlob {
     }
 
     public void dispose(){
-        for(Texture t : textures){
-            t.dispose();
-        }
     }
 }

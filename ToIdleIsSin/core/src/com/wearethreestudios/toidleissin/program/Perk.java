@@ -46,7 +46,7 @@ public class Perk {
 				new Modifier("-2 second cooldown for apu ", Modifier.APU_COOLDOWN, -200)));
 		perks.add(new Perk("three", "charityperks", 3, 0, 10,
 				new Modifier("1% chance double apu auto click ", Modifier.APU_DOUBLECLICK, 1)));
-		perks.add(new Perk("three", "charityperks", 3, 0, 2,
+		perks.add(new Perk("four", "charityperks", 3, 0, 2,
 				new Modifier("5% apu auto click x5 power chance ", Modifier.APU_STRENGTH, 5)));
 		
 		perks.add(new Perk("one", "diligenceperks", 1, 0, 5,
@@ -131,6 +131,10 @@ public class Perk {
 			ms.add(m.copy());
 		}
 		return ms;
+	}
+
+	public int getTier(){
+		return tier;
 	}
 	
 	public int getCost() {

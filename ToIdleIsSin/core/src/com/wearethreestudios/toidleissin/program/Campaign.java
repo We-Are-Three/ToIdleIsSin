@@ -27,8 +27,32 @@ public class Campaign {
 		Physicians p = (Physicians)gs.getGroup("physicians");
 		campaigns.add(new Campaign("campaign1", null, 
 				new Lines("campaign1one", 1, 1000, 0, null, null, 0, 0, 0, k, m, p, false),
-				new Lines("campaign1two", 2, 1000, 0, null, null, 0, 0, 0, k, m, p, false),
-				new Lines("campaign1three", 3, 1000, 0, null, null, 0, 0, 0, k, m, p, false)));
+				new Lines("campaign1two", 2, 500, 0, null, null, 0, 0, 0, k, m, p, false),
+				new Lines("campaign1three", 3, 100, 0, null, null, 0, 0, 0, k, m, p, false)));
+		campaigns.add(new Campaign("campaign2", null,
+				new Lines("campaign2one", 1, 2000, 0, null, null, 0, 0, 0, k, m, p, false),
+				new Lines("campaign2two", 2, 1000, 0, null, null, 0, 0, 0, k, m, p, false),
+				new Lines("campaign2three", 3, 200, 0, null, null, 0, 0, 0, k, m, p, false)));
+		campaigns.add(new Campaign("campaign3", null,
+				new Lines("campaign3one", 1, 4000, 0, null, null, 0, 0, 0, k, m, p, false),
+				new Lines("campaign3two", 2, 2000, 0, null, null, 0, 0, 0, k, m, p, false),
+				new Lines("campaign3three", 3, 500, 0, null, null, 0, 0, 0, k, m, p, false)));
+		campaigns.add(new Campaign("campaign4", null,
+				new Lines("campaign4one", 1, 8000, 0, null, null, 0, 0, 0, k, m, p, false),
+				new Lines("campaign4two", 2, 4000, 0, null, null, 0, 0, 0, k, m, p, false),
+				new Lines("campaign4three", 3, 800, 0, null, null, 0, 0, 0, k, m, p, false)));
+		campaigns.add(new Campaign("campaign5", null,
+				new Lines("campaign5one", 1, 16000, 0, null, null, 0, 0, 0, k, m, p, false),
+				new Lines("campaign5two", 2, 8000, 0, null, null, 0, 0, 0, k, m, p, false),
+				new Lines("campaign5three", 3, 1600, 0, null, null, 0, 0, 0, k, m, p, false)));
+		campaigns.add(new Campaign("campaign6", null,
+				new Lines("campaign6one", 1, 32000, 0, null, null, 0, 0, 0, k, m, p, false),
+				new Lines("campaign6two", 2, 16000, 0, null, null, 0, 0, 0, k, m, p, false),
+				new Lines("campaign6three", 3, 3200, 0, null, null, 0, 0, 0, k, m, p, false)));
+		campaigns.add(new Campaign("campaign7", null,
+				new Lines("campaign7one", 1, 64000, 0, null, null, 0, 0, 0, k, m, p, false),
+				new Lines("campaign7two", 2, 32000, 0, null, null, 0, 0, 0, k, m, p, false),
+				new Lines("campaign7three", 3, 6400, 0, null, null, 0, 0, 0, k, m, p, false)));
 		return campaigns;
 	}
 	

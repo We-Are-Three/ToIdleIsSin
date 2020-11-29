@@ -1,0 +1,49 @@
+{
+  "buildFiles": [
+    "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\CMakeLists.txt",
+    "C:\\Users\\royne\\AppData\\Local\\Android\\Sdk\\ndk\\21.1.6352462\\build\\cmake\\android.toolchain.cmake",
+    "C:\\Users\\royne\\AppData\\Local\\Android\\Sdk\\ndk\\21.1.6352462\\build\\cmake\\platforms.cmake",
+    "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\core\\src\\main\\java\\monero\\android\\miner\\external\\randomx\\CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "C:\\Users\\royne\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\x86_64\" clean"
+  ],
+  "buildTargetsCommand": "C:\\Users\\royne\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\x86_64\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "randomx-Debug-x86_64": {
+      "artifactName": "randomx",
+      "buildCommand": "C:\\Users\\royne\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\x86_64\" randomx",
+      "abi": "x86_64",
+      "output": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\x86_64\\external\\randomx\\librandomx.a",
+      "runtimeFiles": []
+    },
+    "randomx-benchmark-Debug-x86_64": {
+      "artifactName": "randomx-benchmark",
+      "buildCommand": "C:\\Users\\royne\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\x86_64\" randomx-benchmark",
+      "abi": "x86_64",
+      "output": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\x86_64\\external\\randomx\\randomx-benchmark",
+      "runtimeFiles": []
+    },
+    "monero-android-miner-Debug-x86_64": {
+      "artifactName": "monero-android-miner",
+      "buildCommand": "C:\\Users\\royne\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\x86_64\" monero-android-miner",
+      "abi": "x86_64",
+      "output": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\build\\intermediates\\cmake\\debug\\obj\\x86_64\\libmonero-android-miner.so",
+      "runtimeFiles": []
+    },
+    "randomx-tests-Debug-x86_64": {
+      "artifactName": "randomx-tests",
+      "buildCommand": "C:\\Users\\royne\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\x86_64\" randomx-tests",
+      "abi": "x86_64",
+      "output": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\x86_64\\external\\randomx\\randomx-tests",
+      "runtimeFiles": []
+    },
+    "randomx-codegen-Debug-x86_64": {
+      "artifactName": "randomx-codegen",
+      "buildCommand": "C:\\Users\\royne\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\x86_64\" randomx-codegen",
+      "abi": "x86_64",
+      "output": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\android\\.cxx\\cmake\\debug\\x86_64\\external\\randomx\\randomx-codegen",
+      "runtimeFiles": []
+    }
+  }
+}

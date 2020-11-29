@@ -1,0 +1,50 @@
+{
+  com.badlogic.gdx.graphics.Color: {
+    white: { a: 1, b: 1, g: 1, r: 1 },
+    red: { a: 1, b: 0, g: 0, r: 1 },
+    black: { a: 1, b: 0, g: 0, r: 0 }
+  }
+//  https://libgdx.badlogicgames.com/ci/nightlies/docs/api/com/badlogic/gdx/scenes/scene2d/utils/class-use/Drawable.html
+  com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
+    navbutton: { down: ui/select, up: ui/icon, over: ui/toggle, disabled: ui/disabled, font: default-font, fontColor: black },
+    idle: { down: ui/idle_click, up: ui/idle, over: ui/idle_toggle, disabled: ui/idle_bw, font: default-font, fontColor: black  },
+    job: { down: ui/idle_click, up: ui/idle, over: ui/idle_toggle, disabled: ui/idle_bw, font: default-font, fontColor: black  },
+    left: { down: ui/left_click, up: ui/left, over: ui/left_toggle, disabled: ui/left_bw, font: default-font, fontColor: black  },
+    right: { down: ui/right_click, up: ui/right, over: ui/right_toggle, disabled: ui/right_bw, font: default-font, fontColor: black   },
+    perk: { down: ui/idle_click, up: ui/idle, over: ui/idle_toggle, disabled: ui/idle_bw, font: default-font, fontColor: black  },
+    hint: { down: ui/idle_click, up: ui/idle, over: ui/idle_toggle, disabled: ui/idle_bw, font: default-font, fontColor: black  },
+//  ,
+//    toggle: { down: ui/improvements, up: ui/icon, checked: ui/improvements, font: default-font, fontColor: white, downFontColor: red }
+  },
+  com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle: {
+    charity: { down: village/cathedral/charity_click, up: village/cathedral/charity, over: village/cathedral/charity_click, disabled: village/cathedral/charity_bw },
+    chastity: { down: village/cathedral/chastity_click, up: village/cathedral/chastity, over: village/cathedral/chastity_click, disabled: village/cathedral/chastity_bw },
+    diligence: { down: village/cathedral/diligence_click, up: village/cathedral/diligence, over: village/cathedral/diligence_click, disabled: village/cathedral/diligence_bw },
+    humility: { down: village/cathedral/humility_click, up: village/cathedral/humility, over: village/cathedral/humility_click, disabled: village/cathedral/humility_bw },
+    kindness: { down: village/cathedral/kindness_click, up: village/cathedral/kindness, over: village/cathedral/kindness_click, disabled: village/cathedral/kindness_bw },
+    patience: { down: village/cathedral/patience_click, up: village/cathedral/patience, over: village/cathedral/patience_click, disabled: village/cathedral/patience_bw },
+    temperance: { down: village/cathedral/temperance_click, up: village/cathedral/temperance, over: village/cathedral/temperance_click, disabled: village/cathedral/temperance_bw },
+
+    l1: { down: campaign/lvl1-click, up: campaign/lvl1, over: campaign/lvl1-click, disabled: campaign/lvl1-bw },
+    l2: { down: campaign/lvl2-click, up: campaign/lvl2, over: campaign/lvl2-click, disabled: campaign/lvl2-bw },
+    l3: { down: campaign/lvl3-click, up: campaign/lvl3, over: campaign/lvl3-click, disabled: campaign/lvl3-bw },
+    l4: { down: campaign/lvl4-click, up: campaign/lvl4, over: campaign/lvl4-click, disabled: campaign/lvl4-bw },
+    l5: { down: campaign/lvl5-click, up: campaign/lvl5, over: campaign/lvl5-click, disabled: campaign/lvl5-bw },
+    l6: { down: campaign/lvl6-click, up: campaign/lvl6, over: campaign/lvl6-click, disabled: campaign/lvl6-bw },
+    l7: { down: campaign/lvl7-click, up: campaign/lvl7, over: campaign/lvl7-click, disabled: campaign/lvl7-bw },
+    
+    monastery: { down: village/monastery_click, up: village/monastery, over: village/monastery_click, disabled: village/monastery_bw },
+    nunnary: { down: village/nunnary_click, up: village/nunnary, over: village/nunnary_click, disabled: village/nunnary_bw },
+    barracks: { down: village/barracks_click, up: village/barracks, over: village/barracks_click, disabled: village/barracks_bw },
+    cathedral: { down: village/cathedral_click, up: village/cathedral, over: village/cathedral_click, disabled: village/cathedral_bw },
+    mines: { down: village/mines_click, up: village/mines, over: village/mines_click, disabled: village/mines_bw },
+  },
+  com.badlogic.gdx.scenes.scene2d.ui.Table:{
+    test: { background: "ui/improvements" }
+  },
+  com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle:{
+    perk: { background: "ui/idle", font: default-font, fontColor: black },
+    hint: { background: "ui/idle", font: default-font, fontColor: black },
+    alpha: { background: "alpha", font: default-font, fontColor: black }
+  },
+}

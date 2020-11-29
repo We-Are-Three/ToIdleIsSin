@@ -3,65 +3,57 @@ package com.wearethreestudios.toidleissin.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.wearethreestudios.toidleissin.ToIdleIsSin;
+import com.wearethreestudios.toidleissin.program.Program;
 
 public class LevelsScreen extends ScreenAdapter {
     ToIdleIsSin game;
     private OrthographicCamera gamecam;
     private Viewport gamePort;
-
-    private Texture buttonVillage;
-    private Rectangle buttonVillageBounds;
-    private Texture buttonCampaigns;
-    private Rectangle buttonCampaignsBounds;
-    private Texture buttonStory;
-    private Rectangle buttonStoryBounds;
     private Vector3 touch = new Vector3();
 
-    private Texture background;
+    private TextureRegion background;
 
-    private Texture l1;
-    private Rectangle l1Bounds;
-    private Texture l2;
-    private Rectangle l2Bounds;
-    private Texture l3;
-    private Rectangle l3Bounds;
-    private Texture l4;
-    private Rectangle l4Bounds;
-    private Texture l5;
-    private Rectangle l5Bounds;
-    private Texture l6;
-    private Rectangle l6Bounds;
-    private Texture l7;
-    private Rectangle l7Bounds;
+    private TextButton village;
+    private TextButton campaign;
+    private TextButton story;
+    private Stage stage;
+    private ImageButton l1;
+    private ImageButton l2;
+    private ImageButton l3;
+    private ImageButton l4;
+    private ImageButton l5;
+    private ImageButton l6;
+    private ImageButton l7;
+
 
     public LevelsScreen(ToIdleIsSin game) {
         this.game = game;
-        background = new Texture("campaign/levels.png");
-        
-        l1 = new Texture("campaign/lvl1.png");
-        l2 = new Texture("campaign/lvl2.png");
-        l3 = new Texture("campaign/lvl3.png");
-        l4 = new Texture("campaign/lvl4.png");
-        l5 = new Texture("campaign/lvl5.png");
-        l6 = new Texture("campaign/lvl6.png");
-        l7 = new Texture("campaign/lvl7.png");
-
-        buttonVillage = new Texture("button_village.png");
-        buttonCampaigns = new Texture("button_campaigns.png");
-        buttonStory = new Texture("button_story.png");
-        
         gamecam = new OrthographicCamera();
         gamecam.setToOrtho(false, ToIdleIsSin.WIDTH, ToIdleIsSin.HEIGHT);
         gamePort = new FitViewport(ToIdleIsSin.WIDTH, ToIdleIsSin.HEIGHT, gamecam);
+
+        stage = new Stage(gamePort);
+        initButtons();
+
+        background = game.atlas.findRegion("campaign/levels");
     }
 
     @Override
@@ -73,39 +65,9 @@ public class LevelsScreen extends ScreenAdapter {
         game.batch.begin();
         game.batch.draw(background, 0, 0, ToIdleIsSin.WIDTH, ToIdleIsSin.HEIGHT);
 
-        // GUI
-        game.batch.draw(buttonVillage, (int)(ToIdleIsSin.WIDTH*0.1), (int)(ToIdleIsSin.HEIGHT*0.05), buttonVillage.getWidth(), buttonVillage.getHeight());
-        buttonVillageBounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.1), (int)(ToIdleIsSin.HEIGHT*0.05), buttonVillage.getWidth(), buttonVillage.getHeight() );
-
-        game.batch.draw(buttonCampaigns, (int)(ToIdleIsSin.WIDTH*0.4), (int)(ToIdleIsSin.HEIGHT*0.05), buttonCampaigns.getWidth(), buttonCampaigns.getHeight());
-        buttonCampaignsBounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.4), (int)(ToIdleIsSin.HEIGHT*0.05), buttonCampaigns.getWidth(), buttonCampaigns.getHeight() );
-
-        game.batch.draw(buttonStory, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.05), buttonStory.getWidth(), buttonStory.getHeight());
-        buttonStoryBounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.05), buttonStory.getWidth(), buttonStory.getHeight() );
-
-        // Levels
-        game.batch.draw(l1, (int)(ToIdleIsSin.WIDTH*0.106), (int)(ToIdleIsSin.HEIGHT*0.372), l1.getWidth(), l1.getHeight());
-        l1Bounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.106), (int)(ToIdleIsSin.HEIGHT*0.372), l1.getWidth(), l1.getHeight() );
-
-        game.batch.draw(l2, (int)(ToIdleIsSin.WIDTH*0.26), (int)(ToIdleIsSin.HEIGHT*0.405), l2.getWidth(), l2.getHeight());
-        l2Bounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.26), (int)(ToIdleIsSin.HEIGHT*0.405), l2.getWidth(), l2.getHeight() );
-
-        game.batch.draw(l3, (int)(ToIdleIsSin.WIDTH*0.51), (int)(ToIdleIsSin.HEIGHT*0.466), l3.getWidth(), l3.getHeight());
-        l3Bounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.51), (int)(ToIdleIsSin.HEIGHT*0.466), l3.getWidth(), l3.getHeight() );
-
-        game.batch.draw(l4, (int)(ToIdleIsSin.WIDTH*0.655), (int)(ToIdleIsSin.HEIGHT*0.538), l4.getWidth(), l4.getHeight());
-        l4Bounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.655), (int)(ToIdleIsSin.HEIGHT*0.538), l4.getWidth(), l4.getHeight() );
-
-        game.batch.draw(l5, (int)(ToIdleIsSin.WIDTH*0.283), (int)(ToIdleIsSin.HEIGHT*0.562), l5.getWidth(), l5.getHeight());
-        l5Bounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.283), (int)(ToIdleIsSin.HEIGHT*0.562), l5.getWidth(), l5.getHeight() );
-
-        game.batch.draw(l6, (int)(ToIdleIsSin.WIDTH*0.245), (int)(ToIdleIsSin.HEIGHT*0.678), l6.getWidth(), l6.getHeight());
-        l6Bounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.245), (int)(ToIdleIsSin.HEIGHT*0.678), l6.getWidth(), l6.getHeight() );
-
-        game.batch.draw(l7, (int)(ToIdleIsSin.WIDTH*0.353), (int)(ToIdleIsSin.HEIGHT*0.788), l7.getWidth(), l7.getHeight());
-        l7Bounds = new Rectangle( (int)(ToIdleIsSin.WIDTH*0.353), (int)(ToIdleIsSin.HEIGHT*0.788), l7.getWidth(), l7.getHeight() );
-
         game.batch.end();
+        stage.act(delta);
+        stage.draw();
     }
 
     @Override
@@ -115,22 +77,10 @@ public class LevelsScreen extends ScreenAdapter {
 
     @Override
     public void show() {
-        Gdx.input.setInputProcessor(new InputAdapter(){
+        InputProcessor general = new InputAdapter(){
             @Override
             public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                 gamePort.unproject(touch.set(screenX, screenY, 0));
-                if(buttonVillageBounds.contains(touch.x, touch.y)){
-                    game.setScreen(new VillageScreen(game));
-                    ToIdleIsSin.program.run("village");
-
-                } else if(buttonCampaignsBounds.contains(touch.x, touch.y)){
-                    game.setScreen(new LevelsScreen(game));
-                    ToIdleIsSin.program.run("battles");
-
-                } else if(buttonStoryBounds.contains(touch.x, touch.y)){
-                    game.setScreen(new StoryScreen(game));
-                    ToIdleIsSin.program.run("visual novel");
-                }
                 return super.touchDown(screenX, screenY, pointer, button);
             }
 
@@ -141,8 +91,11 @@ public class LevelsScreen extends ScreenAdapter {
                 }
                 return super.keyDown(keycode);
             }
-        });
-
+        };
+        InputMultiplexer mult = new InputMultiplexer();
+        mult.addProcessor(general);
+        mult.addProcessor(stage);
+        Gdx.input.setInputProcessor(mult);
     }
 
     @Override
@@ -162,16 +115,179 @@ public class LevelsScreen extends ScreenAdapter {
 
     @Override
     public void dispose() {
-        background.dispose();
-        buttonVillage.dispose();
-        buttonCampaigns.dispose();
-        buttonStory.dispose();
-        l1.dispose();
-        l2.dispose();
-        l3.dispose();
-        l4.dispose();
-        l5.dispose();
-        l6.dispose();
-        l7.dispose();
+        stage.dispose();
+    }
+
+    private void initButtons(){
+
+        l1 = new ImageButton(game.skin, "l1");
+        l1.setPosition((int)(ToIdleIsSin.WIDTH*0.106), (int)(ToIdleIsSin.HEIGHT*0.372));
+        l1.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if(!l1.isDisabled()){
+                    game.setScreen(new LevelScreen(game, 1));
+                    ToIdleIsSin.program.run("campaign1");
+                    ToIdleIsSin.program.run("one");
+                }
+                super.clicked(event, x, y);
+            }
+        });
+        if(Program.gameState.getVirtue("charity").getProgress() == 0){
+            l1.setDisabled(true);
+        }
+
+        l2 = new ImageButton(game.skin, "l2");
+        l2.setPosition((int)(ToIdleIsSin.WIDTH*0.26), (int)(ToIdleIsSin.HEIGHT*0.405));
+        l2.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if(!l2.isDisabled()){
+                    game.setScreen(new LevelScreen(game, 2));
+                    ToIdleIsSin.program.run("campaign2");
+                    ToIdleIsSin.program.run("one");
+                }
+                super.clicked(event, x, y);
+            }
+        });
+        if(Program.gameState.getVirtue("kindness").getProgress() == 0){
+            l2.setDisabled(true);
+        }
+
+        l3 = new ImageButton(game.skin, "l3");
+        l3.setPosition((int)(ToIdleIsSin.WIDTH*0.51), (int)(ToIdleIsSin.HEIGHT*0.466));
+        l3.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if(!l3.isDisabled()){
+                    game.setScreen(new LevelScreen(game, 3));
+                    ToIdleIsSin.program.run("campaign3");
+                    ToIdleIsSin.program.run("one");
+                }
+                super.clicked(event, x, y);
+            }
+        });
+        if(Program.gameState.getVirtue("diligence").getProgress() == 0){
+            l3.setDisabled(true);
+        }
+
+        l4 = new ImageButton(game.skin, "l4");
+        l4.setPosition((int)(ToIdleIsSin.WIDTH*0.655), (int)(ToIdleIsSin.HEIGHT*0.538));
+        l4.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if(!l4.isDisabled()){
+                    game.setScreen(new LevelScreen(game, 4));
+                    ToIdleIsSin.program.run("campaign4");
+                    ToIdleIsSin.program.run("one");
+                }
+                super.clicked(event, x, y);
+            }
+        });
+        if(Program.gameState.getVirtue("humility").getProgress() == 0){
+            l4.setDisabled(true);
+        }
+
+        l5 = new ImageButton(game.skin, "l5");
+        l5.setPosition((int)(ToIdleIsSin.WIDTH*0.283), (int)(ToIdleIsSin.HEIGHT*0.562));
+        l5.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if(!l5.isDisabled()){
+                    game.setScreen(new LevelScreen(game, 5));
+                    ToIdleIsSin.program.run("campaign5");
+                    ToIdleIsSin.program.run("one");
+                }
+                super.clicked(event, x, y);
+            }
+        });
+        if(Program.gameState.getVirtue("chastity").getProgress() == 0){
+            l5.setDisabled(true);
+        }
+
+        l6 = new ImageButton(game.skin, "l6");
+        l6.setPosition((int)(ToIdleIsSin.WIDTH*0.245), (int)(ToIdleIsSin.HEIGHT*0.678));
+        l6.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if(!l6.isDisabled()){
+                    game.setScreen(new LevelScreen(game, 6));
+                    ToIdleIsSin.program.run("campaign6");
+                    ToIdleIsSin.program.run("one");
+                }
+                super.clicked(event, x, y);
+            }
+        });
+        if(Program.gameState.getVirtue("patience").getProgress() == 0){
+            l6.setDisabled(true);
+        }
+
+        l7 = new ImageButton(game.skin, "l7");
+        l7.setPosition((int)(ToIdleIsSin.WIDTH*0.353), (int)(ToIdleIsSin.HEIGHT*0.788));
+        l7.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if(!l7.isDisabled()){
+                    game.setScreen(new LevelScreen(game, 7));
+                    ToIdleIsSin.program.run("campaign7");
+                    ToIdleIsSin.program.run("one");
+                }
+                super.clicked(event, x, y);
+            }
+        });
+        if(Program.gameState.getVirtue("temperance").getProgress() == 0){
+            l7.setDisabled(true);
+        }
+
+
+        village = new TextButton("Village", game.skin, "navbutton");
+        village.setPosition((int)(ToIdleIsSin.WIDTH*0.1), (int)(ToIdleIsSin.HEIGHT*0.01));
+        village.setSize(200, 200);
+        village.setOrigin(Align.center);
+        village.setTransform(true);
+        village.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                game.setScreen(new VillageScreen(game));
+                ToIdleIsSin.program.run("village");
+                super.clicked(event, x, y);
+            }
+        });
+
+        campaign = new TextButton("Campaign", game.skin, "navbutton");
+        campaign.setPosition((int)(ToIdleIsSin.WIDTH*0.4), (int)(ToIdleIsSin.HEIGHT*0.01));
+        campaign.setSize(200, 200);
+        campaign.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                game.setScreen(new LevelsScreen(game));
+                ToIdleIsSin.program.run("battles");
+                super.clicked(event, x, y);
+            }
+        });
+
+        story = new TextButton("Story", game.skin, "navbutton");
+        story.setPosition((int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.01));
+        story.setSize(200, 200);
+        story.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                game.setScreen(new StoryScreen(game));
+                ToIdleIsSin.program.run("visual novel");
+                super.clicked(event, x, y);
+            }
+        });
+
+        stage.addActor(village);
+        stage.addActor(campaign);
+        stage.addActor(story);
+        stage.addActor(l1);
+        stage.addActor(l2);
+        stage.addActor(l3);
+        stage.addActor(l5);
+        stage.addActor(l4);
+        stage.addActor(l6);
+        stage.addActor(l7);
+
     }
 }
