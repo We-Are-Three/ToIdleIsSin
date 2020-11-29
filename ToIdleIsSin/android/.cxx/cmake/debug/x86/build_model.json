@@ -169,7 +169,7 @@
       "project": {
         "compilerSettingsCacheFolder": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\.cxx",
         "cxxFolder": "I:\\android\\basicidletest\\ToIdleIsSin\\ToIdleIsSin\\.cxx",
-        "ideBuildTargetAbi": "x86,armeabi-v7a,armeabi",
+        "ideBuildTargetAbi": "x86",
         "isBuildOnlyTargetAbiEnabled": true,
         "isCmakeBuildCohabitationEnabled": false,
         "isNativeCompilerSettingsCacheEnabled": false,
