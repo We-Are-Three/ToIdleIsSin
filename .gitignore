@@ -1,4 +1,5 @@
 ./ToIdleIsSin/android/.cxx/*
+./ToIdleIsSin/android/.cxx
 ./ToIdleIsSin/android/build/*
 ./ToIdleIsSin/android/libs/*
 ./ToIdleIsSin/core/build/*
