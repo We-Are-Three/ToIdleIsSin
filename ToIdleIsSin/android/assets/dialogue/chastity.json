@@ -1,0 +1,31 @@
+{
+  "character": "chastity",
+  "main" : [
+    {
+      "title" : "hello",
+      "progress" : 1,
+      "dialogue":[
+        { "character" : "chastity", "text" : "You should beat the fifth level." },
+        { "character" : "Me", "text" : "Ok." }
+      ]
+    },
+    {
+      "title" : "win",
+      "progress" : 2,
+      "dialogue":[
+        { "character" : "chastity", "text" : "You can move to the sixth level now." },
+        { "character" : "Me", "text" : "Ok" }
+      ]
+    }
+  ],
+  "random" : [
+    {
+      "title" : "hellorandom",
+      "progress" : 0,
+      "dialogue":[
+        { "character" : "chastity", "text" : "random comment." },
+        { "character" : "Me", "text" : "random reply." }
+      ]
+    }
+  ]
+}

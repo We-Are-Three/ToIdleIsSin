@@ -1,0 +1,31 @@
+{
+  "character": "diligence",
+  "main" : [
+    {
+      "title" : "hello",
+      "progress" : 1,
+      "dialogue":[
+        { "character" : "diligence", "text" : "You should beat the third level." },
+        { "character" : "Me", "text" : "Ok." }
+      ]
+    },
+    {
+      "title" : "win",
+      "progress" : 2,
+      "dialogue":[
+        { "character" : "diligence", "text" : "You can move to the fourth level now." },
+        { "character" : "Me", "text" : "Ok" }
+      ]
+    }
+  ],
+  "random" : [
+    {
+      "title" : "hellorandom",
+      "progress" : 0,
+      "dialogue":[
+        { "character" : "diligence", "text" : "random comment." },
+        { "character" : "Me", "text" : "random reply." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "character": "patience",
+  "main" : [
+    {
+      "title" : "hello",
+      "progress" : 1,
+      "dialogue":[
+        { "character" : "patience", "text" : "You should beat the sixth level." },
+        { "character" : "Me", "text" : "Ok." }
+      ]
+    },
+    {
+      "title" : "win",
+      "progress" : 2,
+      "dialogue":[
+        { "character" : "patience", "text" : "You can move to the seventh level now." },
+        { "character" : "Me", "text" : "Ok" }
+      ]
+    }
+  ],
+  "random" : [
+    {
+      "title" : "hellorandom",
+      "progress" : 0,
+      "dialogue":[
+        { "character" : "patience", "text" : "random comment." },
+        { "character" : "Me", "text" : "random reply." }
+      ]
+    }
+  ]
+}

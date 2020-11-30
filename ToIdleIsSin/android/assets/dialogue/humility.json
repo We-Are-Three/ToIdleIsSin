@@ -1,0 +1,31 @@
+{
+  "character": "humility",
+  "main" : [
+    {
+      "title" : "hello",
+      "progress" : 1,
+      "dialogue":[
+        { "character" : "humility", "text" : "You should beat the fourth level." },
+        { "character" : "Me", "text" : "Ok." }
+      ]
+    },
+    {
+      "title" : "win",
+      "progress" : 2,
+      "dialogue":[
+        { "character" : "humility", "text" : "You can move to the fifth level now." },
+        { "character" : "Me", "text" : "Ok" }
+      ]
+    }
+  ],
+  "random" : [
+    {
+      "title" : "hellorandom",
+      "progress" : 0,
+      "dialogue":[
+        { "character" : "humility", "text" : "random comment." },
+        { "character" : "Me", "text" : "random reply." }
+      ]
+    }
+  ]
+}

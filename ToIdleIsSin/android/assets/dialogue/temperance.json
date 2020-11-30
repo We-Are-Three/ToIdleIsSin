@@ -1,0 +1,31 @@
+{
+  "character": "temperance",
+  "main" : [
+    {
+      "title" : "hello",
+      "progress" : 1,
+      "dialogue":[
+        { "character" : "temperance", "text" : "You should beat the seventh level." },
+        { "character" : "Me", "text" : "Ok." }
+      ]
+    },
+    {
+      "title" : "win",
+      "progress" : 2,
+      "dialogue":[
+        { "character" : "temperance", "text" : "You are finished with demo." },
+        { "character" : "Me", "text" : "Ok" }
+      ]
+    }
+  ],
+  "random" : [
+    {
+      "title" : "hellorandom",
+      "progress" : 0,
+      "dialogue":[
+        { "character" : "temperance", "text" : "random comment." },
+        { "character" : "Me", "text" : "random reply." }
+      ]
+    }
+  ]
+}

@@ -11,8 +11,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.wearethreestudios.toidleissin.program.Program;
 import com.wearethreestudios.toidleissin.screens.MenuScreen;
+import com.wearethreestudios.toidleissin.uihelpers.DialogueManager;
 
 public class ToIdleIsSin extends Game  implements ApplicationListener {
 	public static final int WIDTH = 1080;
@@ -28,6 +32,7 @@ public class ToIdleIsSin extends Game  implements ApplicationListener {
 	public BitmapFont font;
 	public Skin skin;
 	public TextureAtlas atlas;
+	public DialogueManager dialogue;
 	
 	@Override
 	public void create () {
@@ -43,6 +48,7 @@ public class ToIdleIsSin extends Game  implements ApplicationListener {
 		}else{
 			ToIdleIsSin.program.run("start game");
 		}
+		dialogue = new DialogueManager();
 		setScreen(new MenuScreen(this));
 
 	}
