@@ -85,7 +85,6 @@ public class ToIdleIsSin extends Game  implements ApplicationListener {
 	}
 
 	public void queueAssets(){
-		assets.load("story/cottage.png", Texture.class);
 		assets.load("atlas/atlassprites.atlas", TextureAtlas.class);
 	}
 
