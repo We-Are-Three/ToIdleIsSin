@@ -22,6 +22,7 @@ public class Monks extends Groups{
 		if(!start) return;
 		double g = growthRate * gs.getValue(Modifier.RECRUIT_RATE) * 5/12.0;
 		double newUnits = g*time;
+		if(newUnits > gs.getTOTAL_UNITS()) newUnits = gs.getTOTAL_UNITS();
 		if(count + newUnits > Double.MAX_VALUE) {
 		}else {
 			count = count + newUnits;

@@ -22,6 +22,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -33,6 +34,7 @@ import com.wearethreestudios.toidleissin.ToIdleIsSin;
 import com.wearethreestudios.toidleissin.program.Monks;
 import com.wearethreestudios.toidleissin.program.Program;
 import com.wearethreestudios.toidleissin.uihelpers.Hints;
+import com.wearethreestudios.toidleissin.uihelpers.SlidePopUp;
 
 public class MonasteryScreen extends ScreenAdapter {
     ToIdleIsSin game;
@@ -58,8 +60,8 @@ public class MonasteryScreen extends ScreenAdapter {
 
     private TextButton idleunit;
     private TextButton job1;
-    private TextButton left1;
-    private TextButton right1;
+//    private TextButton left1;
+//    private TextButton right1;
     private TextButton job2;
     private TextButton left2;
     private TextButton right2;
@@ -74,6 +76,8 @@ public class MonasteryScreen extends ScreenAdapter {
     private Hints training;
     private Hints building;
     private Hints mining;
+
+    private SlidePopUp slider1;
 
     public MonasteryScreen(final ToIdleIsSin game) {
         this.game = game;
@@ -94,14 +98,14 @@ public class MonasteryScreen extends ScreenAdapter {
         if(currentTouch > 0){
             touchModifier = 1 + (Program.realTime() - currentTouch)/200.0;
         }
-        if(left1.isPressed()){
-            Program.run(job1Command);
-            Program.run("-" + (int)(1 * touchModifier));
-        }
-        if(right1.isPressed()){
-            Program.run(job1Command);
-            Program.run("" + (int)(1 * touchModifier));
-        }
+//        if(left1.isPressed()){
+//            Program.run(job1Command);
+//            Program.run("-" + (int)(1 * touchModifier));
+//        }
+//        if(right1.isPressed()){
+//            Program.run(job1Command);
+//            Program.run("" + (int)(1 * touchModifier));
+//        }
         if(left2.isPressed()){
             Program.run(job2Command);
             Program.run("-" + (int)(1 * touchModifier));
@@ -126,7 +130,7 @@ public class MonasteryScreen extends ScreenAdapter {
             Program.run(job4Command);
             Program.run("" + (int)(1 * touchModifier));
         }
-        idleunit.setText("Idle\n" + (int)((Monks)Program.gameState.getGroup("monks")).getIdle());
+        idleunit.setText("Idle Monks\n" + (int)((Monks)Program.gameState.getGroup("monks")).getIdle() + " / " + (int) Program.gameState.getTOTAL_UNITS());
         job1.setText("Recruit\n" + (int)((Monks)Program.gameState.getGroup("monks")).getRecruiting());
         job2.setText("Train\n" + (int)((Monks)Program.gameState.getGroup("monks")).getTraining());
         job3.setText("Build\n" + (int)((Monks)Program.gameState.getGroup("monks")).getImprovements());
@@ -187,6 +191,12 @@ public class MonasteryScreen extends ScreenAdapter {
                 training.getPopup().setVisible(false);
                 building.getPopup().setVisible(false);
                 mining.getPopup().setVisible(false);
+                if(slider1 != null){
+                    Table temp = slider1.getPopup();
+                    if( !slider1.hit(touch.x, touch.y) ){
+                        slider1.remove();
+                    }
+                }
                 return super.touchDown(screenX, screenY, pointer, button);
             }
 
@@ -282,20 +292,38 @@ public class MonasteryScreen extends ScreenAdapter {
         job1.getLabel().setWrap(true);
         job1.getLabel().setAlignment(Align.center);
         job1.addListener(new ClickListener() {
+            long held = Long.MAX_VALUE;
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                recruit.getPopup().setVisible(true);
+                if(Program.realTime() - held > 1000*0.25){
+                    recruit.getPopup().setVisible(true);
+                }else{
+                    int idlePeople = (int)Program.gameState.getGroup("monks").getIdle();
+                    int workingPeople = (int)((Monks)Program.gameState.getGroup("monks")).getRecruiting();
+                    if(slider1 != null) slider1.getPopup().remove();
+                    slider1 = new SlidePopUp(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Slider1", idlePeople, workingPeople, job1Command);
+                    slider1.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -slider1.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -slider1.getPopup().getHeight()/2));
+                    stage.addActor(slider1.getPopup());
+                    Program.gameState.pause();
+                }
                 super.clicked(event, x, y);
             }
+
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                held = Program.realTime();
+                return super.touchDown(event, x, y, pointer, button);
+            }
+
         });
 
-        left1 = new TextButton("", game.skin, "left");
-        left1.setSize(100,100);
-        left1.setPosition((int)(ToIdleIsSin.WIDTH*0.2-job1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-left1.getHeight()/2));
-
-        right1 = new TextButton("", game.skin, "right");
-        right1.setSize(100,100);
-        right1.setPosition((int)(ToIdleIsSin.WIDTH*0.2), (int)(ToIdleIsSin.HEIGHT*0.17-right1.getHeight()/2));
+//        left1 = new TextButton("", game.skin, "left");
+//        left1.setSize(100,100);
+//        left1.setPosition((int)(ToIdleIsSin.WIDTH*0.2-job1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-left1.getHeight()/2));
+//
+//        right1 = new TextButton("", game.skin, "right");
+//        right1.setSize(100,100);
+//        right1.setPosition((int)(ToIdleIsSin.WIDTH*0.2), (int)(ToIdleIsSin.HEIGHT*0.17-right1.getHeight()/2));
 
 
 
@@ -374,8 +402,8 @@ public class MonasteryScreen extends ScreenAdapter {
         stage.addActor(job2);
         stage.addActor(job3);
         stage.addActor(job4);
-        stage.addActor(left1);
-        stage.addActor(right1);
+//        stage.addActor(left1);
+//        stage.addActor(right1);
         stage.addActor(left2);
         stage.addActor(right2);
         stage.addActor(left3);

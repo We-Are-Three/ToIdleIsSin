@@ -28,6 +28,7 @@ import com.wearethreestudios.toidleissin.program.Campaign;
 import com.wearethreestudios.toidleissin.program.Knights;
 import com.wearethreestudios.toidleissin.program.Lines;
 import com.wearethreestudios.toidleissin.program.Mages;
+import com.wearethreestudios.toidleissin.program.Modifier;
 import com.wearethreestudios.toidleissin.program.Monks;
 import com.wearethreestudios.toidleissin.program.Physicians;
 import com.wearethreestudios.toidleissin.program.Program;
@@ -60,6 +61,7 @@ public class LevelScreen extends ScreenAdapter {
     private TextButton line3;
 
     private TextButton progressText;
+    private TextButton strengthText;
 
     private TextButton idle1;
     private TextButton idle2;
@@ -130,9 +132,14 @@ public class LevelScreen extends ScreenAdapter {
         progressText.getLabel().setWrap(true);
         progressText.getLabel().setAlignment(Align.center);
 
+        strengthText = new TextButton("strength:\n Ours : Enemies", game.skin, "idle");
+        strengthText.setPosition((int)(ToIdleIsSin.WIDTH*0.8-strengthText.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-strengthText.getHeight()/2));
+        strengthText.getLabel().setWrap(true);
+        strengthText.getLabel().setAlignment(Align.center);
+
 
         apu1 = new TextButton("apu1", game.skin, "job");
-        apu1.setPosition((int)(ToIdleIsSin.WIDTH*0.3), (int)(ToIdleIsSin.HEIGHT*0.9));
+        apu1.setPosition((int)(ToIdleIsSin.WIDTH*0.2), (int)(ToIdleIsSin.HEIGHT*0.9));
         apu1.setSize(200, 200);
         apu1.setOrigin(Align.center);
         apu1.setTransform(true);
@@ -147,7 +154,7 @@ public class LevelScreen extends ScreenAdapter {
 
 
         apu2 = new TextButton("apu2", game.skin, "job");
-        apu2.setPosition((int)(ToIdleIsSin.WIDTH*0.6), (int)(ToIdleIsSin.HEIGHT*0.9));
+        apu2.setPosition((int)(ToIdleIsSin.WIDTH*0.5), (int)(ToIdleIsSin.HEIGHT*0.9));
         apu2.setSize(200, 200);
         apu2.setOrigin(Align.center);
         apu2.setTransform(true);
@@ -332,6 +339,7 @@ public class LevelScreen extends ScreenAdapter {
         stage.addActor(progressText);
         stage.addActor(apu1);
         stage.addActor(apu2);
+        stage.addActor(strengthText);
 
 
     }
@@ -392,6 +400,18 @@ public class LevelScreen extends ScreenAdapter {
         }else {
             apu2.setDisabled(true);
         }
+        if(Program.gameState.canapu1()){
+            apu1.setText("apu1");
+        }else{
+            apu1.setText("apu1\n" + Program.gameState.apu1Time() + "s");
+        }
+        if(Program.gameState.canapu2()){
+            apu2.setText("apu2");
+        }else{
+            apu2.setText("apu2\n" + Program.gameState.apu2Time() + "s");
+        }
+        if(Program.gameState.getValue(Modifier.APU1) == 0) apu1.setVisible(false);
+        if(Program.gameState.getValue(Modifier.APU2) == 0) apu2.setVisible(false);
         idle1.setText("Idle Knights\n" + (int)((Knights)Program.gameState.getGroup("knights")).getIdle());
         idle2.setText("Idle Mages\n" + (int)((Mages)Program.gameState.getGroup("mages")).getIdle());
         idle3.setText("Idle Physicians\n" + (int)((Physicians)Program.gameState.getGroup("physicians")).getIdle());
@@ -400,6 +420,7 @@ public class LevelScreen extends ScreenAdapter {
         job3.setText("Fighting Physicians\n" + line.getPhysicians());
         double progress = line.getEnemiesKilled()/line.getNumberOfEnemies();
         progressText.setText("Progress\n" + String.format("%1$,.2f", 100*progress) + "%");
+        strengthText.setText("strength:\nOurs : Enemies\n" + String.format("%1$,.2f", 100*line.getOurPercent()) + "%" + " : " + String.format("%1$,.2f", 100*(1-line.getOurPercent())) + "%");
         if("one".equals(currentLine) && progress <= 1){
             firstscroll.get().setPosition(-(int)((firstscroll.get().getWidth()-ToIdleIsSin.WIDTH)*progress), ToIdleIsSin.HEIGHT/2);
         } else if("two".equals(currentLine) && progress <= 1){

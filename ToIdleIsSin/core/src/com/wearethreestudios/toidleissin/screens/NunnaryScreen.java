@@ -117,7 +117,7 @@ public class NunnaryScreen extends ScreenAdapter {
             Program.run(job4Command);
             Program.run("" + (int)(1 * touchModifier));
         }
-        idleunit.setText("Idle\n" + (int)((Nuns)Program.gameState.getGroup("nuns")).getIdle());
+        idleunit.setText("Idle Nuns\n" + (int)((Nuns)Program.gameState.getGroup("nuns")).getIdle() + " / " + (int) Program.gameState.getTOTAL_UNITS());
         job1.setText("Farm\n" + (int)((Nuns)Program.gameState.getGroup("nuns")).getFarming());
         job2.setText("Train\n" + (int)((Nuns)Program.gameState.getGroup("nuns")).getTraining());
         job3.setText("Study\n" + (int)((Nuns)Program.gameState.getGroup("nuns")).getStudying());

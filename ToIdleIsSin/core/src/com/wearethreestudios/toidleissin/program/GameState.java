@@ -22,6 +22,8 @@ public class GameState {
 	private int APU_COOLDOWN = 60;//seconds
 	private long last_apu1_strike = 0;
 	private long last_apu2_strike = 0;
+	private double TOTAL_UNITS = 0;
+	protected double ALL_UNITS_DEATH_RATE = 1.0/300;
 
 	public GameState(Database d) {
 		groups = new ArrayList<>();
@@ -34,7 +36,7 @@ public class GameState {
 		totalDeserted = 0;
 		perkPoints = 1;
 		//add the groups
-		groups.add(new Monks("monks", 500, 0.0001, 500, 0, 0, 0));
+		groups.add(new Monks("monks", 500, 0.0001, 0, 0, 0, 0));
 		groups.add(new Nuns("nuns", 500, 0.0001, 0, 0, 0, 0 ));
 		groups.add(new Knights("knights", 500, 0.00003, 0, 0));
 		groups.add(new Physicians("physicians", 500, 0, 0, 0, 0, (Nuns)getGroup("nuns")));
@@ -122,6 +124,10 @@ public class GameState {
 	public boolean canapu1(){
 		return (Program.time() - this.last_apu1_strike)/1000 >= (APU_COOLDOWN + getValue(Modifier.APU_COOLDOWN)) && getValue(Modifier.APU1) != 0;
 	}
+
+	public int apu1Time(){
+		return (int) (APU_COOLDOWN + getValue(Modifier.APU_COOLDOWN) - (Program.time() - this.last_apu1_strike)/1000);
+	}
 	
 	public int apu2CanStrike() {
 		int howManyStrikes = 0;
@@ -137,12 +143,16 @@ public class GameState {
 	public boolean canapu2(){
 		return (Program.time() - this.last_apu2_strike)/1000 >= (APU_COOLDOWN + getValue(Modifier.APU_COOLDOWN)) && getValue(Modifier.APU2) != 0;
 	}
+
+	public int apu2Time(){
+		return (int) (APU_COOLDOWN + getValue(Modifier.APU_COOLDOWN) - (Program.time() - this.last_apu2_strike)/1000);
+	}
 	
 	public double getValue(String s) {
 		if (s != null && s.contains("strength")) {
 			double PRAYING_NUMBER = ((Nuns) getGroup("nuns")).getPraying() /10000.0;
 			double praying_factor = getValue(Modifier.PRAYING_RATE)* PRAYING_NUMBER;
-			return ((values.get(s) + getModifiersOfType(s))/100) + praying_factor;
+			return ((values.get(s) + getModifiersOfType(s))/100) + (praying_factor + praying_factor);
 		}
 		else if( s != null && s.contains("recruit")) {
 			double RECRUITING_FACTOR = ((Monks) getGroup("monks")).getRecruiting()/ 100.0;
@@ -159,7 +169,8 @@ public class GameState {
 		long goodworks = ((Knights)getGroup("knights")).getGoodworks();
 
 //		double DEFAULT_DESERTION = 1.0/(500 + (((improvements+1) * (farming+1) * (goodworks+1)) / (1 + improvements + farming + goodworks)) );
-		double DEFAULT_DESERTION = 1.0/(500 + Math.cbrt(farming*improvements) * Math.sqrt(goodworks) );
+		TOTAL_UNITS = 501 + Math.cbrt(farming*improvements) * Math.sqrt(goodworks);
+		double DEFAULT_DESERTION = 1.0/TOTAL_UNITS;
 		long time = Program.time() - lastUpdate;
 		//groups updated
 		for(Groups g : groups) {
@@ -176,8 +187,9 @@ public class GameState {
 		}
 		
 		//perform additional updates based off of groups stats + modifiers
+		// For 100 Nuns = 500 mins = about 8 hours
 		
-		perkPoints += this.getValue("study")* ((Nuns) getGroup("nuns")).getStudying()/ 10000.0;
+		perkPoints += this.getValue("study")* ((Nuns) getGroup("nuns")).getStudying()/ 1000000000.0;
 		lastUpdate = time + lastUpdate;
 		for(int i = 1; i < 8; i++) {
 			Campaign c = getCampaign("campaign" + i);
@@ -185,6 +197,14 @@ public class GameState {
 			if(c.isCleared()) {
 			}
 		}
+	}
+
+	public void pause(){
+		canGo = false;
+	}
+
+	public void resume(){
+		canGo = true;
 	}
 	
 	public double getModifiersOfType(String command) {
@@ -362,6 +382,10 @@ public class GameState {
 
 	public ArrayList<Campaign> getCampaigns() {
 		return campaigns;
+	}
+
+	public double getTOTAL_UNITS(){
+		return TOTAL_UNITS-1;
 	}
 	
 	

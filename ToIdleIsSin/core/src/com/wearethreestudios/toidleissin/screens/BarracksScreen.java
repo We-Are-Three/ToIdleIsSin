@@ -97,9 +97,9 @@ public class BarracksScreen extends ScreenAdapter {
             Program.run(job3Command);
             Program.run("" + (int)(1 * touchModifier));
         }
-        idleunit.setText("Idle\n" + (int)((Knights)Program.gameState.getGroup("knights")).getIdle());
-        job1.setText("Physicians\n" + (int)((Physicians)Program.gameState.getGroup("physicians")).getIdle());
-        job2.setText("Mages\n" + (int)((Mages)Program.gameState.getGroup("mages")).getIdle());
+        idleunit.setText("Idle Knights\n" + (int)((Knights)Program.gameState.getGroup("knights")).getIdle() + " / " + (int) Program.gameState.getTOTAL_UNITS());
+        job1.setText("Physicians\n" + (int)((Physicians)Program.gameState.getGroup("physicians")).getIdle() + " / " + (int) Program.gameState.getTOTAL_UNITS());
+        job2.setText("Mages\n" + (int)((Mages)Program.gameState.getGroup("mages")).getIdle() + " / " + (int) Program.gameState.getTOTAL_UNITS());
         job3.setText("Good works\n" + (int)((Knights)Program.gameState.getGroup("knights")).getGoodworks());
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

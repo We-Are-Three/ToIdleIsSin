@@ -54,13 +54,13 @@ public class Lines {
 	public boolean updateLine(GameState gs, long time) {
 		if( (current_loop_iteration++) % WAIT_LOOP != 0) return false;
 		if(cleared) return true;
-		double ALL_UNITS_DEATH_RATE = 1.0/300;
+//		double ALL_UNITS_DEATH_RATE = 1.0/300;
 		double liveEnemies = numberOfEnemies - enemiesKilled;
 		int k = knights;
 		double enemiesToBeKilled = 0;
 		
 		double enemyPower = liveEnemies * gs.getValue(Modifier.DEATH_RATE) - physicians *gs.getValue(Modifier.PHYSICIAN_STRENGTH) - knight.getHeroes() * gs.getValue(Modifier.HERO_STRENGTH);
-		int knightsToBeKilled = (int)(enemyPower * ALL_UNITS_DEATH_RATE);
+		int knightsToBeKilled = (int)(enemyPower * gs.ALL_UNITS_DEATH_RATE);
 		
 		if(this.WHICH_LINE >= 1 && this.WHICH_LINE < 3) {
 			double playerPower = k * gs.getValue(Modifier.KNIGHT_STRENGTH) + mages * gs.getValue(Modifier.MAGE_STRENGTH) + knight.getHeroes() * gs.getValue(Modifier.HERO_STRENGTH);
@@ -68,10 +68,10 @@ public class Lines {
 				// final boss for the front line
 				playerPower *= gs.getValue(Modifier.AGAINST_BOSS_STRENGTH);
 				enemyPower = numberOfEnemies * gs.getValue(Modifier.DEATH_RATE) * this.BOSS_STRENGTH_MULTIPLIER - physicians *gs.getValue(Modifier.PHYSICIAN_STRENGTH) - knight.getHeroes() * gs.getValue(Modifier.HERO_STRENGTH);
-				knightsToBeKilled = (int)(enemyPower * ALL_UNITS_DEATH_RATE);
+				knightsToBeKilled = (int)(enemyPower * gs.ALL_UNITS_DEATH_RATE);
 				
 			}
-			enemiesToBeKilled = playerPower * ALL_UNITS_DEATH_RATE;
+			enemiesToBeKilled = playerPower * gs.ALL_UNITS_DEATH_RATE;
 			setEnemiesKilled(enemiesToBeKilled);
 			killKnights(knightsToBeKilled);
 			if(enemiesKilled >= numberOfEnemies) setCleared();
@@ -83,7 +83,7 @@ public class Lines {
 				}
 			}
 			double playerPower = (k * gs.getValue(Modifier.KNIGHT_STRENGTH) + mages * gs.getValue(Modifier.MAGE_STRENGTH) + knight.getHeroes() * gs.getValue(Modifier.HERO_STRENGTH)) * gs.getValue(Modifier.DAILY_STRENGTH);
-			enemiesToBeKilled = playerPower * ALL_UNITS_DEATH_RATE;
+			enemiesToBeKilled = playerPower * gs.ALL_UNITS_DEATH_RATE;
 			setEnemiesKilled(enemiesToBeKilled);
 			killKnights(knightsToBeKilled);
 			if(enemiesKilled >= numberOfEnemies) setCleared();
@@ -91,7 +91,7 @@ public class Lines {
 		}else if(this.WHICH_LINE == 4){
 			//this is a defensive line
 			double playerPower = (k * gs.getValue(Modifier.KNIGHT_STRENGTH) + mages * gs.getValue(Modifier.MAGE_STRENGTH) + knight.getHeroes() * gs.getValue(Modifier.HERO_STRENGTH)) * gs.getValue(Modifier.DEFENSE_STRENGTH);
-			enemiesToBeKilled = playerPower * ALL_UNITS_DEATH_RATE;
+			enemiesToBeKilled = playerPower * gs.ALL_UNITS_DEATH_RATE;
 //			setEnemiesKilled(enemiesToBeKilled);
 //			killKnights(knightsToBeKilled);
 			if(enemiesToBeKilled < knightsToBeKilled) {
@@ -108,6 +108,10 @@ public class Lines {
 //		if(WHICH_LINE == 1) Program.print("enemyPower " + enemyPower);
 //		if(WHICH_LINE == 1) Program.print(knightsToBeKilled + "");
 		return true;
+	}
+
+	public double getOurPercent(){
+		return last_enemy_deaths / (last_enemy_deaths + last_unit_deaths);
 	}
 	
 	public void apu1Attack(GameState gs) {

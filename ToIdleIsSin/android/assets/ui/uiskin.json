@@ -47,4 +47,7 @@
     hint: { background: "ui/idle", font: default-font, fontColor: black },
     alpha: { background: "alpha", font: default-font, fontColor: black }
   },
+  com.badlogic.gdx.scenes.scene2d.ui.Slider$SliderStyle:{
+    default-horizontal: { background: "ui/idle", knob: "ui/idle_click" }
+  },
 }
