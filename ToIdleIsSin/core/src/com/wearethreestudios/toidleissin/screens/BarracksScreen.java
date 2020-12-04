@@ -28,6 +28,8 @@ import com.wearethreestudios.toidleissin.program.Monks;
 import com.wearethreestudios.toidleissin.program.Physicians;
 import com.wearethreestudios.toidleissin.program.Program;
 import com.wearethreestudios.toidleissin.uihelpers.Hints;
+import com.wearethreestudios.toidleissin.uihelpers.NavButtons;
+import com.wearethreestudios.toidleissin.uihelpers.SlidePopUp;
 
 public class BarracksScreen extends ScreenAdapter {
     ToIdleIsSin game;
@@ -43,25 +45,20 @@ public class BarracksScreen extends ScreenAdapter {
     private TextButton story;
     private Stage stage;
 
-    private long currentTouch;
-    private double touchModifier = 1;
-
     private String job1Command = "physiciantonun";
     private String job2Command = "magetomonk";
     private String job3Command = "goodworks";
 
     private TextButton idleunit;
     private TextButton job1;
-    private TextButton left1;
     private TextButton job2;
-    private TextButton left2;
     private TextButton job3;
-    private TextButton left3;
-    private TextButton right3;
 
     private Hints retirephysician;
     private Hints retiremage;
     private Hints goodworks;
+
+    private SlidePopUp slider;
 
     public BarracksScreen(ToIdleIsSin game) {
         this.game = game;
@@ -78,28 +75,9 @@ public class BarracksScreen extends ScreenAdapter {
     @Override
     public void render(float delta) {
         ToIdleIsSin.program.runNextCommand();
-        if(currentTouch > 0){
-            touchModifier = 1 + (Program.realTime() - currentTouch)/200.0;
-        }
-        if(left1.isPressed()){
-            Program.run(job1Command);
-            Program.run("" + (int)(1 * touchModifier));
-        }
-        if(left2.isPressed()){
-            Program.run(job2Command);
-            Program.run("" + (int)(1 * touchModifier));
-        }
-        if(left3.isPressed()){
-            Program.run(job3Command);
-            Program.run("-" + (int)(1 * touchModifier));
-        }
-        if(right3.isPressed()){
-            Program.run(job3Command);
-            Program.run("" + (int)(1 * touchModifier));
-        }
         idleunit.setText("Idle Knights\n" + (int)((Knights)Program.gameState.getGroup("knights")).getIdle() + " / " + (int) Program.gameState.getTOTAL_UNITS());
-        job1.setText("Physicians\n" + (int)((Physicians)Program.gameState.getGroup("physicians")).getIdle() + " / " + (int) Program.gameState.getTOTAL_UNITS());
-        job2.setText("Mages\n" + (int)((Mages)Program.gameState.getGroup("mages")).getIdle() + " / " + (int) Program.gameState.getTOTAL_UNITS());
+        job1.setText("Idle Physicians\n" + (int)((Physicians)Program.gameState.getGroup("physicians")).getIdle() + " / " + (int) Program.gameState.getTOTAL_UNITS());
+        job2.setText("Idle Mages\n" + (int)((Mages)Program.gameState.getGroup("mages")).getIdle() + " / " + (int) Program.gameState.getTOTAL_UNITS());
         job3.setText("Good works\n" + (int)((Knights)Program.gameState.getGroup("knights")).getGoodworks());
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -113,14 +91,14 @@ public class BarracksScreen extends ScreenAdapter {
     }
 
     public void initHints(){
-        retirephysician = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Retire Physicians", "Send the Physicians back to become Nuns again.", "ui/icon");
+        retirephysician = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Idle Physicians", "Nuns trained into Physicians. Bring them into battle to heal units, and reduce enemy damage.", "ui/icon");
         retirephysician.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -retirephysician.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -retirephysician.getPopup().getHeight()/2));
         TextureRegionDrawable a = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         retirephysician.getPopup().background(a);
         stage.addActor(retirephysician.getPopup());
 
 
-        retiremage = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Retire Mages", "Send the Mages back to become Monks again.", "ui/icon");
+        retiremage = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Idle Mages", "Monks trained into Mages. Bring them into battle for a boost in your attack power.", "ui/icon");
         retiremage.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -retiremage.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -retiremage.getPopup().getHeight()/2));
         TextureRegionDrawable b = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         retiremage.getPopup().background(b);
@@ -145,18 +123,15 @@ public class BarracksScreen extends ScreenAdapter {
             @Override
             public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                 gamePort.unproject(touch.set(screenX, screenY, 0));
-                currentTouch = Program.realTime();
                 retirephysician.getPopup().setVisible(false);
                 retiremage.getPopup().setVisible(false);
                 goodworks.getPopup().setVisible(false);
+                if(slider != null){
+                    if( !slider.hit(touch.x, touch.y) ){
+                        slider.remove();
+                    }
+                }
                 return super.touchDown(screenX, screenY, pointer, button);
-            }
-
-            @Override
-            public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-                currentTouch = 0;
-                touchModifier = 1;
-                return super.touchUp(screenX, screenY, pointer, button);
             }
 
             @Override
@@ -195,52 +170,18 @@ public class BarracksScreen extends ScreenAdapter {
 
 
     private void initButtons(){
-        village = new TextButton("Village", game.skin, "navbutton");
-        village.setPosition((int)(ToIdleIsSin.WIDTH*0.1), (int)(ToIdleIsSin.HEIGHT*0.01));
-        village.setSize(200, 200);
-        village.setOrigin(Align.center);
-        village.setTransform(true);
-        village.addListener(new ClickListener(){
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new VillageScreen(game));
-                ToIdleIsSin.program.run("village");
-                super.clicked(event, x, y);
-            }
-        });
-
-        campaign = new TextButton("Campaign", game.skin, "navbutton");
-        campaign.setPosition((int)(ToIdleIsSin.WIDTH*0.4), (int)(ToIdleIsSin.HEIGHT*0.01));
-        campaign.setSize(200, 200);
-        campaign.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new LevelsScreen(game));
-                ToIdleIsSin.program.run("battles");
-                super.clicked(event, x, y);
-            }
-        });
-
-        story = new TextButton("Story", game.skin, "navbutton");
-        story.setPosition((int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.01));
-        story.setSize(200, 200);
-        story.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new StoryScreen(game));
-                ToIdleIsSin.program.run("visual novel");
-                super.clicked(event, x, y);
-            }
-        });
+        village = NavButtons.getVillage(game);
+        campaign = NavButtons.getCampaign(game);
+        story = NavButtons.getStory(game);
 
         idleunit = new TextButton("Idle", game.skin, "idle");
         idleunit.setPosition((int)(ToIdleIsSin.WIDTH*0.1-idleunit.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-idleunit.getHeight()/2));
         idleunit.getLabel().setWrap(true);
         idleunit.getLabel().setAlignment(Align.center);
 
-        job1 = new TextButton("To Nun", game.skin, "job");
+        job1 = new TextButton("Idle Nun", game.skin, "idle");
         job1.setSize(200,200);
-        job1.setPosition((int)(ToIdleIsSin.WIDTH*0.3-job1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.25-job1.getHeight()/2));
+        job1.setPosition((int)(ToIdleIsSin.WIDTH*0.7-job1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-job1.getHeight()/2));
         job1.getLabel().setWrap(true);
         job1.getLabel().setAlignment(Align.center);
         job1.addListener(new ClickListener() {
@@ -251,15 +192,11 @@ public class BarracksScreen extends ScreenAdapter {
             }
         });
 
-        left1 = new TextButton("Demote", game.skin, "left");
-        left1.setSize(200,100);
-        left1.setPosition((int)(ToIdleIsSin.WIDTH*0.3-job1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-left1.getHeight()/2));
 
 
-
-        job2 = new TextButton("To Monk", game.skin, "job");
+        job2 = new TextButton("Idle Monk", game.skin, "idle");
         job2.setSize(200,200);
-        job2.setPosition((int)(ToIdleIsSin.WIDTH*0.5-job2.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.25-job2.getHeight()/2));
+        job2.setPosition((int)(ToIdleIsSin.WIDTH*0.9-job2.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-job2.getHeight()/2));
         job2.getLabel().setWrap(true);
         job2.getLabel().setAlignment(Align.center);
         job2.addListener(new ClickListener() {
@@ -270,32 +207,37 @@ public class BarracksScreen extends ScreenAdapter {
             }
         });
 
-        left2 = new TextButton("Demote", game.skin, "left");
-        left2.setSize(200,100);
-        left2.setPosition((int)(ToIdleIsSin.WIDTH*0.5-job2.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-left2.getHeight()/2));
-
 
 
         job3 = new TextButton("Good works", game.skin, "job");
         job3.setSize(200,200);
-        job3.setPosition((int)(ToIdleIsSin.WIDTH*0.7-job3.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.25-job3.getHeight()/2));
+        job3.setPosition((int)(ToIdleIsSin.WIDTH*0.5-job3.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job3.getHeight()/2));
         job3.getLabel().setWrap(true);
         job3.getLabel().setAlignment(Align.center);
         job3.addListener(new ClickListener() {
+            long held = Long.MAX_VALUE;
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                goodworks.getPopup().setVisible(true);
+                if(Program.realTime() - held > 1000*0.25){
+                    goodworks.getPopup().setVisible(true);
+                }else{
+                    int idlePeople = (int)Program.gameState.getGroup("knights").getIdle();
+                    int workingPeople = (int)((Knights)Program.gameState.getGroup("knights")).getGoodworks();
+                    if(slider != null) slider.getPopup().remove();
+                    slider = new SlidePopUp(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Good Works", idlePeople, workingPeople, job3Command);
+                    slider.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -slider.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -slider.getPopup().getHeight()/2));
+                    stage.addActor(slider.getPopup());
+                    Program.gameState.pause();
+                }
                 super.clicked(event, x, y);
             }
+
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                held = Program.realTime();
+                return super.touchDown(event, x, y, pointer, button);
+            }
         });
-
-        left3 = new TextButton("", game.skin, "left");
-        left3.setSize(100,100);
-        left3.setPosition((int)(ToIdleIsSin.WIDTH*0.7-job3.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-left3.getHeight()/2));
-
-        right3 = new TextButton("", game.skin, "right");
-        right3.setSize(100,100);
-        right3.setPosition((int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.17-right3.getHeight()/2));
 
 
         stage.addActor(village);
@@ -305,10 +247,5 @@ public class BarracksScreen extends ScreenAdapter {
         stage.addActor(job1);
         stage.addActor(job2);
         stage.addActor(job3);
-        stage.addActor(left1);
-        stage.addActor(left2);
-        stage.addActor(left3);
-        stage.addActor(right3);
     }
-
 }

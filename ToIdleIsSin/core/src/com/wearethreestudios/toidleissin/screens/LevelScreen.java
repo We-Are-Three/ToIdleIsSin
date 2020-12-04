@@ -32,7 +32,9 @@ import com.wearethreestudios.toidleissin.program.Modifier;
 import com.wearethreestudios.toidleissin.program.Monks;
 import com.wearethreestudios.toidleissin.program.Physicians;
 import com.wearethreestudios.toidleissin.program.Program;
+import com.wearethreestudios.toidleissin.uihelpers.NavButtons;
 import com.wearethreestudios.toidleissin.uihelpers.ScrollImage;
+import com.wearethreestudios.toidleissin.uihelpers.SlidePopUp;
 
 public class LevelScreen extends ScreenAdapter {
     ToIdleIsSin game;
@@ -47,9 +49,6 @@ public class LevelScreen extends ScreenAdapter {
     private TextButton campaign;
     private TextButton story;
     private Stage stage;
-
-    private long currentTouch;
-    private double touchModifier = 1;
 
     private String job1Command = "addknights";
     private String job2Command = "addmages";
@@ -67,17 +66,13 @@ public class LevelScreen extends ScreenAdapter {
     private TextButton idle2;
     private TextButton idle3;
     private TextButton job1;
-    private TextButton left1;
-    private TextButton right1;
     private TextButton job2;
-    private TextButton left2;
-    private TextButton right2;
     private TextButton job3;
-    private TextButton left3;
-    private TextButton right3;
 
     private TextButton apu1;
     private TextButton apu2;
+
+    private SlidePopUp slider;
 
     private int level;
     private Campaign camp;
@@ -89,43 +84,9 @@ public class LevelScreen extends ScreenAdapter {
     private Lines line;
 
     private void initButtons(){
-        village = new TextButton("Village", game.skin, "navbutton");
-        village.setPosition((int)(ToIdleIsSin.WIDTH*0.1), (int)(ToIdleIsSin.HEIGHT*0.01));
-        village.setSize(200, 200);
-        village.setOrigin(Align.center);
-        village.setTransform(true);
-        village.addListener(new ClickListener(){
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new VillageScreen(game));
-                ToIdleIsSin.program.run("village");
-                super.clicked(event, x, y);
-            }
-        });
-
-        campaign = new TextButton("Campaign", game.skin, "navbutton");
-        campaign.setPosition((int)(ToIdleIsSin.WIDTH*0.4), (int)(ToIdleIsSin.HEIGHT*0.01));
-        campaign.setSize(200, 200);
-        campaign.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new LevelsScreen(game));
-                ToIdleIsSin.program.run("battles");
-                super.clicked(event, x, y);
-            }
-        });
-
-        story = new TextButton("Story", game.skin, "navbutton");
-        story.setPosition((int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.01));
-        story.setSize(200, 200);
-        story.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new StoryScreen(game));
-                ToIdleIsSin.program.run("visual novel");
-                super.clicked(event, x, y);
-            }
-        });
+        village = NavButtons.getVillage(game);
+        campaign = NavButtons.getCampaign(game);
+        story = NavButtons.getStory(game);
 
         progressText = new TextButton("Progress:", game.skin, "idle");
         progressText.setPosition((int)(ToIdleIsSin.WIDTH*0.1-progressText.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-progressText.getHeight()/2));
@@ -243,19 +204,29 @@ public class LevelScreen extends ScreenAdapter {
         job1.getLabel().setWrap(true);
         job1.getLabel().setAlignment(Align.center);
         job1.addListener(new ClickListener() {
+            long held = Long.MAX_VALUE;
             @Override
             public void clicked(InputEvent event, float x, float y) {
+//                if(Program.realTime() - held > 1000*0.25){
+//                    recruit.getPopup().setVisible(true);
+//                }else{
+                    int idlePeople = (int)Program.gameState.getGroup("knights").getIdle();
+                    int workingPeople = line.getKnights();
+                    if(slider != null) slider.getPopup().remove();
+                    slider = new SlidePopUp(game, (int)(ToIdleIsSin.WIDTH*0.8), (int)(ToIdleIsSin.HEIGHT*0.4), "Fighting Knights", idlePeople, workingPeople, job1Command);
+                    slider.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -slider.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.3 -slider.getPopup().getHeight()/2));
+                    stage.addActor(slider.getPopup());
+                    Program.gameState.pause();
+//                }
                 super.clicked(event, x, y);
             }
+
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                held = Program.realTime();
+                return super.touchDown(event, x, y, pointer, button);
+            }
         });
-
-        left1 = new TextButton("", game.skin, "left");
-        left1.setSize(100,100);
-        left1.setPosition((int)(ToIdleIsSin.WIDTH*0.3-job1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-left1.getHeight()/2));
-
-        right1 = new TextButton("", game.skin, "right");
-        right1.setSize(100,100);
-        right1.setPosition((int)(ToIdleIsSin.WIDTH*0.3), (int)(ToIdleIsSin.HEIGHT*0.17-right1.getHeight()/2));
 
 
 
@@ -270,14 +241,30 @@ public class LevelScreen extends ScreenAdapter {
         job2.setPosition((int)(ToIdleIsSin.WIDTH*0.5-job2.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.25-job2.getHeight()/2));
         job2.getLabel().setWrap(true);
         job2.getLabel().setAlignment(Align.center);
+        job2.addListener(new ClickListener() {
+            long held = Long.MAX_VALUE;
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+//                if(Program.realTime() - held > 1000*0.25){
+//                    recruit.getPopup().setVisible(true);
+//                }else{
+                int idlePeople = (int)Program.gameState.getGroup("mages").getIdle();
+                int workingPeople = line.getMages();
+                if(slider != null) slider.getPopup().remove();
+                slider = new SlidePopUp(game, (int)(ToIdleIsSin.WIDTH*0.8), (int)(ToIdleIsSin.HEIGHT*0.4), "Fighting Mages", idlePeople, workingPeople, job2Command);
+                slider.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -slider.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.3 -slider.getPopup().getHeight()/2));
+                stage.addActor(slider.getPopup());
+                Program.gameState.pause();
+//                }
+                super.clicked(event, x, y);
+            }
 
-        left2 = new TextButton("", game.skin, "left");
-        left2.setSize(100,100);
-        left2.setPosition((int)(ToIdleIsSin.WIDTH*0.5-job2.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-left2.getHeight()/2));
-
-        right2 = new TextButton("", game.skin, "right");
-        right2.setSize(100,100);
-        right2.setPosition((int)(ToIdleIsSin.WIDTH*0.5), (int)(ToIdleIsSin.HEIGHT*0.17-right2.getHeight()/2));
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                held = Program.realTime();
+                return super.touchDown(event, x, y, pointer, button);
+            }
+        });
 
 
 
@@ -292,14 +279,30 @@ public class LevelScreen extends ScreenAdapter {
         job3.setPosition((int)(ToIdleIsSin.WIDTH*0.7-job3.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.25-job3.getHeight()/2));
         job3.getLabel().setWrap(true);
         job3.getLabel().setAlignment(Align.center);
+        job3.addListener(new ClickListener() {
+            long held = Long.MAX_VALUE;
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+//                if(Program.realTime() - held > 1000*0.25){
+//                    recruit.getPopup().setVisible(true);
+//                }else{
+                int idlePeople = (int)Program.gameState.getGroup("physicians").getIdle();
+                int workingPeople = line.getPhysicians();
+                if(slider != null) slider.getPopup().remove();
+                slider = new SlidePopUp(game, (int)(ToIdleIsSin.WIDTH*0.8), (int)(ToIdleIsSin.HEIGHT*0.4), "Fighting Physicians", idlePeople, workingPeople, job3Command);
+                slider.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -slider.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.3 -slider.getPopup().getHeight()/2));
+                stage.addActor(slider.getPopup());
+                Program.gameState.pause();
+//                }
+                super.clicked(event, x, y);
+            }
 
-        left3 = new TextButton("", game.skin, "left");
-        left3.setSize(100,100);
-        left3.setPosition((int)(ToIdleIsSin.WIDTH*0.7-job3.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-left3.getHeight()/2));
-
-        right3 = new TextButton("", game.skin, "right");
-        right3.setSize(100,100);
-        right3.setPosition((int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.17-right3.getHeight()/2));
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                held = Program.realTime();
+                return super.touchDown(event, x, y, pointer, button);
+            }
+        });
 
 
 
@@ -309,12 +312,6 @@ public class LevelScreen extends ScreenAdapter {
         stage.addActor(job1);
         stage.addActor(job2);
         stage.addActor(job3);
-        stage.addActor(left1);
-        stage.addActor(right1);
-        stage.addActor(left2);
-        stage.addActor(right2);
-        stage.addActor(left3);
-        stage.addActor(right3);
         stage.addActor(idle1);
         stage.addActor(idle2);
         stage.addActor(idle3);
@@ -363,33 +360,6 @@ public class LevelScreen extends ScreenAdapter {
     @Override
     public void render(float delta) {
         ToIdleIsSin.program.runNextCommand();
-        if(currentTouch > 0){
-            touchModifier = 1 + (Program.realTime() - currentTouch)/200.0;
-        }
-        if(left1.isPressed()){
-            Program.run(job1Command);
-            Program.run("-" + (int)(1 * touchModifier));
-        }
-        if(right1.isPressed()){
-            Program.run(job1Command);
-            Program.run("" + (int)(1 * touchModifier));
-        }
-        if(left2.isPressed()){
-            Program.run(job2Command);
-            Program.run("-" + (int)(1 * touchModifier));
-        }
-        if(right2.isPressed()){
-            Program.run(job2Command);
-            Program.run("" + (int)(1 * touchModifier));
-        }
-        if(left3.isPressed()){
-            Program.run(job3Command);
-            Program.run("-" + (int)(1 * touchModifier));
-        }
-        if(right3.isPressed()){
-            Program.run(job3Command);
-            Program.run("" + (int)(1 * touchModifier));
-        }
         if(Program.gameState.canapu1()){
             apu1.setDisabled(false);
         }else {
@@ -450,15 +420,12 @@ public class LevelScreen extends ScreenAdapter {
             @Override
             public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                 gamePort.unproject(touch.set(screenX, screenY, 0));
-                currentTouch = Program.realTime();
+                if(slider != null){
+                    if( !slider.hit(touch.x, touch.y) ){
+                        slider.remove();
+                    }
+                }
                 return super.touchDown(screenX, screenY, pointer, button);
-            }
-
-            @Override
-            public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-                currentTouch = 0;
-                touchModifier = 1;
-                return super.touchUp(screenX, screenY, pointer, button);
             }
 
             @Override

@@ -31,6 +31,7 @@ import com.wearethreestudios.toidleissin.program.Program;
 import com.wearethreestudios.toidleissin.uihelpers.Dialogue;
 import com.wearethreestudios.toidleissin.uihelpers.DialoguePopUp;
 import com.wearethreestudios.toidleissin.uihelpers.ImageBlob;
+import com.wearethreestudios.toidleissin.uihelpers.NavButtons;
 
 import java.util.ArrayList;
 
@@ -73,63 +74,33 @@ public class StoryScreen extends ScreenAdapter {
     private Dialogue dialogue;
 
     private void initButtons(){
-
-        village = new TextButton("Village", game.skin, "navbutton");
-//        village.setBounds(500,500, 200, 200);
-        village.setPosition((int)(ToIdleIsSin.WIDTH*0.1), (int)(ToIdleIsSin.HEIGHT*0.01));
-        //coment out if you want size of background
-        village.setSize(200, 200);
-        village.setOrigin(Align.center);
-        village.setTransform(true);
-        village.addListener(new ClickListener(){
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new VillageScreen(game));
-                ToIdleIsSin.program.run("village");
-                super.clicked(event, x, y);
-            }
-
-            @Override
-            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
-                village.addAction(
-                        forever(sequence(
-                                scaleTo(1.1f, 1.1f, 0.1f, Interpolation.pow5),
-                                scaleTo(1f, 1f, 0.1f, Interpolation.pow5))));
-                super.enter(event, x, y, pointer, fromActor);
-            }
-
-            @Override
-            public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
-                village.clearActions();
-                super.exit(event, x, y, pointer, toActor);
-            }
-
-        });
-
-        campaign = new TextButton("Campaign", game.skin, "navbutton");
-        campaign.setPosition((int)(ToIdleIsSin.WIDTH*0.4), (int)(ToIdleIsSin.HEIGHT*0.01));
-        campaign.setSize(200, 200);
-        campaign.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new LevelsScreen(game));
-                ToIdleIsSin.program.run("battles");
-            }
-        });
-
-        story = new TextButton("Story", game.skin, "navbutton");
-        story.setPosition((int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.01));
-        story.setSize(200, 200);
-        story.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new StoryScreen(game));
-                ToIdleIsSin.program.run("visual novel");
-            }
-        });
-
-//        village.getLabel().setWrap(true);
-//        village.getLabel().setEllipsis(true);
+        village = NavButtons.getVillage(game);
+        campaign = NavButtons.getCampaign(game);
+        story = NavButtons.getStory(game);
+//        village.addListener(new ClickListener(){
+//            @Override
+//            public void clicked(InputEvent event, float x, float y) {
+//                game.setScreen(new VillageScreen(game));
+//                ToIdleIsSin.program.run("village");
+//                super.clicked(event, x, y);
+//            }
+//
+//            @Override
+//            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
+//                village.addAction(
+//                        forever(sequence(
+//                                scaleTo(1.1f, 1.1f, 0.1f, Interpolation.pow5),
+//                                scaleTo(1f, 1f, 0.1f, Interpolation.pow5))));
+//                super.enter(event, x, y, pointer, fromActor);
+//            }
+//
+//            @Override
+//            public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+//                village.clearActions();
+//                super.exit(event, x, y, pointer, toActor);
+//            }
+//
+//        });
 
         stage.addActor(village);
         stage.addActor(campaign);

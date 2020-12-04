@@ -22,6 +22,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.wearethreestudios.toidleissin.ToIdleIsSin;
 import com.wearethreestudios.toidleissin.program.Program;
+import com.wearethreestudios.toidleissin.uihelpers.NavButtons;
 
 public class LevelsScreen extends ScreenAdapter {
     ToIdleIsSin game;
@@ -119,6 +120,9 @@ public class LevelsScreen extends ScreenAdapter {
     }
 
     private void initButtons(){
+        village = NavButtons.getVillage(game);
+        campaign = NavButtons.getCampaign(game);
+        story = NavButtons.getStory(game);
 
         l1 = new ImageButton(game.skin, "l1");
         l1.setPosition((int)(ToIdleIsSin.WIDTH*0.106), (int)(ToIdleIsSin.HEIGHT*0.372));
@@ -238,45 +242,6 @@ public class LevelsScreen extends ScreenAdapter {
         if(Program.gameState.getVirtue("temperance").getProgress() == 0){
             l7.setDisabled(true);
         }
-
-
-        village = new TextButton("Village", game.skin, "navbutton");
-        village.setPosition((int)(ToIdleIsSin.WIDTH*0.1), (int)(ToIdleIsSin.HEIGHT*0.01));
-        village.setSize(200, 200);
-        village.setOrigin(Align.center);
-        village.setTransform(true);
-        village.addListener(new ClickListener(){
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new VillageScreen(game));
-                ToIdleIsSin.program.run("village");
-                super.clicked(event, x, y);
-            }
-        });
-
-        campaign = new TextButton("Campaign", game.skin, "navbutton");
-        campaign.setPosition((int)(ToIdleIsSin.WIDTH*0.4), (int)(ToIdleIsSin.HEIGHT*0.01));
-        campaign.setSize(200, 200);
-        campaign.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new LevelsScreen(game));
-                ToIdleIsSin.program.run("battles");
-                super.clicked(event, x, y);
-            }
-        });
-
-        story = new TextButton("Story", game.skin, "navbutton");
-        story.setPosition((int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.01));
-        story.setSize(200, 200);
-        story.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new StoryScreen(game));
-                ToIdleIsSin.program.run("visual novel");
-                super.clicked(event, x, y);
-            }
-        });
 
         stage.addActor(village);
         stage.addActor(campaign);

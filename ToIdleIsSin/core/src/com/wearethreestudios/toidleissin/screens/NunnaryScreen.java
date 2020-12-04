@@ -25,6 +25,8 @@ import com.wearethreestudios.toidleissin.program.Monks;
 import com.wearethreestudios.toidleissin.program.Nuns;
 import com.wearethreestudios.toidleissin.program.Program;
 import com.wearethreestudios.toidleissin.uihelpers.Hints;
+import com.wearethreestudios.toidleissin.uihelpers.NavButtons;
+import com.wearethreestudios.toidleissin.uihelpers.SlidePopUp;
 
 public class NunnaryScreen extends ScreenAdapter {
     ToIdleIsSin game;
@@ -40,9 +42,6 @@ public class NunnaryScreen extends ScreenAdapter {
     private TextButton story;
     private Stage stage;
 
-    private long currentTouch;
-    private double touchModifier = 1;
-
     private String job1Command = "farming";
     private String job2Command = "nuntraining";
     private String job3Command = "studying";
@@ -50,22 +49,16 @@ public class NunnaryScreen extends ScreenAdapter {
 
     private TextButton idleunit;
     private TextButton job1;
-    private TextButton left1;
-    private TextButton right1;
     private TextButton job2;
-    private TextButton left2;
-    private TextButton right2;
     private TextButton job3;
-    private TextButton left3;
-    private TextButton right3;
     private TextButton job4;
-    private TextButton left4;
-    private TextButton right4;
 
     private Hints farming;
     private Hints training;
     private Hints studying;
     private Hints praying;
+
+    private SlidePopUp slider;
 
     public NunnaryScreen(ToIdleIsSin game) {
         this.game = game;
@@ -82,41 +75,6 @@ public class NunnaryScreen extends ScreenAdapter {
     @Override
     public void render(float delta) {
         ToIdleIsSin.program.runNextCommand();
-        if(currentTouch > 0){
-            touchModifier = 1 + (Program.realTime() - currentTouch)/200.0;
-        }
-        if(left1.isPressed()){
-            Program.run(job1Command);
-            Program.run("-" + (int)(1 * touchModifier));
-        }
-        if(right1.isPressed()){
-            Program.run(job1Command);
-            Program.run("" + (int)(1 * touchModifier));
-        }
-        if(left2.isPressed()){
-            Program.run(job2Command);
-            Program.run("-" + (int)(1 * touchModifier));
-        }
-        if(right2.isPressed()){
-            Program.run(job2Command);
-            Program.run("" + (int)(1 * touchModifier));
-        }
-        if(left3.isPressed()){
-            Program.run(job3Command);
-            Program.run("-" + (int)(1 * touchModifier));
-        }
-        if(right3.isPressed()){
-            Program.run(job3Command);
-            Program.run("" + (int)(1 * touchModifier));
-        }
-        if(left4.isPressed()){
-            Program.run(job4Command);
-            Program.run("-" + (int)(1 * touchModifier));
-        }
-        if(right4.isPressed()){
-            Program.run(job4Command);
-            Program.run("" + (int)(1 * touchModifier));
-        }
         idleunit.setText("Idle Nuns\n" + (int)((Nuns)Program.gameState.getGroup("nuns")).getIdle() + " / " + (int) Program.gameState.getTOTAL_UNITS());
         job1.setText("Farm\n" + (int)((Nuns)Program.gameState.getGroup("nuns")).getFarming());
         job2.setText("Train\n" + (int)((Nuns)Program.gameState.getGroup("nuns")).getTraining());
@@ -173,19 +131,16 @@ public class NunnaryScreen extends ScreenAdapter {
             @Override
             public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                 gamePort.unproject(touch.set(screenX, screenY, 0));
-                currentTouch = Program.realTime();
                 farming.getPopup().setVisible(false);
                 training.getPopup().setVisible(false);
                 studying.getPopup().setVisible(false);
                 praying.getPopup().setVisible(false);
+                if(slider != null){
+                    if( !slider.hit(touch.x, touch.y) ){
+                        slider.remove();
+                    }
+                }
                 return super.touchDown(screenX, screenY, pointer, button);
-            }
-
-            @Override
-            public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-                currentTouch = 0;
-                touchModifier = 1;
-                return super.touchUp(screenX, screenY, pointer, button);
             }
 
             @Override
@@ -223,43 +178,9 @@ public class NunnaryScreen extends ScreenAdapter {
     }
 
     private void initButtons(){
-        village = new TextButton("Village", game.skin, "navbutton");
-        village.setPosition((int)(ToIdleIsSin.WIDTH*0.1), (int)(ToIdleIsSin.HEIGHT*0.01));
-        village.setSize(200, 200);
-        village.setOrigin(Align.center);
-        village.setTransform(true);
-        village.addListener(new ClickListener(){
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new VillageScreen(game));
-                ToIdleIsSin.program.run("village");
-                super.clicked(event, x, y);
-            }
-        });
-
-        campaign = new TextButton("Campaign", game.skin, "navbutton");
-        campaign.setPosition((int)(ToIdleIsSin.WIDTH*0.4), (int)(ToIdleIsSin.HEIGHT*0.01));
-        campaign.setSize(200, 200);
-        campaign.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new LevelsScreen(game));
-                ToIdleIsSin.program.run("battles");
-                super.clicked(event, x, y);
-            }
-        });
-
-        story = new TextButton("Story", game.skin, "navbutton");
-        story.setPosition((int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.01));
-        story.setSize(200, 200);
-        story.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new StoryScreen(game));
-                ToIdleIsSin.program.run("visual novel");
-                super.clicked(event, x, y);
-            }
-        });
+        village = NavButtons.getVillage(game);
+        campaign = NavButtons.getCampaign(game);
+        story = NavButtons.getStory(game);
 
         idleunit = new TextButton("Idle", game.skin, "idle");
         idleunit.setPosition((int)(ToIdleIsSin.WIDTH*0.1-idleunit.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-idleunit.getHeight()/2));
@@ -268,93 +189,129 @@ public class NunnaryScreen extends ScreenAdapter {
 
         job1 = new TextButton("Farm", game.skin, "job");
         job1.setSize(200,200);
-        job1.setPosition((int)(ToIdleIsSin.WIDTH*0.2-job1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.25-job1.getHeight()/2));
+        job1.setPosition((int)(ToIdleIsSin.WIDTH*0.2-job1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job1.getHeight()/2));
         job1.getLabel().setWrap(true);
         job1.getLabel().setAlignment(Align.center);
         job1.addListener(new ClickListener() {
+            long held = Long.MAX_VALUE;
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                farming.getPopup().setVisible(true);
+                if(Program.realTime() - held > 1000*0.25){
+                    farming.getPopup().setVisible(true);
+                }else{
+                    int idlePeople = (int)Program.gameState.getGroup("nuns").getIdle();
+                    int workingPeople = (int)((Nuns)Program.gameState.getGroup("nuns")).getFarming();
+                    if(slider != null) slider.getPopup().remove();
+                    slider = new SlidePopUp(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Farm", idlePeople, workingPeople, job1Command);
+                    slider.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -slider.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -slider.getPopup().getHeight()/2));
+                    stage.addActor(slider.getPopup());
+                    Program.gameState.pause();
+                }
                 super.clicked(event, x, y);
             }
+
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                held = Program.realTime();
+                return super.touchDown(event, x, y, pointer, button);
+            }
         });
-
-        left1 = new TextButton("", game.skin, "left");
-        left1.setSize(100,100);
-        left1.setPosition((int)(ToIdleIsSin.WIDTH*0.2-job1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-left1.getHeight()/2));
-
-        right1 = new TextButton("", game.skin, "right");
-        right1.setSize(100,100);
-        right1.setPosition((int)(ToIdleIsSin.WIDTH*0.2), (int)(ToIdleIsSin.HEIGHT*0.17-right1.getHeight()/2));
 
 
 
         job2 = new TextButton("Train", game.skin, "job");
         job2.setSize(200,200);
-        job2.setPosition((int)(ToIdleIsSin.WIDTH*0.4-job2.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.25-job2.getHeight()/2));
+        job2.setPosition((int)(ToIdleIsSin.WIDTH*0.4-job2.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job2.getHeight()/2));
         job2.getLabel().setWrap(true);
         job2.getLabel().setAlignment(Align.center);
         job2.addListener(new ClickListener() {
+            long held = Long.MAX_VALUE;
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                training.getPopup().setVisible(true);
+                if(Program.realTime() - held > 1000*0.25){
+                    training.getPopup().setVisible(true);
+                }else{
+                    int idlePeople = (int)Program.gameState.getGroup("nuns").getIdle();
+                    int workingPeople = (int)((Nuns)Program.gameState.getGroup("nuns")).getTraining();
+                    if(slider != null) slider.getPopup().remove();
+                    slider = new SlidePopUp(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Train", idlePeople, workingPeople, job2Command);
+                    slider.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -slider.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -slider.getPopup().getHeight()/2));
+                    stage.addActor(slider.getPopup());
+                    Program.gameState.pause();
+                }
                 super.clicked(event, x, y);
             }
+
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                held = Program.realTime();
+                return super.touchDown(event, x, y, pointer, button);
+            }
         });
-
-        left2 = new TextButton("", game.skin, "left");
-        left2.setSize(100,100);
-        left2.setPosition((int)(ToIdleIsSin.WIDTH*0.4-job2.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-left2.getHeight()/2));
-
-        right2 = new TextButton("", game.skin, "right");
-        right2.setSize(100,100);
-        right2.setPosition((int)(ToIdleIsSin.WIDTH*0.4), (int)(ToIdleIsSin.HEIGHT*0.17-right2.getHeight()/2));
 
 
 
         job3 = new TextButton("Study", game.skin, "job");
         job3.setSize(200,200);
-        job3.setPosition((int)(ToIdleIsSin.WIDTH*0.6-job3.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.25-job3.getHeight()/2));
+        job3.setPosition((int)(ToIdleIsSin.WIDTH*0.6-job3.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job3.getHeight()/2));
         job3.getLabel().setWrap(true);
         job3.getLabel().setAlignment(Align.center);
         job3.addListener(new ClickListener() {
+            long held = Long.MAX_VALUE;
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                studying.getPopup().setVisible(true);
+                if(Program.realTime() - held > 1000*0.25){
+                    studying.getPopup().setVisible(true);
+                }else{
+                    int idlePeople = (int)Program.gameState.getGroup("nuns").getIdle();
+                    int workingPeople = (int)((Nuns)Program.gameState.getGroup("nuns")).getStudying();
+                    if(slider != null) slider.getPopup().remove();
+                    slider = new SlidePopUp(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Study", idlePeople, workingPeople, job3Command);
+                    slider.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -slider.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -slider.getPopup().getHeight()/2));
+                    stage.addActor(slider.getPopup());
+                    Program.gameState.pause();
+                }
                 super.clicked(event, x, y);
             }
+
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                held = Program.realTime();
+                return super.touchDown(event, x, y, pointer, button);
+            }
         });
-
-        left3 = new TextButton("", game.skin, "left");
-        left3.setSize(100,100);
-        left3.setPosition((int)(ToIdleIsSin.WIDTH*0.6-job3.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-left3.getHeight()/2));
-
-        right3 = new TextButton("", game.skin, "right");
-        right3.setSize(100,100);
-        right3.setPosition((int)(ToIdleIsSin.WIDTH*0.6), (int)(ToIdleIsSin.HEIGHT*0.17-right3.getHeight()/2));
 
 
 
         job4 = new TextButton("Pray", game.skin, "job");
         job4.setSize(200,200);
-        job4.setPosition((int)(ToIdleIsSin.WIDTH*0.8-job4.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.25-job4.getHeight()/2));
+        job4.setPosition((int)(ToIdleIsSin.WIDTH*0.8-job4.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job4.getHeight()/2));
         job4.getLabel().setWrap(true);
         job4.getLabel().setAlignment(Align.center);
         job4.addListener(new ClickListener() {
+            long held = Long.MAX_VALUE;
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                praying.getPopup().setVisible(true);
+                if(Program.realTime() - held > 1000*0.25){
+                    praying.getPopup().setVisible(true);
+                }else{
+                    int idlePeople = (int)Program.gameState.getGroup("nuns").getIdle();
+                    int workingPeople = (int)((Nuns)Program.gameState.getGroup("nuns")).getPraying();
+                    if(slider != null) slider.getPopup().remove();
+                    slider = new SlidePopUp(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Pray", idlePeople, workingPeople, job4Command);
+                    slider.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -slider.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -slider.getPopup().getHeight()/2));
+                    stage.addActor(slider.getPopup());
+                    Program.gameState.pause();
+                }
                 super.clicked(event, x, y);
             }
+
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                held = Program.realTime();
+                return super.touchDown(event, x, y, pointer, button);
+            }
         });
-
-        left4 = new TextButton("", game.skin, "left");
-        left4.setSize(100,100);
-        left4.setPosition((int)(ToIdleIsSin.WIDTH*0.8-job4.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-left4.getHeight()/2));
-
-        right4 = new TextButton("", game.skin, "right");
-        right4.setSize(100,100);
-        right4.setPosition((int)(ToIdleIsSin.WIDTH*0.8), (int)(ToIdleIsSin.HEIGHT*0.17-right4.getHeight()/2));
 
         stage.addActor(village);
         stage.addActor(campaign);
@@ -364,14 +321,5 @@ public class NunnaryScreen extends ScreenAdapter {
         stage.addActor(job2);
         stage.addActor(job3);
         stage.addActor(job4);
-        stage.addActor(left1);
-        stage.addActor(right1);
-        stage.addActor(left2);
-        stage.addActor(right2);
-        stage.addActor(left3);
-        stage.addActor(right3);
-        stage.addActor(left4);
-        stage.addActor(right4);
-
     }
 }
