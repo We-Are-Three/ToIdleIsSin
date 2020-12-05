@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -46,6 +47,10 @@ public class MenuScreen extends ScreenAdapter {
         if (game.assets.update() && progress >= game.assets.getProgress() - .001f) {
             game.atlas = game.assets.get("atlas/atlassprites.atlas", TextureAtlas.class);
             game.loadSkins();
+            // https://stackoverflow.com/questions/43955604/how-to-load-music-in-android-with-libgdx
+            Music music = game.assets.get("music/ConceptTheme.mp3", Music.class);
+            music.setLooping(true);
+            music.play();
             game.setScreen(new VillageScreen(game));
             ToIdleIsSin.program.run("village");
         }
