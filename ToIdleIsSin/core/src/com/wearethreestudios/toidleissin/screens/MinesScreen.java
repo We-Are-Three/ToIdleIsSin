@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -74,6 +75,8 @@ public class MinesScreen extends ScreenAdapter {
         left1.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                game.sound = game.assets.get("sound/startmine.mp3", Sound.class);
+                game.sound.play();
                 ToIdleIsSin.program.run("mines");
                 super.clicked(event, x, y);
             }

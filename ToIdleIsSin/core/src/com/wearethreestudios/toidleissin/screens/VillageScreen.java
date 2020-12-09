@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -53,6 +54,8 @@ public class VillageScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!monastery.isDisabled()){
+                    game.sound = game.assets.get("sound/monastery.mp3", Sound.class);
+                    game.sound.play();
                     game.setScreen(new MonasteryScreen(game));
                     ToIdleIsSin.program.run("monastery");
                 }
@@ -66,6 +69,8 @@ public class VillageScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!monastery.isDisabled()){
+                    game.sound = game.assets.get("sound/nunnary.mp3", Sound.class);
+                    game.sound.play();
                     game.setScreen(new NunnaryScreen(game));
                     ToIdleIsSin.program.run("nunnary");
                 }
@@ -79,6 +84,8 @@ public class VillageScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!monastery.isDisabled()){
+                    game.sound = game.assets.get("sound/barracks.mp3", Sound.class);
+                    game.sound.play();
                     game.setScreen(new BarracksScreen(game));
                     ToIdleIsSin.program.run("barracks");
                 }
@@ -92,6 +99,8 @@ public class VillageScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!monastery.isDisabled()){
+                    game.sound = game.assets.get("sound/church-bell.mp3", Sound.class);
+                    game.sound.play();
                     game.setScreen(new CathedralScreen(game));
                     ToIdleIsSin.program.run("cathedral");
                 }
@@ -105,6 +114,8 @@ public class VillageScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!monastery.isDisabled()){
+                    game.sound = game.assets.get("sound/mine.mp3", Sound.class);
+                    game.sound.play();
                     game.setScreen(new MinesScreen(game));
                 }
                 super.clicked(event, x, y);

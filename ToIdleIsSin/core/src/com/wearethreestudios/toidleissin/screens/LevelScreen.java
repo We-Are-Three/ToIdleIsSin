@@ -8,6 +8,7 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -107,6 +108,8 @@ public class LevelScreen extends ScreenAdapter {
         apu1.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                game.sound.play();
                 Program.print("apu1");
                 line.apu1Attack(Program.gameState);
                 super.clicked(event, x, y);
@@ -122,6 +125,8 @@ public class LevelScreen extends ScreenAdapter {
         apu2.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                game.sound.play();
                 Program.print("apu2");
                 line.apu2Attack(Program.gameState);
                 super.clicked(event, x, y);
@@ -138,6 +143,8 @@ public class LevelScreen extends ScreenAdapter {
         line1.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                game.sound = game.assets.get("sound/page.mp3", Sound.class);
+                game.sound.play();
                 ToIdleIsSin.program.run("campaign" + level);
                 ToIdleIsSin.program.run("one");
 //                currentImage = firstscroll.get();
@@ -158,6 +165,8 @@ public class LevelScreen extends ScreenAdapter {
         line2.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                game.sound = game.assets.get("sound/page.mp3", Sound.class);
+                game.sound.play();
                 ToIdleIsSin.program.run("campaign" + level);
                 ToIdleIsSin.program.run("two");
 //                currentImage = secondscroll.get();
@@ -178,6 +187,8 @@ public class LevelScreen extends ScreenAdapter {
         line3.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                game.sound = game.assets.get("sound/page.mp3", Sound.class);
+                game.sound.play();
                 ToIdleIsSin.program.run("campaign" + level);
                 ToIdleIsSin.program.run("three");
 //                currentImage = thirdscroll.get();
@@ -207,6 +218,8 @@ public class LevelScreen extends ScreenAdapter {
             long held = Long.MAX_VALUE;
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                game.sound.play();
 //                if(Program.realTime() - held > 1000*0.25){
 //                    recruit.getPopup().setVisible(true);
 //                }else{
@@ -245,6 +258,8 @@ public class LevelScreen extends ScreenAdapter {
             long held = Long.MAX_VALUE;
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                game.sound.play();
 //                if(Program.realTime() - held > 1000*0.25){
 //                    recruit.getPopup().setVisible(true);
 //                }else{
@@ -283,6 +298,8 @@ public class LevelScreen extends ScreenAdapter {
             long held = Long.MAX_VALUE;
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                game.sound.play();
 //                if(Program.realTime() - held > 1000*0.25){
 //                    recruit.getPopup().setVisible(true);
 //                }else{

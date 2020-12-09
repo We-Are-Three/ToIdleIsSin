@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -187,6 +188,8 @@ public class BarracksScreen extends ScreenAdapter {
         job1.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                game.sound.play();
                 retirephysician.getPopup().setVisible(true);
                 super.clicked(event, x, y);
             }
@@ -202,6 +205,8 @@ public class BarracksScreen extends ScreenAdapter {
         job2.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                game.sound.play();
                 retiremage.getPopup().setVisible(true);
                 super.clicked(event, x, y);
             }
@@ -218,6 +223,8 @@ public class BarracksScreen extends ScreenAdapter {
             long held = Long.MAX_VALUE;
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                game.sound.play();
                 if(Program.realTime() - held > 1000*0.25){
                     goodworks.getPopup().setVisible(true);
                 }else{

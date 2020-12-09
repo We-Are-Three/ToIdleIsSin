@@ -1,6 +1,7 @@
 package com.wearethreestudios.toidleissin.uihelpers;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -40,7 +41,7 @@ public class PerkPopUp {
     private Label perk4count;
     private Label temp;
 
-    public PerkPopUp(String virtue, ToIdleIsSin game){
+    public PerkPopUp(String virtue, final ToIdleIsSin game){
         perks = getPerks(virtue);
         popup = new Table(game.skin);
         popup.setTouchable(Touchable.enabled);
@@ -63,6 +64,8 @@ public class PerkPopUp {
         exit.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                game.sound.play();
                 ToIdleIsSin.program.run("cathedral");
                 popup.setVisible(false);
                 super.clicked(event, x, y);
@@ -81,7 +84,11 @@ public class PerkPopUp {
         perk1b.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                ToIdleIsSin.program.run("one");
+                if(!perk1b.isDisabled()){
+                    game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                    game.sound.play();
+                    ToIdleIsSin.program.run("one");
+                }
                 super.clicked(event, x, y);
             }
         });
@@ -102,7 +109,11 @@ public class PerkPopUp {
             perk2b.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
-                    ToIdleIsSin.program.run("two");
+                    if(!perk2b.isDisabled()){
+                        game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                        game.sound.play();
+                        ToIdleIsSin.program.run("two");
+                    }
                     super.clicked(event, x, y);
                 }
             });
@@ -124,7 +135,11 @@ public class PerkPopUp {
             perk3b.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
-                    ToIdleIsSin.program.run("three");
+                    if(!perk3b.isDisabled()){
+                        game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                        game.sound.play();
+                        ToIdleIsSin.program.run("three");
+                    }
                     super.clicked(event, x, y);
                 }
             });
@@ -146,7 +161,11 @@ public class PerkPopUp {
             perk4b.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
-                    ToIdleIsSin.program.run("four");
+                    if(!perk4b.isDisabled()){
+                        game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                        game.sound.play();
+                        ToIdleIsSin.program.run("four");
+                    }
                     super.clicked(event, x, y);
                 }
             });
@@ -181,20 +200,25 @@ public class PerkPopUp {
     }
 
     public void update(){
-        points.setText("Points: "+ (int)Program.gameState.getPerkPoint());
+        int perkPoints = (int)Program.gameState.getPerkPoint();
+        points.setText("Points: "+ perkPoints);
         perk1count.setText(perks.get(0).getCurrentLevel() + "/" + perks.get(0).getMAXLEVEL());
         perk1b.setText(perks.get(0).getTier() + " Points");
+        if(perkPoints < perks.get(0).getTier()) perk1b.setDisabled(true);
         if(perk2count != null){
             perk2count.setText(perks.get(1).getCurrentLevel() + "/" + perks.get(1).getMAXLEVEL());
             perk2b.setText(perks.get(1).getTier() + " Points");
+            if(perkPoints < perks.get(1).getTier()) perk2b.setDisabled(true);
         }
         if(perk3count != null) {
             perk3count.setText(perks.get(2).getCurrentLevel() + "/" + perks.get(2).getMAXLEVEL());
             perk3b.setText(perks.get(2).getTier() + " Points");
+            if(perkPoints < perks.get(2).getTier()) perk3b.setDisabled(true);
         }
         if(perk4count != null) {
             perk4count.setText(perks.get(3).getCurrentLevel() + "/" + perks.get(3).getMAXLEVEL());
             perk4b.setText(perks.get(3).getTier() + " Points");
+            if(perkPoints < perks.get(3).getTier()) perk4b.setDisabled(true);
         }
     }
 }

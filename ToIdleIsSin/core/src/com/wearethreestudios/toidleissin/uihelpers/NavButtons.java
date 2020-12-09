@@ -1,5 +1,6 @@
 package com.wearethreestudios.toidleissin.uihelpers;
 
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -19,6 +20,8 @@ public class NavButtons {
         village.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                game.sound.play();
                 game.setScreen(new VillageScreen(game));
                 ToIdleIsSin.program.run("village");
                 super.clicked(event, x, y);
@@ -34,6 +37,8 @@ public class NavButtons {
         campaign.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                game.sound.play();
                 game.setScreen(new LevelsScreen(game));
                 ToIdleIsSin.program.run("battles");
                 super.clicked(event, x, y);
@@ -49,6 +54,8 @@ public class NavButtons {
         story.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                game.sound.play();
                 game.setScreen(new StoryScreen(game));
                 ToIdleIsSin.program.run("visual novel");
                 super.clicked(event, x, y);

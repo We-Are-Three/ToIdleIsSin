@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -130,6 +131,8 @@ public class LevelsScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!l1.isDisabled()){
+                    game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                    game.sound.play();
                     game.setScreen(new LevelScreen(game, 1));
                     ToIdleIsSin.program.run("campaign1");
                     ToIdleIsSin.program.run("one");
@@ -147,6 +150,8 @@ public class LevelsScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!l2.isDisabled()){
+                    game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                    game.sound.play();
                     game.setScreen(new LevelScreen(game, 2));
                     ToIdleIsSin.program.run("campaign2");
                     ToIdleIsSin.program.run("one");
@@ -164,6 +169,8 @@ public class LevelsScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!l3.isDisabled()){
+                    game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                    game.sound.play();
                     game.setScreen(new LevelScreen(game, 3));
                     ToIdleIsSin.program.run("campaign3");
                     ToIdleIsSin.program.run("one");
@@ -181,6 +188,8 @@ public class LevelsScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!l4.isDisabled()){
+                    game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                    game.sound.play();
                     game.setScreen(new LevelScreen(game, 4));
                     ToIdleIsSin.program.run("campaign4");
                     ToIdleIsSin.program.run("one");
@@ -198,6 +207,8 @@ public class LevelsScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!l5.isDisabled()){
+                    game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                    game.sound.play();
                     game.setScreen(new LevelScreen(game, 5));
                     ToIdleIsSin.program.run("campaign5");
                     ToIdleIsSin.program.run("one");
@@ -215,6 +226,8 @@ public class LevelsScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!l6.isDisabled()){
+                    game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                    game.sound.play();
                     game.setScreen(new LevelScreen(game, 6));
                     ToIdleIsSin.program.run("campaign6");
                     ToIdleIsSin.program.run("one");
@@ -232,6 +245,8 @@ public class LevelsScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!l7.isDisabled()){
+                    game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                    game.sound.play();
                     game.setScreen(new LevelScreen(game, 7));
                     ToIdleIsSin.program.run("campaign7");
                     ToIdleIsSin.program.run("one");

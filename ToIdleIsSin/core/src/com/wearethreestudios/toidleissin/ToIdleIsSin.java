@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -34,6 +35,7 @@ public class ToIdleIsSin extends Game  implements ApplicationListener {
 	public Skin skin;
 	public TextureAtlas atlas;
 	public DialogueManager dialogue;
+	public Sound sound;
 	
 	@Override
 	public void create () {
@@ -88,6 +90,15 @@ public class ToIdleIsSin extends Game  implements ApplicationListener {
 	public void queueAssets(){
 		assets.load("atlas/atlassprites.atlas", TextureAtlas.class);
 		assets.load("music/ConceptTheme.mp3", Music.class);
+		assets.load("sound/church-bell.mp3", Sound.class);
+		assets.load("sound/jingle.mp3", Sound.class);
+		assets.load("sound/barracks.mp3", Sound.class);
+		assets.load("sound/monastery.mp3", Sound.class);
+		assets.load("sound/nunnary.mp3", Sound.class);
+		assets.load("sound/mine.mp3", Sound.class);
+		assets.load("sound/startmine.mp3", Sound.class);
+		assets.load("sound/navigation.mp3", Sound.class);
+		assets.load("sound/page.mp3", Sound.class);
 	}
 
 	private void initFonts(){

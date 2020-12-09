@@ -1,5 +1,6 @@
 package com.wearethreestudios.toidleissin.uihelpers;
 
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -36,7 +37,7 @@ public class SlidePopUp {
     private int idleP;
     private int workingP;
 
-    public SlidePopUp(ToIdleIsSin game, int w, int h, String title, int idlePeople, int workingPeople, final String command){
+    public SlidePopUp(final ToIdleIsSin game, int w, int h, String title, int idlePeople, int workingPeople, final String command){
         value = 0;
         idleP = idlePeople;
         workingP = workingPeople;
@@ -88,6 +89,8 @@ public class SlidePopUp {
         slider.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+                game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                game.sound.play();
                 value =  slider.getValue();
                 idle.setText("Idle\n" + (int)(idleP - value) );
                 job.setText("Working\n" + (int)(workingP + value));
@@ -97,6 +100,8 @@ public class SlidePopUp {
         submit.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                game.sound.play();
                 Program.run(command);
                 Program.run(String.valueOf((int)value));
                 remove();

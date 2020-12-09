@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -243,6 +244,8 @@ public class CathedralScreen extends ScreenAdapter {
                     ToIdleIsSin.program.run("charityperks");
                     charitypop.update();
                     charityMenu.setVisible(true);
+                    game.sound = game.assets.get("sound/jingle.mp3", Sound.class);
+                    game.sound.play();
                 }
                 super.clicked(event, x, y);
             }
@@ -262,6 +265,8 @@ public class CathedralScreen extends ScreenAdapter {
                     ToIdleIsSin.program.run("chastityperks");
                     chastitypop.update();
                     chastityMenu.setVisible(true);
+                    game.sound = game.assets.get("sound/jingle.mp3", Sound.class);
+                    game.sound.play();
                 }
                 super.clicked(event, x, y);
             }
@@ -281,6 +286,8 @@ public class CathedralScreen extends ScreenAdapter {
                     ToIdleIsSin.program.run("diligenceperks");
                     diligencepop.update();
                     diligenceMenu.setVisible(true);
+                    game.sound = game.assets.get("sound/jingle.mp3", Sound.class);
+                    game.sound.play();
                 }
                 super.clicked(event, x, y);
             }
@@ -300,6 +307,8 @@ public class CathedralScreen extends ScreenAdapter {
                     ToIdleIsSin.program.run("humilityperks");
                     humilitypop.update();
                     humilityMenu.setVisible(true);
+                    game.sound = game.assets.get("sound/jingle.mp3", Sound.class);
+                    game.sound.play();
                 }
                 super.clicked(event, x, y);
             }
@@ -319,6 +328,8 @@ public class CathedralScreen extends ScreenAdapter {
                     ToIdleIsSin.program.run("kindnessperks");
                     kindnesspop.update();
                     kindnessMenu.setVisible(true);
+                    game.sound = game.assets.get("sound/jingle.mp3", Sound.class);
+                    game.sound.play();
                 }
                 super.clicked(event, x, y);
             }
@@ -338,6 +349,8 @@ public class CathedralScreen extends ScreenAdapter {
                     ToIdleIsSin.program.run("patienceperks");
                     patiencepop.update();
                     patienceMenu.setVisible(true);
+                    game.sound = game.assets.get("sound/jingle.mp3", Sound.class);
+                    game.sound.play();
                 }
                 super.clicked(event, x, y);
             }
@@ -357,6 +370,8 @@ public class CathedralScreen extends ScreenAdapter {
                     ToIdleIsSin.program.run("temperanceperks");
                     temperancepop.update();
                     temperanceMenu.setVisible(true);
+                    game.sound = game.assets.get("sound/jingle.mp3", Sound.class);
+                    game.sound.play();
                 }
                 super.clicked(event, x, y);
             }

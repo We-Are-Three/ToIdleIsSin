@@ -1,9 +1,12 @@
 package com.wearethreestudios.toidleissin.uihelpers;
 
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.wearethreestudios.toidleissin.ToIdleIsSin;
 
@@ -13,7 +16,7 @@ public class DialoguePopUp {
     private Label who;
     private Label words;
 
-    public DialoguePopUp(ToIdleIsSin game){
+    public DialoguePopUp(final ToIdleIsSin game){
         int width = (int)(ToIdleIsSin.WIDTH*2/3.0);
         int height = ToIdleIsSin.HEIGHT/6;
         popup = new Group();
@@ -35,6 +38,15 @@ public class DialoguePopUp {
         words.setWrap(true);
         popup.addActor(words);
         words.setPosition(width/3 + 15, 20);
+
+        popup.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                game.sound.play();
+                super.clicked(event, x, y);
+            }
+        });
 
     }
 
