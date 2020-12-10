@@ -36,7 +36,7 @@ public class Campaign {
 		campaigns.add(new Campaign("campaign3", null,
 				new Lines("campaign3one", 1, 4000, 0, null, null, 0, 0, 0, k, m, p, false),
 				new Lines("campaign3two", 2, 2000, 0, null, null, 0, 0, 0, k, m, p, false),
-				new Lines("campaign3three", 3, 500, 0, null, null, 0, 0, 0, k, m, p, false)));
+				new Lines("campaign3three", 3, 400, 0, null, null, 0, 0, 0, k, m, p, false)));
 		campaigns.add(new Campaign("campaign4", null,
 				new Lines("campaign4one", 1, 8000, 0, null, null, 0, 0, 0, k, m, p, false),
 				new Lines("campaign4two", 2, 4000, 0, null, null, 0, 0, 0, k, m, p, false),
@@ -104,8 +104,8 @@ public class Campaign {
 			if(!firstLine.isCleared()) return false;
 		if(secondLine != null) 
 			if(!secondLine.isCleared()) return false;
-		if(thirdLine != null) 
-			if(!thirdLine.isCleared()) return false;
+//		if(thirdLine != null)
+//			if(!thirdLine.isCleared()) return false;
 		return true;
 	}
 	

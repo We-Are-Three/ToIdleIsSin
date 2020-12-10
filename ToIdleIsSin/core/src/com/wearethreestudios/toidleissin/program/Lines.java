@@ -86,7 +86,12 @@ public class Lines {
 			enemiesToBeKilled = playerPower * gs.ALL_UNITS_DEATH_RATE;
 			setEnemiesKilled(enemiesToBeKilled);
 			killKnights(knightsToBeKilled);
-			if(enemiesKilled >= numberOfEnemies) setCleared();
+			if(enemiesKilled >= numberOfEnemies){
+				// Give a bonus
+				setCleared();
+				// Add the equivalent enemies that were killed as new knights
+				knight.add((int)enemiesKilled);
+			}
 			
 		}else if(this.WHICH_LINE == 4){
 			//this is a defensive line
@@ -163,6 +168,15 @@ public class Lines {
 		physician.remove(p/2);
 		
 	}
+
+	public void safeRetreat() {
+		int m = mages;
+		addMages(-m);
+		int p = physicians;
+		addPhysicians(-p);
+
+	}
+
 	public void addKnights(int num) {
 		this.knights += knight.addFighting(num);
 	}

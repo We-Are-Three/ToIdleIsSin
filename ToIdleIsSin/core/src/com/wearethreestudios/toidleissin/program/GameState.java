@@ -1,5 +1,6 @@
 package com.wearethreestudios.toidleissin.program;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Random;
@@ -24,6 +25,8 @@ public class GameState {
 	private long last_apu2_strike = 0;
 	private double TOTAL_UNITS = 0;
 	protected double ALL_UNITS_DEATH_RATE = 1.0/300;
+	protected int currentDayInYear = 0;
+	protected int pastDayInYear = 0;
 
 	public GameState(Database d) {
 		groups = new ArrayList<>();
@@ -87,13 +90,32 @@ public class GameState {
 		values.put(Modifier.APU1, 0.d);//
 		values.put(Modifier.APU2, 0.d);//
 		values.put(Modifier.DAILY_START, 0.d);//
-		
+
+		LocalDateTime time = LocalDateTime.now();
+		currentDayInYear = time.getDayOfYear();
+		pastDayInYear = time.getDayOfYear();
+
+
 		//if new game
 		if(d == null) {
 		}else {
 			//else old game so load up the state from memory
 			d.restore(this);
 			
+		}
+		if(isNewDay()){
+			// Reset all of the bonus lines
+			Program.print("New Day!!!");
+			ArrayList<Campaign> cs = getCampaigns();
+			Knights k = (Knights) getGroup("knights");
+			Mages m = (Mages) getGroup("mages");
+			Physicians p = (Physicians)getGroup("physicians");
+			for(int cur = 0; cur < cs.size(); cur++){
+				Lines l = cs.get(cur).getThirdLine();
+				l.addKnights(-l.getKnights());
+				l.safeRetreat();
+				cs.get(cur).setThirdLine(new Lines("campaign" + (cur+1) + "three", 3, (int)(100 * Math.pow(2, cur)), 0, null, null, 0, 0, 0, k, m, p, false));
+			}
 		}
 	}
 	
@@ -386,6 +408,11 @@ public class GameState {
 
 	public double getTOTAL_UNITS(){
 		return TOTAL_UNITS-1;
+	}
+
+	public boolean isNewDay(){
+		if(currentDayInYear != pastDayInYear) return true;
+		return false;
 	}
 	
 	

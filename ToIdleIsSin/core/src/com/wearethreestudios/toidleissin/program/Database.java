@@ -56,6 +56,8 @@ public class Database{
 		int[] linephy = new int[7*3];
 		int[] currentloopiteration = new int[7*3];
 		boolean[] cleared = new boolean[7*3];
+
+		public int day;
 		
 		public Database(GameState gs) {
 			Monks m = (Monks)gs.getGroup("monks");
@@ -125,6 +127,7 @@ public class Database{
 			totalDeserted = gs.getTotalDeserted();
 			last_apu1_strike = gs.getLast_apu1_strike();
 			last_apu2_strike = gs.getLast_apu2_strike();
+			day = gs.currentDayInYear;
 			
 		}
 		
@@ -203,5 +206,6 @@ public class Database{
 			gs.setTotalDeserted(totalDeserted);
 			gs.setLast_apu1_strike(last_apu1_strike);
 			gs.setLast_apu2_strike(last_apu2_strike);
+			gs.pastDayInYear = day;
 		}
 	}

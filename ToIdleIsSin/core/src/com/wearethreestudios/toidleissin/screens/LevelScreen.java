@@ -179,7 +179,7 @@ public class LevelScreen extends ScreenAdapter {
             }
         });
 
-        line3 = new TextButton("line3", game.skin, "navbutton");
+        line3 = new TextButton("daily line", game.skin, "navbutton");
         line3.setPosition((int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4));
         line3.setSize(200, 200);
         line3.setOrigin(Align.center);
@@ -226,7 +226,13 @@ public class LevelScreen extends ScreenAdapter {
                     int idlePeople = (int)Program.gameState.getGroup("knights").getIdle();
                     int workingPeople = line.getKnights();
                     if(slider != null) slider.getPopup().remove();
-                    slider = new SlidePopUp(game, (int)(ToIdleIsSin.WIDTH*0.8), (int)(ToIdleIsSin.HEIGHT*0.4), "Fighting Knights", idlePeople, workingPeople, job1Command);
+                    slider = new SlidePopUp(game, (int)(ToIdleIsSin.WIDTH*0.8), (int)(ToIdleIsSin.HEIGHT*0.4), "Fighting Knights", idlePeople, workingPeople, job1Command){
+                        @Override
+                        public void remove() {
+                            if(line.getKnights() == 0) line.safeRetreat();
+                            super.remove();
+                        }
+                    };
                     slider.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -slider.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.3 -slider.getPopup().getHeight()/2));
                     stage.addActor(slider.getPopup());
                     Program.gameState.pause();
