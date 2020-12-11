@@ -33,6 +33,7 @@ import com.wearethreestudios.toidleissin.program.Modifier;
 import com.wearethreestudios.toidleissin.program.Monks;
 import com.wearethreestudios.toidleissin.program.Physicians;
 import com.wearethreestudios.toidleissin.program.Program;
+import com.wearethreestudios.toidleissin.uihelpers.ImageBlob;
 import com.wearethreestudios.toidleissin.uihelpers.NavButtons;
 import com.wearethreestudios.toidleissin.uihelpers.ScrollImage;
 import com.wearethreestudios.toidleissin.uihelpers.SlidePopUp;
@@ -84,7 +85,22 @@ public class LevelScreen extends ScreenAdapter {
 //    private Group currentImage;
     private Lines line;
 
+//    private ImageBlob walkingMan;
+    private ImageBlob knight;
+    private ImageBlob mage;
+    private ImageBlob physician;
+    private ImageBlob enemy1;
+    private ImageBlob enemy2;
+    private ImageBlob enemy3;
+    private ImageBlob boss;
+    private float bossScaleX;
+    private float bossScaleY;
+    private int bossxoffset = 0;
+
+
     private void initButtons(){
+        prepareUnits();
+
         village = NavButtons.getVillage(game);
         campaign = NavButtons.getCampaign(game);
         story = NavButtons.getStory(game);
@@ -153,6 +169,7 @@ public class LevelScreen extends ScreenAdapter {
                 secondscroll.get().setVisible(false);
                 thirdscroll.get().setVisible(false);
                 line = camp.getFirstLine();
+                prepareUnits();
                 super.clicked(event, x, y);
             }
         });
@@ -175,6 +192,7 @@ public class LevelScreen extends ScreenAdapter {
                 thirdscroll.get().setVisible(false);
                 currentLine = "two";
                 line = camp.getSecondLine();
+                prepareUnits();
                 super.clicked(event, x, y);
             }
         });
@@ -197,6 +215,7 @@ public class LevelScreen extends ScreenAdapter {
                 thirdscroll.get().setVisible(true);
                 currentLine = "three";
                 line = camp.getThirdLine();
+                prepareUnits();
                 super.clicked(event, x, y);
             }
         });
@@ -360,6 +379,9 @@ public class LevelScreen extends ScreenAdapter {
         stage.addActor(apu1);
         stage.addActor(apu2);
         stage.addActor(strengthText);
+//        stage.addActor(walkingMan);
+//        walkingMan.setBlobScale(1.5f, 1.5f);
+//        walkingMan.setPosition((int)(150 - walkingMan.getWidth()/2),ToIdleIsSin.HEIGHT/2);
 
 
     }
@@ -430,6 +452,153 @@ public class LevelScreen extends ScreenAdapter {
         game.batch.end();
         stage.act(delta);
         stage.draw();
+
+        game.batch.begin();
+//        walkingMan.draw((int)(300 - walkingMan.getWidth()/2),ToIdleIsSin.HEIGHT/2-200,1.5,1.5);
+
+        if(line.getMages() > 0)
+            mage.draw((int)(0 - mage.getWidth()/2),ToIdleIsSin.HEIGHT/2+200,0.75,0.75);
+
+        if( (line.getNumberOfEnemies() - line.getEnemiesKilled() > 0 && line.getWHICH_LINE() != 1) || ( line.getEnemiesKilled() / line.getNumberOfEnemies() < 0.85 && line.getWHICH_LINE() == 1 ) )
+            enemy1.draw((int)(550 - enemy1.getWidth()/2),ToIdleIsSin.HEIGHT/2+200,0.75,0.75);
+
+        if(line.getKnights() > 0)
+            knight.draw((int)(200 - knight.getWidth()/2),ToIdleIsSin.HEIGHT/2+50,1.2,1.2);
+
+        if(line.getEnemiesKilled() / line.getNumberOfEnemies() > 0.85 && !line.isCleared() && line.getWHICH_LINE() == 1)
+            boss.draw((int)(500 + bossxoffset - boss.getWidth()/2),ToIdleIsSin.HEIGHT/2+100, bossScaleX, bossScaleY);
+
+        if( (line.getNumberOfEnemies() - line.getEnemiesKilled() > 0 && line.getWHICH_LINE() != 1) || ( line.getEnemiesKilled() / line.getNumberOfEnemies() < 0.85 && line.getWHICH_LINE() == 1 ) )
+            enemy3.draw((int)(750 - enemy3.getWidth()/2+50),ToIdleIsSin.HEIGHT/2+100,0.75,0.75);
+
+        if(line.getPhysicians() > 0)
+            physician.draw((int)(-50 - physician.getWidth()/2),ToIdleIsSin.HEIGHT/2,0.75,0.75);
+
+        if( (line.getNumberOfEnemies() - line.getEnemiesKilled() > 0 && line.getWHICH_LINE() != 1) || ( line.getEnemiesKilled() / line.getNumberOfEnemies() < 0.85 && line.getWHICH_LINE() == 1 ) )
+            enemy2.draw((int)(400 - enemy2.getWidth()/2),ToIdleIsSin.HEIGHT/2,1.2,1.2);
+
+
+        game.batch.end();
+//        walkingMan.returnToState(0);
+        if(line.isCleared()){
+            knight.returnToState(0);
+            mage.returnToState(0);
+            physician.returnToState(0);
+        }else{
+            knight.random();
+            mage.random();
+            physician.random();
+        }
+        if(line.getKnights() == 0){
+            enemy1.returnToState(0);
+            boss.returnToState(0);
+            enemy2.returnToState(0);
+            enemy3.returnToState(0);
+        }else{
+            enemy1.random();
+            boss.random();
+            enemy2.random();
+            enemy3.random();
+        }
+
+    }
+
+    public void prepareUnits(){
+        if(knight != null) knight.dispose();
+        if(mage != null) mage.dispose();
+        if(physician != null) physician.dispose();
+        if(enemy1 != null) enemy1.dispose();
+        if(enemy3 != null) enemy3.dispose();
+        if(boss != null) boss.dispose();
+        if(enemy2 != null) enemy2.dispose();
+
+//        walkingMan = new ImageBlob(game, 1);
+//        walkingMan.addState("knightidle", 5, 5, 0.0625f);
+//        walkingMan.addState("knightattack", 5, 5, 0.0625f);
+//        walkingMan.flip();
+//        walkingMan.debug();
+
+        knight = new ImageBlob(game, 1);
+        knight.addState("sprites/units/knightidle", 4, 4, 0.15f);
+        knight.addState("sprites/units/knightattack", 4, 4, 0.15f);
+        knight.flip();
+        mage = new ImageBlob(game, 1);
+        mage.addState("sprites/units/mageidle", 4, 4, 0.15f);
+        mage.addState("sprites/units/mageattack", 4, 4, 0.15f);
+        mage.flip();
+        physician = new ImageBlob(game, 1);
+        physician.addState("sprites/units/physicianidle", 4, 4, 0.15f);
+        physician.addState("sprites/units/physicianattack", 4, 4, 0.15f);
+        physician.flip();
+
+        enemy1 = new ImageBlob(game, 1);
+        enemy1.addState("sprites/units/darkmonkidle", 4, 4, 0.15f);
+        enemy1.addState("sprites/units/darkmonkidle", 4, 4, 0.15f);
+        enemy2 = new ImageBlob(game, 1);
+        enemy2.addState("sprites/units/skeletonidle", 4, 4, 0.15f);
+        enemy2.addState("sprites/units/skeletonattack", 4, 4, 0.15f);
+        enemy3 = new ImageBlob(game, 1);
+        enemy3.addState("sprites/units/darkmonkidle", 4, 4, 0.15f);
+        enemy3.addState("sprites/units/darkmonkidle", 4, 4, 0.15f);
+
+        boss = new ImageBlob(game, 1);
+        switch (level){
+            case 1:
+                boss.addState("sprites/units/monsterenvyidle", 4, 4, 0.2f);
+                boss.addState("sprites/units/monsterenvyattack", 4, 4, 0.2f);
+                bossScaleX = 1.5f;
+                bossScaleY = 1.5f;
+                bossxoffset = -150;
+                break;
+            case 2:
+                boss.addState("sprites/units/monsteravariceidle", 4, 4, 0.15f);
+                boss.addState("sprites/units/monsteravariceattack", 4, 4, 0.15f);
+                bossScaleX = 1.3f;
+                bossScaleY = 1.3f;
+                bossxoffset = -100;
+                break;
+            case 3:
+                boss.addState("sprites/units/monstergluttonyidle", 4, 4, 0.15f);
+                boss.addState("sprites/units/monstergluttonyattack", 4, 4, 0.15f);
+                bossScaleX = 1.2f;
+                bossScaleY = 1.2f;
+                bossxoffset = -50;
+                break;
+            case 4:
+                boss.addState("sprites/units/monsterslothidle", 4, 4, 0.15f);
+                boss.addState("sprites/units/monsterslothattack", 4, 4, 0.15f);
+                bossScaleX = 1.2f;
+                bossScaleY = 1.2f;
+                bossxoffset = -25;
+                break;
+            case 5:
+                boss.addState("sprites/units/monsterrageidle", 4, 4, 0.15f);
+                boss.addState("sprites/units/monsterrageattack", 4, 4, 0.15f);
+                bossScaleX = 1.2f;
+                bossScaleY = 1.2f;
+                break;
+            case 6:
+                boss.addState("sprites/units/monsterlustidle", 4, 4, 0.15f);
+                boss.addState("sprites/units/monsterlustattack", 4, 4, 0.15f);
+                bossScaleX = 1.6f;
+                bossScaleY = 1.6f;
+                bossxoffset = -200;
+                break;
+            case 7:
+                boss.addState("sprites/units/monsterprideidle", 4, 4, 0.15f);
+                boss.addState("sprites/units/monsterprideattack", 4, 4, 0.15f);
+                bossScaleX = 1.2f;
+                bossScaleY = 1.2f;
+                bossxoffset = 0;
+                break;
+            default:
+                boss.addState("sprites/units/monsterprideidle", 4, 4, 0.15f);
+                boss.addState("sprites/units/monsterprideattack", 4, 4, 0.15f);
+                Program.print("Error, there is no level " + level);
+                break;
+        }
+
+
     }
 
     @Override
@@ -448,6 +617,10 @@ public class LevelScreen extends ScreenAdapter {
                         slider.remove();
                     }
                 }
+//                if(walkingMan.contains(touch.x, touch.y)){
+//                    walkingMan.switchState(1);
+//                    walkingMan.flip();
+//                }
                 return super.touchDown(screenX, screenY, pointer, button);
             }
 
@@ -482,6 +655,12 @@ public class LevelScreen extends ScreenAdapter {
 
     @Override
     public void dispose() {
+//        walkingMan.dispose();
+        knight.dispose();
+        mage.dispose();
+        physician.dispose();
+        enemy1.dispose();
+        enemy2.dispose();
         stage.dispose();
     }
 }

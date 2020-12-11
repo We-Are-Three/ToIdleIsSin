@@ -14,6 +14,7 @@ import com.wearethreestudios.toidleissin.ToIdleIsSin;
 import com.wearethreestudios.toidleissin.program.Program;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 //https://stackoverflow.com/questions/16059578/libgdx-is-there-an-actor-that-is-animated
 public class ImageBlob extends Image {
@@ -26,6 +27,9 @@ public class ImageBlob extends Image {
     private Rectangle hitbox;
     private double percentOfHitbox;
     private boolean flip;
+    private Random random;
+    private float scalerX = 1.0f;
+    private float scalerY = 1.0f;
 
     public ImageBlob(ToIdleIsSin s, double percentOfHitbox){
         super(s.atlas.findRegion("alpha"));
@@ -36,15 +40,16 @@ public class ImageBlob extends Image {
         game = s;
         flip = false;
         this.percentOfHitbox = percentOfHitbox;
+        random = new Random();
     }
+
 
     @Override
     public void act(float delta)
     {
         ((TextureRegionDrawable)getDrawable()).setRegion(getTextureRegion());
-        setWidth(states.get(currentState).getKeyFrame(stateTimes.get(currentState)).getRegionWidth());
-        setHeight(states.get(currentState).getKeyFrame(stateTimes.get(currentState)).getRegionHeight());
-
+        setWidth(states.get(currentState).getKeyFrame(stateTimes.get(currentState)).getRegionWidth() *scalerX);
+        setHeight(states.get(currentState).getKeyFrame(stateTimes.get(currentState)).getRegionHeight() * scalerY);
 
         int hitx = (int)( getX() + (getWidth()/2)*(1-percentOfHitbox));
         int hity = (int)( getY() + (getHeight()/2)*(1-percentOfHitbox));
@@ -57,6 +62,11 @@ public class ImageBlob extends Image {
         }
 
         super.act(delta);
+    }
+
+    public void setBlobScale(float x, float y){
+        scalerX = x;
+        scalerY = y;
     }
 
     @Override
@@ -89,6 +99,7 @@ public class ImageBlob extends Image {
             }
         }
         states.add(new Animation<>(animation_time, walkFrames));
+        states.get(states.size()-1).setPlayMode(Animation.PlayMode.LOOP);
         stateTimes.add(0f);
 
 
@@ -110,6 +121,7 @@ public class ImageBlob extends Image {
             }
         }
         flips.add(new Animation<>(animation_time, flipframes));
+        flips.get(flips.size()-1).setPlayMode(Animation.PlayMode.LOOP);
         stateTimes.add(0f);
 
 
@@ -138,6 +150,7 @@ public class ImageBlob extends Image {
             }
         }
         states.add(new Animation<>(animation_time, walkFrames));
+        states.get(states.size()-1).setPlayMode(Animation.PlayMode.LOOP);
         stateTimes.add(0f);
 
 
@@ -162,6 +175,7 @@ public class ImageBlob extends Image {
             }
         }
         flips.add(new Animation<>(animation_time, flipframes));
+        flips.get(flips.size()-1).setPlayMode(Animation.PlayMode.LOOP);
         stateTimes.add(0f);
         return this;
     }
@@ -222,11 +236,23 @@ public class ImageBlob extends Image {
 
     public boolean returnToState(int state){
         if (currentState == state) return true;
+        if(currentState == state && states.get(currentState).isAnimationFinished(stateTimes.get(currentState))){
+            return true;
+        }
         if(states.get(currentState).isAnimationFinished(stateTimes.get(currentState))){
             switchState(state);
             return true;
         }
         return false;
+    }
+
+    public void random(){
+        int choice = 0;
+        if(states.size() > 1){
+            int rand = random.nextInt(1000);
+            choice = rand < 980 ? 0 : (int) ((rand-980)/(20f/(states.size()-1)) + 1);
+        }
+        returnToState(choice);
     }
 
     public void dispose(){
