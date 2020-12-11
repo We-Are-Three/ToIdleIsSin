@@ -30,6 +30,8 @@ public class ImageBlob extends Image {
     private Random random;
     private float scalerX = 1.0f;
     private float scalerY = 1.0f;
+    private float scalerHitX = 0f;
+    private float scalerHitY = 0f;
 
     public ImageBlob(ToIdleIsSin s, double percentOfHitbox){
         super(s.atlas.findRegion("alpha"));
@@ -51,8 +53,8 @@ public class ImageBlob extends Image {
         setWidth(states.get(currentState).getKeyFrame(stateTimes.get(currentState)).getRegionWidth() *scalerX);
         setHeight(states.get(currentState).getKeyFrame(stateTimes.get(currentState)).getRegionHeight() * scalerY);
 
-        int hitx = (int)( getX() + (getWidth()/2)*(1-percentOfHitbox));
-        int hity = (int)( getY() + (getHeight()/2)*(1-percentOfHitbox));
+        int hitx = (int)( getX() + getWidth()*scalerHitX + (getWidth()/2)*(1-percentOfHitbox));
+        int hity = (int)( getY() + getHeight()*scalerHitY + (getHeight()/2)*(1-percentOfHitbox));
         int hitWidth = (int)( getWidth() - (getWidth()/2)*(1-percentOfHitbox)*2);
         int hitHeight = (int)( getHeight() - (getHeight()/2)*(1-percentOfHitbox)*2);
         if(hitbox == null){
@@ -69,14 +71,19 @@ public class ImageBlob extends Image {
         scalerY = y;
     }
 
+    public void setHitOffset(float x, float y){
+        scalerHitX = x;
+        scalerHitY = y;
+    }
+
     @Override
     public Actor hit(float x, float y, boolean touchable) {
         if (touchable && this.getTouchable() != Touchable.enabled) return null;
         if (!isVisible()) return null;
-        return (x >= (getWidth()/2)*(1-percentOfHitbox) &&
-                x < (this.getWidth() - (getWidth()/2)*(1-percentOfHitbox)*2) &&
-                y >= (getHeight()/2)*(1-percentOfHitbox) &&
-                y < (this.getHeight() - (getHeight()/2)*(1-percentOfHitbox)*2) )
+        return (x >= (getWidth()/2)*(1-percentOfHitbox) + getWidth()*scalerHitX &&
+                x < (this.getWidth() - (getWidth()/2)*(1-percentOfHitbox)*2) + getWidth()*scalerHitX &&
+                y >= (getHeight()/2)*(1-percentOfHitbox) + getWidth()*scalerHitY &&
+                y < (this.getHeight() - (getHeight()/2)*(1-percentOfHitbox)*2) + getWidth()*scalerHitY )
                 ? this : null;
     }
 

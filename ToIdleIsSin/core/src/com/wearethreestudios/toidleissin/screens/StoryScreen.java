@@ -61,7 +61,6 @@ public class StoryScreen extends ScreenAdapter {
     private ImageBlob diligence;
     private ImageBlob humility;
     private ImageBlob kindness;
-    private ImageBlob patiencekid;
     private ImageBlob patienceman;
     private ImageBlob temperance;
 
@@ -122,8 +121,8 @@ public class StoryScreen extends ScreenAdapter {
         initSprites();
 
         door = new ImageBlob(game, 0.75);
-        door.addState("story/door", 1, 1, 0.025f)
-                .addState("story/door-click", 1, 1, 0.025f);
+        door.addState("story/door", 1,  1, 0.025f)
+                .addState("story/door-click", 1,  1, 0.025f);
 
     }
 
@@ -143,7 +142,7 @@ public class StoryScreen extends ScreenAdapter {
 //        walkingMan.addState("sprite-animation4", 5, 6, 0.025f);
 
         charity = new ImageBlob(game, 0.75);
-        charity.addState("sprites/charity", 1, 1, 0.025f);
+        charity.addState("sprites/units/charity", 4,  4, 0.08f);
         charity.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -177,7 +176,7 @@ public class StoryScreen extends ScreenAdapter {
         });
 
         kindness = new ImageBlob(game, 0.75);
-        kindness.addState("sprites/kindness", 1, 1, 0.025f);
+        kindness.addState("sprites/units/kindness", 4,  4, 0.08f);
         kindness.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -199,7 +198,7 @@ public class StoryScreen extends ScreenAdapter {
         });
 
         diligence = new ImageBlob(game, 0.75);
-        diligence.addState("sprites/diligence", 1, 1, 0.025f);
+        diligence.addState("sprites/units/diligence", 4,  4, 0.08f);
         diligence.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -221,7 +220,7 @@ public class StoryScreen extends ScreenAdapter {
         });
 
         humility = new ImageBlob(game, 0.75);
-        humility.addState("sprites/humility", 1, 1, 0.025f);
+        humility.addState("sprites/units/humility", 4,  4, 0.08f);
         humility.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -242,8 +241,8 @@ public class StoryScreen extends ScreenAdapter {
             }
         });
         
-        chastity = new ImageBlob(game, 0.75);
-        chastity.addState("sprites/chastity", 1, 1, 0.025f);
+        chastity = new ImageBlob(game, 0.6);
+        chastity.addState("sprites/units/chastity", 4,  4, 0.08f);
         chastity.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -265,7 +264,7 @@ public class StoryScreen extends ScreenAdapter {
         });
         
         patienceman = new ImageBlob(game, 0.75);
-        patienceman.addState("sprites/patienceman", 1, 1, 0.025f);
+        patienceman.addState("sprites/units/patience", 4,  4, 0.08f);
         patienceman.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -286,18 +285,8 @@ public class StoryScreen extends ScreenAdapter {
             }
         });
         
-        patiencekid = new ImageBlob(game, 0.75);
-        patiencekid.addState("sprites/patiencekid", 1, 1, 0.025f);
-        patiencekid.addListener(new ClickListener(){
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                Program.print("I am patiencekid");
-                super.clicked(event, x, y);
-            }
-        });
-        
         temperance = new ImageBlob(game, 0.75);
-        temperance.addState("sprites/temperance", 1, 1, 0.025f);
+        temperance.addState("sprites/units/temperance", 4,  4, 0.08f);
         temperance.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -320,18 +309,14 @@ public class StoryScreen extends ScreenAdapter {
 
         stage.addActor(charity);
         charity.setPosition(550,1100);
+        charity.setBlobScale(0.9f, 0.9f);
 //        charity.debug();
 
-        stage.addActor(patiencekid);
-        patiencekid.setPosition(50,1050);
-//        patiencekid.debug();
-
         stage.addActor(patienceman);
-        patienceman.setPosition(200,1100);
+        patienceman.setPosition(150,1100);
 //        patienceman.debug();
         if(Program.gameState.getVirtue("patience").getProgress() == 0){
             patienceman.setVisible(false);
-            patiencekid.setVisible(false);
         }
 
         stage.addActor(kindness);
@@ -350,7 +335,9 @@ public class StoryScreen extends ScreenAdapter {
         }
 
         stage.addActor(chastity);
-        chastity.setPosition(600,200);
+        chastity.setPosition(450,200);
+        chastity.setBlobScale(1.5f, 1.5f);
+        chastity.setHitOffset(0.2f, 0);
 //        chastity.debug();
         if(Program.gameState.getVirtue("chastity").getProgress() == 0){
             chastity.setVisible(false);
@@ -372,7 +359,6 @@ public class StoryScreen extends ScreenAdapter {
         }
 
         characters.add(charity);
-        characters.add(patiencekid);
         characters.add(patienceman);
         characters.add(kindness);
         characters.add(temperance);
@@ -394,7 +380,6 @@ public class StoryScreen extends ScreenAdapter {
         }
         if(Program.gameState.getVirtue("patience").getProgress() != 0){
             patienceman.setVisible(true);
-            patiencekid.setVisible(true);
         }
         if(Program.gameState.getVirtue("kindness").getProgress() != 0){
             kindness.setVisible(true);
@@ -416,7 +401,6 @@ public class StoryScreen extends ScreenAdapter {
     public void allInvisible(){
         charity.setVisible(false);
         patienceman.setVisible(false);
-        patiencekid.setVisible(false);
         kindness.setVisible(false);
         temperance.setVisible(false);
         chastity.setVisible(false);
