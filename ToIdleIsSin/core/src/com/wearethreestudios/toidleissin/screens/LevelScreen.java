@@ -82,10 +82,8 @@ public class LevelScreen extends ScreenAdapter {
     private ScrollImage firstscroll;
     private ScrollImage secondscroll;
     private ScrollImage thirdscroll;
-//    private Group currentImage;
     private Lines line;
 
-//    private ImageBlob walkingMan;
     private ImageBlob knight;
     private ImageBlob mage;
     private ImageBlob physician;
@@ -239,9 +237,6 @@ public class LevelScreen extends ScreenAdapter {
             public void clicked(InputEvent event, float x, float y) {
                 game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
                 game.sound.play();
-//                if(Program.realTime() - held > 1000*0.25){
-//                    recruit.getPopup().setVisible(true);
-//                }else{
                     int idlePeople = (int)Program.gameState.getGroup("knights").getIdle();
                     int workingPeople = line.getKnights();
                     if(slider != null) slider.getPopup().remove();
@@ -255,7 +250,6 @@ public class LevelScreen extends ScreenAdapter {
                     slider.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -slider.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.3 -slider.getPopup().getHeight()/2));
                     stage.addActor(slider.getPopup());
                     Program.gameState.pause();
-//                }
                 super.clicked(event, x, y);
             }
 
@@ -285,9 +279,6 @@ public class LevelScreen extends ScreenAdapter {
             public void clicked(InputEvent event, float x, float y) {
                 game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
                 game.sound.play();
-//                if(Program.realTime() - held > 1000*0.25){
-//                    recruit.getPopup().setVisible(true);
-//                }else{
                 int idlePeople = (int)Program.gameState.getGroup("mages").getIdle();
                 int workingPeople = line.getMages();
                 if(slider != null) slider.getPopup().remove();
@@ -295,7 +286,6 @@ public class LevelScreen extends ScreenAdapter {
                 slider.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -slider.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.3 -slider.getPopup().getHeight()/2));
                 stage.addActor(slider.getPopup());
                 Program.gameState.pause();
-//                }
                 super.clicked(event, x, y);
             }
 
@@ -325,9 +315,6 @@ public class LevelScreen extends ScreenAdapter {
             public void clicked(InputEvent event, float x, float y) {
                 game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
                 game.sound.play();
-//                if(Program.realTime() - held > 1000*0.25){
-//                    recruit.getPopup().setVisible(true);
-//                }else{
                 int idlePeople = (int)Program.gameState.getGroup("physicians").getIdle();
                 int workingPeople = line.getPhysicians();
                 if(slider != null) slider.getPopup().remove();
@@ -335,7 +322,6 @@ public class LevelScreen extends ScreenAdapter {
                 slider.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -slider.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.3 -slider.getPopup().getHeight()/2));
                 stage.addActor(slider.getPopup());
                 Program.gameState.pause();
-//                }
                 super.clicked(event, x, y);
             }
 
@@ -369,7 +355,6 @@ public class LevelScreen extends ScreenAdapter {
         thirdscroll.get().setPosition(0, ToIdleIsSin.HEIGHT/2);
 
         Program.print("width: " + firstscroll.get().getWidth() + " ");
-//        currentImage = firstscroll.get();
         stage.addActor(firstscroll.get());
         stage.addActor(secondscroll.get());
         stage.addActor(thirdscroll.get());
@@ -379,9 +364,6 @@ public class LevelScreen extends ScreenAdapter {
         stage.addActor(apu1);
         stage.addActor(apu2);
         stage.addActor(strengthText);
-//        stage.addActor(walkingMan);
-//        walkingMan.setBlobScale(1.5f, 1.5f);
-//        walkingMan.setPosition((int)(150 - walkingMan.getWidth()/2),ToIdleIsSin.HEIGHT/2);
 
 
     }
@@ -454,7 +436,6 @@ public class LevelScreen extends ScreenAdapter {
         stage.draw();
 
         game.batch.begin();
-//        walkingMan.draw((int)(300 - walkingMan.getWidth()/2),ToIdleIsSin.HEIGHT/2-200,1.5,1.5);
 
         if(line.getMages() > 0)
             mage.draw((int)(0 - mage.getWidth()/2),ToIdleIsSin.HEIGHT/2+200,0.75,0.75);
@@ -511,12 +492,6 @@ public class LevelScreen extends ScreenAdapter {
         if(enemy3 != null) enemy3.dispose();
         if(boss != null) boss.dispose();
         if(enemy2 != null) enemy2.dispose();
-
-//        walkingMan = new ImageBlob(game, 1);
-//        walkingMan.addState("knightidle", 5, 5, 0.0625f);
-//        walkingMan.addState("knightattack", 5, 5, 0.0625f);
-//        walkingMan.flip();
-//        walkingMan.debug();
 
         knight = new ImageBlob(game, 1);
         knight.addState("sprites/units/knightidle", 4, 4, 0.15f);
@@ -617,10 +592,6 @@ public class LevelScreen extends ScreenAdapter {
                         slider.remove();
                     }
                 }
-//                if(walkingMan.contains(touch.x, touch.y)){
-//                    walkingMan.switchState(1);
-//                    walkingMan.flip();
-//                }
                 return super.touchDown(screenX, screenY, pointer, button);
             }
 
@@ -636,21 +607,6 @@ public class LevelScreen extends ScreenAdapter {
         mult.addProcessor(general);
         mult.addProcessor(stage);
         Gdx.input.setInputProcessor(mult);
-    }
-
-    @Override
-    public void hide() {
-        super.hide();
-    }
-
-    @Override
-    public void pause() {
-        super.pause();
-    }
-
-    @Override
-    public void resume() {
-        super.resume();
     }
 
     @Override

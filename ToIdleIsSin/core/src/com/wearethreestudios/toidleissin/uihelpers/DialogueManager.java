@@ -76,14 +76,6 @@ public class DialogueManager {
             JsonElement j = hellojson.getAsJsonArray("main").get(i);
         }
         characters.put("patience", hellojson);
-
-//        helloworld = Gdx.files.internal("dialogue/patiencekid.json").readString();
-//        hellojson = new JsonParser().parse(helloworld).getAsJsonObject();
-//        hellojson.getAsJsonArray("main").get(0);
-//        for(int i = 0 ; i < hellojson.getAsJsonArray("main").size(); i++){
-//            JsonElement j = hellojson.getAsJsonArray("main").get(i);
-//        }
-//        characters.put("patiencekid", hellojson);
     }
 
     public Dialogue characterMainDialogue(String character){

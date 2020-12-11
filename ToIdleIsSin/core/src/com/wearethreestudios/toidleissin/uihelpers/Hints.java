@@ -33,7 +33,6 @@ public class Hints {
         int height = h;
         int width = w;
 
-//        popup.setDebug(true);
         popup.debugAll();
 
         popup.row();

@@ -150,21 +150,6 @@ public class BarracksScreen extends ScreenAdapter {
     }
 
     @Override
-    public void hide() {
-        super.hide();
-    }
-
-    @Override
-    public void pause() {
-        super.pause();
-    }
-
-    @Override
-    public void resume() {
-        super.resume();
-    }
-
-    @Override
     public void dispose() {
         stage.dispose();
     }

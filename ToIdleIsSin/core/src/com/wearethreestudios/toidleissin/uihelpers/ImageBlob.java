@@ -199,7 +199,6 @@ public class ImageBlob extends Image {
         }
 //        Program.print("\n1: " + x + " " + y + " " + width  + " " + height +
 //                      "\n2: " + hitbox.x + " " + hitbox.y + " " + hitbox.width  + " " + hitbox.height);
-//        game.batch.draw(getTextureRegion(), flip ? x+width : x, y, flip ? -width : width, height);
         game.batch.draw(getTextureRegion(),  x, y,  width, height);
     }
 

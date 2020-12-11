@@ -55,10 +55,8 @@ public class PerkPopUp {
         name.setAlignment(Align.center);
         popup.add(name).padBottom(50);
         points = new Label("Points: "+ (int)Program.gameState.getPerkPoint(), game.skin, "perk");
-//        points.setWrap(true);
         points.setAlignment(Align.center);
         popup.add(points).center().padBottom(50);
-//        popup.add(temp).fillX();
         exit = new TextButton("X", game.skin, "perk");
         exit.getLabel().setAlignment(Align.center);
         exit.addListener(new ClickListener() {
@@ -177,8 +175,7 @@ public class PerkPopUp {
             height -= perk4.getHeight();
         }
         popup.row();
-        Program.print("" + height);
-//
+
         temp = new Label("", game.skin, "alpha");
         popup.add(temp).height(height).width(width).colspan(3);
     }

@@ -48,7 +48,6 @@ public class StoryScreen extends ScreenAdapter {
 
     private TextureRegion background;
 
-//    private ImageBlob walkingMan;
     private ImageBlob door;
     private TextButton village;
     private TextButton campaign;
@@ -77,30 +76,6 @@ public class StoryScreen extends ScreenAdapter {
         village = NavButtons.getVillage(game);
         campaign = NavButtons.getCampaign(game);
         story = NavButtons.getStory(game);
-//        village.addListener(new ClickListener(){
-//            @Override
-//            public void clicked(InputEvent event, float x, float y) {
-//                game.setScreen(new VillageScreen(game));
-//                ToIdleIsSin.program.run("village");
-//                super.clicked(event, x, y);
-//            }
-//
-//            @Override
-//            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
-//                village.addAction(
-//                        forever(sequence(
-//                                scaleTo(1.1f, 1.1f, 0.1f, Interpolation.pow5),
-//                                scaleTo(1f, 1f, 0.1f, Interpolation.pow5))));
-//                super.enter(event, x, y, pointer, fromActor);
-//            }
-//
-//            @Override
-//            public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
-//                village.clearActions();
-//                super.exit(event, x, y, pointer, toActor);
-//            }
-//
-//        });
 
         stage.addActor(village);
         stage.addActor(campaign);
@@ -137,9 +112,6 @@ public class StoryScreen extends ScreenAdapter {
         });
 
         characters = new ArrayList<>();
-//        walkingMan = new ImageBlob(game, 1);
-//        walkingMan.addState("sprite-animation4", 5, 6, 0.025f, 1, 1);
-//        walkingMan.addState("sprite-animation4", 5, 6, 0.025f);
 
         charity = new ImageBlob(game, 0.75);
         charity.addState("sprites/units/charity", 4,  4, 0.08f);
@@ -159,18 +131,6 @@ public class StoryScreen extends ScreenAdapter {
                 dialogue = charityWords;
                 selectedVirtue = charity;
                 speak();
-                
-//                charity.addAction(
-//                        sequence(
-//                                scaleTo(1.1f, 1.1f, 1f, Interpolation.pow5),
-//                                scaleTo(1f, 1f, 1f, Interpolation.pow5),
-//                                run(new Runnable() {
-//                                    @Override
-//                                    public void run() {
-//                                        charity.flip();
-//                                    }
-//                                }),
-//                                moveBy(-200, 0, 1f)));
                 super.clicked(event, x, y);
             }
         });
@@ -310,11 +270,9 @@ public class StoryScreen extends ScreenAdapter {
         stage.addActor(charity);
         charity.setPosition(550,1100);
         charity.setBlobScale(0.9f, 0.9f);
-//        charity.debug();
 
         stage.addActor(patienceman);
         patienceman.setPosition(150,1100);
-//        patienceman.debug();
         if(Program.gameState.getVirtue("patience").getProgress() == 0){
             patienceman.setVisible(false);
         }
@@ -322,14 +280,12 @@ public class StoryScreen extends ScreenAdapter {
         stage.addActor(kindness);
         kindness.setPosition(0,650);
         kindness.flip();
-//        kindness.debug();
         if(Program.gameState.getVirtue("kindness").getProgress() == 0){
             kindness.setVisible(false);
         }
 
         stage.addActor(temperance);
         temperance.setPosition(350,700);
-//        temperance.debug();
         if(Program.gameState.getVirtue("temperance").getProgress() == 0){
             temperance.setVisible(false);
         }
@@ -338,14 +294,12 @@ public class StoryScreen extends ScreenAdapter {
         chastity.setPosition(450,200);
         chastity.setBlobScale(1.5f, 1.5f);
         chastity.setHitOffset(0.2f, 0);
-//        chastity.debug();
         if(Program.gameState.getVirtue("chastity").getProgress() == 0){
             chastity.setVisible(false);
         }
 
         stage.addActor(diligence);
         diligence.setPosition(250,200);
-//        diligence.debug();
         if(Program.gameState.getVirtue("diligence").getProgress() == 0){
             diligence.setVisible(false);
         }
@@ -353,7 +307,6 @@ public class StoryScreen extends ScreenAdapter {
         stage.addActor(humility);
         humility.setPosition(-100,200);
         humility.flip();
-//        humility.debug();
         if(Program.gameState.getVirtue("humility").getProgress() == 0){
             humility.setVisible(false);
         }
@@ -449,13 +402,10 @@ public class StoryScreen extends ScreenAdapter {
         // ELEMENTS
         door.draw((int)(ToIdleIsSin.WIDTH*0.74), (int)(ToIdleIsSin.HEIGHT*0.49), 1.0, 1.0);
 
-//        walkingMan.draw(250,250,200,200);
 
         game.batch.end();
         stage.act(delta);
         stage.draw();
-
-//        walkingMan.returnToState(0);
     }
 
     @Override
@@ -480,9 +430,6 @@ public class StoryScreen extends ScreenAdapter {
             @Override
             public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                 gamePort.unproject(touch.set(screenX, screenY, 0));
-//                if(walkingMan.contains(touch.x, touch.y)){
-//                    walkingMan.switchState(1);
-//                }
                 return super.touchDown(screenX, screenY, pointer, button);
             }
 
@@ -502,24 +449,8 @@ public class StoryScreen extends ScreenAdapter {
     }
 
     @Override
-    public void hide() {
-        super.hide();
-    }
-
-    @Override
-    public void pause() {
-        super.pause();
-    }
-
-    @Override
-    public void resume() {
-        super.resume();
-    }
-
-    @Override
     public void dispose() {
         door.dispose();
-//        walkingMan.dispose();
         stage.dispose();
     }
 }

@@ -42,7 +42,6 @@ public class CathedralScreen extends ScreenAdapter {
 
     private OrthographicCamera gamecam;
     private Viewport gamePort;
-    private Vector3 touch = new Vector3();
 
     private TextureRegion background;
 
@@ -137,21 +136,6 @@ public class CathedralScreen extends ScreenAdapter {
     }
 
     @Override
-    public void hide() {
-        super.hide();
-    }
-
-    @Override
-    public void pause() {
-        super.pause();
-    }
-
-    @Override
-    public void resume() {
-        super.resume();
-    }
-
-    @Override
     public void dispose() {
         stage.dispose();
     }
@@ -160,7 +144,6 @@ public class CathedralScreen extends ScreenAdapter {
         charitypop = new PerkPopUp("charity", game);
         charityMenu = charitypop.getPopup();
         TextureRegionDrawable a = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
-//        TextureRegionDrawable a = new TextureRegionDrawable(game.atlas.findRegion("alpha"));
         charityMenu.setBackground(a);
         charityMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
         charityMenu.pack();
@@ -170,7 +153,6 @@ public class CathedralScreen extends ScreenAdapter {
         chastitypop = new PerkPopUp("chastity", game);
         chastityMenu = chastitypop.getPopup();
         TextureRegionDrawable b = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
-//        TextureRegionDrawable b = new TextureRegionDrawable(game.atlas.findRegion("alpha"));
         chastityMenu.setBackground(b);
         chastityMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
         chastityMenu.pack();
@@ -180,7 +162,6 @@ public class CathedralScreen extends ScreenAdapter {
         temperancepop = new PerkPopUp("temperance", game);
         temperanceMenu = temperancepop.getPopup();
         TextureRegionDrawable c = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
-//        TextureRegionDrawable c = new TextureRegionDrawable(game.atlas.findRegion("alpha"));
         temperanceMenu.setBackground(c);
         temperanceMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
         temperanceMenu.pack();
@@ -190,7 +171,6 @@ public class CathedralScreen extends ScreenAdapter {
         diligencepop = new PerkPopUp("diligence", game);
         diligenceMenu = diligencepop.getPopup();
         TextureRegionDrawable d = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
-//        TextureRegionDrawable d = new TextureRegionDrawable(game.atlas.findRegion("alpha"));
         diligenceMenu.setBackground(d);
         diligenceMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
         diligenceMenu.pack();
@@ -200,7 +180,6 @@ public class CathedralScreen extends ScreenAdapter {
         kindnesspop = new PerkPopUp("kindness", game);
         kindnessMenu = kindnesspop.getPopup();
         TextureRegionDrawable e = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
-//        TextureRegionDrawable e = new TextureRegionDrawable(game.atlas.findRegion("alpha"));
         kindnessMenu.setBackground(e);
         kindnessMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
         kindnessMenu.pack();
@@ -210,7 +189,6 @@ public class CathedralScreen extends ScreenAdapter {
         patiencepop = new PerkPopUp("patience", game);
         patienceMenu = patiencepop.getPopup();
         TextureRegionDrawable f = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
-//        TextureRegionDrawable f = new TextureRegionDrawable(game.atlas.findRegion("alpha"));
         patienceMenu.setBackground(f);
         patienceMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
         patienceMenu.pack();
@@ -220,7 +198,6 @@ public class CathedralScreen extends ScreenAdapter {
         humilitypop = new PerkPopUp("humility", game);
         humilityMenu = humilitypop.getPopup();
         TextureRegionDrawable g = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
-//        TextureRegionDrawable g = new TextureRegionDrawable(game.atlas.findRegion("alpha"));
         humilityMenu.setBackground(g);
         humilityMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
         humilityMenu.pack();
