@@ -51,6 +51,7 @@ public class MenuScreen extends ScreenAdapter {
             // https://stackoverflow.com/questions/43955604/how-to-load-music-in-android-with-libgdx
             Music music = game.assets.get("music/ConceptTheme.mp3", Music.class);
             music.setLooping(true);
+            music.setVolume(0.5f);
             music.play();
             game.setScreen(new VillageScreen(game));
             ToIdleIsSin.program.run("village");
