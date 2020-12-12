@@ -23,6 +23,7 @@ import com.wearethreestudios.toidleissin.ToIdleIsSin;
 import com.wearethreestudios.toidleissin.program.Monks;
 import com.wearethreestudios.toidleissin.program.Program;
 import com.wearethreestudios.toidleissin.uihelpers.Hints;
+import com.wearethreestudios.toidleissin.uihelpers.ImageBlob;
 import com.wearethreestudios.toidleissin.uihelpers.NavButtons;
 import com.wearethreestudios.toidleissin.uihelpers.SlidePopUp;
 
@@ -58,6 +59,10 @@ public class MonasteryScreen extends ScreenAdapter {
 
     private SlidePopUp slider;
 
+    private ImageBlob monk;
+    private ImageBlob monk2;
+    private ImageBlob oldman;
+
     public MonasteryScreen(final ToIdleIsSin game) {
         this.game = game;
         gamecam = new OrthographicCamera();
@@ -67,8 +72,28 @@ public class MonasteryScreen extends ScreenAdapter {
         stage = new Stage(gamePort, game.batch);
         initButtons();
         initHints();
+        prepareUnits();
         background = game.atlas.findRegion("village/monastery/monastery_inside");
 
+    }
+
+    public void prepareUnits(){
+        monk = new ImageBlob(game, 1);
+        monk.addState("sprites/units/sloth", 4, 4, 0.08f);
+        stage.addActor(monk);
+        monk.setPosition(ToIdleIsSin.WIDTH*0.05f, ToIdleIsSin.HEIGHT*0.25f);
+        monk.flip();
+
+        monk2 = new ImageBlob(game, 1);
+        monk2.addState("sprites/units/sloth", 4, 4, 0.08f);
+        stage.addActor(monk2);
+        monk2.setPosition(ToIdleIsSin.WIDTH*0.4f, ToIdleIsSin.HEIGHT*0.5f);
+        monk2.setBlobScale(0.9f, 0.9f);
+
+        oldman = new ImageBlob(game, 1);
+        oldman.addState("sprites/units/oldman", 4, 4, 0.08f);
+        stage.addActor(oldman);
+        oldman.setPosition(ToIdleIsSin.WIDTH*0.5f, ToIdleIsSin.HEIGHT*0.25f);
     }
 
     @Override

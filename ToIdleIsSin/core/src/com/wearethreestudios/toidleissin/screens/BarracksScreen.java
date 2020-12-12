@@ -29,6 +29,7 @@ import com.wearethreestudios.toidleissin.program.Monks;
 import com.wearethreestudios.toidleissin.program.Physicians;
 import com.wearethreestudios.toidleissin.program.Program;
 import com.wearethreestudios.toidleissin.uihelpers.Hints;
+import com.wearethreestudios.toidleissin.uihelpers.ImageBlob;
 import com.wearethreestudios.toidleissin.uihelpers.NavButtons;
 import com.wearethreestudios.toidleissin.uihelpers.SlidePopUp;
 
@@ -61,6 +62,10 @@ public class BarracksScreen extends ScreenAdapter {
 
     private SlidePopUp slider;
 
+    private ImageBlob knight;
+    private ImageBlob mage;
+    private ImageBlob physician;
+
     public BarracksScreen(ToIdleIsSin game) {
         this.game = game;
         gamecam = new OrthographicCamera();
@@ -70,7 +75,29 @@ public class BarracksScreen extends ScreenAdapter {
         stage = new Stage(gamePort);
         initButtons();
         initHints();
+        prepareUnits();
         background = game.atlas.findRegion("village/barracks/barracks_inside");
+    }
+
+    public void prepareUnits(){
+        physician = new ImageBlob(game, 1);
+        physician.addState("sprites/units/physicianidle", 4, 4, 0.08f);
+        stage.addActor(physician);
+        physician.setPosition(ToIdleIsSin.WIDTH*0.05f, ToIdleIsSin.HEIGHT*0.25f);
+        physician.flip();
+
+        mage = new ImageBlob(game, 1);
+        mage.addState("sprites/units/mageidle", 4, 4, 0.08f);
+        stage.addActor(mage);
+        mage.setPosition(ToIdleIsSin.WIDTH*0.15f, ToIdleIsSin.HEIGHT*0.5f);
+        mage.setBlobScale(0.8f, 0.8f);
+        mage.flip();
+
+        knight = new ImageBlob(game, 1);
+        knight.addState("sprites/units/knightidle", 4, 4, 0.08f);
+        stage.addActor(knight);
+        knight.setPosition(ToIdleIsSin.WIDTH*0.22f, ToIdleIsSin.HEIGHT*0.23f);
+        knight.setBlobScale(1.5f, 1.5f);
     }
 
     @Override

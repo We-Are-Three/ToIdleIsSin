@@ -24,6 +24,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.wearethreestudios.toidleissin.ToIdleIsSin;
 import com.wearethreestudios.toidleissin.program.Program;
 import com.wearethreestudios.toidleissin.uihelpers.Hints;
+import com.wearethreestudios.toidleissin.uihelpers.ImageBlob;
 import com.wearethreestudios.toidleissin.uihelpers.NavButtons;
 
 public class MinesScreen extends ScreenAdapter {
@@ -45,6 +46,9 @@ public class MinesScreen extends ScreenAdapter {
     private TextButton left1;
 
     private Hints mining;
+
+    private ImageBlob man;
+    private ImageBlob woman;
 
     private void initButtons(){
         village = NavButtons.getVillage(game);
@@ -91,6 +95,19 @@ public class MinesScreen extends ScreenAdapter {
 
     }
 
+    public void prepareUnits(){
+        man = new ImageBlob(game, 1);
+        man.addState("sprites/units/man", 4, 4, 0.08f);
+        stage.addActor(man);
+        man.setPosition(ToIdleIsSin.WIDTH*0.5f, ToIdleIsSin.HEIGHT*0.55f);
+
+        woman = new ImageBlob(game, 1);
+        woman.addState("sprites/units/woman", 4, 4, 0.08f);
+        stage.addActor(woman);
+        woman.setPosition(ToIdleIsSin.WIDTH*0.0f, ToIdleIsSin.HEIGHT*0.25f);
+        woman.flip();
+    }
+
     public MinesScreen(ToIdleIsSin game) {
         this.game = game;
         gamecam = new OrthographicCamera();
@@ -100,6 +117,7 @@ public class MinesScreen extends ScreenAdapter {
         stage = new Stage(gamePort);
         initButtons();
         initHints();
+        prepareUnits();
         background = game.atlas.findRegion("village/mines/mine_inside");
     }
 
@@ -170,5 +188,6 @@ public class MinesScreen extends ScreenAdapter {
     @Override
     public void dispose() {
         stage.dispose();
+        man.dispose();
     }
 }

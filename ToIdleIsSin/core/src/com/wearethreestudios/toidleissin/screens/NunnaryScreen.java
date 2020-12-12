@@ -26,6 +26,7 @@ import com.wearethreestudios.toidleissin.program.Monks;
 import com.wearethreestudios.toidleissin.program.Nuns;
 import com.wearethreestudios.toidleissin.program.Program;
 import com.wearethreestudios.toidleissin.uihelpers.Hints;
+import com.wearethreestudios.toidleissin.uihelpers.ImageBlob;
 import com.wearethreestudios.toidleissin.uihelpers.NavButtons;
 import com.wearethreestudios.toidleissin.uihelpers.SlidePopUp;
 
@@ -61,6 +62,10 @@ public class NunnaryScreen extends ScreenAdapter {
 
     private SlidePopUp slider;
 
+    private ImageBlob nun;
+    private ImageBlob nun2;
+    private ImageBlob oldwoman;
+
     public NunnaryScreen(ToIdleIsSin game) {
         this.game = game;
         gamecam = new OrthographicCamera();
@@ -70,7 +75,28 @@ public class NunnaryScreen extends ScreenAdapter {
         stage = new Stage(gamePort);
         initButtons();
         initHints();
+        prepareUnits();
         background = game.atlas.findRegion("village/nunnary/nunnary_inside");
+    }
+
+    public void prepareUnits(){
+        nun = new ImageBlob(game, 1);
+        nun.addState("sprites/units/nunidle", 4, 4, 0.08f);
+        stage.addActor(nun);
+        nun.setPosition(ToIdleIsSin.WIDTH*0.5f, ToIdleIsSin.HEIGHT*0.25f);
+        
+        nun2 = new ImageBlob(game, 1);
+        nun2.addState("sprites/units/nunidle", 4, 4, 0.08f);
+        stage.addActor(nun2);
+        nun2.setPosition(ToIdleIsSin.WIDTH*0.4f, ToIdleIsSin.HEIGHT*0.6f);
+        nun2.setBlobScale(0.7f, 0.7f);
+        
+        oldwoman = new ImageBlob(game, 1);
+        oldwoman.addState("sprites/units/oldwoman", 4, 4, 0.08f);
+        stage.addActor(oldwoman);
+        oldwoman.setPosition(ToIdleIsSin.WIDTH*0.05f, ToIdleIsSin.HEIGHT*0.25f);
+        oldwoman.setBlobScale(0.9f, 0.9f);
+        oldwoman.flip();
     }
 
     @Override
