@@ -18,6 +18,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -168,7 +169,6 @@ public class LevelScreen extends ScreenAdapter {
                 game.sound.play();
                 ToIdleIsSin.program.run("campaign" + level);
                 ToIdleIsSin.program.run("one");
-//                currentImage = firstscroll.get();
                 currentLine = "one";
                 firstscroll.get().setVisible(true);
                 secondscroll.get().setVisible(false);
@@ -191,7 +191,6 @@ public class LevelScreen extends ScreenAdapter {
                 game.sound.play();
                 ToIdleIsSin.program.run("campaign" + level);
                 ToIdleIsSin.program.run("two");
-//                currentImage = secondscroll.get();
                 firstscroll.get().setVisible(false);
                 secondscroll.get().setVisible(true);
                 thirdscroll.get().setVisible(false);
@@ -214,7 +213,6 @@ public class LevelScreen extends ScreenAdapter {
                 game.sound.play();
                 ToIdleIsSin.program.run("campaign" + level);
                 ToIdleIsSin.program.run("three");
-//                currentImage = thirdscroll.get();
                 firstscroll.get().setVisible(false);
                 secondscroll.get().setVisible(false);
                 thirdscroll.get().setVisible(true);
@@ -360,12 +358,20 @@ public class LevelScreen extends ScreenAdapter {
         stage.addActor(line2);
         stage.addActor(line3);
 
+        Lines templine = camp.getFirstLine();
+        double progress = templine.getEnemiesKilled()/templine.getNumberOfEnemies();
         firstscroll = new ScrollImage(game, "campaign/" + level + "/" + "one" +"/scroll-", 6);
-        firstscroll.get().setPosition(0, ToIdleIsSin.HEIGHT/2);
+        firstscroll.get().setPosition(-(int)((firstscroll.get().getWidth()-ToIdleIsSin.WIDTH)*progress), ToIdleIsSin.HEIGHT/2);
+
+        templine = camp.getSecondLine();
+        progress = templine.getEnemiesKilled()/templine.getNumberOfEnemies();
         secondscroll = new ScrollImage(game, "campaign/" + level + "/" + "two" +"/scroll-", 3);
-        secondscroll.get().setPosition(0, ToIdleIsSin.HEIGHT/2);
+        secondscroll.get().setPosition(-(int)((secondscroll.get().getWidth()-ToIdleIsSin.WIDTH)*progress), ToIdleIsSin.HEIGHT/2);
+
+        templine = camp.getThirdLine();
+        progress = templine.getEnemiesKilled()/templine.getNumberOfEnemies();
         thirdscroll = new ScrollImage(game, "campaign/" + level + "/" + "three" +"/scroll-", 6);
-        thirdscroll.get().setPosition(0, ToIdleIsSin.HEIGHT/2);
+        thirdscroll.get().setPosition(-(int)((thirdscroll.get().getWidth()-ToIdleIsSin.WIDTH)*progress), ToIdleIsSin.HEIGHT/2);
 
         Program.print("width: " + firstscroll.get().getWidth() + " ");
         stage.addActor(firstscroll.get());
@@ -382,7 +388,6 @@ public class LevelScreen extends ScreenAdapter {
             firstscroll.get().setVisible(false);
             secondscroll.get().setVisible(false);
             thirdscroll.get().setVisible(true);
-            line = camp.getThirdLine();
             prepareUnits();
         }
 
@@ -396,13 +401,14 @@ public class LevelScreen extends ScreenAdapter {
         gamePort = new FitViewport(ToIdleIsSin.WIDTH, ToIdleIsSin.HEIGHT, gamecam);
         this.level = level;
         camp = Program.gameState.getCampaign("campaign" + level);
-        line = camp.getFirstLine();
         if(camp.isCleared()){
             currentLine = "three";
+            line = camp.getThirdLine();
             ToIdleIsSin.program.run("campaign" + level);
             ToIdleIsSin.program.run("three");
         }else{
             currentLine = "one";
+            line = camp.getFirstLine();
         }
 
         stage = new Stage(gamePort);
@@ -414,26 +420,6 @@ public class LevelScreen extends ScreenAdapter {
     @Override
     public void render(float delta) {
         ToIdleIsSin.program.runNextCommand();
-        if(Program.gameState.canapu1()){
-            apu1.setDisabled(false);
-        }else {
-            apu1.setDisabled(true);
-        }
-        if(Program.gameState.canapu2()){
-            apu2.setDisabled(false);
-        }else {
-            apu2.setDisabled(true);
-        }
-        if(Program.gameState.canapu1()){
-            apu1.setText("apu1");
-        }else{
-            apu1.setText("apu1\n" + Program.gameState.apu1Time() + "s");
-        }
-        if(Program.gameState.canapu2()){
-            apu2.setText("apu2");
-        }else{
-            apu2.setText("apu2\n" + Program.gameState.apu2Time() + "s");
-        }
         if(line.isCleared()){
             job1.setDisabled(true);
             job2.setDisabled(true);
@@ -444,8 +430,20 @@ public class LevelScreen extends ScreenAdapter {
             job1.setDisabled(false);
             job2.setDisabled(false);
             job3.setDisabled(false);
-            apu1.setDisabled(false);
-            apu2.setDisabled(false);
+            if(Program.gameState.canapu1()){
+                apu1.setDisabled(false);
+                apu1.setText("apu1");
+            }else{
+                apu1.setDisabled(true);
+                apu1.setText("apu1\n" + (int)(Program.gameState.apu1Time() / Program.SPEED_MODIFIER) + "s");
+            }
+            if(Program.gameState.canapu2()){
+                apu2.setDisabled(false);
+                apu2.setText("apu2");
+            }else{
+                apu2.setText("apu2\n" + (int)(Program.gameState.apu2Time() / Program.SPEED_MODIFIER) + "s");
+                apu2.setDisabled(true);
+            }
         }
         if(Program.gameState.getValue(Modifier.APU1) == 0) apu1.setVisible(false);
         if(Program.gameState.getValue(Modifier.APU2) == 0) apu2.setVisible(false);
@@ -457,13 +455,13 @@ public class LevelScreen extends ScreenAdapter {
         job3.setText("Fighting Physicians\n" + line.getPhysicians());
         double progress = line.getEnemiesKilled()/line.getNumberOfEnemies();
         progressText.setText("Progress\n" + String.format("%1$,.2f", 100*progress) + "%");
-        strengthText.setText("strength:\nOurs : Enemies\n" + String.format("%1$,.2f", 100*line.getOurPercent()) + "%" + " : " + String.format("%1$,.2f", 100*(1-line.getOurPercent())) + "%");
+        strengthText.setText(line.getOurPercent());
         if("one".equals(currentLine) && progress <= 1){
-            firstscroll.get().setPosition(-(int)((firstscroll.get().getWidth()-ToIdleIsSin.WIDTH)*progress), ToIdleIsSin.HEIGHT/2);
+            firstscroll.get().addAction(Actions.moveTo(-(int)((firstscroll.get().getWidth()-ToIdleIsSin.WIDTH)*progress), ToIdleIsSin.HEIGHT/2, 3f));
         } else if("two".equals(currentLine) && progress <= 1){
-            secondscroll.get().setPosition(-(int)((secondscroll.get().getWidth()-ToIdleIsSin.WIDTH)*progress), ToIdleIsSin.HEIGHT/2);
+            secondscroll.get().addAction(Actions.moveTo(-(int)((secondscroll.get().getWidth()-ToIdleIsSin.WIDTH)*progress), ToIdleIsSin.HEIGHT/2, 3f));
         } else if("three".equals(currentLine) && progress <= 1){
-            thirdscroll.get().setPosition(-(int)((thirdscroll.get().getWidth()-ToIdleIsSin.WIDTH)*progress), ToIdleIsSin.HEIGHT/2);
+            thirdscroll.get().addAction(Actions.moveTo(-(int)((thirdscroll.get().getWidth()-ToIdleIsSin.WIDTH)*progress), ToIdleIsSin.HEIGHT/2, 3f));
         }
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -505,7 +503,6 @@ public class LevelScreen extends ScreenAdapter {
 
 
         game.batch.end();
-//        walkingMan.returnToState(0);
         if(line.isCleared()){
             knight.returnToState(0);
             mage.returnToState(0);
@@ -667,7 +664,6 @@ public class LevelScreen extends ScreenAdapter {
 
     @Override
     public void dispose() {
-//        walkingMan.dispose();
         knight.dispose();
         mage.dispose();
         physician.dispose();

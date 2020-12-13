@@ -118,9 +118,9 @@ public class LevelsScreen extends ScreenAdapter {
                 if(!l1.isDisabled()){
                     game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
                     game.sound.play();
-                    game.setScreen(new LevelScreen(game, 1));
                     ToIdleIsSin.program.run("campaign1");
                     ToIdleIsSin.program.run("one");
+                    game.setScreen(new LevelScreen(game, 1));
                 }
                 super.clicked(event, x, y);
             }
@@ -137,9 +137,9 @@ public class LevelsScreen extends ScreenAdapter {
                 if(!l2.isDisabled()){
                     game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
                     game.sound.play();
-                    game.setScreen(new LevelScreen(game, 2));
                     ToIdleIsSin.program.run("campaign2");
                     ToIdleIsSin.program.run("one");
+                    game.setScreen(new LevelScreen(game, 2));
                 }
                 super.clicked(event, x, y);
             }
@@ -156,9 +156,9 @@ public class LevelsScreen extends ScreenAdapter {
                 if(!l3.isDisabled()){
                     game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
                     game.sound.play();
-                    game.setScreen(new LevelScreen(game, 3));
                     ToIdleIsSin.program.run("campaign3");
                     ToIdleIsSin.program.run("one");
+                    game.setScreen(new LevelScreen(game, 3));
                 }
                 super.clicked(event, x, y);
             }
@@ -175,9 +175,9 @@ public class LevelsScreen extends ScreenAdapter {
                 if(!l4.isDisabled()){
                     game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
                     game.sound.play();
-                    game.setScreen(new LevelScreen(game, 4));
                     ToIdleIsSin.program.run("campaign4");
                     ToIdleIsSin.program.run("one");
+                    game.setScreen(new LevelScreen(game, 4));
                 }
                 super.clicked(event, x, y);
             }
@@ -194,9 +194,9 @@ public class LevelsScreen extends ScreenAdapter {
                 if(!l5.isDisabled()){
                     game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
                     game.sound.play();
-                    game.setScreen(new LevelScreen(game, 5));
                     ToIdleIsSin.program.run("campaign5");
                     ToIdleIsSin.program.run("one");
+                    game.setScreen(new LevelScreen(game, 5));
                 }
                 super.clicked(event, x, y);
             }
@@ -213,9 +213,9 @@ public class LevelsScreen extends ScreenAdapter {
                 if(!l6.isDisabled()){
                     game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
                     game.sound.play();
-                    game.setScreen(new LevelScreen(game, 6));
                     ToIdleIsSin.program.run("campaign6");
                     ToIdleIsSin.program.run("one");
+                    game.setScreen(new LevelScreen(game, 6));
                 }
                 super.clicked(event, x, y);
             }
@@ -232,9 +232,9 @@ public class LevelsScreen extends ScreenAdapter {
                 if(!l7.isDisabled()){
                     game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
                     game.sound.play();
-                    game.setScreen(new LevelScreen(game, 7));
                     ToIdleIsSin.program.run("campaign7");
                     ToIdleIsSin.program.run("one");
+                    game.setScreen(new LevelScreen(game, 7));
                 }
                 super.clicked(event, x, y);
             }
