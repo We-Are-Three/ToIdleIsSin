@@ -64,6 +64,7 @@ public class LevelScreen extends ScreenAdapter {
 
     private TextButton progressText;
     private TextButton strengthText;
+    private boolean strengthHasListener = false;
 
     private TextButton idle1;
     private TextButton idle2;
@@ -175,6 +176,13 @@ public class LevelScreen extends ScreenAdapter {
                 thirdscroll.get().setVisible(false);
                 line = camp.getFirstLine();
                 prepareUnits();
+                strengthHasListener = false;
+                strengthText.remove();
+                strengthText = new TextButton("strength:\n Ours : Enemies", game.skin, "idle");
+                strengthText.setPosition((int)(ToIdleIsSin.WIDTH*0.8-strengthText.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-strengthText.getHeight()/2));
+                strengthText.getLabel().setWrap(true);
+                strengthText.getLabel().setAlignment(Align.center);
+                stage.addActor(strengthText);
                 super.clicked(event, x, y);
             }
         });
@@ -197,6 +205,13 @@ public class LevelScreen extends ScreenAdapter {
                 currentLine = "two";
                 line = camp.getSecondLine();
                 prepareUnits();
+                strengthHasListener = false;
+                strengthText.remove();
+                strengthText = new TextButton("strength:\n Ours : Enemies", game.skin, "idle");
+                strengthText.setPosition((int)(ToIdleIsSin.WIDTH*0.8-strengthText.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-strengthText.getHeight()/2));
+                strengthText.getLabel().setWrap(true);
+                strengthText.getLabel().setAlignment(Align.center);
+                stage.addActor(strengthText);
                 super.clicked(event, x, y);
             }
         });
@@ -219,6 +234,13 @@ public class LevelScreen extends ScreenAdapter {
                 currentLine = "three";
                 line = camp.getThirdLine();
                 prepareUnits();
+                strengthHasListener = false;
+                strengthText.remove();
+                strengthText = new TextButton("strength:\n Ours : Enemies", game.skin, "idle");
+                strengthText.setPosition((int)(ToIdleIsSin.WIDTH*0.8-strengthText.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-strengthText.getHeight()/2));
+                strengthText.getLabel().setWrap(true);
+                strengthText.getLabel().setAlignment(Align.center);
+                stage.addActor(strengthText);
                 super.clicked(event, x, y);
             }
         });
@@ -462,6 +484,25 @@ public class LevelScreen extends ScreenAdapter {
         double progress = line.getEnemiesKilled()/line.getNumberOfEnemies();
         progressText.setText("Progress\n" + String.format("%1$,.2f", 100*progress) + "%");
         strengthText.setText(line.getOurPercent());
+        if(line.getOurPercent().contains("Defend")){
+            if(!strengthHasListener){
+                strengthHasListener = true;
+                strengthText.addListener(new ClickListener(){
+                    @Override
+                    public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                        Program.gameState.pause();
+                        line.defend();
+                        Program.gameState.resume();
+                        return super.touchDown(event, x, y, pointer, button);
+                    }
+                });
+            }
+            if(!line.canDefend()){
+                strengthText.setDisabled(true);
+            }else {
+                strengthText.setDisabled(false);
+            }
+        }
         if("one".equals(currentLine) && progress <= 1){
             firstscroll.get().addAction(Actions.moveTo(-(int)((firstscroll.get().getWidth()-ToIdleIsSin.WIDTH)*progress), ToIdleIsSin.HEIGHT/2, 3f));
         } else if("two".equals(currentLine) && progress <= 1){
@@ -490,7 +531,7 @@ public class LevelScreen extends ScreenAdapter {
         if(line.getKnights() > 0)
             knight.draw((int)(200 - knight.getWidth()/2),ToIdleIsSin.HEIGHT/2+50,1.2,1.2);
 
-        if(line.getEnemiesKilled() / line.getNumberOfEnemies() > 0.85 && !line.isCleared() && line.getWHICH_LINE() == 1)
+        if(line.getEnemiesKilled() / line.getNumberOfEnemies() > 0.85 &&  line.getEnemiesKilled() / line.getNumberOfEnemies() < 1.0  && line.getWHICH_LINE() == 1)
             boss.draw((int)(500 + bossxoffset - boss.getWidth()/2),ToIdleIsSin.HEIGHT/2+100, bossScaleX, bossScaleY);
 
         if( (line.getNumberOfEnemies() - line.getEnemiesKilled() > 0 && line.getWHICH_LINE() != 1) || ( line.getEnemiesKilled() / line.getNumberOfEnemies() < 0.85 && line.getWHICH_LINE() == 1 ) )
@@ -503,8 +544,8 @@ public class LevelScreen extends ScreenAdapter {
             enemy2.draw((int)(400 - enemy2.getWidth()/2),ToIdleIsSin.HEIGHT/2,1.2,1.2);
 
         if(line.getWHICH_LINE() == 2 && line.isCleared()){
-            boy.draw((int)(200 - boy.getWidth()/2),ToIdleIsSin.HEIGHT/2+175,0.4,0.4);
-            girl.draw((int)(500 - girl.getWidth()/2),ToIdleIsSin.HEIGHT/2+175,0.4,0.4);
+            boy.draw((int)(500 - boy.getWidth()/2),ToIdleIsSin.HEIGHT/2,0.55,0.55);
+            girl.draw((int)(800 - girl.getWidth()/2),ToIdleIsSin.HEIGHT/2,0.55,0.55);
         }
 
 

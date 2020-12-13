@@ -167,6 +167,7 @@ public class Program {
 			return;
 		}
 		miner.stop();
+		gameState.lastUpdate = realTime();
 	}
 
 	public static boolean isMoneroMining() {

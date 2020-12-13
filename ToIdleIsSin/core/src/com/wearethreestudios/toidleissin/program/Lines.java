@@ -66,7 +66,7 @@ public class Lines {
 		
 		if(this.WHICH_LINE >= 1 && this.WHICH_LINE < 3) {
 			playerPower = k * gs.getValue(Modifier.KNIGHT_STRENGTH) + mages * gs.getValue(Modifier.MAGE_STRENGTH) + knight.getHeroes() * gs.getValue(Modifier.HERO_STRENGTH);
-			if(enemiesKilled/numberOfEnemies > 0.85 && this.WHICH_LINE == 1) {
+			if(enemiesKilled/numberOfEnemies > 0.85 && enemiesKilled/numberOfEnemies < 1.0 && this.WHICH_LINE == 1) {
 				// final boss for the front line
 				playerPower /= this.BOSS_STRENGTH_MULTIPLIER*2;
 				playerPower *= gs.getValue(Modifier.AGAINST_BOSS_STRENGTH);
@@ -78,7 +78,8 @@ public class Lines {
 			setEnemiesKilled(enemiesToBeKilled);
 			knightsToBeKilled -= killKnights((int)knightsToBeKilled);
 			if(enemiesKilled >= numberOfEnemies){
-				setCleared();
+//				setCleared();
+				removeAll();
 				// For line 1 you get 3 perk points, For line 2 you get 2 perk points
 				Program.gameState.setPerkPoints(Program.gameState.getPerkPoint() + (WHICH_LINE == 1 ? 3 : 2));
 			}
@@ -119,12 +120,27 @@ public class Lines {
 	public String getOurPercent(){
 		if(enemiesKilled/numberOfEnemies > 0.85  && enemiesKilled/numberOfEnemies < 1.0 && this.WHICH_LINE == 1){
 			return "Boss";
+		}else if( (WHICH_LINE == 1 || WHICH_LINE == 2) &&  enemiesKilled/numberOfEnemies >= 1.0 && !isCleared() ){
+			return "Defend Cost:\n" + (int)enemiesKilled;
 		}else if(isCleared()) {
 			return "Cleared";
 		}else{
 			int num = (int)(numberOfEnemies-enemiesKilled);
 			return "Enemies\n" + (num == 0 ? 1 : num) ;
 		}
+	}
+
+	public void defend(){
+		if(getOurPercent().contains("Defend") && canDefend()){
+			setCleared();
+			addKnights((int)enemiesKilled);
+			addMages((int)enemiesKilled);
+			addPhysicians((int)enemiesKilled);
+		}
+	}
+
+	public boolean canDefend(){
+		return  (knights + knight.getIdle() >= enemiesKilled) && (mages + mage.getIdle() >= enemiesKilled) && (physicians + physician.getIdle() >= enemiesKilled);
 	}
 	
 	public void apu1Attack(GameState gs) {
@@ -218,10 +234,14 @@ public class Lines {
 		return rewardModifiers;
 	}
 	public void setCleared() {
+		removeAll();
+		cleared = true;
+	}
+
+	public void removeAll(){
 		addKnights(-knights);
 		addMages(-mages);
 		addPhysicians(-physicians);
-		cleared = true;
 	}
 	
 	public boolean isCleared() {

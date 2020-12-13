@@ -201,21 +201,37 @@ public class PerkPopUp {
         points.setText("Points: "+ perkPoints + "\n" + (Program.gameState.perkTime() < 60 ? (Program.gameState.perkTime()+1) + " Sec" : (Program.gameState.perkTime()+1)/60 + " Min")  );
         perk1count.setText(perks.get(0).getCurrentLevel() + "/" + perks.get(0).getMAXLEVEL());
         perk1b.setText(perks.get(0).getTier() + " Points");
-        if(perkPoints < perks.get(0).getTier()) perk1b.setDisabled(true);
+        if(perkPoints < perks.get(0).getTier()){
+            perk1b.setDisabled(true);
+        }else{
+            perk1b.setDisabled(false);
+        }
         if(perk2count != null){
             perk2count.setText(perks.get(1).getCurrentLevel() + "/" + perks.get(1).getMAXLEVEL());
             perk2b.setText(perks.get(1).getTier() + " Points");
-            if(perkPoints < perks.get(1).getTier()) perk2b.setDisabled(true);
+            if(perkPoints < perks.get(1).getTier()){
+                perk2b.setDisabled(true);
+            }else{
+                perk2b.setDisabled(false);
+            }
         }
         if(perk3count != null) {
             perk3count.setText(perks.get(2).getCurrentLevel() + "/" + perks.get(2).getMAXLEVEL());
             perk3b.setText(perks.get(2).getTier() + " Points");
-            if(perkPoints < perks.get(2).getTier()) perk3b.setDisabled(true);
+            if(perkPoints < perks.get(2).getTier()){
+                perk3b.setDisabled(true);
+            }else{
+                perk3b.setDisabled(false);
+            }
         }
         if(perk4count != null) {
             perk4count.setText(perks.get(3).getCurrentLevel() + "/" + perks.get(3).getMAXLEVEL());
             perk4b.setText(perks.get(3).getTier() + " Points");
-            if(perkPoints < perks.get(3).getTier()) perk4b.setDisabled(true);
+            if(perkPoints < perks.get(3).getTier()){
+                perk4b.setDisabled(true);
+            }else{
+                perk4b.setDisabled(false);
+            }
         }
     }
 }
