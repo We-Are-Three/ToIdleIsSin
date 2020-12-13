@@ -190,7 +190,6 @@ public class GameState {
 		long farming = ((Nuns)getGroup("nuns")).getFarming();
 		long goodworks = ((Knights)getGroup("knights")).getGoodworks();
 
-//		double DEFAULT_DESERTION = 1.0/(500 + (((improvements+1) * (farming+1) * (goodworks+1)) / (1 + improvements + farming + goodworks)) );
 		TOTAL_UNITS = 501 + Math.cbrt(farming*improvements) * Math.sqrt(goodworks);
 		double DEFAULT_DESERTION = 1.0/TOTAL_UNITS;
 		long time = Program.time() - lastUpdate;
@@ -209,9 +208,9 @@ public class GameState {
 		}
 		
 		//perform additional updates based off of groups stats + modifiers
-		// For 100 Nuns = 500 mins = about 8 hours
-		
-		perkPoints += this.getValue("study")* ((Nuns) getGroup("nuns")).getStudying()/ 1000000000.0;
+		// For 100 Nuns = 1500 mins = about 8 hours
+		perkPoints += time*this.getValue("study")* ((Nuns) getGroup("nuns")).getStudying()/ 10000000000.0;
+		Program.print("Perk points: " + perkPoints);
 		lastUpdate = time + lastUpdate;
 		for(int i = 1; i < 8; i++) {
 			Campaign c = getCampaign("campaign" + i);
