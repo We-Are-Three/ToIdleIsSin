@@ -71,8 +71,8 @@ public class MonasteryScreen extends ScreenAdapter {
 
         stage = new Stage(gamePort, game.batch);
         initButtons();
-        initHints();
         prepareUnits();
+        initHints();
         background = game.atlas.findRegion("village/monastery/monastery_inside");
 
     }

@@ -74,8 +74,8 @@ public class BarracksScreen extends ScreenAdapter {
 
         stage = new Stage(gamePort);
         initButtons();
-        initHints();
         prepareUnits();
+        initHints();
         background = game.atlas.findRegion("village/barracks/barracks_inside");
     }
 

@@ -174,7 +174,7 @@ public class GameState {
 		if (s != null && s.contains("strength")) {
 			double PRAYING_NUMBER = ((Nuns) getGroup("nuns")).getPraying() /10000.0;
 			double praying_factor = getValue(Modifier.PRAYING_RATE)* PRAYING_NUMBER;
-			return ((values.get(s) + getModifiersOfType(s))/100) + (praying_factor + praying_factor);
+			return ((values.get(s) + getModifiersOfType(s)+ (praying_factor + praying_factor))/100) ;
 		}
 		else if( s != null && s.contains("recruit")) {
 			double RECRUITING_FACTOR = ((Monks) getGroup("monks")).getRecruiting()/ 100.0;

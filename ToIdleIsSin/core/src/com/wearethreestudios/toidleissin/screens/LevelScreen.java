@@ -138,7 +138,7 @@ public class LevelScreen extends ScreenAdapter {
 
 
         apu2 = new TextButton("apu2", game.skin, "job");
-        apu2.setPosition((int)(ToIdleIsSin.WIDTH*0.5), (int)(ToIdleIsSin.HEIGHT*0.9));
+        apu2.setPosition((int)(ToIdleIsSin.WIDTH*0.4), (int)(ToIdleIsSin.HEIGHT*0.9));
         apu2.setSize(200, 200);
         apu2.setOrigin(Align.center);
         apu2.setTransform(true);
@@ -442,6 +442,12 @@ public class LevelScreen extends ScreenAdapter {
                 apu2.setText("apu2");
             }else{
                 apu2.setText("apu2\n" + (int)(Program.gameState.apu2Time() / Program.SPEED_MODIFIER) + "s");
+                apu2.setDisabled(true);
+            }
+            if(!line.canAPU()){
+                apu1.setText("apu1");
+                apu1.setDisabled(true);
+                apu2.setText("apu2");
                 apu2.setDisabled(true);
             }
         }

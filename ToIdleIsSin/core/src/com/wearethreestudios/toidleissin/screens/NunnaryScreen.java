@@ -74,8 +74,8 @@ public class NunnaryScreen extends ScreenAdapter {
 
         stage = new Stage(gamePort);
         initButtons();
-        initHints();
         prepareUnits();
+        initHints();
         background = game.atlas.findRegion("village/nunnary/nunnary_inside");
     }
 

@@ -68,6 +68,7 @@ public class Lines {
 			playerPower = k * gs.getValue(Modifier.KNIGHT_STRENGTH) + mages * gs.getValue(Modifier.MAGE_STRENGTH) + knight.getHeroes() * gs.getValue(Modifier.HERO_STRENGTH);
 			if(enemiesKilled/numberOfEnemies > 0.85 && this.WHICH_LINE == 1) {
 				// final boss for the front line
+				playerPower /= this.BOSS_STRENGTH_MULTIPLIER*2;
 				playerPower *= gs.getValue(Modifier.AGAINST_BOSS_STRENGTH);
 				enemyPower = numberOfEnemies * gs.getValue(Modifier.DEATH_RATE) * this.BOSS_STRENGTH_MULTIPLIER - physicians *gs.getValue(Modifier.PHYSICIAN_STRENGTH) - knight.getHeroes() * gs.getValue(Modifier.HERO_STRENGTH);
 				
@@ -127,13 +128,22 @@ public class Lines {
 	}
 	
 	public void apu1Attack(GameState gs) {
+		if(!canAPU()) return;
 		double apuPower = gs.getValue(Modifier.APU1) * gs.getValue(Modifier.APU_STRENGTH) * GameState.APU1_BASE * gs.apu1CanStrike();
+		if(enemiesKilled/numberOfEnemies > 0.85 && this.WHICH_LINE == 1) apuPower /= this.BOSS_STRENGTH_MULTIPLIER;
 		setEnemiesKilled(apuPower);
 	}
 	
 	public void apu2Attack(GameState gs) {
+		if(!canAPU()) return;
 		double apuPower = gs.getValue(Modifier.APU2) * gs.getValue(Modifier.APU_STRENGTH) * GameState.APU2_BASE * gs.apu2CanStrike();
+		if(enemiesKilled/numberOfEnemies > 0.85 && this.WHICH_LINE == 1) apuPower /= this.BOSS_STRENGTH_MULTIPLIER;
 		setEnemiesKilled(apuPower);
+	}
+
+	public boolean canAPU(){
+		if(knights <= numberOfEnemies/300) return false;
+		return true;
 	}
 	
 	public void setNumberOfEnemies(int num) {
