@@ -198,7 +198,7 @@ public class PerkPopUp {
 
     public void update(){
         int perkPoints = (int)Program.gameState.getPerkPoint();
-        points.setText("Points: "+ perkPoints);
+        points.setText("Points: "+ perkPoints + "\n" + (Program.gameState.perkTime() < 60 ? (Program.gameState.perkTime()+1) + " Sec" : (Program.gameState.perkTime()+1)/60 + " Min")  );
         perk1count.setText(perks.get(0).getCurrentLevel() + "/" + perks.get(0).getMAXLEVEL());
         perk1b.setText(perks.get(0).getTier() + " Points");
         if(perkPoints < perks.get(0).getTier()) perk1b.setDisabled(true);

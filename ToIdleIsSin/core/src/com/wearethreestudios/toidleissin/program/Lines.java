@@ -76,7 +76,11 @@ public class Lines {
 			enemiesToBeKilled = playerPower * gs.ALL_UNITS_DEATH_RATE;
 			setEnemiesKilled(enemiesToBeKilled);
 			knightsToBeKilled -= killKnights((int)knightsToBeKilled);
-			if(enemiesKilled >= numberOfEnemies) setCleared();
+			if(enemiesKilled >= numberOfEnemies){
+				setCleared();
+				// For line 1 you get 3 perk points, For line 2 you get 2 perk points
+				Program.gameState.setPerkPoints(Program.gameState.getPerkPoint() + (WHICH_LINE == 1 ? 3 : 2));
+			}
 			
 		}else if(this.WHICH_LINE == 3){
 			if(enemiesKilled/numberOfEnemies <= 0.1) {
@@ -94,6 +98,7 @@ public class Lines {
 				setCleared();
 				// Add the equivalent enemies that were killed as new knights
 				knight.add((int)enemiesKilled);
+				Program.gameState.setPerkPoints(Program.gameState.getPerkPoint() + 1);
 			}
 			
 		}

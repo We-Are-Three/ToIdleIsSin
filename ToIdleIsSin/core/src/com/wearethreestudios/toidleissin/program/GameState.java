@@ -208,9 +208,8 @@ public class GameState {
 		}
 		
 		//perform additional updates based off of groups stats + modifiers
-		// For 100 Nuns = 1500 mins = about 8 hours
-		perkPoints += time*this.getValue("study")* ((Nuns) getGroup("nuns")).getStudying()/ 10000000000.0;
-		Program.print("Perk points: " + perkPoints);
+		// For 100 Nuns = 1500 mins
+		perkPoints += time*perkDelta();
 		lastUpdate = time + lastUpdate;
 		for(int i = 1; i < 8; i++) {
 			Campaign c = getCampaign("campaign" + i);
@@ -218,6 +217,15 @@ public class GameState {
 			if(c.isCleared()) {
 			}
 		}
+	}
+
+	public double perkDelta(){
+		return this.getValue("study")* ((Nuns) getGroup("nuns")).getStudying()/ 10000000000.0;
+	}
+
+	// Time till next Perk in Seconds
+	public int perkTime(){
+		return (int)(((int)((1 - (perkPoints - (int)perkPoints))/perkDelta())/1000)/Program.SPEED_MODIFIER);
 	}
 
 	public void pause(){
