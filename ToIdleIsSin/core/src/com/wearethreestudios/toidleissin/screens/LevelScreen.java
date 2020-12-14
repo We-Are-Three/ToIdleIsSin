@@ -442,7 +442,7 @@ public class LevelScreen extends ScreenAdapter {
     @Override
     public void render(float delta) {
         ToIdleIsSin.program.runNextCommand();
-        if(line.isCleared()){
+        if(line.isCleared() || line.getOurPercent().contains("Defend")){
             job1.setDisabled(true);
             job2.setDisabled(true);
             job3.setDisabled(true);
