@@ -73,7 +73,6 @@ public class ToIdleIsSin extends Game  implements ApplicationListener {
 
 	@Override
 	public void pause() {
-		Program.print("BYe Byeeee");
 		if(canClose());
 		super.resume();
 	}

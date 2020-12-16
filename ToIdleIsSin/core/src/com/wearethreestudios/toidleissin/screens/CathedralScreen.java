@@ -216,7 +216,6 @@ public class CathedralScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!charity.isDisabled()){
-                    Program.print("I was touched tee hee");
                     ToIdleIsSin.program.run("virtue skill tree");
                     ToIdleIsSin.program.run("charityperks");
                     charitypop.update();
@@ -237,7 +236,6 @@ public class CathedralScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!chastity.isDisabled()){
-                    Program.print("I was touched tee hee");
                     ToIdleIsSin.program.run("virtue skill tree");
                     ToIdleIsSin.program.run("chastityperks");
                     chastitypop.update();
@@ -258,7 +256,6 @@ public class CathedralScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!diligence.isDisabled()){
-                    Program.print("I was touched tee hee");
                     ToIdleIsSin.program.run("virtue skill tree");
                     ToIdleIsSin.program.run("diligenceperks");
                     diligencepop.update();
@@ -279,7 +276,6 @@ public class CathedralScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!humility.isDisabled()){
-                    Program.print("I was touched tee hee");
                     ToIdleIsSin.program.run("virtue skill tree");
                     ToIdleIsSin.program.run("humilityperks");
                     humilitypop.update();
@@ -300,7 +296,6 @@ public class CathedralScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!kindness.isDisabled()){
-                    Program.print("I was touched tee hee");
                     ToIdleIsSin.program.run("virtue skill tree");
                     ToIdleIsSin.program.run("kindnessperks");
                     kindnesspop.update();
@@ -321,7 +316,6 @@ public class CathedralScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!patience.isDisabled()){
-                    Program.print("I was touched tee hee");
                     ToIdleIsSin.program.run("virtue skill tree");
                     ToIdleIsSin.program.run("patienceperks");
                     patiencepop.update();
@@ -342,7 +336,6 @@ public class CathedralScreen extends ScreenAdapter {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!temperance.isDisabled()){
-                    Program.print("I was touched tee hee");
                     ToIdleIsSin.program.run("virtue skill tree");
                     ToIdleIsSin.program.run("temperanceperks");
                     temperancepop.update();

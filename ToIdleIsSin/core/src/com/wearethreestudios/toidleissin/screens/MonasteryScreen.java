@@ -79,13 +79,13 @@ public class MonasteryScreen extends ScreenAdapter {
 
     public void prepareUnits(){
         monk = new ImageBlob(game, 1);
-        monk.addState("sprites/units/sloth", 4, 4, 0.08f);
+        monk.addState("sprites/units/monkidle", 4, 4, 0.08f);
         stage.addActor(monk);
         monk.setPosition(ToIdleIsSin.WIDTH*0.05f, ToIdleIsSin.HEIGHT*0.25f);
         monk.flip();
 
         monk2 = new ImageBlob(game, 1);
-        monk2.addState("sprites/units/sloth", 4, 4, 0.08f);
+        monk2.addState("sprites/units/monkidle", 4, 4, 0.08f);
         stage.addActor(monk2);
         monk2.setPosition(ToIdleIsSin.WIDTH*0.4f, ToIdleIsSin.HEIGHT*0.5f);
         monk2.setBlobScale(0.9f, 0.9f);

@@ -372,7 +372,6 @@ public class StoryScreen extends ScreenAdapter {
         }
         if(dialogue.next()){
             dialoguePopUp.getPopup().setVisible(true);
-            Program.print("" + dialogue.getCharacter() + ": " + dialogue.getMessage());
             dialoguePopUp.setWho(dialogue.getCharacter());
             dialoguePopUp.setWords(dialogue.getMessage());
 

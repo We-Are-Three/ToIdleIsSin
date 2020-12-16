@@ -130,7 +130,6 @@ public class LevelScreen extends ScreenAdapter {
                 if(!apu1.isDisabled()){
                     game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
                     game.sound.play();
-                    Program.print("apu1");
                     line.apu1Attack(Program.gameState);
                 }
                 super.clicked(event, x, y);
@@ -149,7 +148,6 @@ public class LevelScreen extends ScreenAdapter {
                 if(!apu2.isDisabled()) {
                     game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
                     game.sound.play();
-                    Program.print("apu2");
                     line.apu2Attack(Program.gameState);
                 }
                 super.clicked(event, x, y);
@@ -395,7 +393,6 @@ public class LevelScreen extends ScreenAdapter {
         thirdscroll = new ScrollImage(game, "campaign/" + level + "/" + "three" +"/scroll-", 6);
         thirdscroll.get().setPosition(-(int)((thirdscroll.get().getWidth()-ToIdleIsSin.WIDTH)*progress), ToIdleIsSin.HEIGHT/2);
 
-        Program.print("width: " + firstscroll.get().getWidth() + " ");
         stage.addActor(firstscroll.get());
         stage.addActor(secondscroll.get());
         stage.addActor(thirdscroll.get());
@@ -535,7 +532,7 @@ public class LevelScreen extends ScreenAdapter {
             boss.draw((int)(500 + bossxoffset - boss.getWidth()/2),ToIdleIsSin.HEIGHT/2+100, bossScaleX, bossScaleY);
 
         if( (line.getNumberOfEnemies() - line.getEnemiesKilled() > 0 && line.getWHICH_LINE() != 1) || ( line.getEnemiesKilled() / line.getNumberOfEnemies() < 0.85 && line.getWHICH_LINE() == 1 ) )
-            enemy3.draw((int)(750 - enemy3.getWidth()/2+50),ToIdleIsSin.HEIGHT/2+100,0.75,0.75);
+            enemy3.draw((int)(750 - enemy3.getWidth()/2+50),ToIdleIsSin.HEIGHT/2+100,0.8,0.8);
 
         if(line.getPhysicians() > 0)
             physician.draw((int)(-50 - physician.getWidth()/2),ToIdleIsSin.HEIGHT/2,0.75,0.75);
@@ -613,8 +610,8 @@ public class LevelScreen extends ScreenAdapter {
         enemy2.addState("sprites/units/skeletonidle", 4, 4, 0.15f);
         enemy2.addState("sprites/units/skeletonattack", 4, 4, 0.15f);
         enemy3 = new ImageBlob(game, 1);
-        enemy3.addState("sprites/units/darkmonkidle", 4, 4, 0.15f);
-        enemy3.addState("sprites/units/darkmonkidle", 4, 4, 0.15f);
+        enemy3.addState("sprites/units/darknunidle", 4, 4, 0.15f);
+        enemy3.addState("sprites/units/darknunidle", 4, 4, 0.15f);
 
         boss = new ImageBlob(game, 1);
         switch (level){

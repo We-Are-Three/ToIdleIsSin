@@ -197,8 +197,6 @@ public class ImageBlob extends Image {
         } else if(hitbox.x != hitx || hitbox.y != hity || hitbox.width != hitWidth || hitbox.height != hitHeight){
             hitbox.setX(hitx).setY(hity).setWidth(hitWidth).setHeight(hitHeight);
         }
-//        Program.print("\n1: " + x + " " + y + " " + width  + " " + height +
-//                      "\n2: " + hitbox.x + " " + hitbox.y + " " + hitbox.width  + " " + hitbox.height);
         game.batch.draw(getTextureRegion(),  x, y,  width, height);
     }
 
@@ -214,14 +212,11 @@ public class ImageBlob extends Image {
         } else if(hitbox.x != hitx || hitbox.y != hity || hitbox.width != hitWidth || hitbox.height != hitHeight){
             hitbox.setX(hitx).setY(hity).setWidth(hitWidth).setHeight(hitHeight);
         }
-//        Program.print("\n1: " + x + " " + y + " " + width  + " " + height +
-//                      "\n2: " + hitbox.x + " " + hitbox.y + " " + hitbox.width  + " " + hitbox.height);
         game.batch.draw(getTextureRegion(),  x, y,  width, height);
     }
 
     public void flip(){
         flip = !flip;
-        Program.print("I have been called " + flip);
     }
 
     public boolean contains(float x, float y){

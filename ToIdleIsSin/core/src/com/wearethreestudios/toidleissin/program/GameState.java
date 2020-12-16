@@ -105,7 +105,6 @@ public class GameState {
 		}
 		if(isNewDay()){
 			// Reset all of the bonus lines
-			Program.print("New Day!!!");
 			ArrayList<Campaign> cs = getCampaigns();
 			Knights k = (Knights) getGroup("knights");
 			Mages m = (Mages) getGroup("mages");
@@ -198,7 +197,6 @@ public class GameState {
 			g.update(this, time);
 			if(rand.nextInt(100) < getValue(Modifier.DESERTION_RATE)*100) {
 				int deserts =(int)( g.getIdle() * DEFAULT_DESERTION);
-//				if(deserts >= 1) Program.print(deserts + " " + g.getName() + " deserted");
 				g.remove(deserts);
 				
 			}
@@ -363,7 +361,6 @@ public class GameState {
 
 	public long getLastUpdate() {
 		if(Program.SPEED_MODIFIER > 1.0){
-			Program.print("Helljeojj");
 			return Program.realTime();
 		}
 		return lastUpdate;
