@@ -218,7 +218,7 @@ public class GameState {
 	}
 
 	public double perkDelta(){
-		return this.getValue("study")* ((Nuns) getGroup("nuns")).getStudying()/ 10000000000.0;
+		return Math.sqrt(this.getValue("study")* ((Nuns) getGroup("nuns")).getStudying())/ 10000000000.0;
 	}
 
 	// Time till next Perk in Seconds

@@ -74,7 +74,7 @@ public class Lines {
 				
 			}
 			knightsToBeKilled += enemyPower * gs.ALL_UNITS_DEATH_RATE;
-			enemiesToBeKilled = playerPower * gs.ALL_UNITS_DEATH_RATE;
+			enemiesToBeKilled = Math.pow(playerPower, 40.0/42.0) * gs.ALL_UNITS_DEATH_RATE;
 			setEnemiesKilled(enemiesToBeKilled);
 			knightsToBeKilled -= killKnights((int)knightsToBeKilled);
 			if(enemiesKilled >= numberOfEnemies){
@@ -88,7 +88,7 @@ public class Lines {
 				}
 			}
 			playerPower = (k * gs.getValue(Modifier.KNIGHT_STRENGTH) + mages * gs.getValue(Modifier.MAGE_STRENGTH) + knight.getHeroes() * gs.getValue(Modifier.HERO_STRENGTH)) * gs.getValue(Modifier.DAILY_STRENGTH);
-			enemiesToBeKilled = playerPower * gs.ALL_UNITS_DEATH_RATE;
+			enemiesToBeKilled = Math.pow(playerPower, 40.0/42.0) * gs.ALL_UNITS_DEATH_RATE;
 			setEnemiesKilled(enemiesToBeKilled);
 			knightsToBeKilled += enemyPower * gs.ALL_UNITS_DEATH_RATE;
 			knightsToBeKilled -= killKnights((int)knightsToBeKilled);

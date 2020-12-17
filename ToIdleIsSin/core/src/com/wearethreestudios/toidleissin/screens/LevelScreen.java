@@ -611,7 +611,7 @@ public class LevelScreen extends ScreenAdapter {
         enemy2.addState("sprites/units/skeletonattack", 4, 4, 0.15f);
         enemy3 = new ImageBlob(game, 1);
         enemy3.addState("sprites/units/darknunidle", 4, 4, 0.15f);
-        enemy3.addState("sprites/units/darknunidle", 4, 4, 0.15f);
+        enemy3.addState("sprites/units/darknunattack", 4, 4, 0.15f);
 
         boss = new ImageBlob(game, 1);
         switch (level){
