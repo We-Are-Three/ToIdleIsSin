@@ -34,6 +34,7 @@ public class Program {
 		setNextCommand(command);
 		runNextCommand();
 	}
+	//
 
 	public static void mainlibgdx(){
 		switch (Gdx.app.getType()){
