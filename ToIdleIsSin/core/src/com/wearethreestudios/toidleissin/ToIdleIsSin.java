@@ -18,6 +18,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.wearethreestudios.toidleissin.program.Program;
 import com.wearethreestudios.toidleissin.screens.MenuScreen;
+import com.wearethreestudios.toidleissin.screens.SplashScreen;
 import com.wearethreestudios.toidleissin.uihelpers.DialogueManager;
 
 public class ToIdleIsSin extends Game  implements ApplicationListener {
@@ -52,7 +53,7 @@ public class ToIdleIsSin extends Game  implements ApplicationListener {
 			ToIdleIsSin.program.run("start game");
 		}
 		dialogue = new DialogueManager();
-		setScreen(new MenuScreen(this));
+		setScreen(new SplashScreen(this));
 
 	}
 

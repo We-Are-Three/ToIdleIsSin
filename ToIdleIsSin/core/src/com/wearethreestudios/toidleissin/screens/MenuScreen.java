@@ -39,7 +39,6 @@ public class MenuScreen extends ScreenAdapter {
     @Override
     public void show() {
         this.progress = 0f;
-        game.queueAssets();
     }
 
 

@@ -92,13 +92,6 @@ public class Lines {
 			setEnemiesKilled(enemiesToBeKilled);
 			knightsToBeKilled += enemyPower * gs.ALL_UNITS_DEATH_RATE;
 			knightsToBeKilled -= killKnights((int)knightsToBeKilled);
-			if(enemiesKilled >= numberOfEnemies){
-				// Give a bonus
-				setCleared();
-				// Add the equivalent enemies that were killed as new knights
-				knight.add((int)enemiesKilled);
-				Program.gameState.setPerkPoints(Program.gameState.getPerkPoint() + 1);
-			}
 			
 		}
 
@@ -119,6 +112,8 @@ public class Lines {
 			return "Boss";
 		}else if( (WHICH_LINE == 1 || WHICH_LINE == 2) &&  enemiesKilled/numberOfEnemies >= 1.0 && !isCleared() ){
 			return "Defend Cost:\n" + (int)enemiesKilled;
+		}else if( WHICH_LINE == 3 &&  enemiesKilled/numberOfEnemies >= 1.0 && !isCleared() ){
+			return "Resource Cost:\n" + (int)enemiesKilled/100;
 		}else if(isCleared()) {
 			return "Cleared";
 		}else{
@@ -135,10 +130,19 @@ public class Lines {
 			addPhysicians((int)enemiesKilled);
 			// For line 1 you get 3 perk points, For line 2 you get 2 perk points
 			Program.gameState.setPerkPoints(Program.gameState.getPerkPoint() + (WHICH_LINE == 1 ? 3 : 2));
+		}else if(getOurPercent().contains("Resource") && canDefend()){
+			setCleared();
+			Program.gameState.spendResources(numberOfEnemies/100);
+			// Add the equivalent enemies that were killed as new knights
+			knight.add((int)enemiesKilled);
+			Program.gameState.setPerkPoints(Program.gameState.getPerkPoint() + 1);
 		}
 	}
 
 	public boolean canDefend(){
+		if(getOurPercent().contains("Resource")){
+			return Program.gameState.canResources(numberOfEnemies/100);
+		}
 		return  (knights + knight.getIdle() >= enemiesKilled) && (mages + mage.getIdle() >= enemiesKilled) && (physicians + physician.getIdle() >= enemiesKilled);
 	}
 	

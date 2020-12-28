@@ -439,7 +439,7 @@ public class LevelScreen extends ScreenAdapter {
     @Override
     public void render(float delta) {
         ToIdleIsSin.program.runNextCommand();
-        if(line.isCleared() || line.getOurPercent().contains("Defend")){
+        if(line.isCleared() || line.getOurPercent().contains("Defend") || line.getOurPercent().contains("Resource")){
             job1.setDisabled(true);
             job2.setDisabled(true);
             job3.setDisabled(true);
@@ -481,7 +481,7 @@ public class LevelScreen extends ScreenAdapter {
         double progress = line.getEnemiesKilled()/line.getNumberOfEnemies();
         progressText.setText("Progress\n" + String.format("%1$,.2f", 100*progress) + "%");
         strengthText.setText(line.getOurPercent());
-        if(line.getOurPercent().contains("Defend")){
+        if(line.getOurPercent().contains("Defend") || line.getOurPercent().contains("Resource")){
             if(!strengthHasListener){
                 strengthHasListener = true;
                 strengthText.addListener(new ClickListener(){
@@ -547,7 +547,7 @@ public class LevelScreen extends ScreenAdapter {
 
 
         game.batch.end();
-        if(line.isCleared()){
+        if(line.isCleared() || line.getEnemiesKilled() >= line.getNumberOfEnemies()){
             knight.returnToState(0);
             mage.returnToState(0);
             physician.returnToState(0);

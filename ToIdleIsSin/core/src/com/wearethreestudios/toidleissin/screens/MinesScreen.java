@@ -42,10 +42,12 @@ public class MinesScreen extends ScreenAdapter {
     private Stage stage;
 
     private TextButton idleunit;
+    private TextButton claimBonus;
     private TextButton job1;
     private TextButton left1;
 
     private Hints mining;
+    private Hints bonus;
 
     private ImageBlob man;
     private ImageBlob woman;
@@ -59,6 +61,18 @@ public class MinesScreen extends ScreenAdapter {
         idleunit.setPosition((int)(ToIdleIsSin.WIDTH*0.1-idleunit.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-idleunit.getHeight()/2));
         idleunit.getLabel().setWrap(true);
         idleunit.getLabel().setAlignment(Align.center);
+
+        claimBonus = new TextButton("Resources:", game.skin, "idle");
+        claimBonus.setPosition((int)(ToIdleIsSin.WIDTH*0.5-claimBonus.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-claimBonus.getHeight()/2));
+        claimBonus.getLabel().setWrap(true);
+        claimBonus.getLabel().setAlignment(Align.center);
+        claimBonus.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                bonus.getPopup().setVisible(true);
+                super.clicked(event, x, y);
+            }
+        });
 
         job1 = new TextButton("Mine", game.skin, "job");
         job1.setSize(200,200);
@@ -90,6 +104,7 @@ public class MinesScreen extends ScreenAdapter {
         stage.addActor(campaign);
         stage.addActor(story);
         stage.addActor(idleunit);
+        stage.addActor(claimBonus);
         stage.addActor(job1);
         stage.addActor(left1);
 
@@ -116,8 +131,8 @@ public class MinesScreen extends ScreenAdapter {
 
         stage = new Stage(gamePort);
         initButtons();
-        initHints();
         prepareUnits();
+        initHints();
         background = game.atlas.findRegion("village/mines/mine_inside");
     }
 
@@ -137,6 +152,7 @@ public class MinesScreen extends ScreenAdapter {
         }else{
             idleunit.setVisible(false);
         }
+        claimBonus.setText("Resources:\n" + Program.gameState.getResources());
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.batch.setProjectionMatrix(gamecam.combined);
@@ -154,6 +170,12 @@ public class MinesScreen extends ScreenAdapter {
         TextureRegionDrawable a = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         mining.getPopup().background(a);
         stage.addActor(mining.getPopup());
+
+        bonus = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Resources", "Used to construct walls on the daily line.", "ui/icon");
+        bonus.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -bonus.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -bonus.getPopup().getHeight()/2));
+        TextureRegionDrawable b = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
+        bonus.getPopup().background(a);
+        stage.addActor(bonus.getPopup());
     }
 
     @Override
@@ -168,6 +190,7 @@ public class MinesScreen extends ScreenAdapter {
             public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                 gamePort.unproject(touch.set(screenX, screenY, 0));
                 mining.getPopup().setVisible(false);
+                bonus.getPopup().setVisible(false);
                 return super.touchDown(screenX, screenY, pointer, button);
             }
 

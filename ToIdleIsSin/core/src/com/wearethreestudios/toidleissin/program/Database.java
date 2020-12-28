@@ -58,6 +58,7 @@ public class Database{
 		boolean[] cleared = new boolean[7*3];
 
 		public int day;
+		public long miningTime;
 		
 		public Database(GameState gs) {
 			Monks m = (Monks)gs.getGroup("monks");
@@ -128,6 +129,7 @@ public class Database{
 			last_apu1_strike = gs.getLast_apu1_strike();
 			last_apu2_strike = gs.getLast_apu2_strike();
 			day = gs.currentDayInYear;
+			miningTime = gs.getMiningTime();
 			
 		}
 		
@@ -207,5 +209,6 @@ public class Database{
 			gs.setLast_apu1_strike(last_apu1_strike);
 			gs.setLast_apu2_strike(last_apu2_strike);
 			gs.pastDayInYear = day;
+			gs.setMiningTime(miningTime);
 		}
 	}

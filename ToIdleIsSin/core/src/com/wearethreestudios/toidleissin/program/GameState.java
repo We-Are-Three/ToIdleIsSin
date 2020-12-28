@@ -27,6 +27,7 @@ public class GameState {
 	protected double ALL_UNITS_DEATH_RATE = 1.0/300;
 	protected int currentDayInYear = 0;
 	protected int pastDayInYear = 0;
+	protected long miningTime = 0;
 
 	public GameState(Database d) {
 		groups = new ArrayList<>();
@@ -104,6 +105,8 @@ public class GameState {
 			
 		}
 		if(isNewDay()){
+			// Reset mining time.
+			miningTime = 0;
 			// Reset all of the bonus lines
 			ArrayList<Campaign> cs = getCampaigns();
 			Knights k = (Knights) getGroup("knights");
@@ -214,6 +217,11 @@ public class GameState {
 			if(c == null) continue;
 			if(c.isCleared()) {
 			}
+		}
+
+		if(Program.isMining()){
+			time /= Program.SPEED_MODIFIER;
+			miningTime += time;
 		}
 	}
 
@@ -418,6 +426,32 @@ public class GameState {
 		if(currentDayInYear != pastDayInYear) return true;
 		return false;
 	}
-	
+
+	public long getMiningTime(){
+		return miningTime;
+	}
+
+	public void setMiningTime(long m){
+		miningTime = m;
+	}
+
+	public int getResources(){
+		return (int)(miningTime / 60000);
+	}
+
+	public boolean spendResources(int needed){
+		if(getResources() >= needed){
+			miningTime -= needed * 60000;
+			return true;
+		}
+		return false;
+	}
+
+	public boolean canResources(int needed){
+		if(getResources() >= needed){
+			return true;
+		}
+		return false;
+	}
 	
 }
