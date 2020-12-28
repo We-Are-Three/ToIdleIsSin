@@ -69,6 +69,7 @@ public class SplashScreen extends ScreenAdapter {
 
     public void update(float delta){
         stage.act(delta);
+        game.assets.update();
     }
 
     @Override

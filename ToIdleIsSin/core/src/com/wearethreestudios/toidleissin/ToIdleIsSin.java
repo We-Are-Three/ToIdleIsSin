@@ -59,6 +59,7 @@ public class ToIdleIsSin extends Game  implements ApplicationListener {
 
 	@Override
 	public void render () {
+		assets.update();
 		super.render();
 	}
 	
