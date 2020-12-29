@@ -390,7 +390,7 @@ public class LevelScreen extends ScreenAdapter {
 
         templine = camp.getThirdLine();
         progress = templine.getEnemiesKilled()/templine.getNumberOfEnemies();
-        thirdscroll = new ScrollImage(game, "campaign/" + level + "/" + "three" +"/scroll-", 6);
+        thirdscroll = new ScrollImage(game, "campaign/" + level + "/" + "three" +"/scroll-", 3);
         thirdscroll.get().setPosition(-(int)((thirdscroll.get().getWidth()-ToIdleIsSin.WIDTH)*progress), ToIdleIsSin.HEIGHT/2);
 
         stage.addActor(firstscroll.get());
@@ -605,7 +605,7 @@ public class LevelScreen extends ScreenAdapter {
 
         enemy1 = new ImageBlob(game, 1);
         enemy1.addState("sprites/units/darkmonkidle", 4, 4, 0.15f);
-        enemy1.addState("sprites/units/darkmonkidle", 4, 4, 0.15f);
+        enemy1.addState("sprites/units/darkmonkattack", 4, 4, 0.15f);
         enemy2 = new ImageBlob(game, 1);
         enemy2.addState("sprites/units/skeletonidle", 4, 4, 0.15f);
         enemy2.addState("sprites/units/skeletonattack", 4, 4, 0.15f);
