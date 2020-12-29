@@ -97,6 +97,17 @@ public class LevelScreen extends ScreenAdapter {
     private float bossScaleY;
     private int bossxoffset = 0;
 
+    private int virtueProgress = 0;
+    private ImageBlob virtue;
+    private float virtueScaleX;
+    private float virtueScaleY;
+    private int virtuexoffset = 0;
+    
+    private ImageBlob vice;
+    private float viceScaleX;
+    private float viceScaleY;
+    private int vicexoffset = 0;
+
     private ImageBlob boy;
     private ImageBlob girl;
 
@@ -519,17 +530,22 @@ public class LevelScreen extends ScreenAdapter {
 
         game.batch.begin();
 
+        if(virtueProgress > 1)
+            virtue.draw((int)(-virtue.getWidth()/2 + virtuexoffset),ToIdleIsSin.HEIGHT/2+170, virtueScaleX, virtueScaleY);
+
         if(line.getMages() > 0)
-            mage.draw((int)(0 - mage.getWidth()/2),ToIdleIsSin.HEIGHT/2+200,0.75,0.75);
+            mage.draw((int)(200 - mage.getWidth()/2),ToIdleIsSin.HEIGHT/2+200,0.75,0.75);
 
         if( (line.getNumberOfEnemies() - line.getEnemiesKilled() > 0 && line.getWHICH_LINE() != 1) || ( line.getEnemiesKilled() / line.getNumberOfEnemies() < 0.85 && line.getWHICH_LINE() == 1 ) )
             enemy1.draw((int)(550 - enemy1.getWidth()/2),ToIdleIsSin.HEIGHT/2+200,0.75,0.75);
 
         if(line.getKnights() > 0)
-            knight.draw((int)(200 - knight.getWidth()/2),ToIdleIsSin.HEIGHT/2+50,1.2,1.2);
+            knight.draw((int)(200 - knight.getWidth()/2),ToIdleIsSin.HEIGHT/2,1.2,1.2);
 
-        if(line.getEnemiesKilled() / line.getNumberOfEnemies() > 0.85 &&  line.getEnemiesKilled() / line.getNumberOfEnemies() < 1.0  && line.getWHICH_LINE() == 1)
+        if(line.getEnemiesKilled() / line.getNumberOfEnemies() > 0.85 &&  line.getEnemiesKilled() / line.getNumberOfEnemies() < 1.0  && line.getWHICH_LINE() == 1){
             boss.draw((int)(500 + bossxoffset - boss.getWidth()/2),ToIdleIsSin.HEIGHT/2+100, bossScaleX, bossScaleY);
+            vice.draw((int) (700 + vicexoffset - vice.getWidth()/2), ToIdleIsSin.HEIGHT/2, viceScaleX, viceScaleY);
+        }
 
         if( (line.getNumberOfEnemies() - line.getEnemiesKilled() > 0 && line.getWHICH_LINE() != 1) || ( line.getEnemiesKilled() / line.getNumberOfEnemies() < 0.85 && line.getWHICH_LINE() == 1 ) )
             enemy3.draw((int)(750 - enemy3.getWidth()/2+50),ToIdleIsSin.HEIGHT/2+100,0.8,0.8);
@@ -614,6 +630,8 @@ public class LevelScreen extends ScreenAdapter {
         enemy3.addState("sprites/units/darknunattack", 4, 4, 0.15f);
 
         boss = new ImageBlob(game, 1);
+        virtue = new ImageBlob(game, 1);
+        vice = new ImageBlob(game, 1);
         switch (level){
             case 1:
                 boss.addState("sprites/units/monsterenvyidle", 4, 4, 0.2f);
@@ -621,6 +639,17 @@ public class LevelScreen extends ScreenAdapter {
                 bossScaleX = 1.5f;
                 bossScaleY = 1.5f;
                 bossxoffset = -150;
+
+                virtue.addState("sprites/units/charity", 4,4,0.2f);
+                virtueProgress = Program.gameState.getVirtue("charity").getProgress();
+                virtueScaleX = 0.8f;
+                virtueScaleY = 0.8f;
+                virtuexoffset = -50;
+
+                vice.addState("sprites/units/envy", 4,4,0.2f);
+                viceScaleX = 0.9f;
+                viceScaleY = 0.9f;
+                vicexoffset = 0;
                 break;
             case 2:
                 boss.addState("sprites/units/monsteravariceidle", 4, 4, 0.15f);
@@ -628,6 +657,17 @@ public class LevelScreen extends ScreenAdapter {
                 bossScaleX = 1.3f;
                 bossScaleY = 1.3f;
                 bossxoffset = -100;
+
+                virtue.addState("sprites/units/kindness", 4,4,0.2f);
+                virtueProgress = Program.gameState.getVirtue("kindness").getProgress();
+                virtueScaleX = 0.85f;
+                virtueScaleY = 0.85f;
+                virtuexoffset = -50;
+
+                vice.addState("sprites/units/avarice", 4,4,0.2f);
+                viceScaleX = 0.8f;
+                viceScaleY = 0.8f;
+                vicexoffset = 0;
                 break;
             case 3:
                 boss.addState("sprites/units/monstergluttonyidle", 4, 4, 0.15f);
@@ -635,6 +675,17 @@ public class LevelScreen extends ScreenAdapter {
                 bossScaleX = 1.2f;
                 bossScaleY = 1.2f;
                 bossxoffset = -50;
+
+                virtue.addState("sprites/units/diligence", 4,4,0.2f);
+                virtueProgress = Program.gameState.getVirtue("diligence").getProgress();
+                virtueScaleX = 0.85f;
+                virtueScaleY = 0.85f;
+                virtuexoffset = -50;
+
+                vice.addState("sprites/units/gluttony", 4,4,0.2f);
+                viceScaleX = 0.8f;
+                viceScaleY = 0.8f;
+                vicexoffset = 0;
                 break;
             case 4:
                 boss.addState("sprites/units/monsterslothidle", 4, 4, 0.15f);
@@ -642,12 +693,34 @@ public class LevelScreen extends ScreenAdapter {
                 bossScaleX = 1.2f;
                 bossScaleY = 1.2f;
                 bossxoffset = -25;
+
+                virtue.addState("sprites/units/humility", 4,4,0.2f);
+                virtueProgress = Program.gameState.getVirtue("humility").getProgress();
+                virtueScaleX = 0.85f;
+                virtueScaleY = 0.85f;
+                virtuexoffset = -50;
+
+                vice.addState("sprites/units/sloth", 4,4,0.2f);
+                viceScaleX = 0.8f;
+                viceScaleY = 0.8f;
+                vicexoffset = 0;
                 break;
             case 5:
                 boss.addState("sprites/units/monsterrageidle", 4, 4, 0.15f);
                 boss.addState("sprites/units/monsterrageattack", 4, 4, 0.15f);
                 bossScaleX = 1.2f;
                 bossScaleY = 1.2f;
+
+                virtue.addState("sprites/units/chastity", 4,4,0.2f);
+                virtueProgress = Program.gameState.getVirtue("chastity").getProgress();
+                virtueScaleX = 1.1f;
+                virtueScaleY = 1.1f;
+                virtuexoffset = -50;
+
+                vice.addState("sprites/units/wrath", 4,4,0.2f);
+                viceScaleX = 0.85f;
+                viceScaleY = 0.85f;
+                vicexoffset = 0;
                 break;
             case 6:
                 boss.addState("sprites/units/monsterlustidle", 4, 4, 0.15f);
@@ -655,6 +728,17 @@ public class LevelScreen extends ScreenAdapter {
                 bossScaleX = 1.6f;
                 bossScaleY = 1.6f;
                 bossxoffset = -200;
+
+                virtue.addState("sprites/units/patience", 4,4,0.2f);
+                virtueProgress = Program.gameState.getVirtue("patience").getProgress();
+                virtueScaleX = 0.85f;
+                virtueScaleY = 0.85f;
+                virtuexoffset = -75;
+
+                vice.addState("sprites/units/lusts", 4,4,0.2f);
+                viceScaleX = 0.8f;
+                viceScaleY = 0.8f;
+                vicexoffset = 0;
                 break;
             case 7:
                 boss.addState("sprites/units/monsterprideidle", 4, 4, 0.15f);
@@ -662,6 +746,17 @@ public class LevelScreen extends ScreenAdapter {
                 bossScaleX = 1.2f;
                 bossScaleY = 1.2f;
                 bossxoffset = 0;
+
+                virtue.addState("sprites/units/temperance", 4,4,0.2f);
+                virtueProgress = Program.gameState.getVirtue("temperance").getProgress();
+                virtueScaleX = 0.85f;
+                virtueScaleY = 0.85f;
+                virtuexoffset = -50;
+
+                vice.addState("sprites/units/pride", 4,4,0.2f);
+                viceScaleX = 0.7f;
+                viceScaleY = 0.7f;
+                vicexoffset = 0;
                 break;
             default:
                 boss.addState("sprites/units/monsterprideidle", 4, 4, 0.15f);
@@ -669,6 +764,7 @@ public class LevelScreen extends ScreenAdapter {
                 Program.print("Error, there is no level " + level);
                 break;
         }
+        virtue.flip();
 
 
     }
