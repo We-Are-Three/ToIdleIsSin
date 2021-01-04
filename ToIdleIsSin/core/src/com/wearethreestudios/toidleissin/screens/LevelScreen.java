@@ -569,31 +569,31 @@ public class LevelScreen extends ScreenAdapter {
 
         game.batch.begin();
 
-        if( virtueProgress > 1)
-            virtue.draw((int)(-virtue.getWidth()/2 + virtuexoffset),ToIdleIsSin.HEIGHT/2+170, virtueScaleX, virtueScaleY);
+        if( isVisible("unit") ||  line.getPhysicians() > 0)
+            physician.draw((int)(-50 - physician.getWidth()/2),ToIdleIsSin.HEIGHT/2+170,0.75*0.8,0.75*0.8);
 
         if( isVisible("unit") ||  line.getMages() > 0)
-            mage.draw((int)(200 - mage.getWidth()/2),ToIdleIsSin.HEIGHT/2+200,0.75,0.75);
+            mage.draw((int)(200 - mage.getWidth()/2),ToIdleIsSin.HEIGHT/2+200,0.75*0.8,0.75*0.8);
 
         if( isVisible("enemy") ||   (line.getNumberOfEnemies() - line.getEnemiesKilled() > 0 && line.getWHICH_LINE() != 1) || ( line.getEnemiesKilled() / line.getNumberOfEnemies() < 0.85 && line.getWHICH_LINE() == 1 ) )
-            enemy1.draw((int)(550 - enemy1.getWidth()/2),ToIdleIsSin.HEIGHT/2+200,0.75,0.75);
+            enemy1.draw((int)(550 - enemy1.getWidth()/2),ToIdleIsSin.HEIGHT/2+200,0.75*0.8,0.75*0.8);
 
         if( isVisible("unit") ||  line.getKnights() > 0)
-            knight.draw((int)(200 - knight.getWidth()/2),ToIdleIsSin.HEIGHT/2,1.2,1.2);
+            knight.draw((int)(200 - knight.getWidth()/2),ToIdleIsSin.HEIGHT/2,1.2*0.8,1.2*0.8);
 
         if( isVisible("boss") ||  line.getEnemiesKilled() / line.getNumberOfEnemies() > 0.85 &&  line.getEnemiesKilled() / line.getNumberOfEnemies() < 1.0  && line.getWHICH_LINE() == 1){
-            boss.draw((int)(500 + bossxoffset - boss.getWidth()/2),ToIdleIsSin.HEIGHT/2+100, bossScaleX, bossScaleY);
-            vice.draw((int) (700 + vicexoffset - vice.getWidth()/2), ToIdleIsSin.HEIGHT/2, viceScaleX, viceScaleY);
+            boss.draw((int)(500 + bossxoffset - boss.getWidth()/2),ToIdleIsSin.HEIGHT/2+100, bossScaleX*0.8, bossScaleY*0.8);
+            vice.draw((int) (700 + vicexoffset - vice.getWidth()/2), ToIdleIsSin.HEIGHT/2, viceScaleX*0.8, viceScaleY*0.8);
         }
 
         if( isVisible("enemy") ||   (line.getNumberOfEnemies() - line.getEnemiesKilled() > 0 && line.getWHICH_LINE() != 1) || ( line.getEnemiesKilled() / line.getNumberOfEnemies() < 0.85 && line.getWHICH_LINE() == 1 ) )
-            enemy3.draw((int)(750 - enemy3.getWidth()/2+50),ToIdleIsSin.HEIGHT/2+100,0.8,0.8);
+            enemy3.draw((int)(750 - enemy3.getWidth()/2+50),ToIdleIsSin.HEIGHT/2+100,0.8*0.8,0.8*0.8);
 
-        if( isVisible("unit") ||  line.getPhysicians() > 0)
-            physician.draw((int)(-50 - physician.getWidth()/2),ToIdleIsSin.HEIGHT/2,0.75,0.75);
+        if( virtueProgress > 1)
+            virtue.draw((int)(-virtue.getWidth()/2 + virtuexoffset),ToIdleIsSin.HEIGHT/2, virtueScaleX*0.8, virtueScaleY*0.8);
 
         if( isVisible("enemy") ||   (line.getNumberOfEnemies() - line.getEnemiesKilled() > 0 && line.getWHICH_LINE() != 1) || ( line.getEnemiesKilled() / line.getNumberOfEnemies() < 0.85 && line.getWHICH_LINE() == 1 ) )
-            enemy2.draw((int)(400 - enemy2.getWidth()/2),ToIdleIsSin.HEIGHT/2,1.2,1.2);
+            enemy2.draw((int)(400 - enemy2.getWidth()/2),ToIdleIsSin.HEIGHT/2,1.2*0.8,1.2*0.8);
 
         if( line.getWHICH_LINE() == 2 && line.isCleared()){
             boy.draw((int)(500 - boy.getWidth()/2),ToIdleIsSin.HEIGHT/2,0.55,0.55);
@@ -741,8 +741,8 @@ public class LevelScreen extends ScreenAdapter {
 
                 virtue.addState("sprites/units/humility", 4,4,0.2f);
                 virtueProgress = Program.gameState.getVirtue("humility").getProgress();
-                virtueScaleX = 0.85f;
-                virtueScaleY = 0.85f;
+                virtueScaleX = 0.9f;
+                virtueScaleY = 0.9f;
                 virtuexoffset = -50;
 
                 vice.addState("sprites/units/sloth", 4,4,0.2f);
@@ -758,8 +758,8 @@ public class LevelScreen extends ScreenAdapter {
 
                 virtue.addState("sprites/units/chastity", 4,4,0.2f);
                 virtueProgress = Program.gameState.getVirtue("chastity").getProgress();
-                virtueScaleX = 1.1f;
-                virtueScaleY = 1.1f;
+                virtueScaleX = 1.2f;
+                virtueScaleY = 1.2f;
                 virtuexoffset = -50;
 
                 vice.addState("sprites/units/wrath", 4,4,0.2f);
@@ -778,7 +778,7 @@ public class LevelScreen extends ScreenAdapter {
                 virtueProgress = Program.gameState.getVirtue("patience").getProgress();
                 virtueScaleX = 0.85f;
                 virtueScaleY = 0.85f;
-                virtuexoffset = -75;
+                virtuexoffset = -25;
 
                 vice.addState("sprites/units/lusts", 4,4,0.2f);
                 viceScaleX = 0.8f;
@@ -871,18 +871,13 @@ public class LevelScreen extends ScreenAdapter {
 
     public void releventVisible(int progress){
         switch (progress){
-            case 2:
-                visible.put("unit", true);
-                visible.put("enemy", false);
-                visible.put("boss", false);
-                break;
             case 3:
                 visible.put("unit", true);
                 visible.put("enemy", false);
                 visible.put("boss", true);
                 break;
-            default:
-                visible.put("unit", false);
+            default: // case 2
+                visible.put("unit", true);
                 visible.put("enemy", false);
                 visible.put("boss", false);
                 break;

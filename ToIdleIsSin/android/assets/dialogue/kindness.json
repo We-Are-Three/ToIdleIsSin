@@ -37,7 +37,7 @@
       "dialogue":[
         { "character" : "Avarice", "text" : "You fool! With me gone, now nobody will pave the roads." },
         { "character" : "Kindness", "text" : "We will lower the taxes to zero!" },
-        { "character" : "Avarice", "text" : "You’re...crazy!" },
+        { "character" : "Avarice", "text" : "You're...crazy!" },
         { "character" : "Kindness", "text" : "Except for the rich, of course." },
         { "character" : "Avarice", "text" : "Ah. Perhaps I have indeed...misjudged you." }
       ]
