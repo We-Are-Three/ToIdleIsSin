@@ -2,19 +2,71 @@
   "character": "charity",
   "main" : [
     {
-      "title" : "hello",
+      "title" : "Intro",
       "progress" : 1,
+      "next" : 2,
       "dialogue":[
-        { "character" : "charity", "text" : "You should beat the first level." },
-        { "character" : "Me", "text" : "Ok." }
+        { "character" : "[POV:", "text" : "A small assemblage of knights] " },
+        { "character" : "General:", "text" : "Well men, we've lost. " },
+        { "character" : "General:", "text" : "The Saligian Court's armies have routed us and taken the land. Our rebellion for freedom has failed. " },
+        { "character" : "General:", "text" : "If anyone wishes to not throw their lives away, I would not hold it against you if you ran. " },
+        { "character" : "Knight:", "text" : "No sir. We will stay. Better to die for freedom than live in slavery. " },
+        { "character" : "[Another", "text" : "knight joins the others] " },
+        { "character" : "Scout", "text" : "Knight: Sir! I have scouted the most defensible position. There is a ruin just over this hill. " },
+        { "character" : "General:", "text" : "How apt. Then we will make our last stand there. Come men! To the ruin! " },
+        { "character" : "[Scenery", "text" : "change. Use existing asset. Statue of Charity.] " },
+        { "character" : "General:", "text" : "Wait. What's this? " },
+        { "character" : "Knight:", "text" : "A statue of one of the virtues of old. Charity, I think. " },
+        { "character" : "General:", "text" : "I see. Well, Lady Charity, may you smile upon us as we fight against the evils of this land. " },
+        { "character" : "[Charity", "text" : "transitions to non-statue] " },
+        { "character" : "General:", "text" : "Wtf? " },
+        { "character" : "Charity:", "text" : "My good general, your prayer has awakened me. I was held tightly under the spell of Lord Envy, but your faith has freed me. " },
+        { "character" : "General:", "text" : "I see. Well I got some bad news, Lady Charity. I've released you into a hopeless situation. " },
+        { "character" : "General:", "text" : "We will die by Lord Envy's hand tonight. " },
+        { "character" : "Knight:", "text" : "He too stronk. " },
+        { "character" : "Charity:", "text" : "No, General. The war is not lost. I will help you raise an army and free my fellow virtues, and together we shall overcome the Saligian court. " },
+        { "character" : "General:", "text" : "Who knew it would be this easy? My lady, you have but to show me the way. " },
+        { "character" : "Charity:", "text" : "Come. Let us leave this place. Let the war for freedom truly begin. " }
       ]
     },
     {
-      "title" : "win",
+      "title" : "facing",
       "progress" : 2,
+      "next" : 3,
       "dialogue":[
-        { "character" : "charity", "text" : "You can move to the second level now." },
-        { "character" : "Me", "text" : "Ok" }
+        { "character" : "Envy", "text" : "Ah? What's this? General? You step foot again in MY lands?" },
+        { "character" : "Charity", "text" : "This good general has freed me and will liberate these lands free from you as well." },
+        { "character" : "Envy", "text" : "Ah, the Virtue Charity. General, don't tell me you've allied yourself with Virtues." },
+        { "character" : "General", "text" : "I have, and we shall be your downfall." },
+        { "character" : "Envy", "text" : "You are a fool. They were imprisoned not because they are powerful, but because they are annoying." },
+        { "character" : "Charity", "text" : "Rude!" },
+        { "character" : "Envy", "text" : "Enough talk. Let us do battle." }
+      ]
+    },
+    {
+      "title" : "defeat",
+      "progress" : 3,
+      "next" : 4,
+      "dialogue":[
+        { "character" : "Charity", "text" : "What? How? " },
+        { "character" : "Charity", "text" : "The power of Charity was too strong!" },
+        { "character" : "Envy", "text" : "But you didn't do anything charitable." },
+        { "character" : "Charity", "text" : "But you didn't do anything envious." },
+        { "character" : "Envy", "text" : "Touche." },
+        { "character" : "Charity", "text" : "Well, here. In your dying moments, I will give you this twenty gold. An act of charity." },
+        { "character" : "Envy", "text" : "I'm dying. Gold is no use to me." },
+        { "character" : "Charity", "text" : "Rude!" }
+      ]
+    },
+    {
+      "title" : "next",
+      "progress" : 4,
+      "next" : 5,
+      "dialogue":[
+        { "character" : "Charity", "text" : "General! I sense my sister Virtue, Lady Kindness nearby." },
+        { "character" : "Charity", "text" : "She must be freed before we face Lord Avarice, or we will surely be defeated." },
+        { "character" : "General", "text" : "Wait. Charity is the antithesis to greed. Aren't you the one we need?" },
+        { "character" : "Charity", "text" : "No, of course not. Lord Avarice gives me the creeps. I'll stay waaaaay back, thank you very much." }
       ]
     }
   ],
@@ -24,7 +76,7 @@
       "progress" : 0,
       "dialogue":[
         { "character" : "charity", "text" : "random comment." },
-        { "character" : "Me", "text" : "random reply." }
+        { "character" : "a", "text" : "a" }
       ]
     }
   ]

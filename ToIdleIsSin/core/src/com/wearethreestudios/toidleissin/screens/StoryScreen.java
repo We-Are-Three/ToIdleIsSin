@@ -67,8 +67,6 @@ public class StoryScreen extends ScreenAdapter {
     private float previousX = -1;
     private float previousY = -1;
 
-    private ArrayList<ImageBlob> characters;
-
     private DialoguePopUp dialoguePopUp;
     private Dialogue dialogue;
 
@@ -102,7 +100,9 @@ public class StoryScreen extends ScreenAdapter {
     }
 
     public void initSprites(){
-        dialoguePopUp = new DialoguePopUp(game);
+        int width = (int)(ToIdleIsSin.WIDTH*5/6.0);
+        int height = (int)(ToIdleIsSin.HEIGHT*3.0/12);
+        dialoguePopUp = new DialoguePopUp(game, width, height);
         dialoguePopUp.getPopup().addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -111,26 +111,13 @@ public class StoryScreen extends ScreenAdapter {
             }
         });
 
-        characters = new ArrayList<>();
 
         charity = new ImageBlob(game, 0.75);
         charity.addState("sprites/units/charity", 4,  4, 0.08f);
         charity.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                Dialogue charityWords;
-                if(Program.gameState.getCampaign("campaign1").isCleared() && (1 == Program.gameState.getVirtue("charity").getProgress())){
-                    Program.gameState.getVirtue("charity").setProgress(2);
-                    charityWords = game.dialogue.characterMainDialogue("charity");
-                    Program.gameState.getVirtue("kindness").setProgress(1);
-                } else if (1 == Program.gameState.getVirtue("charity").getProgress()){
-                    charityWords = game.dialogue.characterMainDialogue("charity");
-                } else {
-                    charityWords = game.dialogue.characterRandom("charity");
-                }
-                dialogue = charityWords;
-                selectedVirtue = charity;
-                speak();
+                virtueSpeak("charity", 1, "kindness");
                 super.clicked(event, x, y);
             }
         });
@@ -140,19 +127,7 @@ public class StoryScreen extends ScreenAdapter {
         kindness.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                Dialogue kindnessWords;
-                if(Program.gameState.getCampaign("campaign2").isCleared() && (1 == Program.gameState.getVirtue("kindness").getProgress())){
-                    Program.gameState.getVirtue("kindness").setProgress(2);
-                    kindnessWords = game.dialogue.characterMainDialogue("kindness");
-                    Program.gameState.getVirtue("diligence").setProgress(1);
-                } else if (1 == Program.gameState.getVirtue("kindness").getProgress()){
-                    kindnessWords = game.dialogue.characterMainDialogue("kindness");
-                } else {
-                    kindnessWords = game.dialogue.characterRandom("kindness");
-                }
-                dialogue = kindnessWords;
-                selectedVirtue = kindness;
-                speak();
+                virtueSpeak("kindness", 2, "diligence");
                 super.clicked(event, x, y);
             }
         });
@@ -162,19 +137,7 @@ public class StoryScreen extends ScreenAdapter {
         diligence.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                Dialogue diligenceWords;
-                if(Program.gameState.getCampaign("campaign3").isCleared() && (1 == Program.gameState.getVirtue("diligence").getProgress())){
-                    Program.gameState.getVirtue("diligence").setProgress(2);
-                    diligenceWords = game.dialogue.characterMainDialogue("diligence");
-                    Program.gameState.getVirtue("humility").setProgress(1);
-                } else if (1 == Program.gameState.getVirtue("diligence").getProgress()){
-                    diligenceWords = game.dialogue.characterMainDialogue("diligence");
-                } else {
-                    diligenceWords = game.dialogue.characterRandom("diligence");
-                }
-                dialogue = diligenceWords;
-                selectedVirtue = diligence;
-                speak();
+                virtueSpeak("diligence", 3, "humility");
                 super.clicked(event, x, y);
             }
         });
@@ -184,19 +147,7 @@ public class StoryScreen extends ScreenAdapter {
         humility.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                Dialogue humilityWords;
-                if(Program.gameState.getCampaign("campaign4").isCleared() && (1 == Program.gameState.getVirtue("humility").getProgress())){
-                    Program.gameState.getVirtue("humility").setProgress(2);
-                    humilityWords = game.dialogue.characterMainDialogue("humility");
-                    Program.gameState.getVirtue("chastity").setProgress(1);
-                } else if (1 == Program.gameState.getVirtue("humility").getProgress()){
-                    humilityWords = game.dialogue.characterMainDialogue("humility");
-                } else {
-                    humilityWords = game.dialogue.characterRandom("humility");
-                }
-                dialogue = humilityWords;
-                selectedVirtue = humility;
-                speak();
+                virtueSpeak("humility", 4, "chastity");
                 super.clicked(event, x, y);
             }
         });
@@ -206,19 +157,7 @@ public class StoryScreen extends ScreenAdapter {
         chastity.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                Dialogue chastityWords;
-                if(Program.gameState.getCampaign("campaign5").isCleared() && (1 == Program.gameState.getVirtue("chastity").getProgress())){
-                    Program.gameState.getVirtue("chastity").setProgress(2);
-                    chastityWords = game.dialogue.characterMainDialogue("chastity");
-                    Program.gameState.getVirtue("patience").setProgress(1);
-                } else if (1 == Program.gameState.getVirtue("chastity").getProgress()){
-                    chastityWords = game.dialogue.characterMainDialogue("chastity");
-                } else {
-                    chastityWords = game.dialogue.characterRandom("chastity");
-                }
-                dialogue = chastityWords;
-                selectedVirtue = chastity;
-                speak();
+                virtueSpeak("chastity", 5, "patience");
                 super.clicked(event, x, y);
             }
         });
@@ -228,19 +167,7 @@ public class StoryScreen extends ScreenAdapter {
         patienceman.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                Dialogue patienceWords;
-                if(Program.gameState.getCampaign("campaign6").isCleared() && (1 == Program.gameState.getVirtue("patience").getProgress())){
-                    Program.gameState.getVirtue("patience").setProgress(2);
-                    patienceWords = game.dialogue.characterMainDialogue("patience");
-                    Program.gameState.getVirtue("temperance").setProgress(1);
-                } else if (1 == Program.gameState.getVirtue("patience").getProgress()){
-                    patienceWords = game.dialogue.characterMainDialogue("patience");
-                } else {
-                    patienceWords = game.dialogue.characterRandom("patience");
-                }
-                dialogue = patienceWords;
-                selectedVirtue = patienceman;
-                speak();
+                virtueSpeak("patience", 6, "temperance");
                 super.clicked(event, x, y);
             }
         });
@@ -250,18 +177,7 @@ public class StoryScreen extends ScreenAdapter {
         temperance.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                Dialogue temperanceWords;
-                if(Program.gameState.getCampaign("campaign7").isCleared() && (1 == Program.gameState.getVirtue("temperance").getProgress())){
-                    Program.gameState.getVirtue("temperance").setProgress(2);
-                    temperanceWords = game.dialogue.characterMainDialogue("temperance");
-                } else if (1 == Program.gameState.getVirtue("temperance").getProgress()){
-                    temperanceWords = game.dialogue.characterMainDialogue("temperance");
-                } else {
-                    temperanceWords = game.dialogue.characterRandom("temperance");
-                }
-                dialogue = temperanceWords;
-                selectedVirtue = temperance;
-                speak();
+                virtueSpeak("temperance", 7, null);
                 super.clicked(event, x, y);
             }
         });
@@ -273,85 +189,103 @@ public class StoryScreen extends ScreenAdapter {
 
         stage.addActor(patienceman);
         patienceman.setPosition(150,1100);
-        if(Program.gameState.getVirtue("patience").getProgress() == 0){
-            patienceman.setVisible(false);
-        }
 
         stage.addActor(kindness);
         kindness.setPosition(0,650);
         kindness.flip();
-        if(Program.gameState.getVirtue("kindness").getProgress() == 0){
-            kindness.setVisible(false);
-        }
 
         stage.addActor(temperance);
         temperance.setPosition(350,700);
-        if(Program.gameState.getVirtue("temperance").getProgress() == 0){
-            temperance.setVisible(false);
-        }
 
         stage.addActor(chastity);
         chastity.setPosition(450,200);
         chastity.setBlobScale(1.5f, 1.5f);
         chastity.setHitOffset(0.2f, 0);
-        if(Program.gameState.getVirtue("chastity").getProgress() == 0){
-            chastity.setVisible(false);
-        }
 
         stage.addActor(diligence);
         diligence.setPosition(250,200);
-        if(Program.gameState.getVirtue("diligence").getProgress() == 0){
-            diligence.setVisible(false);
-        }
 
         stage.addActor(humility);
         humility.setPosition(-100,200);
         humility.flip();
-        if(Program.gameState.getVirtue("humility").getProgress() == 0){
-            humility.setVisible(false);
-        }
-
-        characters.add(charity);
-        characters.add(patienceman);
-        characters.add(kindness);
-        characters.add(temperance);
-        characters.add(chastity);
-        characters.add(diligence);
-        characters.add(humility);
 
         allInvisible();
         allVisible();
 
-        dialoguePopUp.getPopup().setPosition(ToIdleIsSin.WIDTH/6, 300);
+        dialoguePopUp.getPopup().setPosition(ToIdleIsSin.WIDTH/12, 300);
         stage.addActor(dialoguePopUp.getPopup());
         dialoguePopUp.getPopup().setVisible(false);
     }
 
     public void allVisible(){
-        if(Program.gameState.getVirtue("charity").getProgress() != 0){
-            charity.setVisible(true);
-        }
-        if(Program.gameState.getVirtue("patience").getProgress() != 0){
+        charity.setVisible(true);
+        if(Program.gameState.getVirtue("patience").getProgress() >= 1 && Program.gameState.getCampaign("campaign6").getSecondLine().isCleared()){
             patienceman.setVisible(true);
         }
-        if(Program.gameState.getVirtue("kindness").getProgress() != 0){
+        if(Program.gameState.getVirtue("kindness").getProgress() >= 1 && Program.gameState.getCampaign("campaign2").getSecondLine().isCleared()){
             kindness.setVisible(true);
         }
-        if(Program.gameState.getVirtue("temperance").getProgress() != 0){
+        if(Program.gameState.getVirtue("temperance").getProgress() >= 1 && Program.gameState.getCampaign("campaign7").getSecondLine().isCleared()){
             temperance.setVisible(true);
         }
-        if(Program.gameState.getVirtue("chastity").getProgress() != 0){
+        if(Program.gameState.getVirtue("chastity").getProgress() >= 1 && Program.gameState.getCampaign("campaign5").getSecondLine().isCleared()){
             chastity.setVisible(true);
         }
-        if(Program.gameState.getVirtue("diligence").getProgress() != 0){
+        if(Program.gameState.getVirtue("diligence").getProgress() >= 1 && Program.gameState.getCampaign("campaign3").getSecondLine().isCleared()){
             diligence.setVisible(true);
         }
-        if(Program.gameState.getVirtue("humility").getProgress() != 0){
+        if(Program.gameState.getVirtue("humility").getProgress() >= 1 && Program.gameState.getCampaign("campaign4").getSecondLine().isCleared()){
             humility.setVisible(true);
         }
     }
 
+    public void virtueSpeak(String virtue, int number, String nextVirtue){
+        Dialogue virtueWords;
+        if(Program.gameState.getCampaign("campaign" + number).isCleared() && (4 == Program.gameState.getVirtue(virtue).getProgress())){
+            virtueWords = game.dialogue.characterMainDialogue(virtue);
+            Program.gameState.getVirtue(virtue).setProgress(5);
+            if(nextVirtue != null) Program.gameState.getVirtue(nextVirtue).setProgress(1);
+        } else if (1 == Program.gameState.getVirtue(virtue).getProgress() && Program.gameState.getCampaign("campaign" + number).getSecondLine().isCleared()){
+            virtueWords = game.dialogue.characterMainDialogue(virtue);
+            Program.gameState.getVirtue(virtue).setProgress(2);
+        } else {
+            virtueWords = game.dialogue.characterRandom(virtue);
+        }
+        dialogue = virtueWords;
+        switch (virtue){
+            case "charity":
+                selectedVirtue = charity;
+                break;
+            case "patience":
+                selectedVirtue = patienceman;
+                break;
+            case "kindness":
+                selectedVirtue = kindness;
+                break;
+            case "temperance":
+                selectedVirtue = temperance;
+                break;
+            case "chastity":
+                selectedVirtue = chastity;
+                break;
+            case "diligence":
+                selectedVirtue = diligence;
+                break;
+            case "humility":
+                selectedVirtue = humility;
+                break;
+            default:
+                break;
+
+        }
+        speak();
+    }
+
     public void allInvisible(){
+        if(Program.gameState.getVirtue("temperance").getProgress() == 5){
+            Program.gameState.getVirtue("temperance").setProgress(6);
+            return;
+        }
         charity.setVisible(false);
         patienceman.setVisible(false);
         kindness.setVisible(false);

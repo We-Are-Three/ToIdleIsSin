@@ -2,19 +2,61 @@
   "character": "diligence",
   "main" : [
     {
-      "title" : "hello",
+      "title" : "freeing",
       "progress" : 1,
+      "next" : 2,
       "dialogue":[
-        { "character" : "diligence", "text" : "You should beat the third level." },
-        { "character" : "Me", "text" : "Ok." }
+        { "character" : "Diligence", "text" : "Aha! And so Diligence is freed!" },
+        { "character" : "Diligence", "text" : "Greetings, Charity. Kindness. Where lies the rescuer? Wait. Don't tell me. It is this grand man right here, yes?" },
+        { "character" : "Diligence", "text" : "Oho! Now good sir, simply point me to the fight. A relentless and powerful barrage will spell the end of the Prince Gluttony and his evils!" },
+        { "character" : "General", "text" : "Yep. Glad to have you. Let's g--" },
+        { "character" : "Diligence", "text" : "In fact! The last time I went up against him, we battled for three days straight. There I was, on the ground and at my end, when suddenly..." },
+        { "character" : "Diligence", "text" : "Oh. You've already gone." }
       ]
     },
     {
-      "title" : "win",
+      "title" : "facing",
       "progress" : 2,
+      "next" : 3,
       "dialogue":[
-        { "character" : "diligence", "text" : "You can move to the fourth level now." },
-        { "character" : "Me", "text" : "Ok" }
+        { "character" : "Gluttony:", "text" : "Yo. " },
+        { "character" : "General:", "text" : "Wait. You don't look like Gluttony. " },
+        { "character" : "Gluttony:", "text" : "Why? Because I'm not fat? " },
+        { "character" : "General:", "text" : "I mean... " },
+        { "character" : "Diligence:", "text" : "General! Some decorum, please! " },
+        { "character" : "Gluttony:", "text" : "Wow... " },
+        { "character" : "Diligence:", "text" : "I'm so sorry, Prince Gluttony. You'll have to forgive him. He's a bit of an uncouth savage. " },
+        { "character" : "Gluttony:", "text" : "Oh, I can see that. " },
+        { "character" : "General:", "text" : "...You do know I'm not here to make friends, right? I'm here to free the land. " },
+        { "character" : "Gluttony:", "text" : "I'll have you know that I'm gluttonous in other ways. " },
+        { "character" : "General:", "text" : "Oh yeah? Like what? " },
+        { "character" : "Gluttony:", "text" : "I overindulge in memes. " },
+        { "character" : "Diligence:", "text" : "Some might say this is worse. " },
+        { "character" : "Gluttony:", "text" : "I will dab, no cap. " },
+        { "character" : "Diligence:", "text" : "Kill him! Kill him quick! " }
+      ]
+    },
+    {
+      "title" : "defeat",
+      "progress" : 3,
+      "next" : 4,
+      "dialogue":[
+        { "character" : "Diligence:", "text" : "Defeated! " },
+        { "character" : "Gluttony:", "text" : "Urgh. Who will post stale memes on the internet now? " },
+        { "character" : "Diligence:", "text" : "General! Stop him. He's about to-- " },
+        { "character" : "Gluttony:", "text" : "*dabs* " },
+        { "character" : "Gluttony:", "text" : "It's too late. You've failed. " },
+        { "character" : "General:", "text" : "...is this world even worth saving? " }
+      ]
+    },
+    {
+      "title" : "next",
+      "progress" : 4,
+      "next" : 5,
+      "dialogue":[
+        { "character" : "Diligence:", "text" : "Sir General! My heart feels the silent cries of my brother-in-arms Humillity! We must save him at once! " },
+        { "character" : "Diligence:", "text" : "Only through his power will we overcome the Lady Sloth. " },
+        { "character" : "General:", "text" : "Yeah, yeah. I'm on it. " }
       ]
     }
   ],

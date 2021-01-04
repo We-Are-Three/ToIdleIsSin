@@ -2,19 +2,58 @@
   "character": "humility",
   "main" : [
     {
-      "title" : "hello",
+      "title" : "freeing",
       "progress" : 1,
+      "next" : 2,
       "dialogue":[
-        { "character" : "humility", "text" : "You should beat the fourth level." },
-        { "character" : "Me", "text" : "Ok." }
+        { "character" : "Humility:", "text" : "... " },
+        { "character" : "General:", "text" : "...hello? " },
+        { "character" : "Humility:", "text" : "In my humble opinion, it is you who freed me, yes? " },
+        { "character" : "General:", "text" : "Yes. My armies have freed you and your fellow virtues Charity, Kindness, and Diligence. We need your help to defeat the Lady Sloth. " },
+        { "character" : "Humility:", "text" : "... " },
+        { "character" : "General:", "text" : "...what? " },
+        { "character" : "Humility:", "text" : "In my powerfully humble opinion, she needs a shower. " },
+        { "character" : "General:", "text" : "You people are hopeless. " }
       ]
     },
     {
-      "title" : "win",
+      "title" : "facing",
       "progress" : 2,
+      "next" : 3,
       "dialogue":[
-        { "character" : "humility", "text" : "You can move to the fifth level now." },
-        { "character" : "Me", "text" : "Ok" }
+        { "character" : "Sloth:", "text" : "Hmm... " },
+        { "character" : "Sloth:", "text" : "Is this not the same general I pushed out of these lands some time ago? " },
+        { "character" : "Sloth:", "text" : "Boring. At least bring me somebody new that might test my power. " },
+        { "character" : "Humility:", "text" : "In my greatly humble opinion, this general is a worthy opponent. " },
+        { "character" : "Sloth:", "text" : "Oh no. Not this guy! General, did you have to bring him back? He never stops sharing his humble opinions. " },
+        { "character" : "General:", "text" : "Believe me, I've noticed. " },
+        { "character" : "Humility:", "text" : "Hey! In my humble opinion-- " },
+        { "character" : "Sloth:", "text" : "Nobody cares about your hot takes! " },
+        { "character" : "Humility:", "text" : "In my very humble opinion that's not true. I have thousands of followers. I'm going to be an influencer. " },
+        { "character" : "Sloth:", "text" : "General? Can you kill him for me please? I would do it, but I'm overdue on my map. " },
+        { "character" : "General:", "text" : "*sigh* " }
+      ]
+    },
+    {
+      "title" : "defeat",
+      "progress" : 3,
+      "next" : 4,
+      "dialogue":[
+        { "character" : "Sloth:", "text" : "Urgh! " },
+        { "character" : "Humility:", "text" : "In my extraordinarily humble opinion, that wasn't too hard. " },
+        { "character" : "Sloth:", "text" : "General, I hope you're happy. You've now enabled another wannabe influencer to add to the white noise of social media. " },
+        { "character" : "[Sloth", "text" : "vanish] " },
+        { "character" : "General:", "text" : "Am I doing the right thing? " }
+      ]
+    },
+    {
+      "title" : "next",
+      "progress" : 4,
+      "next" : 5,
+      "dialogue":[
+        { "character" : "Humility:", "text" : "General, I remember this land well. It is here where the mighty and powerful Virtue Chastity has been imprisoned. " },
+        { "character" : "Humility:", "text" : "It is my excruciatingly humble opinion that we rescue her. Her power is unmatched. If we hope to have any chance against the Mistress of Wrath, she must be freed. " },
+        { "character" : "General:", "text" : "If I must. " }
       ]
     }
   ],

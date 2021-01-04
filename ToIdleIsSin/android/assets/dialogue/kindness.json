@@ -2,19 +2,50 @@
   "character": "kindness",
   "main" : [
     {
-      "title" : "hello",
+      "title" : "freeing",
       "progress" : 1,
+      "next" : 2,
       "dialogue":[
-        { "character" : "kindness", "text" : "You should beat the second level." },
-        { "character" : "Me", "text" : "Ok." }
+        { "character" : "Kindness", "text" : "Thank you, brave General! You have set me free!" },
+        { "character" : "General", "text" : "You're welcome. Let's go defeat Lord Avarice." },
+        { "character" : "Kindness", "text" : "Oh. I see. It was freedom with conditions. Not the kindest thing to do." },
+        { "character" : "General", "text" : "Well, I myself am not the personification of kindness. So I think I can be forgiven for that." },
+        { "character" : "Kindness", "text" : "Humph!" },
+        { "character" : "Kindness", "text" : "Well, since I AM the personification of kindness. I will aid you in your quest to defeat Lord Avarice. Come! Let us face him together." }
       ]
     },
     {
-      "title" : "win",
+      "title" : "facing",
       "progress" : 2,
+      "next" : 3,
       "dialogue":[
-        { "character" : "kindness", "text" : "You can move to the third level now." },
-        { "character" : "Me", "text" : "Ok" }
+        { "character" : "Avarice", "text" : "The law is passed!" },
+        { "character" : "Kindness", "text" : "Avarice! We have come to take your throne." },
+        { "character" : "Avarice", "text" : "Hold on, I'm almost done." },
+        { "character" : "Kindness", "text" : "What are you doing?" },
+        { "character" : "Avarice", "text" : "I have passed the law increasing the tax, and religious donations are now mandatory." },
+        { "character" : "Kindness", "text" : "No! You fiend! Taxation is theft!" },
+        { "character" : "Avarice", "text" : "And what do you want? A libertarian paradise? Who would pave the roads?" },
+        { "character" : "Kindness", "text" : "Acktually..." },
+        { "character" : "Avarice", "text" : "Ugh. Stop! Let's just fight already." }
+      ]
+    },
+    {
+      "title" : "defeat",
+      "progress" : 3,
+      "next" : 4,
+      "dialogue":[
+        { "character" : "developer", "text" : "didn't write the dialogue" }
+      ]
+    },
+    {
+      "title" : "next",
+      "progress" : 4,
+      "next" : 5,
+      "dialogue":[
+        { "character" : "Kindness", "text" : "Good general, my brother Diligence lies somewhere in these lands. I implore you to free him as you have me." },
+        { "character" : "Kindness", "text" : "I'm certain we will need his help to defeat the Prince Gluttony." },
+        { "character" : "General", "text" : "I'm beginning to see a pattern here..." }
       ]
     }
   ],

@@ -50,7 +50,7 @@ public class GameState {
 		// old: chastity, temperance, charity, diligence, kindness, patience, humility
 		// -------------------WARNING----------------------------
 		// do not reorder these next seven lines.
-		virtues.add(new Virtue("charity", 1, ""));
+		virtues.add(new Virtue("charity", 2, ""));
 		virtues.add(new Virtue("kindness", 0, ""));
 		virtues.add(new Virtue("diligence", 0, ""));
 		virtues.add(new Virtue("humility", 0, ""));

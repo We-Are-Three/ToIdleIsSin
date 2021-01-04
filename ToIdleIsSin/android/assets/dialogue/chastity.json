@@ -2,19 +2,70 @@
   "character": "chastity",
   "main" : [
     {
-      "title" : "hello",
+      "title" : "freeing",
       "progress" : 1,
+      "next" : 2,
       "dialogue":[
-        { "character" : "chastity", "text" : "You should beat the fifth level." },
-        { "character" : "Me", "text" : "Ok." }
+        { "character" : "General:", "text" : "O great Chastity! Be free! " },
+        { "character" : "General:", "text" : "(And please be normal.) " },
+        { "character" : "Chastity:", "text" : "And free I am. Thank you great general. " },
+        { "character" : "Chastity:", "text" : "Blushes (oh no he's hot!!!) " },
+        { "character" : "General:", "text" : "What's wrong? " },
+        { "character" : "Chastity:", "text" : "Nothing. I just... (look at those glutes) " },
+        { "character" : "General:", "text" : "Are you...staring at my...? " },
+        { "character" : "Chastity:", "text" : "General. Get your mind out of the gutter. I am Chastity, and I am... " },
+        { "character" : "Chastity:", "text" : "I... " },
+        { "character" : "Chastity:", "text" : "Do you lift General? " },
+        { "character" : "General:", "text" : "...aaaand off we go to face the Mistress of Wrath " }
       ]
     },
     {
-      "title" : "win",
+      "title" : "facing",
       "progress" : 2,
+      "next" : 3,
       "dialogue":[
-        { "character" : "chastity", "text" : "You can move to the sixth level now." },
-        { "character" : "Me", "text" : "Ok" }
+        { "character" : "Wrath:", "text" : "Gah! I always get matched with noobs! You people are terrible! Reported! " },
+        { "character" : "General:", "text" : "... " },
+        { "character" : "Chastity:", "text" : "Oooh. What game is that? I play an online game where I make a super muscular barbarian with abs and... " },
+        { "character" : "Wrath:", "text" : "You people? Why are you here? Can't you see I'm busy? " },
+        { "character" : "General:", "text" : "How did you Virtues lose to these people? " },
+        { "character" : "Chastity:", "text" : "They have monsters, some of which are quite...distracting. " },
+        { "character" : "General:", "text" : "... " },
+        { "character" : "Wrath:", "text" : "Fine! I'll be down to fight in just a moment. Let me just leave a quick comment on the new outrage of the day! Did you hear the Duke and Duchess of Lust have been caught in illicit activities? " },
+        { "character" : "General:", "text" : "wat? " },
+        { "character" : "Chastity:", "text" : "That's awful! General, don't you think that's terrible? " },
+        { "character" : "Chastity:", "text" : "Well. I mean maybe it wouldn't be so terrible. You know. If it's with you. " },
+        { "character" : "General:", "text" : "I'm beginning to despair. " }
+      ]
+    },
+    {
+      "title" : "defeat",
+      "progress" : 3,
+      "next" : 4,
+      "dialogue":[
+        { "character" : "Wrath:", "text" : "I lost? To a bunch of noobs like you? How? Reported! " },
+        { "character" : "[Wrath", "text" : "fades] " },
+        { "character" : "Chastity:", "text" : "General. That was quite the display of...*ahem* battle prowess. " },
+        { "character" : "Chastity:", "text" : "You know they say that a man's swordplay is indicative of-- " },
+        { "character" : "Knight", "text" : "1: 10 bucks on 'will they'. " },
+        { "character" : "Knight", "text" : "2: 20 on 'won't they'. " },
+        { "character" : "General:", "text" : "Oh no. They're starting to infect my troops. " }
+      ]
+    },
+    {
+      "title" : "next",
+      "progress" : 4,
+      "next" : 5,
+      "dialogue":[
+        { "character" : "Chastity:", "text" : "G-General! " },
+        { "character" : "General:", "text" : "Let me guess, we have to free a virtue before we face the Duke and Duchess of Lust? " },
+        { "character" : "Chastity:", "text" : "Handsome and smart? " },
+        { "character" : "General:", "text" : "What? " },
+        { "character" : "Chastity:", "text" : "What? " },
+        { "character" : "General:", "text" : "Um. Well, am I right? " },
+        { "character" : "Chastity:", "text" : "Yes. We must free the Order of Patience. " },
+        { "character" : "General:", "text" : "All right. Let's go. " },
+        { "character" : "Chastity:", "text" : "...I hate seeing him go, but I sure do love watching him leave. " }
       ]
     }
   ],

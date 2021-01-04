@@ -2,19 +2,69 @@
   "character": "temperance",
   "main" : [
     {
-      "title" : "hello",
+      "title" : "freeing",
       "progress" : 1,
+      "next" : 2,
       "dialogue":[
-        { "character" : "temperance", "text" : "You should beat the seventh level." },
-        { "character" : "Me", "text" : "Ok." }
+        { "character" : "General:", "text" : "And there. That's the last virtue free. " },
+        { "character" : "Temperance:", "text" : "And the clock starts now. " },
+        { "character" : "General:", "text" : "Clock? What clock? " },
+        { "character" : "Temperance:", "text" : "All things in moderation, General. Including both being a statue, and being free from said statue. " },
+        { "character" : "General:", "text" : "I don't think being free from being a statue is one such thing that needs moderation. " },
+        { "character" : "Temperance:", "text" : "Ah ah, General. ALL things in moderation. " },
+        { "character" : "General:", "text" : "Gah! Let's just go defeat Lord Pride. " }
       ]
     },
     {
-      "title" : "win",
+      "title" : "facing",
       "progress" : 2,
+      "next" : 3,
       "dialogue":[
-        { "character" : "temperance", "text" : "You are finished with demo." },
-        { "character" : "Me", "text" : "Ok" }
+        { "character" : "Pride:", "text" : "At last! An audience to bask in my splendor! " },
+        { "character" : "Temperance:", "text" : "You have held victory for too long Lord Pride! " },
+        { "character" : "General:", "text" : "That's right! " },
+        { "character" : "Temperance:", "text" : "We will take it from you and have the victory ourselves! " },
+        { "character" : "General:", "text" : "Finally someone with focus! " },
+        { "character" : "Temperance:", "text" : "And then after a time we will give it back! " },
+        { "character" : "General:", "text" : "Absolu-wait what? " },
+        { "character" : "Temperance:", "text" : "All things in moderation, General. Even victory. " },
+        { "character" : "General:", "text" : "Wait. I don't agree to this. " },
+        { "character" : "Pride:", "text" : "Your conditions are favorable to me, let us do battle. " }
+      ]
+    },
+    {
+      "title" : "defeat",
+      "progress" : 3,
+      "next" : 4,
+      "dialogue":[
+        { "character" : "Pride:", "text" : "Impossible. You're all lowly peasants. How could you defeat someone with a face and body like this? " },
+        { "character" : "Temperance:", "text" : "You have clung too tightly to your life. It is time to give it up in the name of moderation. " },
+        { "character" : "General:", "text" : "Don't tell me. Survival in moderation? " },
+        { "character" : "Temperance:", "text" : "But of course, General. And might I add it seems you've held onto yours quite tightly as well. " },
+        { "character" : "General:", "text" : "...Put him back in the statue please. " },
+        { "character" : "Pride:", "text" : "Oh look, it's time for me to die. " },
+        { "character" : "[Pride", "text" : "vanish] " },
+        { "character" : "General:", "text" : "**** " },
+        { "character" : "Temperance:", "text" : "Let us meet Charity back at the cottage. Hurry! " }
+      ]
+    },
+    {
+      "title" : "ending",
+      "progress" : 4,
+      "next" : 5,
+      "dialogue":[
+        { "character" : "Charity:", "text" : "The lands are free! " },
+        { "character" : "Kindness:", "text" : "You have freed us all and saved the land! You are truly a good general, and a kind person. " },
+        { "character" : "Diligence:", "text" : "Indeed! Well done, great General! You have persevered when most would run. " },
+        { "character" : "Humility:", "text" : "I am humbled by your accomplishments. " },
+        { "character" : "General:", "text" : "Is everyone just going to play into their stereotype here? " },
+        { "character" : "Chastity:", "text" : "blushing " },
+        { "character" : "General:", "text" : "Ok everyone except you, I guess. " },
+        { "character" : "Patience Boy:", "text" : "Patience, Chastity. For soon it will be your time. " },
+        { "character" : "Patience Man:", "text" : "Do I smell wedding bells? " },
+        { "character" : "Patience Boy:", "text" : "Patient wedding bells! " },
+        { "character" : "Temperance:", "text" : "Now now, gentlemen. Remember. Keep this patience in moderation. " },
+        { "character" : "General:", "text" : "What monsters have I unleashed upon this land? " }
       ]
     }
   ],

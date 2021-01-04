@@ -22,6 +22,8 @@ public class Lines {
 	private double last_unit_deaths = 0;
 	private double knightsToBeKilled = 0;
 	private long currentdelta = 0;
+	private Virtue virtue;
+	private boolean firstTime = true;
 	
 	public Lines(String name, int wHICH_LINE, int numberOfEnemies, double enemiesKilled,
 			ArrayList<Modifier> negativeModifiers, ArrayList<Modifier> rewardModifiers, int knights, int mages,
@@ -39,6 +41,7 @@ public class Lines {
 		this.mage = mage;
 		this.physician = physician;
 		this.cleared = cleared;
+
 	}
 	
 	public String stats() {
@@ -53,9 +56,30 @@ public class Lines {
 	}
 	
 	public boolean updateLine(GameState gs, long time) {
+		if(firstTime){
+			if(name.contains("campaign1")){
+				virtue = Program.gameState.getVirtue("charity");
+			} else if(name.contains("campaign2")){
+				virtue = Program.gameState.getVirtue("kindness");
+			} else if(name.contains("campaign3")){
+				virtue = Program.gameState.getVirtue("diligence");
+			} else if(name.contains("campaign4")){
+				virtue = Program.gameState.getVirtue("humility");
+			} else if(name.contains("campaign5")){
+				virtue = Program.gameState.getVirtue("chastity");
+			} else if(name.contains("campaign6")){
+				virtue = Program.gameState.getVirtue("patience");
+			} else if(name.contains("campaign7")){
+				virtue = Program.gameState.getVirtue("temperance");
+			}
+			firstTime = false;
+		}
 		currentdelta += time;
 		if(currentdelta < 5000) return false;
 		currentdelta = 0;
+		if(enemiesKilled/numberOfEnemies > 0.85 && enemiesKilled/numberOfEnemies < 1.0 && this.WHICH_LINE == 1 && virtue.getProgress() <= 1){
+			return false;
+		}
 		if(cleared) return true;
 		double liveEnemies = numberOfEnemies - enemiesKilled;
 		int k = knights;

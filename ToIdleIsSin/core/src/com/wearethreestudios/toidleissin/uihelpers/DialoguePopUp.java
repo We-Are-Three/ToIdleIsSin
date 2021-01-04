@@ -50,6 +50,38 @@ public class DialoguePopUp {
 
     }
 
+    public DialoguePopUp(final ToIdleIsSin game, int width, int height){
+        popup = new Group();
+        Image a = new Image(game.skin, "ui/idle");
+        a.setSize(width, height);
+        popup.addActor(a);
+        a.setPosition(0,0);
+
+        who = new Label("", game.skin, "alpha");
+        who.setAlignment(Align.top);
+        who.setSize(width/3-30, height -40);
+        who.setWrap(true);
+        popup.addActor(who);
+        who.setPosition(15, 20);
+
+        words = new Label("", game.skin, "alpha");
+        words.setAlignment(Align.topLeft);
+        words.setSize(2*width/3-50, height -40);
+        words.setWrap(true);
+        popup.addActor(words);
+        words.setPosition(width/3, 20);
+
+        popup.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                game.sound = game.assets.get("sound/navigation.mp3", Sound.class);
+                game.sound.play();
+                super.clicked(event, x, y);
+            }
+        });
+
+    }
+
     public void setWho(String w){
         who.setText(w);
     }

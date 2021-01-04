@@ -18,6 +18,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -34,10 +35,14 @@ import com.wearethreestudios.toidleissin.program.Modifier;
 import com.wearethreestudios.toidleissin.program.Monks;
 import com.wearethreestudios.toidleissin.program.Physicians;
 import com.wearethreestudios.toidleissin.program.Program;
+import com.wearethreestudios.toidleissin.uihelpers.Dialogue;
+import com.wearethreestudios.toidleissin.uihelpers.DialoguePopUp;
 import com.wearethreestudios.toidleissin.uihelpers.ImageBlob;
 import com.wearethreestudios.toidleissin.uihelpers.NavButtons;
 import com.wearethreestudios.toidleissin.uihelpers.ScrollImage;
 import com.wearethreestudios.toidleissin.uihelpers.SlidePopUp;
+
+import java.util.HashMap;
 
 public class LevelScreen extends ScreenAdapter {
     ToIdleIsSin game;
@@ -110,6 +115,12 @@ public class LevelScreen extends ScreenAdapter {
 
     private ImageBlob boy;
     private ImageBlob girl;
+
+    private DialoguePopUp dialoguePopUp;
+    private Dialogue dialogue = null;
+    private String selectedVirtue;
+    private int sceneVisible = 0;
+    private HashMap<String, Boolean> visible;
 
 
     private void initButtons(){
@@ -420,6 +431,33 @@ public class LevelScreen extends ScreenAdapter {
             thirdscroll.get().setVisible(true);
             prepareUnits();
         }
+        
+        switch (level){
+            case 1:
+                selectedVirtue = "charity";
+                break;
+            case 2:
+                selectedVirtue = "kindness";
+                break;
+            case 3:
+                selectedVirtue = "diligence";
+                break;
+            case 4:
+                selectedVirtue = "humility";
+                break;
+            case 5:
+                selectedVirtue = "chastity";
+                break;
+            case 6:
+                selectedVirtue = "patience";
+                break;
+            case 7:
+                selectedVirtue = "temperance";
+                break;
+            default:
+                break;
+
+        }
 
 
     }
@@ -443,6 +481,7 @@ public class LevelScreen extends ScreenAdapter {
 
         stage = new Stage(gamePort);
         initButtons();
+        initDialogue();
         background = game.atlas.findRegion("campaign/level_bg");
 
     }
@@ -530,33 +569,33 @@ public class LevelScreen extends ScreenAdapter {
 
         game.batch.begin();
 
-        if(virtueProgress > 1)
+        if( virtueProgress > 1)
             virtue.draw((int)(-virtue.getWidth()/2 + virtuexoffset),ToIdleIsSin.HEIGHT/2+170, virtueScaleX, virtueScaleY);
 
-        if(line.getMages() > 0)
+        if( isVisible("unit") ||  line.getMages() > 0)
             mage.draw((int)(200 - mage.getWidth()/2),ToIdleIsSin.HEIGHT/2+200,0.75,0.75);
 
-        if( (line.getNumberOfEnemies() - line.getEnemiesKilled() > 0 && line.getWHICH_LINE() != 1) || ( line.getEnemiesKilled() / line.getNumberOfEnemies() < 0.85 && line.getWHICH_LINE() == 1 ) )
+        if( isVisible("enemy") ||   (line.getNumberOfEnemies() - line.getEnemiesKilled() > 0 && line.getWHICH_LINE() != 1) || ( line.getEnemiesKilled() / line.getNumberOfEnemies() < 0.85 && line.getWHICH_LINE() == 1 ) )
             enemy1.draw((int)(550 - enemy1.getWidth()/2),ToIdleIsSin.HEIGHT/2+200,0.75,0.75);
 
-        if(line.getKnights() > 0)
+        if( isVisible("unit") ||  line.getKnights() > 0)
             knight.draw((int)(200 - knight.getWidth()/2),ToIdleIsSin.HEIGHT/2,1.2,1.2);
 
-        if(line.getEnemiesKilled() / line.getNumberOfEnemies() > 0.85 &&  line.getEnemiesKilled() / line.getNumberOfEnemies() < 1.0  && line.getWHICH_LINE() == 1){
+        if( isVisible("boss") ||  line.getEnemiesKilled() / line.getNumberOfEnemies() > 0.85 &&  line.getEnemiesKilled() / line.getNumberOfEnemies() < 1.0  && line.getWHICH_LINE() == 1){
             boss.draw((int)(500 + bossxoffset - boss.getWidth()/2),ToIdleIsSin.HEIGHT/2+100, bossScaleX, bossScaleY);
             vice.draw((int) (700 + vicexoffset - vice.getWidth()/2), ToIdleIsSin.HEIGHT/2, viceScaleX, viceScaleY);
         }
 
-        if( (line.getNumberOfEnemies() - line.getEnemiesKilled() > 0 && line.getWHICH_LINE() != 1) || ( line.getEnemiesKilled() / line.getNumberOfEnemies() < 0.85 && line.getWHICH_LINE() == 1 ) )
+        if( isVisible("enemy") ||   (line.getNumberOfEnemies() - line.getEnemiesKilled() > 0 && line.getWHICH_LINE() != 1) || ( line.getEnemiesKilled() / line.getNumberOfEnemies() < 0.85 && line.getWHICH_LINE() == 1 ) )
             enemy3.draw((int)(750 - enemy3.getWidth()/2+50),ToIdleIsSin.HEIGHT/2+100,0.8,0.8);
 
-        if(line.getPhysicians() > 0)
+        if( isVisible("unit") ||  line.getPhysicians() > 0)
             physician.draw((int)(-50 - physician.getWidth()/2),ToIdleIsSin.HEIGHT/2,0.75,0.75);
 
-        if( (line.getNumberOfEnemies() - line.getEnemiesKilled() > 0 && line.getWHICH_LINE() != 1) || ( line.getEnemiesKilled() / line.getNumberOfEnemies() < 0.85 && line.getWHICH_LINE() == 1 ) )
+        if( isVisible("enemy") ||   (line.getNumberOfEnemies() - line.getEnemiesKilled() > 0 && line.getWHICH_LINE() != 1) || ( line.getEnemiesKilled() / line.getNumberOfEnemies() < 0.85 && line.getWHICH_LINE() == 1 ) )
             enemy2.draw((int)(400 - enemy2.getWidth()/2),ToIdleIsSin.HEIGHT/2,1.2,1.2);
 
-        if(line.getWHICH_LINE() == 2 && line.isCleared()){
+        if( line.getWHICH_LINE() == 2 && line.isCleared()){
             boy.draw((int)(500 - boy.getWidth()/2),ToIdleIsSin.HEIGHT/2,0.55,0.55);
             girl.draw((int)(800 - girl.getWidth()/2),ToIdleIsSin.HEIGHT/2,0.55,0.55);
         }
@@ -584,9 +623,15 @@ public class LevelScreen extends ScreenAdapter {
             enemy3.random();
         }
 
+        if(dialogue == null) virtueSpeak();
+
     }
 
     public void prepareUnits(){
+        visible = new HashMap<>();
+        visible.put("unit", false);
+        visible.put("enemy", false);
+        visible.put("boss", false);
         if(knight != null) knight.dispose();
         if(mage != null) mage.dispose();
         if(physician != null) physician.dispose();
@@ -768,6 +813,82 @@ public class LevelScreen extends ScreenAdapter {
 
 
     }
+
+    public void initDialogue(){
+        int width = (int)(ToIdleIsSin.WIDTH*5/6.0);
+        int height = ToIdleIsSin.HEIGHT/3;
+        dialoguePopUp = new DialoguePopUp(game, width, height);
+        dialoguePopUp.getPopup().addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                speak();
+                super.clicked(event, x, y);
+            }
+        });
+
+        dialoguePopUp.getPopup().setPosition(ToIdleIsSin.WIDTH/12, 300);
+        stage.addActor(dialoguePopUp.getPopup());
+        dialoguePopUp.getPopup().setVisible(false);
+    }
+
+    public void speak(){
+        if(dialogue.next()){
+            Program.gameState.pause();
+            dialoguePopUp.getPopup().setVisible(true);
+            dialoguePopUp.setWho(dialogue.getCharacter());
+            dialoguePopUp.setWords(dialogue.getMessage());
+
+        } else {
+            dialoguePopUp.setWords("");
+            dialoguePopUp.setWho("");
+            dialoguePopUp.getPopup().setVisible(false);
+            dialogue = null;
+            releventVisible(0);
+            Program.gameState.resume();
+        }
+    }
+
+    public void virtueSpeak(){
+        Dialogue virtueWords;
+        if( (3 == Program.gameState.getVirtue(selectedVirtue).getProgress()) && (line.getEnemiesKilled() / line.getNumberOfEnemies() >= 1.0 && line.getWHICH_LINE() == 1)){
+            releventVisible(3);
+            virtueWords = game.dialogue.characterMainDialogue(selectedVirtue);
+            Program.gameState.getVirtue(selectedVirtue).setProgress(4);
+        } else if (2 == Program.gameState.getVirtue(selectedVirtue).getProgress() && (line.getEnemiesKilled() / line.getNumberOfEnemies() > 0.85 &&  line.getEnemiesKilled() / line.getNumberOfEnemies() <= 1.0  && line.getWHICH_LINE() == 1)){
+            releventVisible(2);
+            virtueWords = game.dialogue.characterMainDialogue(selectedVirtue);
+            Program.gameState.getVirtue(selectedVirtue).setProgress(3);
+        } else {
+            return;
+        }
+        dialogue = virtueWords;
+        speak();
+    }
+
+    public boolean isVisible(String character){
+        return visible.get(character);
+    }
+
+    public void releventVisible(int progress){
+        switch (progress){
+            case 2:
+                visible.put("unit", true);
+                visible.put("enemy", false);
+                visible.put("boss", false);
+                break;
+            case 3:
+                visible.put("unit", true);
+                visible.put("enemy", false);
+                visible.put("boss", true);
+                break;
+            default:
+                visible.put("unit", false);
+                visible.put("enemy", false);
+                visible.put("boss", false);
+                break;
+        }
+    }
+
 
     @Override
     public void resize(int width, int height) {
