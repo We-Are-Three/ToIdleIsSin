@@ -44,11 +44,10 @@
       "next" : 4,
       "dialogue":[
         { "character" : "Wrath:", "text" : "I lost? To a bunch of noobs like you? How? Reported! " },
-        { "character" : "[Wrath", "text" : "fades] " },
         { "character" : "Chastity:", "text" : "General. That was quite the display of...*ahem* battle prowess. " },
         { "character" : "Chastity:", "text" : "You know they say that a man's swordplay is indicative of-- " },
         { "character" : "Knight", "text" : "1: 10 bucks on 'will they'. " },
-        { "character" : "Knight", "text" : "2: 20 on 'won't they'. " },
+        { "character" : "Mage", "text" : "2: 20 on 'won't they'. " },
         { "character" : "General:", "text" : "Oh no. They're starting to infect my troops. " }
       ]
     },

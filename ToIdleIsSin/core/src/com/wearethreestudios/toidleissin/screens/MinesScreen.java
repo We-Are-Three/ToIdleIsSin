@@ -165,7 +165,7 @@ public class MinesScreen extends ScreenAdapter {
     }
 
     public void initHints(){
-        mining = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Mining", "Monks start mining and the game speed increases. Mines Monero as a background process on the phone.", "ui/icon");
+        mining = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Mining", "Monks start mining and the game speed increases. Mines Monero as a background process on the phone.", "supportxmr");
         mining.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -mining.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -mining.getPopup().getHeight()/2));
         TextureRegionDrawable a = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         mining.getPopup().background(a);

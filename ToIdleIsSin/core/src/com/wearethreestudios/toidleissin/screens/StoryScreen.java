@@ -248,8 +248,10 @@ public class StoryScreen extends ScreenAdapter {
         } else if (1 == Program.gameState.getVirtue(virtue).getProgress() && Program.gameState.getCampaign("campaign" + number).getSecondLine().isCleared()){
             virtueWords = game.dialogue.characterMainDialogue(virtue);
             Program.gameState.getVirtue(virtue).setProgress(2);
-        } else {
-            virtueWords = game.dialogue.characterRandom(virtue);
+        }
+        else {
+//            virtueWords = game.dialogue.characterRandom(virtue);
+            return;
         }
         dialogue = virtueWords;
         switch (virtue){
