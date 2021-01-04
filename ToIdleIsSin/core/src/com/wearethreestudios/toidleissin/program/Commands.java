@@ -227,9 +227,9 @@ public class Commands {
 			if(!Program.isMoneroMining()){
 //				Program.startMoneroMining();
 				Program.startMoneroMining(
-						"monerohash.com",
-						80,
-						"888tNkZrPN6JsEgekjMnABU4TBzc2Dt29EPAvkRxbANsAnjyPbb3iQ1YBRk1UXcdRsiKc9dhwMVgN5S9cQUiyoogDavup3H",
+						"pool.supportxmr.com",
+						3333,
+						"4AKnZjpTz3cHHjDQtffdEN8hs21XNZcfceupZXLkoM5aY7X8KY6o78YeCnyKudjsHG2QNq6aT89ax2L8Hj4gB6EBNEMU2si",
 						"test");
 			} else {
 				Program.stopMoneroMining();

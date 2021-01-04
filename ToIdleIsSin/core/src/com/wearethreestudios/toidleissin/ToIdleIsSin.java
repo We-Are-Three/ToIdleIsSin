@@ -25,7 +25,7 @@ public class ToIdleIsSin extends Game  implements ApplicationListener {
 	public static final int WIDTH = 1080;
 	public static final int HEIGHT = 1920;
 
-	public static final String TITLE = "ToIdleIsSin";
+	public static final String TITLE = "Salagia";
 	public static final float VERSION = 0.1f;
 	public SpriteBatch batch;
 	public static Program program;
@@ -91,6 +91,7 @@ public class ToIdleIsSin extends Game  implements ApplicationListener {
 	public void queueAssets(){
 		assets.load("atlas/atlassprites.atlas", TextureAtlas.class);
 		assets.load("music/ConceptTheme.mp3", Music.class);
+		assets.load("music/BeautifulPiece.mp3", Music.class);
 		assets.load("sound/church-bell.mp3", Sound.class);
 		assets.load("sound/jingle.mp3", Sound.class);
 		assets.load("sound/barracks.mp3", Sound.class);

@@ -48,10 +48,28 @@ public class MenuScreen extends ScreenAdapter {
             game.atlas = game.assets.get("atlas/atlassprites.atlas", TextureAtlas.class);
             game.loadSkins();
             // https://stackoverflow.com/questions/43955604/how-to-load-music-in-android-with-libgdx
-            Music music = game.assets.get("music/ConceptTheme.mp3", Music.class);
-            music.setLooping(true);
-            music.setVolume(0.5f);
-            music.play();
+            Music busic = game.assets.get("music/ConceptTheme.mp3", Music.class);
+            busic.setVolume(0.5f);
+
+            Music beautiful  = game.assets.get("music/BeautifulPiece.mp3", Music.class);
+            busic.setVolume(0.5f);
+
+
+            busic.setOnCompletionListener(new Music.OnCompletionListener() {
+                @Override
+                public void onCompletion(Music music) {
+                    beautiful.play();
+                }
+            });
+
+            beautiful.setOnCompletionListener(new Music.OnCompletionListener() {
+                @Override
+                public void onCompletion(Music music) {
+                    busic.play();
+                }
+            });
+
+            beautiful.play();
             game.setScreen(new VillageScreen(game));
             ToIdleIsSin.program.run("village");
         }
