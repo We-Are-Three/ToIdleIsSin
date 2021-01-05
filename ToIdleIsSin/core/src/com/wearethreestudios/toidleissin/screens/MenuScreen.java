@@ -81,7 +81,7 @@ public class MenuScreen extends ScreenAdapter {
             });
 
             calm.play();
-            game.setScreen(new VillageScreen(game));
+            game.setScreen(new IntroScreen(game));
             ToIdleIsSin.program.run("village");
         }
     }

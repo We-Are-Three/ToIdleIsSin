@@ -95,8 +95,7 @@ public class DialogueManager {
         JsonArray block = characters.get(character).getAsJsonArray("main");
         for(int pos = 0; pos < block.size(); pos++){
             JsonObject path = block.get(pos).getAsJsonObject();
-            if(path.get("progress").getAsInt() == Program.gameState.getVirtue(character).getProgress() &&
-                    event.equals(path.get("title").getAsString()) ){
+            if(event.equals(path.get("title").getAsString()) ){
                 return new Dialogue(path);
             }
         }

@@ -12,7 +12,7 @@
         { "character" : "General:", "text" : "If anyone wishes to not throw their lives away, I would not hold it against you if you ran. " },
         { "character" : "Knight:", "text" : "No sir. We will stay. Better to die for freedom than live in slavery. " },
         { "character" : "[Another", "text" : "knight joins the others] " },
-        { "character" : "Scout", "text" : "Knight: Sir! I have scouted the most defensible position. There is a ruin just over this hill. " },
+        { "character" : "Mage", "text" : "Knight: Sir! I have scouted the most defensible position. There is a ruin just over this hill. " },
         { "character" : "General:", "text" : "How apt. Then we will make our last stand there. Come men! To the ruin! " },
         { "character" : "[Scenery", "text" : "change. Use existing asset. Statue of Charity.] " },
         { "character" : "General:", "text" : "Wait. What's this? " },
