@@ -175,8 +175,7 @@ public class IntroScreen extends ScreenAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         update(delta);
         stage.draw();
-        if(Program.realTime() - lastTime > 2000){
-            lastTime = Program.realTime();
+        if(Program.realTime() - lastTime > 3000){
             dialogueCount++;
             Program.print("DC: " + dialogueCount);
             speak();
@@ -200,6 +199,8 @@ public class IntroScreen extends ScreenAdapter {
                 default:
                     break;
             }
+
+            lastTime = Program.realTime();
         }
     }
 

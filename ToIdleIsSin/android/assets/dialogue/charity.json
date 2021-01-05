@@ -20,11 +20,13 @@
         { "character" : "General:", "text" : "I see. Well, Lady Charity, may you smile upon us as we fight against the evils of this land. " },
         { "character" : "[Charity", "text" : "transitions to non-statue] " },
         { "character" : "General:", "text" : "Wtf? " },
-        { "character" : "Charity:", "text" : "My good general, your prayer has awakened me. I was held tightly under the spell of Lord Envy, but your faith has freed me. " },
+        { "character" : "Charity:", "text" : "My good general, your prayer has awakened me." },
+        { "character" : "Charity:", "text" : "I was held tightly under the spell of Lord Envy, but your faith has freed me. " },
         { "character" : "General:", "text" : "I see. Well I got some bad news, Lady Charity. I've released you into a hopeless situation. " },
         { "character" : "General:", "text" : "We will die by Lord Envy's hand tonight. " },
         { "character" : "Knight:", "text" : "He too stronk. " },
-        { "character" : "Charity:", "text" : "No, General. The war is not lost. I will help you raise an army and free my fellow virtues, and together we shall overcome the Saligian court. " },
+        { "character" : "Charity:", "text" : "No, General. The war is not lost." },
+        { "character" : "Charity:", "text" : "I will help you raise an army and free my fellow virtues, and together we shall overcome the Saligian court. " },
         { "character" : "General:", "text" : "Who knew it would be this easy? My lady, you have but to show me the way. " },
         { "character" : "Charity:", "text" : "Come. Let us leave this place. Let the war for freedom truly begin. " }
       ]
