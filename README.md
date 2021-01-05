@@ -23,5 +23,9 @@ Next use Texture Packer to get all the texture atlases, follow these steps:
 
 save the results and then run the application, it will pack up the textures in holdassets, and drop the texture atlasses in android/assets/atlas folder
 
+after you run the TexturePacker use this command inside the assets/atlas folder
+      find . -name '*.png' -print0 | xargs -0 -P8 -L1 pngquant --ext .png --force 256 
+this will decrease the file size by 70%. you may need to install pngquant (sudo apt-get install pngquant)
+
 Lastly run this command to link the submodules that go to the monero miner:
 git submodule update --init --recursive

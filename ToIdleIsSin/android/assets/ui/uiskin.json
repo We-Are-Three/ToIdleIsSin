@@ -32,7 +32,7 @@
     l5: { down: campaign/lvl5-click, up: campaign/lvl5, over: campaign/lvl5-click, disabled: campaign/lvl5-bw },
     l6: { down: campaign/lvl6-click, up: campaign/lvl6, over: campaign/lvl6-click, disabled: campaign/lvl6-bw },
     l7: { down: campaign/lvl7-click, up: campaign/lvl7, over: campaign/lvl7-click, disabled: campaign/lvl7-bw },
-    
+
     monastery: { down: village/monastery_click, up: village/monastery, over: village/monastery_click, disabled: village/monastery_bw },
     nunnary: { down: village/nunnary_click, up: village/nunnary, over: village/nunnary_click, disabled: village/nunnary_bw },
     barracks: { down: village/barracks_click, up: village/barracks, over: village/barracks_click, disabled: village/barracks_bw },
