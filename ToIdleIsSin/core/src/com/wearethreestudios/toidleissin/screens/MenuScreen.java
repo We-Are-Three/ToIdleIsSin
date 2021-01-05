@@ -42,6 +42,7 @@ public class MenuScreen extends ScreenAdapter {
     }
 
 
+
     private void update(float delta) {
         progress = MathUtils.lerp(progress, game.assets.getProgress(), .1f);
         if (game.assets.update() && progress >= game.assets.getProgress() - .001f) {
@@ -54,11 +55,14 @@ public class MenuScreen extends ScreenAdapter {
             Music beautiful  = game.assets.get("music/BeautifulPiece.mp3", Music.class);
             busic.setVolume(0.5f);
 
+            Music calm  = game.assets.get("music/CalmBattle.mp3", Music.class);
+            busic.setVolume(0.5f);
+
 
             busic.setOnCompletionListener(new Music.OnCompletionListener() {
                 @Override
                 public void onCompletion(Music music) {
-                    beautiful.play();
+                    calm.play();
                 }
             });
 
@@ -69,7 +73,14 @@ public class MenuScreen extends ScreenAdapter {
                 }
             });
 
-            beautiful.play();
+            calm.setOnCompletionListener(new Music.OnCompletionListener() {
+                @Override
+                public void onCompletion(Music music) {
+                    beautiful.play();
+                }
+            });
+
+            calm.play();
             game.setScreen(new VillageScreen(game));
             ToIdleIsSin.program.run("village");
         }

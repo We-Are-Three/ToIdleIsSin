@@ -92,6 +92,7 @@ public class ToIdleIsSin extends Game  implements ApplicationListener {
 		assets.load("atlas/atlassprites.atlas", TextureAtlas.class);
 		assets.load("music/ConceptTheme.mp3", Music.class);
 		assets.load("music/BeautifulPiece.mp3", Music.class);
+		assets.load("music/CalmBattle.mp3", Music.class);
 		assets.load("sound/church-bell.mp3", Sound.class);
 		assets.load("sound/jingle.mp3", Sound.class);
 		assets.load("sound/barracks.mp3", Sound.class);
