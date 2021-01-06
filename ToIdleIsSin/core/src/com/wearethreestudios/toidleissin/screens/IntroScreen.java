@@ -58,8 +58,6 @@ public class IntroScreen extends ScreenAdapter {
         stage = new Stage(gamePort);
         dialogue = game.dialogue.characterMainDialogue("charity", "Intro");
 
-
-//        background = game.atlas.findRegion("village/cathedral/cathedral_inside");
         background = new ImageBlob(game, 1.0);
         background.addState("village/cathedral/cathedral_inside", 1, 1, 0.15f);
         background.setVisible(false);
@@ -96,11 +94,6 @@ public class IntroScreen extends ScreenAdapter {
         mage.addAction(Actions.fadeOut(0f));
         charity.addAction(Actions.fadeOut(0f));
 
-
-//        knight.draw((int)(200 - knight.getWidth()/2),ToIdleIsSin.HEIGHT/2,1.2*0.8,1.2*0.8);
-//        mage.draw((int)(200 - mage.getWidth()/2),ToIdleIsSin.HEIGHT/2+200,0.75*0.8,0.75*0.8);
-//        charity.draw((int) (700 + charity.getWidth()/2), ToIdleIsSin.HEIGHT/2, 0.8*0.8, 0.8*0.8);
-
         lastTime = 0;
     }
 
@@ -118,14 +111,12 @@ public class IntroScreen extends ScreenAdapter {
             @Override
             public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                 gamePort.unproject(touch.set(screenX, screenY, 0));
-                Program.print("Hello");
                 game.setScreen(new VillageScreen(game));
                 return super.touchDown(screenX, screenY, pointer, button);
             }
 
             @Override
             public boolean keyDown(int keycode) {
-                Program.print("Hello");
                 game.setScreen(new VillageScreen(game));
                 return super.keyDown(keycode);
             }
@@ -177,7 +168,6 @@ public class IntroScreen extends ScreenAdapter {
         stage.draw();
         if(Program.realTime() - lastTime > 3000){
             dialogueCount++;
-            Program.print("DC: " + dialogueCount);
             speak();
             switch (dialogueCount){
                 case 1:
