@@ -67,6 +67,7 @@ public class NunnaryScreen extends ScreenAdapter {
     private ImageBlob oldwoman;
 
     public NunnaryScreen(ToIdleIsSin game) {
+        game.getScreen().dispose();
         this.game = game;
         gamecam = new OrthographicCamera();
         gamecam.setToOrtho(false, ToIdleIsSin.WIDTH, ToIdleIsSin.HEIGHT);

@@ -64,6 +64,7 @@ public class MonasteryScreen extends ScreenAdapter {
     private ImageBlob oldman;
 
     public MonasteryScreen(final ToIdleIsSin game) {
+        game.getScreen().dispose();
         this.game = game;
         gamecam = new OrthographicCamera();
         gamecam.setToOrtho(false, ToIdleIsSin.WIDTH, ToIdleIsSin.HEIGHT);

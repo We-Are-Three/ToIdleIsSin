@@ -463,6 +463,7 @@ public class LevelScreen extends ScreenAdapter {
     }
 
     public LevelScreen(ToIdleIsSin game, int level) {
+        game.getScreen().dispose();
         this.game = game;
         gamecam = new OrthographicCamera();
         gamecam.setToOrtho(false, ToIdleIsSin.WIDTH, ToIdleIsSin.HEIGHT);

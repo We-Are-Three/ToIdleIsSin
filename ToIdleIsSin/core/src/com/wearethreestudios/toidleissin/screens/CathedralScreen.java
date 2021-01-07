@@ -73,6 +73,7 @@ public class CathedralScreen extends ScreenAdapter {
     private PerkPopUp temperancepop;
 
     public CathedralScreen(ToIdleIsSin game) {
+        game.getScreen().dispose();
         this.game = game;
         gamecam = new OrthographicCamera();
         gamecam.setToOrtho(false, ToIdleIsSin.WIDTH, ToIdleIsSin.HEIGHT);

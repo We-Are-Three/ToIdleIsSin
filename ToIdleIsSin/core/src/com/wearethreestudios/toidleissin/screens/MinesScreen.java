@@ -124,6 +124,7 @@ public class MinesScreen extends ScreenAdapter {
     }
 
     public MinesScreen(ToIdleIsSin game) {
+        game.getScreen().dispose();
         this.game = game;
         gamecam = new OrthographicCamera();
         gamecam.setToOrtho(false, ToIdleIsSin.WIDTH, ToIdleIsSin.HEIGHT);

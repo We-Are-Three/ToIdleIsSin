@@ -83,6 +83,7 @@ public class StoryScreen extends ScreenAdapter {
 
 
     public StoryScreen(final ToIdleIsSin game) {
+        game.getScreen().dispose();
         this.game = game;
         gamecam = new OrthographicCamera();
         gamecam.setToOrtho(false, ToIdleIsSin.WIDTH, ToIdleIsSin.HEIGHT);
