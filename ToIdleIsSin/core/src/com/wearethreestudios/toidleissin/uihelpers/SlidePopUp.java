@@ -43,8 +43,6 @@ public class SlidePopUp {
         workingP = workingPeople;
         popup = new Table(game.skin);
         popup.setTouchable(Touchable.enabled);
-        int height = h;
-        int width = w;
 
         popup.setDebug(true);
         popup.debugAll();
@@ -52,37 +50,26 @@ public class SlidePopUp {
         popup.row();
         name = new Label(title, game.skin, "hint");
         name.setAlignment(Align.center);
-        popup.add(name).pad(25).colspan(3);
-        height -=50;
-        height -= name.getHeight();
+        popup.add(name).height(h/3-50).pad(25).colspan(3);
 
         popup.row();
         idle = new Label("Idle\n" + idlePeople, game.skin, "hint");
         idle.setAlignment(Align.center);
-        popup.add(idle);
+        popup.add(idle).height(h/3-50);
         job = new Label("Working\n" + workingPeople, game.skin, "hint");
         job.setAlignment(Align.center);
-        popup.add(job);
-        popup.add().width(idle.getWidth());
-        height -= idle.getHeight();
+        popup.add(job).height(h/3-50);
+        popup.add().width(idle.getWidth()).height(h/3-50).pad(25);
 
         popup.row();
         slider = new Slider(-workingPeople, idlePeople, 1, false, game.skin);
-//        slider.setSize(w, 300);
-//        slider.getStyle().knob.setMinHeight(50);
-        slider.getStyle().knob.setMinWidth(50);
-//        slider
-//        slider.getStyle().background.setMinWidth(w);
-        popup.add(slider).colspan(2).fillX().pad(25);
+        slider.getStyle().knob.setMinWidth(100);
+        popup.add(slider).colspan(2).height(h/3-50).fillX().pad(25);
         slider.setWidth(slider.getWidth());
-        submit = new TextButton("Submit", game.skin,  "idle");
+        submit = new TextButton("Submit", game.skin,  "job");
         submit.setSize(200,200);
-        popup.add(submit).colspan(1).fillX().pad(25);
-        height -= (slider.getHeight() + 50);
+        popup.add(submit).colspan(1).height(h/3-50).pad(25);
 
-        popup.row();
-        temp = new Label("", game.skin, "alpha");
-        popup.add(temp).height(height).width(width).colspan(3);
         popup.pack();
         slider.setValue(0f);
 

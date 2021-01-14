@@ -104,9 +104,9 @@ public class BarracksScreen extends ScreenAdapter {
     @Override
     public void render(float delta) {
         ToIdleIsSin.program.runNextCommand();
-        idleunit.setText("Idle Knights\n" + (int)((Knights)Program.gameState.getGroup("knights")).getIdle() + " / " + (int) Program.gameState.getTOTAL_UNITS());
-        job1.setText("Idle Physicians\n" + (int)((Physicians)Program.gameState.getGroup("physicians")).getIdle() + " / " + (int) Program.gameState.getTOTAL_UNITS());
-        job2.setText("Idle Mages\n" + (int)((Mages)Program.gameState.getGroup("mages")).getIdle() + " / " + (int) Program.gameState.getTOTAL_UNITS());
+        idleunit.setText("\n" + (int)((Knights)Program.gameState.getGroup("knights")).getIdle() + "\n/ " + (int) Program.gameState.getTOTAL_UNITS());
+        job1.setText("\n" + (int)((Physicians)Program.gameState.getGroup("physicians")).getIdle() + "\n/ " + (int) Program.gameState.getTOTAL_UNITS());
+        job2.setText("\n" + (int)((Mages)Program.gameState.getGroup("mages")).getIdle() + "\n/ " + (int) Program.gameState.getTOTAL_UNITS());
         job3.setText("Good works\n" + (int)((Knights)Program.gameState.getGroup("knights")).getGoodworks());
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -120,21 +120,21 @@ public class BarracksScreen extends ScreenAdapter {
     }
 
     public void initHints(){
-        retirephysician = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Idle Physicians", "Nuns trained into Physicians. Bring them into battle to heal units, and reduce enemy damage.", "ui/icon");
+        retirephysician = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Idle Physicians", "Nuns trained into Physicians. Bring them into battle to heal units, and reduce enemy damage.", "supportxmr");
         retirephysician.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -retirephysician.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -retirephysician.getPopup().getHeight()/2));
         TextureRegionDrawable a = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         retirephysician.getPopup().background(a);
         stage.addActor(retirephysician.getPopup());
 
 
-        retiremage = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Idle Mages", "Monks trained into Mages. Bring them into battle for a boost in your attack power.", "ui/icon");
+        retiremage = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Idle Mages", "Monks trained into Mages. Bring them into battle for a boost in your attack power.", "supportxmr");
         retiremage.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -retiremage.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -retiremage.getPopup().getHeight()/2));
         TextureRegionDrawable b = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         retiremage.getPopup().background(b);
         stage.addActor(retiremage.getPopup());
 
 
-        goodworks = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Good Works", "Knights travel around, defending those on base and around. Factors into the max units allowed.", "ui/icon");
+        goodworks = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Good Works", "Knights travel around, defending those on base and around. Factors into the max units allowed.", "supportxmr");
         goodworks.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -goodworks.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -goodworks.getPopup().getHeight()/2));
         TextureRegionDrawable c = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         goodworks.getPopup().background(c);
@@ -188,14 +188,14 @@ public class BarracksScreen extends ScreenAdapter {
         campaign = NavButtons.getCampaign(game);
         story = NavButtons.getStory(game);
 
-        idleunit = new TextButton("Idle", game.skin, "idle");
-        idleunit.setPosition((int)(ToIdleIsSin.WIDTH*0.1-idleunit.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-idleunit.getHeight()/2));
+        idleunit = new TextButton("Idle", game.skin, "knight");
+        idleunit.setPosition((int)(ToIdleIsSin.WIDTH*0.12-idleunit.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.92-idleunit.getHeight()/2));
         idleunit.getLabel().setWrap(true);
         idleunit.getLabel().setAlignment(Align.center);
 
-        job1 = new TextButton("Idle Nun", game.skin, "idle");
-        job1.setSize(200,200);
-        job1.setPosition((int)(ToIdleIsSin.WIDTH*0.7-job1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-job1.getHeight()/2));
+        job1 = new TextButton("Idle Nun", game.skin, "medic");
+//        job1.setSize(200,200);
+        job1.setPosition((int)(ToIdleIsSin.WIDTH*0.6-job1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.92-job1.getHeight()/2));
         job1.getLabel().setWrap(true);
         job1.getLabel().setAlignment(Align.center);
         job1.addListener(new ClickListener() {
@@ -210,9 +210,9 @@ public class BarracksScreen extends ScreenAdapter {
 
 
 
-        job2 = new TextButton("Idle Monk", game.skin, "idle");
-        job2.setSize(200,200);
-        job2.setPosition((int)(ToIdleIsSin.WIDTH*0.9-job2.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-job2.getHeight()/2));
+        job2 = new TextButton("Idle Monk", game.skin, "mage");
+//        job2.setSize(200,200);
+        job2.setPosition((int)(ToIdleIsSin.WIDTH*0.88-job2.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.92-job2.getHeight()/2));
         job2.getLabel().setWrap(true);
         job2.getLabel().setAlignment(Align.center);
         job2.addListener(new ClickListener() {
@@ -228,7 +228,7 @@ public class BarracksScreen extends ScreenAdapter {
 
 
         job3 = new TextButton("Good works", game.skin, "job");
-        job3.setSize(200,200);
+        job3.setSize(250,250);
         job3.setPosition((int)(ToIdleIsSin.WIDTH*0.5-job3.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job3.getHeight()/2));
         job3.getLabel().setWrap(true);
         job3.getLabel().setAlignment(Align.center);

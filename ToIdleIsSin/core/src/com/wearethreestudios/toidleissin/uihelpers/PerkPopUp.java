@@ -45,18 +45,20 @@ public class PerkPopUp {
         perks = getPerks(virtue);
         popup = new Table(game.skin);
         popup.setTouchable(Touchable.enabled);
-        int height = (int)(ToIdleIsSin.HEIGHT*0.75);
-        int width = (int)(ToIdleIsSin.WIDTH*0.85);
+//        int height = (int)(ToIdleIsSin.HEIGHT*0.75);
+//        int width = (int)(ToIdleIsSin.WIDTH*0.85);
+        int height = (int)(ToIdleIsSin.HEIGHT);
+        int width = (int)(ToIdleIsSin.WIDTH);
 
         popup.setDebug(true);
 
-        popup.row();
-        name = new Label("" + virtue.toUpperCase(), game.skin, "perk");
+        popup.row().maxWidth(width);
+        name = new Label("" + virtue.toUpperCase(), game.skin, "words");
         name.setAlignment(Align.center);
-        popup.add(name).padBottom(50);
-        points = new Label("Points: "+ (int)Program.gameState.getPerkPoint(), game.skin, "perk");
+        popup.add(name).width(500).padBottom(50);
+        points = new Label("Points: "+ (int)Program.gameState.getPerkPoint(), game.skin, "words");
         points.setAlignment(Align.center);
-        popup.add(points).center().padBottom(50);
+        popup.add(points).center().width(250).padBottom(50);
         exit = new TextButton("X", game.skin, "perk");
         exit.getLabel().setAlignment(Align.center);
         exit.addListener(new ClickListener() {
@@ -69,12 +71,12 @@ public class PerkPopUp {
                 super.clicked(event, x, y);
             }
         });
-        popup.add(exit).padBottom(50);
+        popup.add(exit).width(250).padBottom(50);
         height -= points.getHeight();
         height -=50;
 
-        popup.row();
-        perk1 = new Label(perks.get(0).getModifierName(), game.skin, "perk");
+        popup.row().maxWidth(width);
+        perk1 = new Label(perks.get(0).getModifierName(), game.skin, "words");
         perk1.setWrap(true);
         perk1.setAlignment(Align.center);
         popup.add(perk1).width((int)(width*0.5)).padBottom(25);
@@ -90,16 +92,16 @@ public class PerkPopUp {
                 super.clicked(event, x, y);
             }
         });
-        popup.add(perk1b).padBottom(25);
+        popup.add(perk1b).width(250).padBottom(25);
         perk1count = new Label(perks.get(0).getCurrentLevel() + "/" + perks.get(0).getMAXLEVEL(), game.skin, "perk");
         perk1count.setAlignment(Align.center);
-        popup.add(perk1count).padBottom(25);
+        popup.add(perk1count).width(250).padBottom(25);
         height -=25;
         height -= perk1.getHeight();
 
         if(perks.size() >= 2) {
-            popup.row();
-            perk2 = new Label(perks.get(1).getModifierName(), game.skin, "perk");
+            popup.row().maxWidth(width);
+            perk2 = new Label(perks.get(1).getModifierName(), game.skin, "words");
             perk2.setWrap(true);
             perk2.setAlignment(Align.center);
             popup.add(perk2).width((int) (width * 0.5)).padBottom(25);
@@ -115,17 +117,17 @@ public class PerkPopUp {
                     super.clicked(event, x, y);
                 }
             });
-            popup.add(perk2b).padBottom(25);
+            popup.add(perk2b).width(250).padBottom(25);
             perk2count = new Label(perks.get(1).getCurrentLevel() + "/" + perks.get(1).getMAXLEVEL(), game.skin, "perk");
             perk2count.setAlignment(Align.center);
-            popup.add(perk2count).padBottom(25);
+            popup.add(perk2count).width(250).padBottom(25);
             height -= 25;
             height -= perk2.getHeight();
         }
 
         if(perks.size() >= 3) {
-            popup.row();
-            perk3 = new Label(perks.get(2).getModifierName(), game.skin, "perk");
+            popup.row().maxWidth(width);
+            perk3 = new Label(perks.get(2).getModifierName(), game.skin, "words");
             perk3.setWrap(true);
             perk3.setAlignment(Align.center);
             popup.add(perk3).width((int) (width * 0.5)).padBottom(25);
@@ -141,17 +143,17 @@ public class PerkPopUp {
                     super.clicked(event, x, y);
                 }
             });
-            popup.add(perk3b).padBottom(25);
+            popup.add(perk3b).width(250).padBottom(25);
             perk3count = new Label(perks.get(2).getCurrentLevel() + "/" + perks.get(2).getMAXLEVEL(), game.skin, "perk");
             perk3count.setAlignment(Align.center);
-            popup.add(perk3count).padBottom(25);
+            popup.add(perk3count).width(250).padBottom(25);
             height -= 25;
             height -= perk3.getHeight();
         }
 
         if(perks.size() >= 4){
-            popup.row();
-            perk4 = new Label(perks.get(3).getModifierName(), game.skin, "perk");
+            popup.row().maxWidth(width);
+            perk4 = new Label(perks.get(3).getModifierName(), game.skin, "words");
             perk4.setWrap(true);
             perk4.setAlignment(Align.center);
             popup.add(perk4).width((int)(width*0.5)).padBottom(25);
@@ -167,14 +169,14 @@ public class PerkPopUp {
                     super.clicked(event, x, y);
                 }
             });
-            popup.add(perk4b).padBottom(25);
+            popup.add(perk4b).width(250).padBottom(25);
             perk4count = new Label(perks.get(3).getCurrentLevel() + "/" + perks.get(3).getMAXLEVEL(), game.skin, "perk");
             perk4count.setAlignment(Align.center);
-            popup.add(perk4count).padBottom(25).fillY();
+            popup.add(perk4count).width(250).padBottom(25).fillY();
             height -=25;
             height -= perk4.getHeight();
         }
-        popup.row();
+        popup.row().maxWidth(width);
 
         temp = new Label("", game.skin, "alpha");
         popup.add(temp).height(height).width(width).colspan(3);
@@ -198,9 +200,9 @@ public class PerkPopUp {
 
     public void update(){
         int perkPoints = (int)Program.gameState.getPerkPoint();
-        points.setText("Points: "+ perkPoints + "\n" + (Program.gameState.perkTime() < 60 ? (Program.gameState.perkTime()+1) + " Sec" : (Program.gameState.perkTime()+1)/60 + " Min")  );
+        points.setText("Points "+ perkPoints + "\n" + (Program.gameState.perkTime() < 60 ? (Program.gameState.perkTime()+1) + " s" : (Program.gameState.perkTime()+1)/60 + " m")  );
         perk1count.setText(perks.get(0).getCurrentLevel() + "/" + perks.get(0).getMAXLEVEL());
-        perk1b.setText(perks.get(0).getTier() + " Points");
+        perk1b.setText(perks.get(0).getTier() + " \nPoint");
         if(perkPoints < perks.get(0).getTier()){
             perk1b.setDisabled(true);
         }else{
@@ -208,7 +210,7 @@ public class PerkPopUp {
         }
         if(perk2count != null){
             perk2count.setText(perks.get(1).getCurrentLevel() + "/" + perks.get(1).getMAXLEVEL());
-            perk2b.setText(perks.get(1).getTier() + " Points");
+            perk2b.setText(perks.get(1).getTier() + " \nPoints");
             if(perkPoints < perks.get(1).getTier()){
                 perk2b.setDisabled(true);
             }else{
@@ -217,7 +219,7 @@ public class PerkPopUp {
         }
         if(perk3count != null) {
             perk3count.setText(perks.get(2).getCurrentLevel() + "/" + perks.get(2).getMAXLEVEL());
-            perk3b.setText(perks.get(2).getTier() + " Points");
+            perk3b.setText(perks.get(2).getTier() + " \nPoints");
             if(perkPoints < perks.get(2).getTier()){
                 perk3b.setDisabled(true);
             }else{
@@ -226,7 +228,7 @@ public class PerkPopUp {
         }
         if(perk4count != null) {
             perk4count.setText(perks.get(3).getCurrentLevel() + "/" + perks.get(3).getMAXLEVEL());
-            perk4b.setText(perks.get(3).getTier() + " Points");
+            perk4b.setText(perks.get(3).getTier() + " \nPoints");
             if(perkPoints < perks.get(3).getTier()){
                 perk4b.setDisabled(true);
             }else{

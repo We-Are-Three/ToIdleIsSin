@@ -146,7 +146,8 @@ public class CathedralScreen extends ScreenAdapter {
         charityMenu = charitypop.getPopup();
         TextureRegionDrawable a = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         charityMenu.setBackground(a);
-        charityMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
+//        charityMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
+        charityMenu.setPosition(0, 0);
         charityMenu.pack();
         stage.addActor(charityMenu);
         charityMenu.setVisible(false);
@@ -155,7 +156,8 @@ public class CathedralScreen extends ScreenAdapter {
         chastityMenu = chastitypop.getPopup();
         TextureRegionDrawable b = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         chastityMenu.setBackground(b);
-        chastityMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
+//        chastityMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
+        chastityMenu.setPosition(0, 0);
         chastityMenu.pack();
         stage.addActor(chastityMenu);
         chastityMenu.setVisible(false);
@@ -164,7 +166,8 @@ public class CathedralScreen extends ScreenAdapter {
         temperanceMenu = temperancepop.getPopup();
         TextureRegionDrawable c = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         temperanceMenu.setBackground(c);
-        temperanceMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
+//        temperanceMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
+        temperanceMenu.setPosition(0, 0);
         temperanceMenu.pack();
         stage.addActor(temperanceMenu);
         temperanceMenu.setVisible(false);
@@ -173,7 +176,8 @@ public class CathedralScreen extends ScreenAdapter {
         diligenceMenu = diligencepop.getPopup();
         TextureRegionDrawable d = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         diligenceMenu.setBackground(d);
-        diligenceMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
+//        diligenceMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
+        diligenceMenu.setPosition(0, 0);
         diligenceMenu.pack();
         stage.addActor(diligenceMenu);
         diligenceMenu.setVisible(false);
@@ -182,7 +186,8 @@ public class CathedralScreen extends ScreenAdapter {
         kindnessMenu = kindnesspop.getPopup();
         TextureRegionDrawable e = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         kindnessMenu.setBackground(e);
-        kindnessMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
+//        kindnessMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
+        kindnessMenu.setPosition(0, 0);
         kindnessMenu.pack();
         stage.addActor(kindnessMenu);
         kindnessMenu.setVisible(false);
@@ -191,7 +196,8 @@ public class CathedralScreen extends ScreenAdapter {
         patienceMenu = patiencepop.getPopup();
         TextureRegionDrawable f = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         patienceMenu.setBackground(f);
-        patienceMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
+//        patienceMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
+        patienceMenu.setPosition(0, 0);
         patienceMenu.pack();
         stage.addActor(patienceMenu);
         patienceMenu.setVisible(false);
@@ -200,7 +206,8 @@ public class CathedralScreen extends ScreenAdapter {
         humilityMenu = humilitypop.getPopup();
         TextureRegionDrawable g = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         humilityMenu.setBackground(g);
-        humilityMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
+//        humilityMenu.setPosition((int)(ToIdleIsSin.WIDTH*0.075), (int)(ToIdleIsSin.HEIGHT*0.1));
+        humilityMenu.setPosition(0, 0);
         humilityMenu.pack();
         stage.addActor(humilityMenu);
         humilityMenu.setVisible(false);

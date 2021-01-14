@@ -50,17 +50,17 @@ public class Hints {
 
         popup.row();
         Group messagegroup = new Group();
-        messagegroup.setSize(width-40,300);
+        messagegroup.setSize(width-40,400);
 
-        imtext = new Image(game.skin, "ui/idle");
+        imtext = new Image(game.skin, "ui/scroll-horizontal");
         messagegroup.addActor(imtext);
         imtext.setSize(messagegroup.getWidth(), messagegroup.getHeight());
 
         text = new Label(message, game.skin, "alpha");
         messagegroup.addActor(text);
-        text.setSize(imtext.getWidth()-60,imtext.getHeight()-40);
+        text.setSize(imtext.getWidth()-240,imtext.getHeight()-40);
         text.setWrap(true);
-        text.setPosition(30,30);
+        text.setPosition(110,30);
         popup.add(messagegroup).width(messagegroup.getWidth());
         height -= messagegroup.getHeight();
 

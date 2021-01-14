@@ -7,14 +7,21 @@
 //  https://libgdx.badlogicgames.com/ci/nightlies/docs/api/com/badlogic/gdx/scenes/scene2d/utils/class-use/Drawable.html
   com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
     navbutton: { down: ui/select, up: ui/icon, over: ui/toggle, disabled: ui/disabled, font: default-font, fontColor: black },
-    idle: { down: ui/idle_click, up: ui/idle, over: ui/idle_toggle, disabled: ui/idle_bw, font: default-font, fontColor: black  },
-    job: { down: ui/idle_click, up: ui/idle, over: ui/idle_toggle, disabled: ui/idle_bw, font: default-font, fontColor: black  },
-    left: { down: ui/left_click, up: ui/left, over: ui/left_toggle, disabled: ui/left_bw, font: default-font, fontColor: black  },
-    right: { down: ui/right_click, up: ui/right, over: ui/right_toggle, disabled: ui/right_bw, font: default-font, fontColor: black   },
-    perk: { down: ui/idle_click, up: ui/idle, over: ui/idle_toggle, disabled: ui/idle_bw, font: default-font, fontColor: black  },
-    hint: { down: ui/idle_click, up: ui/idle, over: ui/idle_toggle, disabled: ui/idle_bw, font: default-font, fontColor: black  },
-//  ,
-//    toggle: { down: ui/improvements, up: ui/icon, checked: ui/improvements, font: default-font, fontColor: white, downFontColor: red }
+    village: { down: ui/select, up: ui/village, over: ui/village, disabled: ui/village, font: default-font, fontColor: black },
+    sword: { down: ui/select, up: ui/sword, over: ui/sword, disabled: ui/sword, font: default-font, fontColor: black },
+    scroll: { down: ui/select, up: ui/scroll, over: ui/scroll, disabled: ui/scroll, font: default-font, fontColor: black },
+    lbolt1: { down: ui/ap1-clicked, up: ui/ap1, over: ui/ap1-clicked, disabled: ui/disabled, font: default-font, fontColor: black },
+    lbolt2: { down: ui/ap2-clicked, up: ui/ap2, over: ui/ap2-clicked, disabled: ui/disabled, font: default-font, fontColor: black },
+    idle: { down: ui/scroll-vertical, up: ui/scroll-vertical, over: ui/scroll-vertical, disabled: ui/joby2-click, font: default-font, fontColor: black  },
+    job: { down: ui/scroll-horizontal-clicked, up: ui/scroll-horizontal, over: ui/scroll-horizontal-clicked, disabled: ui/joby2-click, font: default-font, fontColor: black  },
+    perk: { down: ui/scroll-horizontal-clicked, up: ui/scroll-horizontal, over: ui/scroll-horizontal-clicked, disabled: ui/joby2-click, font: default-font, fontColor: black  },
+    hint: { down: ui/joby2-click, up: ui/joby2, over: ui/joby2-click, disabled: ui/joby2-click, font: default-font, fontColor: black  },
+    knight: { down: ui/knight-idle, up: ui/knight-idle, over: ui/knight-idle, disabled: ui/idle_bw, font: default-font, fontColor: black  },
+    mage: { down: ui/mage-idle, up: ui/mage-idle, over: ui/mage-idle, disabled: ui/idle_bw, font: default-font, fontColor: black  },
+    medic: { down: ui/medic-idle, up: ui/medic-idle, over: ui/medic-idle, disabled: ui/idle_bw, font: default-font, fontColor: black  },
+    knightattack: { down: ui/knight-attack-clicked, up: ui/knight-attack, over: ui/knight-attack-clicked, disabled: ui/idle_bw, font: default-font, fontColor: black  },
+    mageattack: { down: ui/mage-attack-clicked, up: ui/mage-attack, over: ui/mage-attack-clicked, disabled: ui/idle_bw, font: default-font, fontColor: black  },
+    medicattack: { down: ui/medic-heal-clicked, up: ui/medic-heal, over: ui/medic-heal-clicked, disabled: ui/idle_bw, font: default-font, fontColor: black  },
   },
   com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle: {
     charity: { down: village/cathedral/charity_click, up: village/cathedral/charity, over: village/cathedral/charity_click, disabled: village/cathedral/charity_bw },
@@ -39,15 +46,14 @@
     cathedral: { down: village/cathedral_click, up: village/cathedral, over: village/cathedral_click, disabled: village/cathedral_bw },
     mines: { down: village/mines_click, up: village/mines, over: village/mines_click, disabled: village/mines_bw },
   },
-  com.badlogic.gdx.scenes.scene2d.ui.Table:{
-    test: { background: "ui/improvements" }
-  },
   com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle:{
-    perk: { background: "ui/idle", font: default-font, fontColor: black },
-    hint: { background: "ui/idle", font: default-font, fontColor: black },
+    perk: { background: "ui/scroll-vertical", font: default-font, fontColor: black },
+    hint: { background: "ui/scroll-vertical", font: default-font, fontColor: black },
+    words: { background: "ui/scroll-horizontal", font: default-font, fontColor: black },
+    idle: { background: "ui/idle", font: default-font, fontColor: black },
     alpha: { background: "alpha", font: default-font, fontColor: black }
   },
   com.badlogic.gdx.scenes.scene2d.ui.Slider$SliderStyle:{
-    default-horizontal: { background: "ui/idle", knob: "ui/idle_click" }
+    default-horizontal: { background: "ui/chain", knob: "ui/dagger" }
   },
 }

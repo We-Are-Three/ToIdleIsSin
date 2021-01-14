@@ -12,7 +12,7 @@ import com.wearethreestudios.toidleissin.screens.VillageScreen;
 
 public class NavButtons {
     public static TextButton getVillage(final ToIdleIsSin game){
-        TextButton village = new TextButton("Village", game.skin, "navbutton");
+        TextButton village = new TextButton("", game.skin, "village");
         village.setPosition((int)(ToIdleIsSin.WIDTH*0.1), (int)(ToIdleIsSin.HEIGHT*0.01));
         village.setSize(200, 200);
         village.setOrigin(Align.center);
@@ -31,7 +31,7 @@ public class NavButtons {
     }
 
     public static TextButton getCampaign(final ToIdleIsSin game){
-        TextButton campaign = new TextButton("Campaign", game.skin, "navbutton");
+        TextButton campaign = new TextButton("", game.skin, "sword");
         campaign.setPosition((int)(ToIdleIsSin.WIDTH*0.4), (int)(ToIdleIsSin.HEIGHT*0.01));
         campaign.setSize(200, 200);
         campaign.addListener(new ClickListener() {
@@ -48,7 +48,7 @@ public class NavButtons {
     }
 
     public static TextButton getStory(final ToIdleIsSin game){
-        TextButton story = new TextButton("Story", game.skin, "navbutton");
+        TextButton story = new TextButton("", game.skin, "scroll");
         story.setPosition((int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.01));
         story.setSize(200, 200);
         story.addListener(new ClickListener() {

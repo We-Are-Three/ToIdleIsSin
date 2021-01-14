@@ -131,7 +131,7 @@ public class IntroScreen extends ScreenAdapter {
     public void initDialogue(){
         int width = (int)(ToIdleIsSin.WIDTH*5/6.0);
         int height = ToIdleIsSin.HEIGHT/4;
-        dialoguePopUp = new DialoguePopUp(game, width, height);
+        dialoguePopUp = new DialoguePopUp(game, (int)(ToIdleIsSin.WIDTH*1.2), height);
         dialoguePopUp.getPopup().addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -140,7 +140,7 @@ public class IntroScreen extends ScreenAdapter {
             }
         });
 
-        dialoguePopUp.getPopup().setPosition(ToIdleIsSin.WIDTH/12, 140);
+        dialoguePopUp.getPopup().setPosition((int)(-ToIdleIsSin.WIDTH*0.1), 140);
         stage.addActor(dialoguePopUp.getPopup());
         dialoguePopUp.getPopup().setVisible(false);
     }

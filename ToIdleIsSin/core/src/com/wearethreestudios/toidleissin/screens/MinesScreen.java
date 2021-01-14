@@ -172,7 +172,7 @@ public class MinesScreen extends ScreenAdapter {
         mining.getPopup().background(a);
         stage.addActor(mining.getPopup());
 
-        bonus = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Resources", "Used to construct walls on the daily line.", "ui/icon");
+        bonus = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Resources", "Used to construct walls on the daily line.", "supportxmr");
         bonus.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -bonus.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -bonus.getPopup().getHeight()/2));
         TextureRegionDrawable b = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         bonus.getPopup().background(a);

@@ -103,7 +103,7 @@ public class StoryScreen extends ScreenAdapter {
     public void initSprites(){
         int width = (int)(ToIdleIsSin.WIDTH*5/6.0);
         int height = (int)(ToIdleIsSin.HEIGHT*3.0/12);
-        dialoguePopUp = new DialoguePopUp(game, width, height);
+        dialoguePopUp = new DialoguePopUp(game, (int)(ToIdleIsSin.WIDTH*1.2), height);
         dialoguePopUp.getPopup().addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -213,7 +213,7 @@ public class StoryScreen extends ScreenAdapter {
         allInvisible();
         allVisible();
 
-        dialoguePopUp.getPopup().setPosition(ToIdleIsSin.WIDTH/12, 300);
+        dialoguePopUp.getPopup().setPosition((int)(-ToIdleIsSin.WIDTH*0.1), 300);
         stage.addActor(dialoguePopUp.getPopup());
         dialoguePopUp.getPopup().setVisible(false);
     }

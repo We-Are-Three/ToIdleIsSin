@@ -120,28 +120,28 @@ public class NunnaryScreen extends ScreenAdapter {
     }
 
     public void initHints(){
-        farming = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Farming", "Farms food for all recruits. Factors into max units allowed.", "ui/icon");
+        farming = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Farming", "Farms food for all recruits. Factors into max units allowed.", "supportxmr");
         farming.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -farming.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -farming.getPopup().getHeight()/2));
         TextureRegionDrawable a = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         farming.getPopup().background(a);
         stage.addActor(farming.getPopup());
 
 
-        training = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Training", "Trains Nuns into Physicians.", "ui/icon");
+        training = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Training", "Trains Nuns into Physicians.", "supportxmr");
         training.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -training.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -training.getPopup().getHeight()/2));
         TextureRegionDrawable b = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         training.getPopup().background(b);
         stage.addActor(training.getPopup());
 
 
-        studying = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Studying", "Studying increases the rate that perk points are earned. They can be spent in the Cathedral.", "ui/icon");
+        studying = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Studying", "Studying increases the rate that perk points are earned. They can be spent in the Cathedral.", "supportxmr");
         studying.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -studying.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -studying.getPopup().getHeight()/2));
         TextureRegionDrawable c = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         studying.getPopup().background(c);
         stage.addActor(studying.getPopup());
 
 
-        praying = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Praying", "The nuns will pray for those on the front line. Increases battle performance for all units.", "ui/icon");
+        praying = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Praying", "The nuns will pray for those on the front line. Increases battle performance for all units.", "supportxmr");
         praying.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -praying.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -praying.getPopup().getHeight()/2));
         TextureRegionDrawable d = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         praying.getPopup().background(d);
@@ -196,13 +196,13 @@ public class NunnaryScreen extends ScreenAdapter {
         story = NavButtons.getStory(game);
 
         idleunit = new TextButton("Idle", game.skin, "idle");
-        idleunit.setPosition((int)(ToIdleIsSin.WIDTH*0.1-idleunit.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-idleunit.getHeight()/2));
+        idleunit.setPosition((int)(ToIdleIsSin.WIDTH*0.12-idleunit.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.92-idleunit.getHeight()/2));
         idleunit.getLabel().setWrap(true);
         idleunit.getLabel().setAlignment(Align.center);
 
         job1 = new TextButton("Farm", game.skin, "job");
-        job1.setSize(200,200);
-        job1.setPosition((int)(ToIdleIsSin.WIDTH*0.2-job1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job1.getHeight()/2));
+        job1.setSize(250,250);
+        job1.setPosition((int)(ToIdleIsSin.WIDTH*0.125-job1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job1.getHeight()/2));
         job1.getLabel().setWrap(true);
         job1.getLabel().setAlignment(Align.center);
         job1.addListener(new ClickListener() {
@@ -235,8 +235,8 @@ public class NunnaryScreen extends ScreenAdapter {
 
 
         job2 = new TextButton("Train", game.skin, "job");
-        job2.setSize(200,200);
-        job2.setPosition((int)(ToIdleIsSin.WIDTH*0.4-job2.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job2.getHeight()/2));
+        job2.setSize(250,250);
+        job2.setPosition((int)(ToIdleIsSin.WIDTH*0.375-job2.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job2.getHeight()/2));
         job2.getLabel().setWrap(true);
         job2.getLabel().setAlignment(Align.center);
         job2.addListener(new ClickListener() {
@@ -269,8 +269,8 @@ public class NunnaryScreen extends ScreenAdapter {
 
 
         job3 = new TextButton("Study", game.skin, "job");
-        job3.setSize(200,200);
-        job3.setPosition((int)(ToIdleIsSin.WIDTH*0.6-job3.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job3.getHeight()/2));
+        job3.setSize(250,250);
+        job3.setPosition((int)(ToIdleIsSin.WIDTH*0.625-job3.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job3.getHeight()/2));
         job3.getLabel().setWrap(true);
         job3.getLabel().setAlignment(Align.center);
         job3.addListener(new ClickListener() {
@@ -303,8 +303,8 @@ public class NunnaryScreen extends ScreenAdapter {
 
 
         job4 = new TextButton("Pray", game.skin, "job");
-        job4.setSize(200,200);
-        job4.setPosition((int)(ToIdleIsSin.WIDTH*0.8-job4.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job4.getHeight()/2));
+        job4.setSize(250,250);
+        job4.setPosition((int)(ToIdleIsSin.WIDTH*0.875-job4.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job4.getHeight()/2));
         job4.getLabel().setWrap(true);
         job4.getLabel().setAlignment(Align.center);
         job4.addListener(new ClickListener() {

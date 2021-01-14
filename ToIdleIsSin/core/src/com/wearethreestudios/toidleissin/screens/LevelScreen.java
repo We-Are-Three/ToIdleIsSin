@@ -20,6 +20,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -131,18 +132,18 @@ public class LevelScreen extends ScreenAdapter {
         story = NavButtons.getStory(game);
 
         progressText = new TextButton("Progress:", game.skin, "idle");
-        progressText.setPosition((int)(ToIdleIsSin.WIDTH*0.1-progressText.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-progressText.getHeight()/2));
+        progressText.setPosition((int)(ToIdleIsSin.WIDTH*0.12-progressText.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.92-progressText.getHeight()/2));
         progressText.getLabel().setWrap(true);
         progressText.getLabel().setAlignment(Align.center);
 
-        strengthText = new TextButton("strength:\n Ours : Enemies", game.skin, "idle");
-        strengthText.setPosition((int)(ToIdleIsSin.WIDTH*0.8-strengthText.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-strengthText.getHeight()/2));
+        strengthText = new TextButton("strength:\n Ours : Enemies", game.skin, "job");
+        strengthText.setPosition((int)(ToIdleIsSin.WIDTH*0.82-strengthText.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.92-strengthText.getHeight()/2));
         strengthText.getLabel().setWrap(true);
         strengthText.getLabel().setAlignment(Align.center);
 
 
-        apu1 = new TextButton("apu1", game.skin, "job");
-        apu1.setPosition((int)(ToIdleIsSin.WIDTH*0.2), (int)(ToIdleIsSin.HEIGHT*0.9));
+        apu1 = new TextButton("", game.skin, "lbolt1");
+        apu1.setPosition((int)(ToIdleIsSin.WIDTH*0.45-apu1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.87));
         apu1.setSize(200, 200);
         apu1.setOrigin(Align.center);
         apu1.setTransform(true);
@@ -159,8 +160,8 @@ public class LevelScreen extends ScreenAdapter {
         });
 
 
-        apu2 = new TextButton("apu2", game.skin, "job");
-        apu2.setPosition((int)(ToIdleIsSin.WIDTH*0.4), (int)(ToIdleIsSin.HEIGHT*0.9));
+        apu2 = new TextButton("", game.skin, "lbolt2");
+        apu2.setPosition((int)(ToIdleIsSin.WIDTH*0.65-apu2.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.87));
         apu2.setSize(200, 200);
         apu2.setOrigin(Align.center);
         apu2.setTransform(true);
@@ -198,8 +199,8 @@ public class LevelScreen extends ScreenAdapter {
                 prepareUnits();
                 strengthHasListener = false;
                 strengthText.remove();
-                strengthText = new TextButton("strength:\n Ours : Enemies", game.skin, "idle");
-                strengthText.setPosition((int)(ToIdleIsSin.WIDTH*0.8-strengthText.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-strengthText.getHeight()/2));
+                strengthText = new TextButton("strength:\n Ours : Enemies", game.skin, "job");
+        strengthText.setPosition((int)(ToIdleIsSin.WIDTH*0.82-strengthText.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.92-strengthText.getHeight()/2));
                 strengthText.getLabel().setWrap(true);
                 strengthText.getLabel().setAlignment(Align.center);
                 stage.addActor(strengthText);
@@ -227,8 +228,8 @@ public class LevelScreen extends ScreenAdapter {
                 prepareUnits();
                 strengthHasListener = false;
                 strengthText.remove();
-                strengthText = new TextButton("strength:\n Ours : Enemies", game.skin, "idle");
-                strengthText.setPosition((int)(ToIdleIsSin.WIDTH*0.8-strengthText.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-strengthText.getHeight()/2));
+                strengthText = new TextButton("strength:\n Ours : Enemies", game.skin, "job");
+        strengthText.setPosition((int)(ToIdleIsSin.WIDTH*0.82-strengthText.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.92-strengthText.getHeight()/2));
                 strengthText.getLabel().setWrap(true);
                 strengthText.getLabel().setAlignment(Align.center);
                 stage.addActor(strengthText);
@@ -256,8 +257,8 @@ public class LevelScreen extends ScreenAdapter {
                 prepareUnits();
                 strengthHasListener = false;
                 strengthText.remove();
-                strengthText = new TextButton("strength:\n Ours : Enemies", game.skin, "idle");
-                strengthText.setPosition((int)(ToIdleIsSin.WIDTH*0.8-strengthText.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-strengthText.getHeight()/2));
+                strengthText = new TextButton("strength:\n Ours : Enemies", game.skin, "job");
+        strengthText.setPosition((int)(ToIdleIsSin.WIDTH*0.82-strengthText.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.92-strengthText.getHeight()/2));
                 strengthText.getLabel().setWrap(true);
                 strengthText.getLabel().setAlignment(Align.center);
                 stage.addActor(strengthText);
@@ -267,15 +268,15 @@ public class LevelScreen extends ScreenAdapter {
         
         
 
-        idle1 = new TextButton("Idle Knights", game.skin, "job");
-        idle1.setSize(200,200);
-        idle1.setPosition((int)(ToIdleIsSin.WIDTH*0.3-idle1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.35-idle1.getHeight()/2));
+        idle1 = new TextButton("Idle Knights", game.skin, "knight");
+        idle1.setSize(300,300);
+        idle1.setPosition((int)(ToIdleIsSin.WIDTH*0.25-idle1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.35-idle1.getHeight()/2));
         idle1.getLabel().setWrap(true);
         idle1.getLabel().setAlignment(Align.center);
 
-        job1 = new TextButton("Fighting Knights", game.skin, "job");
-        job1.setSize(200,200);
-        job1.setPosition((int)(ToIdleIsSin.WIDTH*0.3-job1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.25-job1.getHeight()/2));
+        job1 = new TextButton("Fighting Knights", game.skin, "knightattack");
+        job1.setSize(300,300);
+        job1.setPosition((int)(ToIdleIsSin.WIDTH*0.25-job1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.2-job1.getHeight()/2));
         job1.getLabel().setWrap(true);
         job1.getLabel().setAlignment(Align.center);
         job1.addListener(new ClickListener() {
@@ -311,15 +312,15 @@ public class LevelScreen extends ScreenAdapter {
 
 
 
-        idle2 = new TextButton("Idle Mages", game.skin, "job");
-        idle2.setSize(200,200);
+        idle2 = new TextButton("Idle Mages", game.skin, "mage");
+        idle2.setSize(300,300);
         idle2.setPosition((int)(ToIdleIsSin.WIDTH*0.5-idle2.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.35-idle2.getHeight()/2));
         idle2.getLabel().setWrap(true);
         idle2.getLabel().setAlignment(Align.center);
 
-        job2 = new TextButton("Fighting Mages", game.skin, "job");
-        job2.setSize(200,200);
-        job2.setPosition((int)(ToIdleIsSin.WIDTH*0.5-job2.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.25-job2.getHeight()/2));
+        job2 = new TextButton("Fighting Mages", game.skin, "mageattack");
+        job2.setSize(300,300);
+        job2.setPosition((int)(ToIdleIsSin.WIDTH*0.5-job2.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.2-job2.getHeight()/2));
         job2.getLabel().setWrap(true);
         job2.getLabel().setAlignment(Align.center);
         job2.addListener(new ClickListener() {
@@ -349,15 +350,15 @@ public class LevelScreen extends ScreenAdapter {
 
 
 
-        idle3 = new TextButton("Idle Physicians", game.skin, "job");
-        idle3.setSize(200,200);
-        idle3.setPosition((int)(ToIdleIsSin.WIDTH*0.7-idle3.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.35-idle3.getHeight()/2));
+        idle3 = new TextButton("Idle Physicians", game.skin, "medic");
+        idle3.setSize(300,300);
+        idle3.setPosition((int)(ToIdleIsSin.WIDTH*0.75-idle3.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.35-idle3.getHeight()/2));
         idle3.getLabel().setWrap(true);
         idle3.getLabel().setAlignment(Align.center);
 
-        job3 = new TextButton("Fighting Physicians", game.skin, "job");
-        job3.setSize(200,200);
-        job3.setPosition((int)(ToIdleIsSin.WIDTH*0.7-job3.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.25-job3.getHeight()/2));
+        job3 = new TextButton("Fighting Physicians", game.skin, "medicattack");
+        job3.setSize(300,300);
+        job3.setPosition((int)(ToIdleIsSin.WIDTH*0.75-job3.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.2-job3.getHeight()/2));
         job3.getLabel().setWrap(true);
         job3.getLabel().setAlignment(Align.center);
         job3.addListener(new ClickListener() {
@@ -523,12 +524,12 @@ public class LevelScreen extends ScreenAdapter {
         }
         if(Program.gameState.getValue(Modifier.APU1) == 0) apu1.setVisible(false);
         if(Program.gameState.getValue(Modifier.APU2) == 0) apu2.setVisible(false);
-        idle1.setText("Idle Knights\n" + (int)((Knights)Program.gameState.getGroup("knights")).getIdle());
-        idle2.setText("Idle Mages\n" + (int)((Mages)Program.gameState.getGroup("mages")).getIdle());
-        idle3.setText("Idle Physicians\n" + (int)((Physicians)Program.gameState.getGroup("physicians")).getIdle());
-        job1.setText("Fighting Knights\n" + line.getKnights());
-        job2.setText("Fighting Mages\n" + line.getMages());
-        job3.setText("Fighting Physicians\n" + line.getPhysicians());
+        idle1.setText("\n" + (int)((Knights)Program.gameState.getGroup("knights")).getIdle());
+        idle2.setText("\n" + (int)((Mages)Program.gameState.getGroup("mages")).getIdle());
+        idle3.setText("\n" + (int)((Physicians)Program.gameState.getGroup("physicians")).getIdle());
+        job1.setText("\n" + line.getKnights());
+        job2.setText("\n" + line.getMages());
+        job3.setText("\n" + line.getPhysicians());
         double progress = line.getEnemiesKilled()/line.getNumberOfEnemies();
         progressText.setText("Progress\n" + String.format("%1$,.2f", 100*progress) + "%");
         strengthText.setText(line.getOurPercent());
@@ -818,7 +819,7 @@ public class LevelScreen extends ScreenAdapter {
     public void initDialogue(){
         int width = (int)(ToIdleIsSin.WIDTH*5/6.0);
         int height = ToIdleIsSin.HEIGHT/3;
-        dialoguePopUp = new DialoguePopUp(game, width, height);
+        dialoguePopUp = new DialoguePopUp(game, (int)(ToIdleIsSin.WIDTH*1.2), height);
         dialoguePopUp.getPopup().addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -827,7 +828,7 @@ public class LevelScreen extends ScreenAdapter {
             }
         });
 
-        dialoguePopUp.getPopup().setPosition(ToIdleIsSin.WIDTH/12, 300);
+        dialoguePopUp.getPopup().setPosition((int)(-ToIdleIsSin.WIDTH*0.1), 300);
         stage.addActor(dialoguePopUp.getPopup());
         dialoguePopUp.getPopup().setVisible(false);
     }

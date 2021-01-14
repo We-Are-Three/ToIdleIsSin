@@ -20,7 +20,7 @@ public class DialoguePopUp {
         int width = (int)(ToIdleIsSin.WIDTH*2/3.0);
         int height = ToIdleIsSin.HEIGHT/6;
         popup = new Group();
-        Image a = new Image(game.skin, "ui/idle");
+        Image a = new Image(game.skin, "ui/scroll-horizontal");
         a.setSize(width, height);
         popup.addActor(a);
         a.setPosition(0,0);
@@ -34,7 +34,7 @@ public class DialoguePopUp {
 
         words = new Label("", game.skin, "alpha");
         words.setAlignment(Align.topLeft);
-        words.setSize(2*width/3-30, height -40);
+        words.setSize(2*width/3-250, height -40);
         words.setWrap(true);
         popup.addActor(words);
         words.setPosition(width/3 + 15, 20);
@@ -52,21 +52,22 @@ public class DialoguePopUp {
 
     public DialoguePopUp(final ToIdleIsSin game, int width, int height){
         popup = new Group();
-        Image a = new Image(game.skin, "ui/idle");
+        popup.setDebug(true, true);
+        Image a = new Image(game.skin, "ui/scroll-horizontal");
         a.setSize(width, height);
         popup.addActor(a);
         a.setPosition(0,0);
 
         who = new Label("", game.skin, "alpha");
         who.setAlignment(Align.top);
-        who.setSize(width/3-30, height -40);
+        who.setSize(width/3-185, height -80);
         who.setWrap(true);
         popup.addActor(who);
-        who.setPosition(15, 20);
+        who.setPosition(165, 20);
 
         words = new Label("", game.skin, "alpha");
         words.setAlignment(Align.topLeft);
-        words.setSize(2*width/3-50, height -40);
+        words.setSize(2*width/3-175, height -80);
         words.setWrap(true);
         popup.addActor(words);
         words.setPosition(width/3, 20);

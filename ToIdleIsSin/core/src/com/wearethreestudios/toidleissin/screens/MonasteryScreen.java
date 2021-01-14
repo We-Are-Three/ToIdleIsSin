@@ -117,28 +117,28 @@ public class MonasteryScreen extends ScreenAdapter {
     }
 
     public void initHints(){
-        recruit = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Recruit", "Increase the rate that you recruit Monks, Nuns, and Knights", "ui/icon");
+        recruit = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Recruiting", "Increase the rate that you recruit Monks, Nuns, and Knights", "supportxmr");
         recruit.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -recruit.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -recruit.getPopup().getHeight()/2));
         TextureRegionDrawable a = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         recruit.getPopup().background(a);
         stage.addActor(recruit.getPopup());
 
 
-        training = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Training", "Trains Monks into Mages.", "ui/icon");
+        training = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Training", "Trains Monks into Mages.", "supportxmr");
         training.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -training.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -training.getPopup().getHeight()/2));
         TextureRegionDrawable b = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         training.getPopup().background(b);
         stage.addActor(training.getPopup());
 
 
-        building = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Building", "Building housing for new recruits. Factors into max units allowed.", "ui/icon");
+        building = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Building", "Building housing for new recruits. Factors into max units allowed.", "supportxmr");
         building.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -building.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -building.getPopup().getHeight()/2));
         TextureRegionDrawable c = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         building.getPopup().background(c);
         stage.addActor(building.getPopup());
 
 
-        mining = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Mining", "Increases the Mining output, which increases the speed that things are done.", "ui/icon");
+        mining = new Hints(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Mining", "Increases the Mining output, which increases the speed that things are done.", "supportxmr");
         mining.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -mining.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -mining.getPopup().getHeight()/2));
         TextureRegionDrawable d = new TextureRegionDrawable(game.atlas.findRegion("village/cathedral/perk"));
         mining.getPopup().background(d);
@@ -194,13 +194,13 @@ public class MonasteryScreen extends ScreenAdapter {
         story = NavButtons.getStory(game);
 
         idleunit = new TextButton("Idle", game.skin, "idle");
-        idleunit.setPosition((int)(ToIdleIsSin.WIDTH*0.1-idleunit.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.94-idleunit.getHeight()/2));
+        idleunit.setPosition((int)(ToIdleIsSin.WIDTH*0.12-idleunit.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.92-idleunit.getHeight()/2));
         idleunit.getLabel().setWrap(true);
         idleunit.getLabel().setAlignment(Align.center);
 
         job1 = new TextButton("Recruiting", game.skin, "job");
-        job1.setSize(200,200);
-        job1.setPosition((int)(ToIdleIsSin.WIDTH*0.2-job1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job1.getHeight()/2));
+        job1.setSize(250,250);
+        job1.setPosition((int)(ToIdleIsSin.WIDTH*0.125-job1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job1.getHeight()/2));
         job1.getLabel().setWrap(true);
         job1.getLabel().setAlignment(Align.center);
         job1.addListener(new ClickListener() {
@@ -215,7 +215,7 @@ public class MonasteryScreen extends ScreenAdapter {
                     int idlePeople = (int)Program.gameState.getGroup("monks").getIdle();
                     int workingPeople = (int)((Monks)Program.gameState.getGroup("monks")).getRecruiting();
                     if(slider != null) slider.getPopup().remove();
-                    slider = new SlidePopUp(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "recruit", idlePeople, workingPeople, job1Command);
+                    slider = new SlidePopUp(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Recruit", idlePeople, workingPeople, job1Command);
                     slider.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -slider.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -slider.getPopup().getHeight()/2));
                     stage.addActor(slider.getPopup());
                     Program.gameState.pause();
@@ -233,8 +233,8 @@ public class MonasteryScreen extends ScreenAdapter {
 
 
         job2 = new TextButton("Train", game.skin, "job");
-        job2.setSize(200,200);
-        job2.setPosition((int)(ToIdleIsSin.WIDTH*0.4-job2.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job2.getHeight()/2));
+        job2.setSize(250,250);
+        job2.setPosition((int)(ToIdleIsSin.WIDTH*0.375-job2.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job2.getHeight()/2));
         job2.getLabel().setWrap(true);
         job2.getLabel().setAlignment(Align.center);
         job2.addListener(new ClickListener() {
@@ -249,7 +249,7 @@ public class MonasteryScreen extends ScreenAdapter {
                     int idlePeople = (int)Program.gameState.getGroup("monks").getIdle();
                     int workingPeople = (int)((Monks)Program.gameState.getGroup("monks")).getTraining();
                     if(slider != null) slider.getPopup().remove();
-                    slider = new SlidePopUp(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "train", idlePeople, workingPeople, job2Command);
+                    slider = new SlidePopUp(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Train", idlePeople, workingPeople, job2Command);
                     slider.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -slider.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -slider.getPopup().getHeight()/2));
                     stage.addActor(slider.getPopup());
                     Program.gameState.pause();
@@ -267,8 +267,8 @@ public class MonasteryScreen extends ScreenAdapter {
 
 
         job3 = new TextButton("Build", game.skin, "job");
-        job3.setSize(200,200);
-        job3.setPosition((int)(ToIdleIsSin.WIDTH*0.6-job3.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job3.getHeight()/2));
+        job3.setSize(250,250);
+        job3.setPosition((int)(ToIdleIsSin.WIDTH*0.625-job3.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job3.getHeight()/2));
         job3.getLabel().setWrap(true);
         job3.getLabel().setAlignment(Align.center);
         job3.addListener(new ClickListener() {
@@ -283,7 +283,7 @@ public class MonasteryScreen extends ScreenAdapter {
                     int idlePeople = (int)Program.gameState.getGroup("monks").getIdle();
                     int workingPeople = (int)((Monks)Program.gameState.getGroup("monks")).getImprovements();
                     if(slider != null) slider.getPopup().remove();
-                    slider = new SlidePopUp(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "recruit", idlePeople, workingPeople, job3Command);
+                    slider = new SlidePopUp(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Build", idlePeople, workingPeople, job3Command);
                     slider.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -slider.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -slider.getPopup().getHeight()/2));
                     stage.addActor(slider.getPopup());
                     Program.gameState.pause();
@@ -301,8 +301,8 @@ public class MonasteryScreen extends ScreenAdapter {
 
 
         job4 = new TextButton("Mine", game.skin, "job");
-        job4.setSize(200,200);
-        job4.setPosition((int)(ToIdleIsSin.WIDTH*0.8-job4.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job4.getHeight()/2));
+        job4.setSize(250,250);
+        job4.setPosition((int)(ToIdleIsSin.WIDTH*0.875-job4.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job4.getHeight()/2));
         job4.getLabel().setWrap(true);
         job4.getLabel().setAlignment(Align.center);
         job4.addListener(new ClickListener() {
@@ -317,7 +317,7 @@ public class MonasteryScreen extends ScreenAdapter {
                     int idlePeople = (int)Program.gameState.getGroup("monks").getIdle();
                     int workingPeople = (int)((Monks)Program.gameState.getGroup("monks")).getMining();
                     if(slider != null) slider.getPopup().remove();
-                    slider = new SlidePopUp(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "recruit", idlePeople, workingPeople, job4Command);
+                    slider = new SlidePopUp(game, (int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4), "Mine", idlePeople, workingPeople, job4Command);
                     slider.getPopup().setPosition((int)(ToIdleIsSin.WIDTH*0.5 -slider.getPopup().getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.55 -slider.getPopup().getHeight()/2));
                     stage.addActor(slider.getPopup());
                     Program.gameState.pause();
