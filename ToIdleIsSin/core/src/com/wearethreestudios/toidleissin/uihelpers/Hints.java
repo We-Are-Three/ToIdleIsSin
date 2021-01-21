@@ -33,7 +33,7 @@ public class Hints {
         int height = h;
         int width = w;
 
-        popup.debugAll();
+//        popup.debugAll();
 
         popup.row();
         name = new Label(title, game.skin, "hint");

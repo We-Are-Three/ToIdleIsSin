@@ -50,7 +50,7 @@ public class PerkPopUp {
         int height = (int)(ToIdleIsSin.HEIGHT);
         int width = (int)(ToIdleIsSin.WIDTH);
 
-        popup.setDebug(true);
+//        popup.setDebug(true);
 
         popup.row().maxWidth(width);
         name = new Label("" + virtue.toUpperCase(), game.skin, "words");

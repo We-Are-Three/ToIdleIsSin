@@ -107,7 +107,7 @@ public class BarracksScreen extends ScreenAdapter {
         idleunit.setText("\n" + (int)((Knights)Program.gameState.getGroup("knights")).getIdle() + "\n/ " + (int) Program.gameState.getTOTAL_UNITS());
         job1.setText("\n" + (int)((Physicians)Program.gameState.getGroup("physicians")).getIdle() + "\n/ " + (int) Program.gameState.getTOTAL_UNITS());
         job2.setText("\n" + (int)((Mages)Program.gameState.getGroup("mages")).getIdle() + "\n/ " + (int) Program.gameState.getTOTAL_UNITS());
-        job3.setText("Good works\n" + (int)((Knights)Program.gameState.getGroup("knights")).getGoodworks());
+        job3.setText("\n" + (int)((Knights)Program.gameState.getGroup("knights")).getGoodworks());
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.batch.setProjectionMatrix(gamecam.combined);
@@ -227,7 +227,7 @@ public class BarracksScreen extends ScreenAdapter {
 
 
 
-        job3 = new TextButton("Good works", game.skin, "job");
+        job3 = new TextButton("", game.skin, "knightgoodworks");
         job3.setSize(250,250);
         job3.setPosition((int)(ToIdleIsSin.WIDTH*0.5-job3.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job3.getHeight()/2));
         job3.getLabel().setWrap(true);

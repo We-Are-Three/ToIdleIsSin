@@ -44,13 +44,14 @@ public class SlidePopUp {
         popup = new Table(game.skin);
         popup.setTouchable(Touchable.enabled);
 
-        popup.setDebug(true);
-        popup.debugAll();
+//        popup.setDebug(true);
+//        popup.debugAll();
 
         popup.row();
         name = new Label(title, game.skin, "hint");
         name.setAlignment(Align.center);
-        popup.add(name).height(h/3-50).pad(25).colspan(3);
+        name.setWrap(true);
+        popup.add(name).width(300).height(h/3-50).pad(25).colspan(3);
 
         popup.row();
         idle = new Label("Idle\n" + idlePeople, game.skin, "hint");

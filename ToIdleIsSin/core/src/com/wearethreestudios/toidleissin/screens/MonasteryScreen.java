@@ -100,11 +100,11 @@ public class MonasteryScreen extends ScreenAdapter {
     @Override
     public void render(float delta) {
         Program.runNextCommand();
-        idleunit.setText("Idle Monks\n" + (int)((Monks)Program.gameState.getGroup("monks")).getIdle() + " / " + (int) Program.gameState.getTOTAL_UNITS());
-        job1.setText("Recruit\n" + (int)((Monks)Program.gameState.getGroup("monks")).getRecruiting());
-        job2.setText("Train\n" + (int)((Monks)Program.gameState.getGroup("monks")).getTraining());
-        job3.setText("Build\n" + (int)((Monks)Program.gameState.getGroup("monks")).getImprovements());
-        job4.setText("Mine\n" + (int)((Monks)Program.gameState.getGroup("monks")).getMining());
+        idleunit.setText("\n" + (int)((Monks)Program.gameState.getGroup("monks")).getIdle() + "\n/ " + (int) Program.gameState.getTOTAL_UNITS());
+        job1.setText("\n" + (int)((Monks)Program.gameState.getGroup("monks")).getRecruiting());
+        job2.setText("\n" + (int)((Monks)Program.gameState.getGroup("monks")).getTraining());
+        job3.setText("\n" + (int)((Monks)Program.gameState.getGroup("monks")).getImprovements());
+        job4.setText("\n" + (int)((Monks)Program.gameState.getGroup("monks")).getMining());
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.batch.setProjectionMatrix(gamecam.combined);
@@ -193,12 +193,12 @@ public class MonasteryScreen extends ScreenAdapter {
         campaign = NavButtons.getCampaign(game);
         story = NavButtons.getStory(game);
 
-        idleunit = new TextButton("Idle", game.skin, "idle");
+        idleunit = new TextButton("", game.skin, "monk");
         idleunit.setPosition((int)(ToIdleIsSin.WIDTH*0.12-idleunit.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.92-idleunit.getHeight()/2));
         idleunit.getLabel().setWrap(true);
         idleunit.getLabel().setAlignment(Align.center);
 
-        job1 = new TextButton("Recruiting", game.skin, "job");
+        job1 = new TextButton("Recruiting", game.skin, "monkrecruit");
         job1.setSize(250,250);
         job1.setPosition((int)(ToIdleIsSin.WIDTH*0.125-job1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job1.getHeight()/2));
         job1.getLabel().setWrap(true);
@@ -232,7 +232,7 @@ public class MonasteryScreen extends ScreenAdapter {
 
 
 
-        job2 = new TextButton("Train", game.skin, "job");
+        job2 = new TextButton("Train", game.skin, "monktraining");
         job2.setSize(250,250);
         job2.setPosition((int)(ToIdleIsSin.WIDTH*0.375-job2.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job2.getHeight()/2));
         job2.getLabel().setWrap(true);
@@ -266,7 +266,7 @@ public class MonasteryScreen extends ScreenAdapter {
 
 
 
-        job3 = new TextButton("Build", game.skin, "job");
+        job3 = new TextButton("Build", game.skin, "monkbuild");
         job3.setSize(250,250);
         job3.setPosition((int)(ToIdleIsSin.WIDTH*0.625-job3.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job3.getHeight()/2));
         job3.getLabel().setWrap(true);
@@ -300,7 +300,7 @@ public class MonasteryScreen extends ScreenAdapter {
 
 
 
-        job4 = new TextButton("Mine", game.skin, "job");
+        job4 = new TextButton("Mine", game.skin, "monkmine");
         job4.setSize(250,250);
         job4.setPosition((int)(ToIdleIsSin.WIDTH*0.875-job4.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.17-job4.getHeight()/2));
         job4.getLabel().setWrap(true);

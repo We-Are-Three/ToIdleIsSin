@@ -179,9 +179,9 @@ public class LevelScreen extends ScreenAdapter {
 
 
         
-        line1 = new TextButton("line1", game.skin, "navbutton");
-        line1.setPosition((int)(ToIdleIsSin.WIDTH*0.1), (int)(ToIdleIsSin.HEIGHT*0.4));
-        line1.setSize(200, 200);
+        line1 = new TextButton("", game.skin, "line1");
+        line1.setSize(200, 100);
+        line1.setPosition((int)(ToIdleIsSin.WIDTH*0.25 -line1.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.44));
         line1.setOrigin(Align.center);
         line1.setTransform(true);
         line1.addListener(new ClickListener(){
@@ -208,9 +208,9 @@ public class LevelScreen extends ScreenAdapter {
             }
         });
 
-        line2 = new TextButton("line2", game.skin, "navbutton");
-        line2.setPosition((int)(ToIdleIsSin.WIDTH*0.4), (int)(ToIdleIsSin.HEIGHT*0.4));
-        line2.setSize(200, 200);
+        line2 = new TextButton("", game.skin, "line2");
+        line2.setSize(200, 100);
+        line2.setPosition((int)(ToIdleIsSin.WIDTH*0.5 -line2.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.44));
         line2.setOrigin(Align.center);
         line2.setTransform(true);
         line2.addListener(new ClickListener(){
@@ -237,9 +237,9 @@ public class LevelScreen extends ScreenAdapter {
             }
         });
 
-        line3 = new TextButton("daily line", game.skin, "navbutton");
-        line3.setPosition((int)(ToIdleIsSin.WIDTH*0.7), (int)(ToIdleIsSin.HEIGHT*0.4));
-        line3.setSize(200, 200);
+        line3 = new TextButton("", game.skin, "linebonus");
+        line3.setSize(200, 100);
+        line3.setPosition((int)(ToIdleIsSin.WIDTH*0.75 -line3.getWidth()/2), (int)(ToIdleIsSin.HEIGHT*0.44));
         line3.setOrigin(Align.center);
         line3.setTransform(true);
         line3.addListener(new ClickListener(){
@@ -503,22 +503,22 @@ public class LevelScreen extends ScreenAdapter {
             job3.setDisabled(false);
             if(Program.gameState.canapu1()){
                 apu1.setDisabled(false);
-                apu1.setText("apu1");
+                apu1.setText("");
             }else{
                 apu1.setDisabled(true);
-                apu1.setText("apu1\n" + (int)(Program.gameState.apu1Time() / Program.SPEED_MODIFIER) + "s");
+                apu1.setText((int)(Program.gameState.apu1Time() / Program.SPEED_MODIFIER) + "s");
             }
             if(Program.gameState.canapu2()){
                 apu2.setDisabled(false);
-                apu2.setText("apu2");
+                apu2.setText("");
             }else{
-                apu2.setText("apu2\n" + (int)(Program.gameState.apu2Time() / Program.SPEED_MODIFIER) + "s");
+                apu2.setText((int)(Program.gameState.apu2Time() / Program.SPEED_MODIFIER) + "s");
                 apu2.setDisabled(true);
             }
             if(!line.canAPU()){
-                apu1.setText("apu1");
+                apu1.setText("");
                 apu1.setDisabled(true);
-                apu2.setText("apu2");
+                apu2.setText("");
                 apu2.setDisabled(true);
             }
         }
