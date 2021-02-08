@@ -100,10 +100,10 @@ public class MenuScreen extends ScreenAdapter {
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(Color.BLACK);
-        shapeRenderer.rect((int)(ToIdleIsSin.WIDTH*0.1), gamePort.getScreenHeight() / 2 - 8, ToIdleIsSin.WIDTH - (int)(ToIdleIsSin.WIDTH*0.2), 16);
+        shapeRenderer.rect((int)(gamePort.getScreenWidth()*0.1), gamePort.getScreenHeight() / 2 + 400, gamePort.getScreenWidth() - (int)(gamePort.getScreenWidth()*0.2), 16);
 
         shapeRenderer.setColor(Color.GREEN);
-        shapeRenderer.rect((int)(ToIdleIsSin.WIDTH*0.1), gamePort.getScreenHeight() / 2 - 8, progress * (ToIdleIsSin.WIDTH - (int)(ToIdleIsSin.WIDTH*0.2)), 16);
+        shapeRenderer.rect((int)(gamePort.getScreenWidth()*0.1), gamePort.getScreenHeight() / 2 + 400, progress * (gamePort.getScreenWidth() - (int)(gamePort.getScreenWidth()*0.2)), 16);
         shapeRenderer.end();
     }
 
